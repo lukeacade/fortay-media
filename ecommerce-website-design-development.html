@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>E-commerce Website Design &amp; Development - Fortay Media</title>
+  <meta name="description" content="E-commerce websites built to sell - Shopify and WooCommerce stores designed around a frictionless buying journey, backed by e-commerce SEO that gets found and converts. Talk to Fortay Media."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO
+    ============================ */
+    .ec-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+    }
+    .ec-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(155deg, #1a1a1a 0%, #0d0d0d 45%, #262100 100%),
+                  radial-gradient(circle at 80% 20%, rgba(255,204,0,0.16), transparent 55%);
+    }
+    .ec-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(0,0,0,0.75) 0%,
+        rgba(0,0,0,0.2) 55%,
+        rgba(0,0,0,0.6) 100%
+      );
+    }
+    .ec-hero-wrap {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 88px;
+    }
+    .ec-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .ec-hero-title {
+      font-size: clamp(56px, 8.5vw, 120px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .ec-hero-title em { font-style: normal; color: var(--yellow); }
+    .ec-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .ec-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+    .ec-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .ec-scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      right: 64px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.35;
+    }
+    .ec-scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .ec-scroll-line {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, white, transparent);
+      animation: ecScrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes ecScrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%     { opacity: 0.1;  transform: scaleY(0.4); }
+    }
+
+    /* ============================
+       STATS
+    ============================ */
+    .ec-stats {
+      background: var(--dark);
+      padding: 72px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .ec-stats-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+    }
+    .ec-stat {
+      padding: 0 48px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .ec-stat:first-child { border-left: none; padding-left: 0; }
+    .ec-stat-num {
+      font-size: clamp(48px, 4.6vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .ec-stat-num sup { font-size: 0.4em; color: var(--yellow); vertical-align: super; }
+    .ec-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============================
+       SERVICES (indexed tiles)
+    ============================ */
+    .ec-services {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .ec-services-inner { max-width: 1440px; margin: 0 auto; }
+    .ec-services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .ec-services-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .ec-services-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .ec-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .ec-svc {
+      background: var(--dark2);
+      padding: 44px 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background 0.3s;
+    }
+    .ec-svc:hover { background: #1a1a1a; }
+    .ec-svc-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .ec-svc h3 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    .ec-svc p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+    .ec-svc ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .ec-svc li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.55);
+    }
+    .ec-svc li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ============================
+       FEATURES (image-free grid using gradient tiles)
+    ============================ */
+    .ec-features {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .ec-features-inner { max-width: 1440px; margin: 0 auto; }
+    .ec-features-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .ec-features-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .ec-features-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .ec-features-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 3px;
+    }
+    .ec-feat {
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+    .ec-feat-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      display: block;
+      transition: transform 0.9s cubic-bezier(0.23,1,0.32,1);
+    }
+    .ec-feat:hover .ec-feat-img { transform: scale(1.06); }
+    .ec-feat-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.05) 55%);
+    }
+    .ec-feat-body {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 40px 36px;
+    }
+    .ec-feat-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .ec-feat-name {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      display: block;
+      margin-bottom: 10px;
+      line-height: 1.05;
+    }
+    .ec-feat-detail {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.45s ease, opacity 0.45s ease;
+    }
+    .ec-feat:hover .ec-feat-detail { max-height: 90px; opacity: 1; }
+
+    /* ============================
+       FEATURE LIST STRIP
+    ============================ */
+    .ec-list {
+      background: var(--dark2);
+      padding: 100px 64px;
+    }
+    .ec-list-inner { max-width: 1440px; margin: 0 auto; }
+    .ec-list-head { max-width: 720px; margin-bottom: 56px; }
+    .ec-list-head h2 {
+      font-size: clamp(38px, 4.5vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .ec-list-head p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .ec-list-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px 32px;
+    }
+    .ec-list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.75);
+      padding: 10px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .ec-list-item::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ============================
+       PROCESS (sticky rail)
+    ============================ */
+    .ec-process {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .ec-process-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    .ec-process-left { position: sticky; top: 96px; }
+    .ec-process-left .section-tag { margin-bottom: 20px; }
+    .ec-process-title {
+      font-size: clamp(38px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .ec-process-intro {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 420px;
+    }
+    .ec-process-steps { display: flex; flex-direction: column; }
+    .ec-step {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: start;
+      transition: padding-left 0.3s;
+    }
+    .ec-step:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .ec-step:hover { padding-left: 8px; }
+    .ec-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      padding-top: 4px;
+    }
+    .ec-step h4 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .ec-step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       CINEMATIC BREAK
+    ============================ */
+    .ec-break {
+      position: relative;
+      height: 62vh;
+      overflow: hidden;
+      background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=1600&q=80&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+    }
+    .ec-break-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.05) 65%);
+      display: flex;
+      align-items: center;
+    }
+    .ec-break-text {
+      padding: 0 64px;
+      max-width: 820px;
+    }
+    .ec-break-text blockquote {
+      font-size: clamp(32px, 5.5vw, 68px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      font-style: normal;
+    }
+    .ec-break-text blockquote span { color: var(--yellow); }
+    .ec-break-text cite {
+      display: block;
+      font-size: 13px;
+      font-style: normal;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 28px;
+    }
+
+    /* ============================
+       PACKAGES (tiers)
+    ============================ */
+    .ec-packages {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .ec-packages-inner { max-width: 1440px; margin: 0 auto; }
+    .ec-packages-head { margin-bottom: 72px; }
+    .ec-packages-head h2 {
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      max-width: 820px;
+    }
+    .ec-packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .ec-pcard {
+      background: var(--dark2);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .ec-pcard:hover { background: #1a1a1a; }
+    .ec-pcard.featured {
+      background: var(--yellow);
+      color: var(--dark);
+    }
+    .ec-pcard.featured:hover { background: #e6b800; }
+    .ec-pcard-index {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .ec-pcard.featured .ec-pcard-index { color: rgba(0,0,0,0.4); }
+    .ec-pcard h3 {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+    .ec-pcard-price {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+    .ec-pcard-pnote {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .ec-pcard.featured .ec-pcard-pnote { color: rgba(0,0,0,0.5); }
+    .ec-pcard-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .ec-pcard.featured .ec-pcard-desc { color: rgba(0,0,0,0.6); }
+    .ec-pcard-rule {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .ec-pcard.featured .ec-pcard-rule { background: rgba(0,0,0,0.15); }
+    .ec-pcard-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .ec-pcard-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .ec-pcard-list li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .ec-pcard.featured .ec-pcard-list li::before { color: var(--dark); }
+    .ec-pcard-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      text-decoration: none;
+      margin-top: 8px;
+      transition: gap 0.3s;
+    }
+    .ec-pcard.featured .ec-pcard-link { color: var(--dark); }
+    .ec-pcard-link:hover { gap: 18px; }
+    .ec-pcard-link svg {
+      width: 16px; height: 16px;
+      stroke: currentColor; fill: none; stroke-width: 2;
+    }
+
+    /* ============================
+       CTA
+    ============================ */
+    .ec-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .ec-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .ec-cta h2 {
+      font-size: clamp(56px, 9vw, 130px);
+      font-weight: 900;
+      letter-spacing: -6px;
+      line-height: 0.88;
+      margin-bottom: 36px;
+    }
+    .ec-cta h2 span { color: var(--yellow); }
+    .ec-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .ec-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .ec-hero-wrap { padding: 0 24px 64px; }
+      .ec-hero-title { letter-spacing: -2px; }
+      .ec-scroll-indicator { display: none; }
+      .ec-stats { padding: 60px 24px; }
+      .ec-stats-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .ec-stat { border-left: none; padding-left: 0; }
+      .ec-services { padding: 80px 24px; }
+      .ec-services-header { grid-template-columns: 1fr; gap: 24px; }
+      .ec-services-grid { grid-template-columns: 1fr; }
+      .ec-features { padding: 80px 24px; }
+      .ec-features-header { grid-template-columns: 1fr; gap: 24px; }
+      .ec-features-grid { grid-template-columns: 1fr; }
+      .ec-feat-img { aspect-ratio: 16/10; }
+      .ec-list { padding: 80px 24px; }
+      .ec-list-grid { grid-template-columns: 1fr 1fr; }
+      .ec-process { padding: 80px 24px; }
+      .ec-process-inner { grid-template-columns: 1fr; gap: 48px; }
+      .ec-process-left { position: static; }
+      .ec-break { height: 46vh; }
+      .ec-break-text { padding: 0 24px; }
+      .ec-packages { padding: 80px 24px; }
+      .ec-packages-grid { grid-template-columns: 1fr; }
+      .ec-cta { padding: 100px 24px; }
+      .ec-cta h2 { letter-spacing: -3px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="ec-hero">
+  <div class="ec-hero-img" style="background-image:url('Images/ecommerce-website-design-development-hero.jpg');background-size:cover;background-position:center;"></div>
+  <div class="ec-hero-overlay"></div>
+  <div class="ec-hero-wrap">
+    <div class="ec-hero-eyebrow reveal">E-commerce Websites - Design &amp; Development</div>
+    <h1 class="ec-hero-title reveal reveal-delay-1">
+      Built to<br>sell, not<br>just <em>look good.</em>
+    </h1>
+    <div class="ec-hero-bottom reveal reveal-delay-2">
+      <p class="ec-hero-desc">Online shopping isn't the future - it's now. We design and build Shopify and WooCommerce stores that turn browsers into buyers, with every feature your business and your customers actually need.</p>
+      <div class="ec-hero-actions">
+        <a href="contact.html" class="btn-primary">Start a Project</a>
+        <a href="#packages" class="btn-outline">View Packages</a>
+      </div>
+    </div>
+  </div>
+  <div class="ec-scroll-indicator">
+    <span>Scroll</span>
+    <div class="ec-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ② STATS -->
+<section class="ec-stats">
+  <div class="ec-stats-inner">
+    <div class="ec-stat reveal">
+      <div class="ec-stat-num">30<sup>%</sup></div>
+      <div class="ec-stat-label">Projected growth in UK online spend by 2024</div>
+    </div>
+    <div class="ec-stat reveal reveal-delay-1">
+      <div class="ec-stat-num">87<sup>%</sup></div>
+      <div class="ec-stat-label">Of UK retail purchases now made online</div>
+    </div>
+    <div class="ec-stat reveal reveal-delay-2">
+      <div class="ec-stat-num">78<sup>%</sup></div>
+      <div class="ec-stat-label">Of Brits shop on mobile while travelling</div>
+    </div>
+    <div class="ec-stat reveal reveal-delay-3">
+      <div class="ec-stat-num">48<sup>%</sup></div>
+      <div class="ec-stat-label">Of shoppers start their search on Google</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ SERVICES -->
+<section class="ec-services">
+  <div class="ec-services-inner">
+    <div class="ec-services-header">
+      <h2 class="ec-services-title reveal">Design, build,<br>and grow  - <br>one team.</h2>
+      <p class="ec-services-body reveal reveal-delay-1">We're not tied to one platform. Our team builds online stores on Shopify and WooCommerce, matching you to the system that gives your business the best value - then pairs it with the SEO and marketing to make sure it gets found.</p>
+    </div>
+    <div class="ec-services-grid">
+
+      <div class="ec-svc reveal">
+        <span class="ec-svc-tag">01 - Service</span>
+        <h3>Store Design</h3>
+        <p>An elegantly structured, on-brand storefront that transforms your products and goals into a site customers actually want to shop on.</p>
+        <ul>
+          <li>Custom UX and visual design</li>
+          <li>Mobile-first, fully responsive builds</li>
+          <li>Conversion-focused product pages</li>
+        </ul>
+      </div>
+
+      <div class="ec-svc reveal reveal-delay-1">
+        <span class="ec-svc-tag">02 - Service</span>
+        <h3>Platform Development</h3>
+        <p>Expert build on the platform that fits your business - WooCommerce for flexibility, Shopify for speed and scale.</p>
+        <ul>
+          <li>WooCommerce and Shopify builds</li>
+          <li>Bespoke booking and order systems</li>
+          <li>Third-party app and API integration</li>
+        </ul>
+      </div>
+
+      <div class="ec-svc reveal reveal-delay-2">
+        <span class="ec-svc-tag">03 - Service</span>
+        <h3>Payments &amp; Shipping</h3>
+        <p>Frictionless checkout with the payment gateways, delivery options, and Royal Mail integration your customers expect.</p>
+        <ul>
+          <li>Integrated payment gateways</li>
+          <li>Royal Mail integration</li>
+          <li>Multiple delivery and shipping methods</li>
+        </ul>
+      </div>
+
+      <div class="ec-svc reveal">
+        <span class="ec-svc-tag">04 - Service</span>
+        <h3>Store Management</h3>
+        <p>An easy-to-manage back end so you're never dependent on a developer to run your own store day to day.</p>
+        <ul>
+          <li>Stock and product variable management</li>
+          <li>Sales, offers, and VAT rate control</li>
+          <li>Login, registration, and customer accounts</li>
+        </ul>
+      </div>
+
+      <div class="ec-svc reveal reveal-delay-1">
+        <span class="ec-svc-tag">05 - Service</span>
+        <h3>E-commerce SEO</h3>
+        <p>Ranking above your competitors isn't optional - it's how nearly half of all shoppers find you. We optimise design, category, and product pages to convert search into sales.</p>
+        <ul>
+          <li>Product and category optimisation</li>
+          <li>Technical and on-page SEO</li>
+          <li>Analytics and performance tracking</li>
+        </ul>
+      </div>
+
+      <div class="ec-svc reveal reveal-delay-2">
+        <span class="ec-svc-tag">06 - Service</span>
+        <h3>Growth &amp; Optimisation</h3>
+        <p>Every site we build is designed with sales in mind - then continually refined using data, marketing, and conversion insight.</p>
+        <ul>
+          <li>Upselling and cart optimisation</li>
+          <li>Newsletter and retention tools</li>
+          <li>Product review integration</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ④ FEATURES -->
+<section class="ec-features">
+  <div class="ec-features-inner">
+    <div class="ec-features-header">
+      <h2 class="ec-features-title reveal">Everything your<br>store needs.<br>Nothing it doesn't.</h2>
+      <p class="ec-features-body reveal reveal-delay-1">A great e-commerce website doesn't just look the part - it needs the functionality to convert. From stock management to payment integration, here's what goes into every store we build.</p>
+    </div>
+    <div class="ec-features-grid">
+
+      <div class="ec-feat reveal">
+        <div class="ec-feat-img" style="background-image:url('https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?w=1600&q=80&auto=format&fit=crop');background-size:cover;background-position:center;"></div>
+        <div class="ec-feat-veil"></div>
+        <div class="ec-feat-body">
+          <span class="ec-feat-tag">01 - Front End</span>
+          <span class="ec-feat-name">The Shopping Experience</span>
+          <div class="ec-feat-detail">Navigation, search, shopping cart, product reviews, and variable product options - built around an effortless path to purchase.</div>
+        </div>
+      </div>
+
+      <div class="ec-feat reveal reveal-delay-1">
+        <div class="ec-feat-img" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=80&auto=format&fit=crop');background-size:cover;background-position:center;"></div>
+        <div class="ec-feat-veil"></div>
+        <div class="ec-feat-body">
+          <span class="ec-feat-tag">02 - Back End</span>
+          <span class="ec-feat-name">The Management Dashboard</span>
+          <div class="ec-feat-detail">Stock management, sales and offers control, VAT rates, and a product variable dashboard - run your store without needing a developer.</div>
+        </div>
+      </div>
+
+      <div class="ec-feat reveal reveal-delay-2">
+        <div class="ec-feat-img" style="background-image:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600&q=80&auto=format&fit=crop');background-size:cover;background-position:center;"></div>
+        <div class="ec-feat-veil"></div>
+        <div class="ec-feat-body">
+          <span class="ec-feat-tag">03 - Checkout</span>
+          <span class="ec-feat-name">Payments &amp; Delivery</span>
+          <div class="ec-feat-detail">Integrated payment gateways, multiple delivery methods, and Royal Mail integration - built to remove every friction point at checkout.</div>
+        </div>
+      </div>
+
+      <div class="ec-feat reveal reveal-delay-3">
+        <div class="ec-feat-img" style="background-image:url('https://images.unsplash.com/photo-1553413077-190dd305871c?w=1600&q=80&auto=format&fit=crop');background-size:cover;background-position:center;"></div>
+        <div class="ec-feat-veil"></div>
+        <div class="ec-feat-body">
+          <span class="ec-feat-tag">04 - Growth</span>
+          <span class="ec-feat-name">Analytics &amp; Upselling</span>
+          <div class="ec-feat-detail">Built-in analytics, newsletter subscription, and advanced upselling tools - so your store gets smarter with every sale.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ FEATURE LIST STRIP -->
+<section class="ec-list">
+  <div class="ec-list-inner">
+    <div class="ec-list-head">
+      <div class="section-tag reveal">Standard Functionality</div>
+      <h2 class="reveal reveal-delay-1">The features<br>that make it work.</h2>
+      <p class="reveal reveal-delay-2">From stock management to payment integrations, every store we build offers a friendly user journey and an easy-to-manage back end. Don't see what you need? Talk to us about your new e-commerce website.</p>
+    </div>
+    <div class="ec-list-grid">
+      <div class="ec-list-item reveal">Login and registration</div>
+      <div class="ec-list-item reveal">Royal Mail integration</div>
+      <div class="ec-list-item reveal">Navigation management</div>
+      <div class="ec-list-item reveal">Stock management</div>
+      <div class="ec-list-item reveal reveal-delay-1">Sales &amp; offers management</div>
+      <div class="ec-list-item reveal reveal-delay-1">Shopping cart</div>
+      <div class="ec-list-item reveal reveal-delay-1">Newsletter subscription</div>
+      <div class="ec-list-item reveal reveal-delay-1">Analytics integration</div>
+      <div class="ec-list-item reveal reveal-delay-2">Integrated payment gateway</div>
+      <div class="ec-list-item reveal reveal-delay-2">Manage your own store</div>
+      <div class="ec-list-item reveal reveal-delay-2">Various shipping options</div>
+      <div class="ec-list-item reveal reveal-delay-2">Product reviews</div>
+      <div class="ec-list-item reveal reveal-delay-3">Product variable dashboard</div>
+      <div class="ec-list-item reveal reveal-delay-3">Define VAT rates</div>
+      <div class="ec-list-item reveal reveal-delay-3">Multiple delivery methods</div>
+      <div class="ec-list-item reveal reveal-delay-3">Advanced upselling &amp; search</div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ PROCESS -->
+<section class="ec-process">
+  <div class="ec-process-inner">
+    <div class="ec-process-left reveal">
+      <div class="section-tag">The Process</div>
+      <h2 class="ec-process-title">From platform<br>choice to<br>launch day.</h2>
+      <p class="ec-process-intro">There's no one-size-fits-all e-commerce platform. We work with you to find the right fit, then design and build around your products, your customers, and your growth plans.</p>
+      <a href="contact.html" class="btn-primary">Start a Project</a>
+    </div>
+    <div class="ec-process-steps">
+      <div class="ec-step reveal">
+        <span class="ec-step-num">01</span>
+        <div>
+          <h4>Platform Strategy</h4>
+          <p>We assess your products, budget, and growth plans to recommend the right e-commerce platform - Shopify, WooCommerce, or a bespoke system - for real value, not just familiarity.</p>
+        </div>
+      </div>
+      <div class="ec-step reveal reveal-delay-1">
+        <span class="ec-step-num">02</span>
+        <div>
+          <h4>Design &amp; UX</h4>
+          <p>Engaging design paired with a strong understanding of the user journey, so every page moves a visitor closer to checkout.</p>
+        </div>
+      </div>
+      <div class="ec-step reveal reveal-delay-2">
+        <span class="ec-step-num">03</span>
+        <div>
+          <h4>Build &amp; Integrate</h4>
+          <p>Development of your store's functionality - payments, shipping, stock, and any bespoke booking or ordering system your business needs.</p>
+        </div>
+      </div>
+      <div class="ec-step reveal reveal-delay-3">
+        <span class="ec-step-num">04</span>
+        <div>
+          <h4>SEO &amp; Launch</h4>
+          <p>Every site is fine-tuned for search before launch - product and category pages optimised so your store is ready to be found from day one.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ CINEMATIC BREAK -->
+<div class="ec-break">
+  <div class="ec-break-veil">
+    <div class="ec-break-text">
+      <blockquote class="reveal">"Remove the friction.<br>Make the <span>buy button</span><br>impossible to resist."</blockquote>
+      <cite class="reveal reveal-delay-1"> -  Fortay Media, E-commerce Team</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ⑧ PACKAGES -->
+<section class="ec-packages" id="packages">
+  <div class="ec-packages-inner">
+    <div class="ec-packages-head">
+      <div class="section-tag reveal">Project Packages</div>
+      <h2 class="reveal reveal-delay-1">Three ways<br>to launch your<br>online store.</h2>
+    </div>
+    <div class="ec-packages-grid">
+
+      <div class="ec-pcard reveal">
+        <div class="ec-pcard-index">01</div>
+        <h3>Starter Store</h3>
+        <div>
+          <div class="ec-pcard-price">POA</div>
+          <div class="ec-pcard-pnote">Single platform · fixed scope</div>
+        </div>
+        <p class="ec-pcard-desc">A focused Shopify or WooCommerce build for businesses launching their first online store, or replacing an underperforming one.</p>
+        <div class="ec-pcard-rule"></div>
+        <ul class="ec-pcard-list">
+          <li>Platform setup and configuration</li>
+          <li>Custom storefront design</li>
+          <li>Payment gateway integration</li>
+          <li>Core product and category pages</li>
+          <li>Mobile-responsive build</li>
+        </ul>
+        <a href="contact.html" class="ec-pcard-link">
+          Start a Project
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="ec-pcard featured reveal reveal-delay-1">
+        <div class="ec-pcard-index">02 - Most Popular</div>
+        <h3>Full Store Build</h3>
+        <div>
+          <div class="ec-pcard-price">POA</div>
+          <div class="ec-pcard-pnote">Design, build &amp; SEO</div>
+        </div>
+        <p class="ec-pcard-desc">A complete e-commerce build - design, development, and SEO - for businesses that want a store ready to compete and convert from launch.</p>
+        <div class="ec-pcard-rule"></div>
+        <ul class="ec-pcard-list">
+          <li>Bespoke UX and store design</li>
+          <li>Full platform build and app integration</li>
+          <li>Stock, VAT, and shipping configuration</li>
+          <li>Product and category SEO</li>
+          <li>Analytics and tracking setup</li>
+          <li>Launch support and training</li>
+        </ul>
+        <a href="contact.html" class="ec-pcard-link">
+          Book a Build
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="ec-pcard reveal reveal-delay-2">
+        <div class="ec-pcard-index">03</div>
+        <h3>Growth Retainer</h3>
+        <div>
+          <div class="ec-pcard-price">POA</div>
+          <div class="ec-pcard-pnote">Monthly · ongoing optimisation</div>
+        </div>
+        <p class="ec-pcard-desc">Ongoing support for stores that need to keep improving - ranking higher, converting better, and adding functionality as the business grows.</p>
+        <div class="ec-pcard-rule"></div>
+        <ul class="ec-pcard-list">
+          <li>Continuous e-commerce SEO</li>
+          <li>Conversion rate optimisation</li>
+          <li>New feature and app rollout</li>
+          <li>Reporting and analytics review</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="contact.html" class="ec-pcard-link">
+          Talk to Us
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑨ CTA -->
+<section class="ec-cta">
+  <div class="ec-cta-eyebrow reveal">Start a Project</div>
+  <h2 class="reveal reveal-delay-1">Let's build a store<br>that <span>sells.</span></h2>
+  <p class="reveal reveal-delay-2">Tell us about your products, your customers, and where you want the business to go. We'll come back with a platform recommendation, a plan, and a clear quote within 48 hours.</p>
+  <div class="ec-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Start a Project</a>
+    <a href="work.html" class="btn-outline reveal reveal-delay-4">See Our Work</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Store Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Shopify</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>WooCommerce</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Payments &amp; Shipping</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Store Management</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>E-commerce SEO</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Store Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Shopify</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>WooCommerce</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Payments &amp; Shipping</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Store Management</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>E-commerce SEO</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

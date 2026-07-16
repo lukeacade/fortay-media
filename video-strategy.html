@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Video Strategy Consulting - Fortay Media</title>
+  <meta name="description" content="Cut through the clutter with a video strategy built around your business goals. Fortay Media plans objectives, infrastructure, production and distribution so every video earns its ROI."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO
+    ============================ */
+    .vs-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+    }
+    .vs-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=80&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+    }
+    .vs-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.28) 55%,
+        rgba(0,0,0,0.65) 100%
+      );
+    }
+    .vs-hero-wrap {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 88px;
+    }
+    .vs-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .vs-hero-title {
+      font-size: clamp(64px, 9vw, 130px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .vs-hero-title em { font-style: normal; color: var(--yellow); }
+    .vs-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .vs-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+    .vs-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .vs-scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      right: 64px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.35;
+    }
+    .vs-scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .vs-scroll-line {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, white, transparent);
+      animation: vsScrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes vsScrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%     { opacity: 0.1;  transform: scaleY(0.4); }
+    }
+
+    /* ============================
+       STATS
+    ============================ */
+    .vs-stats {
+      background: var(--dark);
+      padding: 72px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .vs-stats-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+    }
+    .vs-stat {
+      padding: 0 48px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .vs-stat:first-child { border-left: none; padding-left: 0; }
+    .vs-stat-num {
+      font-size: clamp(52px, 5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .vs-stat-num sup { font-size: 0.4em; color: var(--yellow); vertical-align: super; }
+    .vs-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============================
+       INTRO / WHY STRATEGY
+    ============================ */
+    .vs-intro {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .vs-intro-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .vs-intro-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .vs-intro-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+    .vs-intro-body p { margin-bottom: 22px; }
+    .vs-intro-body p:last-child { margin-bottom: 0; }
+
+    /* ============================
+       PROCESS (indexed tiles)
+    ============================ */
+    .vs-services {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .vs-services-inner { max-width: 1440px; margin: 0 auto; }
+    .vs-services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .vs-services-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .vs-services-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .vs-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .vs-svc {
+      background: var(--dark2);
+      padding: 44px 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background 0.3s;
+    }
+    .vs-svc:hover { background: #1a1a1a; }
+    .vs-svc-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .vs-svc h3 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    .vs-svc p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       BENEFITS (image-style grid, gradients)
+    ============================ */
+    .vs-formats {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .vs-formats-inner { max-width: 1440px; margin: 0 auto; }
+    .vs-formats-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .vs-formats-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .vs-formats-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .vs-formats-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .vs-fmt {
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+    .vs-fmt-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      display: block;
+      transition: transform 0.9s cubic-bezier(0.23,1,0.32,1);
+    }
+    .vs-fmt:hover .vs-fmt-img { transform: scale(1.06); }
+    .vs-fmt-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.05) 55%);
+    }
+    .vs-fmt-body {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 40px 36px;
+    }
+    .vs-fmt-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .vs-fmt-name {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      display: block;
+      margin-bottom: 10px;
+      line-height: 1.05;
+    }
+    .vs-fmt-detail {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+    }
+
+    /* ============================
+       PROCESS (sticky rail)
+    ============================ */
+    .vs-process {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .vs-process-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    .vs-process-left { position: sticky; top: 96px; }
+    .vs-process-left .section-tag { margin-bottom: 20px; }
+    .vs-process-title {
+      font-size: clamp(38px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .vs-process-intro {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 420px;
+    }
+    .vs-process-steps { display: flex; flex-direction: column; }
+    .vs-step {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: start;
+      transition: padding-left 0.3s;
+    }
+    .vs-step:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .vs-step:hover { padding-left: 8px; }
+    .vs-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      padding-top: 4px;
+    }
+    .vs-step h4 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .vs-step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       CINEMATIC BREAK
+    ============================ */
+    .vs-break {
+      position: relative;
+      height: 72vh;
+      overflow: hidden;
+    }
+    .vs-break-img {
+      width: 100%; height: 100%;
+      display: block;
+      background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1600&q=80&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+    }
+    .vs-break-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.1) 65%);
+      display: flex;
+      align-items: center;
+    }
+    .vs-break-text {
+      padding: 0 64px;
+      max-width: 820px;
+    }
+    .vs-break-text blockquote {
+      font-size: clamp(36px, 6vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      font-style: normal;
+    }
+    .vs-break-text blockquote span { color: var(--yellow); }
+    .vs-break-text cite {
+      display: block;
+      font-size: 13px;
+      font-style: normal;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 28px;
+    }
+
+    /* ============================
+       ENGAGEMENT PROOF
+    ============================ */
+    .vs-proof {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .vs-proof-inner { max-width: 1440px; margin: 0 auto; }
+    .vs-proof-head { margin-bottom: 72px; max-width: 720px; }
+    .vs-proof-head h2 {
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .vs-proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .vs-proof-card {
+      background: var(--dark2);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .vs-proof-num {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      color: var(--yellow);
+    }
+    .vs-proof-card p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* ============================
+       PACKAGES (tiers)
+    ============================ */
+    .vs-packages {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .vs-packages-inner { max-width: 1440px; margin: 0 auto; }
+    .vs-packages-head { margin-bottom: 72px; }
+    .vs-packages-head h2 {
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      max-width: 820px;
+    }
+    .vs-packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .vs-pcard {
+      background: var(--dark2);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .vs-pcard:hover { background: #1a1a1a; }
+    .vs-pcard.featured {
+      background: var(--yellow);
+      color: var(--dark);
+    }
+    .vs-pcard.featured:hover { background: #e6b800; }
+    .vs-pcard-index {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .vs-pcard.featured .vs-pcard-index { color: rgba(0,0,0,0.4); }
+    .vs-pcard h3 {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+    .vs-pcard-price {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+    .vs-pcard-pnote {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .vs-pcard.featured .vs-pcard-pnote { color: rgba(0,0,0,0.5); }
+    .vs-pcard-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .vs-pcard.featured .vs-pcard-desc { color: rgba(0,0,0,0.6); }
+    .vs-pcard-rule {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .vs-pcard.featured .vs-pcard-rule { background: rgba(0,0,0,0.15); }
+    .vs-pcard-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .vs-pcard-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .vs-pcard-list li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .vs-pcard.featured .vs-pcard-list li::before { color: var(--dark); }
+    .vs-pcard-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      text-decoration: none;
+      margin-top: 8px;
+      transition: gap 0.3s;
+    }
+    .vs-pcard.featured .vs-pcard-link { color: var(--dark); }
+    .vs-pcard-link:hover { gap: 18px; }
+    .vs-pcard-link svg {
+      width: 16px; height: 16px;
+      stroke: currentColor; fill: none; stroke-width: 2;
+    }
+
+    /* ============================
+       CTA
+    ============================ */
+    .vs-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .vs-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .vs-cta h2 {
+      font-size: clamp(64px, 10vw, 140px);
+      font-weight: 900;
+      letter-spacing: -6px;
+      line-height: 0.88;
+      margin-bottom: 36px;
+    }
+    .vs-cta h2 span { color: var(--yellow); }
+    .vs-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .vs-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .vs-hero-wrap { padding: 0 24px 64px; }
+      .vs-hero-title { letter-spacing: -2px; }
+      .vs-scroll-indicator { display: none; }
+      .vs-stats { padding: 60px 24px; }
+      .vs-stats-inner { grid-template-columns: 1fr; gap: 40px; }
+      .vs-stat { border-left: none; padding-left: 0; }
+      .vs-intro { padding: 80px 24px; }
+      .vs-intro-inner { grid-template-columns: 1fr; gap: 32px; }
+      .vs-services { padding: 80px 24px; }
+      .vs-services-header { grid-template-columns: 1fr; gap: 24px; }
+      .vs-services-grid { grid-template-columns: 1fr; }
+      .vs-formats { padding: 80px 24px; }
+      .vs-formats-header { grid-template-columns: 1fr; gap: 24px; }
+      .vs-formats-grid { grid-template-columns: 1fr; }
+      .vs-process { padding: 80px 24px; }
+      .vs-process-inner { grid-template-columns: 1fr; gap: 48px; }
+      .vs-process-left { position: static; }
+      .vs-break { height: 50vh; }
+      .vs-break-text { padding: 0 24px; }
+      .vs-proof { padding: 80px 24px; }
+      .vs-proof-grid { grid-template-columns: 1fr; }
+      .vs-packages { padding: 80px 24px; }
+      .vs-packages-grid { grid-template-columns: 1fr; }
+      .vs-cta { padding: 100px 24px; }
+      .vs-cta h2 { letter-spacing: -3px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="vs-hero">
+  <div class="vs-hero-img" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=80&auto=format&fit=crop');background-size:cover;background-position:center;"></div>
+  <div class="vs-hero-overlay"></div>
+  <div class="vs-hero-wrap">
+    <div class="vs-hero-eyebrow reveal">Video Strategy - Plan Before You Film</div>
+    <h1 class="vs-hero-title reveal reveal-delay-1">
+      Cut through<br>the <em>clutter.</em>
+    </h1>
+    <div class="vs-hero-bottom reveal reveal-delay-2">
+      <p class="vs-hero-desc">Video is complex - creative, technical, storage, distribution, security. Without a plan, even great films get lost. We build the strategy that makes sure yours don't.</p>
+      <div class="vs-hero-actions">
+        <a href="contact.html" class="btn-primary">Start a Project</a>
+        <a href="#process" class="btn-outline">See the Process</a>
+      </div>
+    </div>
+  </div>
+  <div class="vs-scroll-indicator">
+    <span>Scroll</span>
+    <div class="vs-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ② STATS -->
+<section class="vs-stats">
+  <div class="vs-stats-inner">
+    <div class="vs-stat reveal">
+      <div class="vs-stat-num">96<sup>%</sup></div>
+      <div class="vs-stat-label">18–34s watch video weekly</div>
+    </div>
+    <div class="vs-stat reveal reveal-delay-1">
+      <div class="vs-stat-num">65<sup>%</sup></div>
+      <div class="vs-stat-label">Visit a site after watching a video</div>
+    </div>
+    <div class="vs-stat reveal reveal-delay-2">
+      <div class="vs-stat-num">64<sup>%</sup></div>
+      <div class="vs-stat-label">Purchase after a branded video</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ INTRO -->
+<section class="vs-intro">
+  <div class="vs-intro-inner">
+    <h2 class="vs-intro-title reveal">Great videos<br>need a plan,<br>not just a camera.</h2>
+    <div class="vs-intro-body reveal reveal-delay-1">
+      <p>Unlike other content, video can't be instantly and easily distributed. Every piece has to account for creative direction, technical delivery, storage, format, security, and - above all - your brand ethos and business goals. Handled well, that complexity becomes your advantage.</p>
+      <p>Whether you're chasing brand awareness or sales, the videos that deliver the best ROI are the ones built inside a well-planned, multi-channel strategy - not the ones produced in isolation. That's the gap we close. We identify the objectives, build the infrastructure, and make sure every video you create is a deliberate piece of a larger whole.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ④ PROCESS (indexed tiles) -->
+<section class="vs-services" id="process">
+  <div class="vs-services-inner">
+    <div class="vs-services-header">
+      <h2 class="vs-services-title reveal">Our video<br>strategy<br>process.</h2>
+      <p class="vs-services-body reveal reveal-delay-1">Six stages, one accountable partner - from first objective to final KPI review. Nothing gets shot until the strategy behind it is agreed.</p>
+    </div>
+    <div class="vs-services-grid">
+
+      <div class="vs-svc reveal">
+        <span class="vs-svc-tag">01 - Stage</span>
+        <h3>Strategic Decisions</h3>
+        <p>We identify your objectives, target audience, and budget - establishing what role video will play, who it's for, and the type, length, format, and number of videos we'll produce.</p>
+      </div>
+
+      <div class="vs-svc reveal reveal-delay-1">
+        <span class="vs-svc-tag">02 - Stage</span>
+        <h3>Infrastructure</h3>
+        <p>Where and how will your video be hosted? Is it for internal use, sales enablement, or public consumption? We map who's involved, on your side and ours, and at what stage.</p>
+      </div>
+
+      <div class="vs-svc reveal reveal-delay-2">
+        <span class="vs-svc-tag">03 - Stage</span>
+        <h3>Planning</h3>
+        <p>Video type, what's outsourced versus done in-house, the brief, storyboard, and script - all built around a clear, measurable goal for the finished piece.</p>
+      </div>
+
+      <div class="vs-svc reveal">
+        <span class="vs-svc-tag">04 - Stage</span>
+        <h3>Production</h3>
+        <p>Sourcing locations, confirming who needs to be involved, and holding every deadline in view - so production runs as a smooth, predictable process, not a scramble.</p>
+      </div>
+
+      <div class="vs-svc reveal reveal-delay-1">
+        <span class="vs-svc-tag">05 - Stage</span>
+        <h3>Broadcast</h3>
+        <p>Where marketing and sales meet. How the video is distributed to drive the best ROI, what supporting materials are needed, and what budget backs its promotion.</p>
+      </div>
+
+      <div class="vs-svc reveal reveal-delay-2">
+        <span class="vs-svc-tag">06 - Stage</span>
+        <h3>Review</h3>
+        <p>We define the metrics that matter - your KPIs - and how we'll measure them, so every video's performance feeds directly into the next one's strategy.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ WHY IT WORKS -->
+<section class="vs-formats">
+  <div class="vs-formats-inner">
+    <div class="vs-formats-header">
+      <h2 class="vs-formats-title reveal">Video converts<br>like nothing<br>else.</h2>
+      <p class="vs-formats-body reveal reveal-delay-1">Video is uniquely visual - able to teach complex concepts, share stories, and inspire specific action. And because engagement is trackable in real, meaningful ways, you can tie individual videos directly to the deals they help influence.</p>
+    </div>
+    <div class="vs-formats-grid">
+
+      <div class="vs-fmt reveal">
+        <div class="vs-fmt-img" style="background: linear-gradient(150deg, #141414 0%, #2a2508 55%, var(--yellow) 150%);"></div>
+        <div class="vs-fmt-veil"></div>
+        <div class="vs-fmt-body">
+          <span class="vs-fmt-tag">Executive Behaviour</span>
+          <span class="vs-fmt-name">65% Visit, 39% Call</span>
+          <div class="vs-fmt-detail">65% of executives have visited a brand's website - and 39% have called them directly - after watching a marketing video.</div>
+        </div>
+      </div>
+
+      <div class="vs-fmt reveal reveal-delay-1">
+        <div class="vs-fmt-img" style="background: linear-gradient(150deg, #101010 0%, #3a3210 55%, var(--yellow) 150%);"></div>
+        <div class="vs-fmt-veil"></div>
+        <div class="vs-fmt-body">
+          <span class="vs-fmt-tag">Marketer Sentiment</span>
+          <span class="vs-fmt-name">52% Rate It Best ROI</span>
+          <div class="vs-fmt-detail">More than half of marketers say video is the content type that delivers the best return on investment.</div>
+        </div>
+      </div>
+
+      <div class="vs-fmt reveal reveal-delay-2">
+        <div class="vs-fmt-img" style="background: linear-gradient(150deg, #171717 0%, #33290c 55%, var(--yellow) 150%);"></div>
+        <div class="vs-fmt-veil"></div>
+        <div class="vs-fmt-body">
+          <span class="vs-fmt-tag">Purchase Behaviour</span>
+          <span class="vs-fmt-name">64% Buy After Watching</span>
+          <div class="vs-fmt-detail">64% of consumers make a purchase after watching a branded video on social platforms.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ SUPPORTING PROCESS RAIL -->
+<section class="vs-process">
+  <div class="vs-process-inner">
+    <div class="vs-process-left reveal">
+      <div class="section-tag">Ambient Strategy</div>
+      <h2 class="vs-process-title">One video.<br>One piece of<br>a larger whole.</h2>
+      <p class="vs-process-intro">An ambient strategy makes sure every video you create drives action and answers a specific question, at a specific stage of the customer journey - not one-off content shot in isolation.</p>
+      <a href="contact.html" class="btn-primary">Start a Project</a>
+    </div>
+    <div class="vs-process-steps">
+      <div class="vs-step reveal">
+        <span class="vs-step-num">Reach</span>
+        <div>
+          <h4>Meet your audience at every stage</h4>
+          <p>Your content should inform and reach people at every point of their journey - from first awareness to final decision.</p>
+        </div>
+      </div>
+      <div class="vs-step reveal reveal-delay-1">
+        <span class="vs-step-num">Purpose</span>
+        <div>
+          <h4>Every video earns its place</h4>
+          <p>Each piece is tailored to answer a question, raise brand awareness, or support a specific KPI you've chosen to measure.</p>
+        </div>
+      </div>
+      <div class="vs-step reveal reveal-delay-2">
+        <span class="vs-step-num">Channels</span>
+        <div>
+          <h4>Distribution decided up front</h4>
+          <p>We agree the primary distribution points before production starts - YouTube, Facebook, LinkedIn, Twitter, Instagram.</p>
+        </div>
+      </div>
+      <div class="vs-step reveal reveal-delay-3">
+        <span class="vs-step-num">Proof</span>
+        <div>
+          <h4>Measured, not guessed</h4>
+          <p>Engagement analytics tell you which assets are actually resonating - and which deals they're helping to influence.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ CINEMATIC BREAK -->
+<div class="vs-break">
+  <div class="vs-break-img" style="background-image:url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1600&q=80&auto=format&fit=crop');background-size:cover;background-position:center;"></div>
+  <div class="vs-break-veil">
+    <div class="vs-break-text">
+      <blockquote class="reveal">"A strategy first.<br>A camera <span>second.</span>"</blockquote>
+      <cite class="reveal reveal-delay-1"> -  Fortay Media, Video Strategy</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ⑧ PROOF -->
+<section class="vs-proof">
+  <div class="vs-proof-inner">
+    <div class="vs-proof-head">
+      <div class="section-tag reveal">Why It Matters</div>
+      <h2 class="reveal reveal-delay-1">Strategy is the difference between content and results.</h2>
+    </div>
+    <div class="vs-proof-grid">
+      <div class="vs-proof-card reveal">
+        <div class="vs-proof-num">65%</div>
+        <p>Of executives visit a brand's website after watching a marketing video - proof that intent follows a well-placed film.</p>
+      </div>
+      <div class="vs-proof-card reveal reveal-delay-1">
+        <div class="vs-proof-num">52%</div>
+        <p>Of marketers rank video as the format with the strongest ROI, ahead of every other content type they run.</p>
+      </div>
+      <div class="vs-proof-card reveal reveal-delay-2">
+        <div class="vs-proof-num">64%</div>
+        <p>Of consumers go on to purchase after watching branded video on social - when the strategy behind it is right.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑨ PACKAGES -->
+<section class="vs-packages" id="packages">
+  <div class="vs-packages-inner">
+    <div class="vs-packages-head">
+      <div class="section-tag reveal">Strategy Packages</div>
+      <h2 class="reveal reveal-delay-1">Three ways<br>to plan with<br>us.</h2>
+    </div>
+    <div class="vs-packages-grid">
+
+      <div class="vs-pcard reveal">
+        <div class="vs-pcard-index">01</div>
+        <h3>Strategy Session</h3>
+        <div>
+          <div class="vs-pcard-price">POA</div>
+          <div class="vs-pcard-pnote">One-off · fixed scope</div>
+        </div>
+        <p class="vs-pcard-desc">A focused workshop to define objectives, audience, and the shape of your video plan - the foundation before anyone books a shoot.</p>
+        <div class="vs-pcard-rule"></div>
+        <ul class="vs-pcard-list">
+          <li>Objectives and audience mapping</li>
+          <li>Format and channel recommendations</li>
+          <li>Budget and scope guidance</li>
+          <li>Written strategy summary</li>
+        </ul>
+        <a href="contact.html" class="vs-pcard-link">
+          Book a Session
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="vs-pcard featured reveal reveal-delay-1">
+        <div class="vs-pcard-index">02 - Most Popular</div>
+        <h3>Full Strategy</h3>
+        <div>
+          <div class="vs-pcard-price">POA</div>
+          <div class="vs-pcard-pnote">End-to-end · six stages</div>
+        </div>
+        <p class="vs-pcard-desc">The complete process - strategic decisions, infrastructure, planning, production support, broadcast plan, and review - built into one accountable roadmap.</p>
+        <div class="vs-pcard-rule"></div>
+        <ul class="vs-pcard-list">
+          <li>Full six-stage strategy build</li>
+          <li>Video brief, storyboard, and script</li>
+          <li>Distribution and broadcast planning</li>
+          <li>KPI framework and measurement plan</li>
+          <li>Direct handoff into production</li>
+        </ul>
+        <a href="contact.html" class="vs-pcard-link">
+          Build a Strategy
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="vs-pcard reveal reveal-delay-2">
+        <div class="vs-pcard-index">03</div>
+        <h3>Ongoing Strategy</h3>
+        <div>
+          <div class="vs-pcard-price">POA</div>
+          <div class="vs-pcard-pnote">Retained · reviewed quarterly</div>
+        </div>
+        <p class="vs-pcard-desc">A retained strategic partner reviewing performance, refining the plan, and keeping every video you produce aligned to a moving business goal.</p>
+        <div class="vs-pcard-rule"></div>
+        <ul class="vs-pcard-list">
+          <li>Quarterly strategy review</li>
+          <li>Ongoing KPI tracking and reporting</li>
+          <li>Channel and format adjustments</li>
+          <li>Priority access to the production team</li>
+        </ul>
+        <a href="contact.html" class="vs-pcard-link">
+          Start Retained Strategy
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑩ CTA -->
+<section class="vs-cta">
+  <div class="vs-cta-eyebrow reveal">Start a Project</div>
+  <h2 class="reveal reveal-delay-1">Plan it.<br><span>Then film it.</span></h2>
+  <p class="reveal reveal-delay-2">Tell us your objectives, your audience, and where the video needs to live. We'll come back with a strategy, a schedule, and a clear quote within 48 hours.</p>
+  <div class="vs-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Start a Project</a>
+    <a href="work.html" class="btn-outline reveal reveal-delay-4">See Our Work</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Strategic Decisions</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Infrastructure</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Planning</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Production</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Broadcast</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Review</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Strategic Decisions</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Infrastructure</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Planning</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Production</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Broadcast</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Review</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

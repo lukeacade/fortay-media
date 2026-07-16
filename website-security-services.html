@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Website Security Services - Fortay Media</title>
+  <meta name="description" content="Managed website security for growing businesses - web application firewalls, malware monitoring, hack cleanup, and 24/7 protection so a cyberattack never becomes a business crisis."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO
+    ============================ */
+    .ws-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+    }
+    .ws-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(150deg, #0a0a0a 0%, #1c1c1c 38%, #2b2406 78%, #1a1a1a 100%);
+    }
+    .ws-hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(90deg, rgba(255,204,0,0.05) 0px, rgba(255,204,0,0.05) 1px, transparent 1px, transparent 64px),
+        repeating-linear-gradient(0deg, rgba(255,204,0,0.05) 0px, rgba(255,204,0,0.05) 1px, transparent 1px, transparent 64px);
+    }
+    .ws-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(0,0,0,0.75) 0%,
+        rgba(0,0,0,0.15) 55%,
+        rgba(0,0,0,0.7) 100%
+      );
+    }
+    .ws-hero-wrap {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 88px;
+    }
+    .ws-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .ws-hero-title {
+      font-size: clamp(56px, 8vw, 120px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .ws-hero-title em { font-style: normal; color: var(--yellow); }
+    .ws-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .ws-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+    .ws-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .ws-scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      right: 64px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.35;
+    }
+    .ws-scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .ws-scroll-line {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, white, transparent);
+      animation: wsScrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes wsScrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%     { opacity: 0.1;  transform: scaleY(0.4); }
+    }
+
+    /* ============================
+       STATS
+    ============================ */
+    .ws-stats {
+      background: var(--dark);
+      padding: 72px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .ws-stats-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+    }
+    .ws-stat {
+      padding: 0 48px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .ws-stat:first-child { border-left: none; padding-left: 0; }
+    .ws-stat-num {
+      font-size: clamp(48px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .ws-stat-num sup { font-size: 0.4em; color: var(--yellow); vertical-align: super; }
+    .ws-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============================
+       WHY IT MATTERS (risk copy block)
+    ============================ */
+    .ws-risk {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .ws-risk-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .ws-risk-title {
+      font-size: clamp(40px, 5vw, 68px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.98;
+    }
+    .ws-risk-title span { color: var(--yellow); }
+    .ws-risk-body p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 24px;
+    }
+    .ws-risk-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 32px;
+      margin-top: 28px;
+    }
+    .ws-risk-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.6);
+    }
+    .ws-risk-list li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ============================
+       SERVICES (indexed tiles)
+    ============================ */
+    .ws-services {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .ws-services-inner { max-width: 1440px; margin: 0 auto; }
+    .ws-services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .ws-services-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .ws-services-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .ws-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .ws-svc {
+      background: var(--dark2);
+      padding: 44px 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background 0.3s;
+    }
+    .ws-svc:hover { background: #1a1a1a; }
+    .ws-svc-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .ws-svc h3 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    .ws-svc p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+    .ws-svc ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .ws-svc li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.55);
+    }
+    .ws-svc li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ============================
+       BENEFITS GRID
+    ============================ */
+    .ws-benefits {
+      background: var(--dark);
+      padding: 0 64px 120px;
+    }
+    .ws-benefits-inner { max-width: 1440px; margin: 0 auto; }
+    .ws-benefits-head { margin-bottom: 56px; }
+    .ws-benefits-head h2 {
+      font-size: clamp(40px, 5vw, 68px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.98;
+      max-width: 760px;
+    }
+    .ws-benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .ws-benefit {
+      background: var(--dark2);
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .ws-benefit-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--yellow);
+    }
+    .ws-benefit h4 {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+    .ws-benefit p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+    }
+
+    /* ============================
+       PROCESS (sticky rail)
+    ============================ */
+    .ws-process {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .ws-process-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    .ws-process-left { position: sticky; top: 96px; }
+    .ws-process-left .section-tag { margin-bottom: 20px; }
+    .ws-process-title {
+      font-size: clamp(38px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .ws-process-intro {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 420px;
+    }
+    .ws-process-steps { display: flex; flex-direction: column; }
+    .ws-step {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: start;
+      transition: padding-left 0.3s;
+    }
+    .ws-step:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .ws-step:hover { padding-left: 8px; }
+    .ws-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      padding-top: 4px;
+    }
+    .ws-step h4 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .ws-step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       CINEMATIC BREAK (CSS gradient, no image)
+    ============================ */
+    .ws-break {
+      position: relative;
+      height: 62vh;
+      overflow: hidden;
+      background: linear-gradient(115deg, #0a0a0a 0%, #201a03 45%, #0a0a0a 100%);
+    }
+    .ws-break::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 80% 30%, rgba(255,204,0,0.14) 0%, transparent 45%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 40px);
+    }
+    .ws-break-veil {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+    }
+    .ws-break-text {
+      padding: 0 64px;
+      max-width: 820px;
+    }
+    .ws-break-text blockquote {
+      font-size: clamp(32px, 5.5vw, 68px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.98;
+      font-style: normal;
+    }
+    .ws-break-text blockquote span { color: var(--yellow); }
+    .ws-break-text cite {
+      display: block;
+      font-size: 13px;
+      font-style: normal;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 28px;
+    }
+
+    /* ============================
+       PLANS (tiers)
+    ============================ */
+    .ws-plans {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .ws-plans-inner { max-width: 1440px; margin: 0 auto; }
+    .ws-plans-head { margin-bottom: 72px; }
+    .ws-plans-head h2 {
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      max-width: 820px;
+    }
+    .ws-plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .ws-pcard {
+      background: var(--dark2);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .ws-pcard:hover { background: #1a1a1a; }
+    .ws-pcard.featured {
+      background: var(--yellow);
+      color: var(--dark);
+    }
+    .ws-pcard.featured:hover { background: #e6b800; }
+    .ws-pcard-index {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .ws-pcard.featured .ws-pcard-index { color: rgba(0,0,0,0.4); }
+    .ws-pcard h3 {
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+    .ws-pcard-price {
+      font-size: 52px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+    .ws-pcard-pnote {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .ws-pcard.featured .ws-pcard-pnote { color: rgba(0,0,0,0.5); }
+    .ws-pcard-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .ws-pcard.featured .ws-pcard-desc { color: rgba(0,0,0,0.6); }
+    .ws-pcard-rule {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .ws-pcard.featured .ws-pcard-rule { background: rgba(0,0,0,0.15); }
+    .ws-pcard-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .ws-pcard-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .ws-pcard-list li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .ws-pcard.featured .ws-pcard-list li::before { color: var(--dark); }
+    .ws-pcard-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      text-decoration: none;
+      margin-top: 8px;
+      transition: gap 0.3s;
+    }
+    .ws-pcard.featured .ws-pcard-link { color: var(--dark); }
+    .ws-pcard-link:hover { gap: 18px; }
+    .ws-pcard-link svg {
+      width: 16px; height: 16px;
+      stroke: currentColor; fill: none; stroke-width: 2;
+    }
+
+    /* ============================
+       CTA
+    ============================ */
+    .ws-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .ws-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .ws-cta h2 {
+      font-size: clamp(56px, 9vw, 130px);
+      font-weight: 900;
+      letter-spacing: -6px;
+      line-height: 0.88;
+      margin-bottom: 36px;
+    }
+    .ws-cta h2 span { color: var(--yellow); }
+    .ws-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .ws-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .ws-hero-wrap { padding: 0 24px 64px; }
+      .ws-hero-title { letter-spacing: -2px; }
+      .ws-scroll-indicator { display: none; }
+      .ws-stats { padding: 60px 24px; }
+      .ws-stats-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .ws-stat { border-left: none; padding-left: 0; }
+      .ws-risk { padding: 80px 24px; }
+      .ws-risk-inner { grid-template-columns: 1fr; gap: 40px; }
+      .ws-risk-list { grid-template-columns: 1fr; }
+      .ws-services { padding: 80px 24px; }
+      .ws-services-header { grid-template-columns: 1fr; gap: 24px; }
+      .ws-services-grid { grid-template-columns: 1fr; }
+      .ws-benefits { padding: 0 24px 80px; }
+      .ws-benefits-grid { grid-template-columns: 1fr; }
+      .ws-process { padding: 80px 24px; }
+      .ws-process-inner { grid-template-columns: 1fr; gap: 48px; }
+      .ws-process-left { position: static; }
+      .ws-break { height: 50vh; }
+      .ws-break-text { padding: 0 24px; }
+      .ws-plans { padding: 80px 24px; }
+      .ws-plans-grid { grid-template-columns: 1fr; }
+      .ws-cta { padding: 100px 24px; }
+      .ws-cta h2 { letter-spacing: -3px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="ws-hero">
+  <div class="ws-hero-bg" style="background-image:url('Images/website-security-services-hero.jpg');background-size:cover;background-position:center;"></div>
+  <div class="ws-hero-overlay"></div>
+  <div class="ws-hero-wrap">
+    <div class="ws-hero-eyebrow reveal">Website Security - Protect · Detect · Respond</div>
+    <h1 class="ws-hero-title reveal reveal-delay-1">
+      Your window<br>to the world,<br><em>guarded.</em>
+    </h1>
+    <div class="ws-hero-bottom reveal reveal-delay-2">
+      <p class="ws-hero-desc">Over 30,000 websites are hacked every day. We put multiple layers of protection between your site and the people trying to break it - so a bad afternoon never becomes a business crisis.</p>
+      <div class="ws-hero-actions">
+        <a href="contact.html" class="btn-primary">Secure My Website</a>
+        <a href="#plans" class="btn-outline">View Plans</a>
+      </div>
+    </div>
+  </div>
+  <div class="ws-scroll-indicator">
+    <span>Scroll</span>
+    <div class="ws-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ② STATS -->
+<section class="ws-stats">
+  <div class="ws-stats-inner">
+    <div class="ws-stat reveal">
+      <div class="ws-stat-num">30<sup>k/day</sup></div>
+      <div class="ws-stat-label">Websites hacked worldwide</div>
+    </div>
+    <div class="ws-stat reveal reveal-delay-1">
+      <div class="ws-stat-num">43<sup>%</sup></div>
+      <div class="ws-stat-label">Of incidents hit SMEs</div>
+    </div>
+    <div class="ws-stat reveal reveal-delay-2">
+      <div class="ws-stat-num">54<sup>%</sup></div>
+      <div class="ws-stat-label">Attacked in the last year</div>
+    </div>
+    <div class="ws-stat reveal reveal-delay-3">
+      <div class="ws-stat-num">98<sup>%</sup></div>
+      <div class="ws-stat-label">Traffic lost if blacklisted</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ WHY IT MATTERS -->
+<section class="ws-risk">
+  <div class="ws-risk-inner">
+    <h2 class="ws-risk-title reveal">"It won't happen<br>to me" isn't a<br><span>security policy.</span></h2>
+    <div class="ws-risk-body reveal reveal-delay-1">
+      <p>Business owners often assume their site is too small to be worth hacking. It isn't. Smaller, less-defended websites are exactly what attackers target - not always to steal from you directly, but to use your server, your visitors, and your search ranking for something else entirely.</p>
+      <p>With over 1.5 billion websites online and search engines as the front door to almost all of them, a single blacklisting event can undo years of SEO and reputation-building in a matter of hours. Only 38% of businesses say they're actually prepared to handle it.</p>
+      <ul class="ws-risk-list">
+        <li>Exploiting your site visitors</li>
+        <li>Stealing data stored on your server</li>
+        <li>Abusing server resources for their own use</li>
+        <li>Black-hat SEO and bot abuse</li>
+        <li>Straightforward vandalism</li>
+        <li>Search engine blacklisting</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ④ SERVICES -->
+<section class="ws-services">
+  <div class="ws-services-inner">
+    <div class="ws-services-header">
+      <h2 class="ws-services-title reveal">Multiple<br>layers.<br>One shield.</h2>
+      <p class="ws-services-body reveal reveal-delay-1">No single tool stops every attack. We combine firewalls, monitoring, and rapid response into one managed service - designed to let your business operate without fear of compromise.</p>
+    </div>
+    <div class="ws-services-grid">
+
+      <div class="ws-svc reveal">
+        <span class="ws-svc-tag">01 - Service</span>
+        <h3>Web Application Firewall</h3>
+        <p>A WAF sits in front of your site, blocking malicious code and hacking attempts before they ever reach your server.</p>
+        <ul>
+          <li>Blocks known attack signatures</li>
+          <li>Filters malicious traffic in real time</li>
+          <li>Protects site code and web apps</li>
+        </ul>
+      </div>
+
+      <div class="ws-svc reveal reveal-delay-1">
+        <span class="ws-svc-tag">02 - Service</span>
+        <h3>Intrusion Prevention</h3>
+        <p>Malicious network activity is identified and blocked before it can be used to compromise your infrastructure.</p>
+        <ul>
+          <li>Real-time network monitoring</li>
+          <li>Automated blocking of threats</li>
+          <li>Reduced exposure to exploits</li>
+        </ul>
+      </div>
+
+      <div class="ws-svc reveal reveal-delay-2">
+        <span class="ws-svc-tag">03 - Service</span>
+        <h3>Vulnerability Visibility</h3>
+        <p>Enhanced visibility into your website surfaces the weak links where compromise or attack could occur - before someone finds them first.</p>
+        <ul>
+          <li>Ongoing weak-point detection</li>
+          <li>Application and API scanning</li>
+          <li>Prioritised remediation guidance</li>
+        </ul>
+      </div>
+
+      <div class="ws-svc reveal">
+        <span class="ws-svc-tag">04 - Service</span>
+        <h3>Blacklist Monitoring</h3>
+        <p>Your brand reputation is watched around the clock across third-party blacklists, so you're never the last to know you've been flagged.</p>
+        <ul>
+          <li>Continuous blacklist checks</li>
+          <li>Search engine reputation protection</li>
+          <li>Early warning before traffic drops</li>
+        </ul>
+      </div>
+
+      <div class="ws-svc reveal reveal-delay-1">
+        <span class="ws-svc-tag">05 - Service</span>
+        <h3>Hack Clean-Up</h3>
+        <p>If your site's already been hacked, we respond fast - removing malicious code and restoring your website to its original state.</p>
+        <ul>
+          <li>Rapid malware removal</li>
+          <li>Full site restoration</li>
+          <li>Same-team recovery, no hand-offs</li>
+        </ul>
+      </div>
+
+      <div class="ws-svc reveal reveal-delay-2">
+        <span class="ws-svc-tag">06 - Service</span>
+        <h3>Incident Reporting</h3>
+        <p>Every clean-up comes with a detailed report - what happened, why it happened, and the measures now in place to stop it happening again.</p>
+        <ul>
+          <li>Root-cause breakdown</li>
+          <li>Security measures documented</li>
+          <li>Ongoing alerts for future attempts</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ BENEFITS -->
+<section class="ws-benefits">
+  <div class="ws-benefits-inner">
+    <div class="ws-benefits-head">
+      <div class="section-tag reveal">Why It Pays For Itself</div>
+      <h2 class="reveal reveal-delay-1">Protection is cheaper<br>than the clean-up.</h2>
+    </div>
+    <div class="ws-benefits-grid">
+      <div class="ws-benefit reveal">
+        <span class="ws-benefit-num">01</span>
+        <h4>Peace of Mind</h4>
+        <p>Professional protection means you stop worrying about a compromised website damaging the business you've built.</p>
+      </div>
+      <div class="ws-benefit reveal reveal-delay-1">
+        <span class="ws-benefit-num">02</span>
+        <h4>Cost Saving</h4>
+        <p>Malware removal is a specialist job. Hiring one in a panic costs far more than staying protected from the start.</p>
+      </div>
+      <div class="ws-benefit reveal reveal-delay-2">
+        <span class="ws-benefit-num">03</span>
+        <h4>SEO Protection</h4>
+        <p>Search engines blacklist malware-flagged sites instantly. Staying malware-free protects the rankings you've earned.</p>
+      </div>
+      <div class="ws-benefit reveal">
+        <span class="ws-benefit-num">04</span>
+        <h4>Faster Websites</h4>
+        <p>Removing security bloat and malicious scripts improves page speed - and speed improves conversion.</p>
+      </div>
+      <div class="ws-benefit reveal reveal-delay-1">
+        <span class="ws-benefit-num">05</span>
+        <h4>Always Informed</h4>
+        <p>Be the first to know about a hacking attempt, with full reporting on every successful block along the way.</p>
+      </div>
+      <div class="ws-benefit reveal reveal-delay-2">
+        <span class="ws-benefit-num">06</span>
+        <h4>Visitor Trust</h4>
+        <p>Hacked websites lose customer trust in seconds - and send that traffic straight to a competitor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ PROCESS -->
+<section class="ws-process">
+  <div class="ws-process-inner">
+    <div class="ws-process-left reveal">
+      <div class="section-tag">The Process</div>
+      <h2 class="ws-process-title">Protect.<br>Detect.<br>Respond.</h2>
+      <p class="ws-process-intro">A managed cycle, not a one-off install. We keep watch continuously, so threats are stopped before they cost you traffic, revenue, or reputation.</p>
+      <a href="contact.html" class="btn-primary">Secure My Website</a>
+    </div>
+    <div class="ws-process-steps">
+      <div class="ws-step reveal">
+        <span class="ws-step-num">01</span>
+        <div>
+          <h4>Assess</h4>
+          <p>We review your current site, stack, and exposure - identifying the weak links where an attacker would look first.</p>
+        </div>
+      </div>
+      <div class="ws-step reveal reveal-delay-1">
+        <span class="ws-step-num">02</span>
+        <div>
+          <h4>Protect</h4>
+          <p>Web application firewall and intrusion prevention are deployed around your site, code, and applications.</p>
+        </div>
+      </div>
+      <div class="ws-step reveal reveal-delay-2">
+        <span class="ws-step-num">03</span>
+        <div>
+          <h4>Monitor</h4>
+          <p>Ongoing scanning and blacklist monitoring run continuously, flagging anything unusual the moment it appears.</p>
+        </div>
+      </div>
+      <div class="ws-step reveal reveal-delay-3">
+        <span class="ws-step-num">04</span>
+        <div>
+          <h4>Respond</h4>
+          <p>If something does get through, we clean it up fast and hand you a clear report on what happened and why.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ CINEMATIC BREAK -->
+<div class="ws-break">
+  <div class="ws-break-veil">
+    <div class="ws-break-text">
+      <blockquote class="reveal">"Can you afford<br>not to protect<br>your <span>website?</span>"</blockquote>
+      <cite class="reveal reveal-delay-1"> -  Every business that's been hacked</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ⑧ PLANS -->
+<section class="ws-plans" id="plans">
+  <div class="ws-plans-inner">
+    <div class="ws-plans-head">
+      <div class="section-tag reveal">Security Plans</div>
+      <h2 class="reveal reveal-delay-1">Three ways<br>to stay<br>protected.</h2>
+    </div>
+    <div class="ws-plans-grid">
+
+      <div class="ws-pcard reveal">
+        <div class="ws-pcard-index">01</div>
+        <h3>Monitor</h3>
+        <div>
+          <div class="ws-pcard-price">POA</div>
+          <div class="ws-pcard-pnote">Essential · always watching</div>
+        </div>
+        <p class="ws-pcard-desc">Continuous monitoring and blacklist checks for sites that need a first line of defence without a full managed build.</p>
+        <div class="ws-pcard-rule"></div>
+        <ul class="ws-pcard-list">
+          <li>24/7 blacklist monitoring</li>
+          <li>Vulnerability scanning</li>
+          <li>Security alerts on suspicious activity</li>
+          <li>Monthly status report</li>
+        </ul>
+        <a href="contact.html" class="ws-pcard-link">
+          Start Monitoring
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="ws-pcard featured reveal reveal-delay-1">
+        <div class="ws-pcard-index">02 - Most Popular</div>
+        <h3>Managed Protection</h3>
+        <div>
+          <div class="ws-pcard-price">POA</div>
+          <div class="ws-pcard-pnote">Full coverage · fully managed</div>
+        </div>
+        <p class="ws-pcard-desc">Firewall, intrusion prevention, monitoring, and clean-up on standby - the complete layer of protection most growing businesses need.</p>
+        <div class="ws-pcard-rule"></div>
+        <ul class="ws-pcard-list">
+          <li>Web application firewall</li>
+          <li>Intrusion prevention system</li>
+          <li>Continuous vulnerability scanning</li>
+          <li>Blacklist and reputation monitoring</li>
+          <li>Priority hack clean-up if compromised</li>
+          <li>Detailed incident reporting</li>
+        </ul>
+        <a href="contact.html" class="ws-pcard-link">
+          Get Managed Protection
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="ws-pcard reveal reveal-delay-2">
+        <div class="ws-pcard-index">03</div>
+        <h3>Enterprise</h3>
+        <div>
+          <div class="ws-pcard-price">POA</div>
+          <div class="ws-pcard-pnote">Custom · consulting included</div>
+        </div>
+        <p class="ws-pcard-desc">Enterprise-class security consulting for larger sites, applications, and APIs - tailored to your infrastructure and compliance needs.</p>
+        <div class="ws-pcard-rule"></div>
+        <ul class="ws-pcard-list">
+          <li>Custom security architecture</li>
+          <li>API and application-layer protection</li>
+          <li>Dedicated incident response</li>
+          <li>Information security consulting</li>
+          <li>Ongoing compliance support</li>
+        </ul>
+        <a href="contact.html" class="ws-pcard-link">
+          Talk to Us
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑨ CTA -->
+<section class="ws-cta">
+  <div class="ws-cta-eyebrow reveal">Start a Project</div>
+  <h2 class="reveal reveal-delay-1">Stop worrying.<br>Start <span>protecting.</span></h2>
+  <p class="reveal reveal-delay-2">Tell us about your website, your stack, and your biggest concern. We'll come back with a clear plan and a quote within 48 hours.</p>
+  <div class="ws-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Secure My Website</a>
+    <a href="work.html" class="btn-outline reveal reveal-delay-4">See Our Work</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Web Application Firewall</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Intrusion Prevention</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Vulnerability Scanning</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Blacklist Monitoring</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Hack Clean-Up</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Incident Reporting</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Web Application Firewall</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Intrusion Prevention</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Vulnerability Scanning</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Blacklist Monitoring</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Hack Clean-Up</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Incident Reporting</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

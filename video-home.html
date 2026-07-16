@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Video Production, Strategy &amp; Content | Fortay Media</title>
+  <meta name="description" content="Expert video production that turns viewers into leads - video allows customers to visually and vividly see what your business can offer."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO (real photo + gradient overlay)
+    ============================ */
+    .vh-hero {
+      position: relative;
+      min-height: 92vh;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+    .vh-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      background-image: url('Images/video-home-hero.jpg');
+      background-size: cover;
+      background-position: center 42%;
+    }
+    .vh-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(10,10,10,0.94) 0%,
+        rgba(10,10,10,0.55) 48%,
+        rgba(10,10,10,0.88) 100%
+      );
+    }
+    .vh-hero-wrap {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px 88px;
+    }
+    .vh-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .vh-hero-title {
+      font-size: clamp(44px, 6.6vw, 96px);
+      font-weight: 900;
+      letter-spacing: -3.5px;
+      line-height: 0.98;
+      color: var(--white);
+      margin-bottom: 32px;
+      max-width: 1040px;
+    }
+    .vh-hero-title em { font-style: normal; color: var(--yellow); }
+    .vh-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .vh-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.62);
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .vh-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* ============================
+       VIDEO EMBED (showreel / testimonial / process)
+    ============================ */
+    .vh-video { background: var(--dark); padding: 100px 64px; }
+    .vh-video-inner { max-width: 1240px; margin: 0 auto; }
+    .vh-video-frame {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--dark2);
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.6),
+        0 0 0 1px rgba(255,255,255,0.06);
+    }
+    .vh-video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .vh-video-caption {
+      margin-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    .vh-video-caption a { color: var(--yellow); text-decoration: none; }
+    .vh-video-inset { padding: 72px 0 0; }
+    .vh-video-inset .vh-video-inner { max-width: 1440px; }
+
+    /* ============================
+       WHAT CAN VIDEO DO
+    ============================ */
+    .vh-intro {
+      background: var(--dark);
+      padding: 140px 64px 100px;
+    }
+    .vh-intro-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .vh-intro .section-tag { justify-content: center; display: flex; }
+    .vh-intro-title {
+      font-size: clamp(36px, 4.6vw, 62px);
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      line-height: 1.05;
+      margin: 20px 0 28px;
+    }
+    .vh-intro-body {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* ============================
+       WHO IS FORTAY MEDIA
+    ============================ */
+    .vh-who {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .vh-who-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .vh-who-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 20px;
+    }
+    .vh-who-title {
+      font-size: clamp(36px, 4.2vw, 58px);
+      font-weight: 900;
+      letter-spacing: -2.2px;
+      line-height: 1.04;
+    }
+    .vh-who-body p {
+      font-size: 15.5px;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 22px;
+    }
+    .vh-who-body strong { color: var(--white); }
+    .vh-who-clients {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .vh-who-client {
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--dark);
+      background: var(--yellow);
+      border-radius: 999px;
+      padding: 9px 18px;
+    }
+
+    /* ============================
+       PORTFOLIO (adapted from work.html cases-grid)
+    ============================ */
+    .vh-portfolio {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .vh-portfolio-inner { max-width: 1440px; margin: 0 auto; }
+    .vh-portfolio-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .vh-portfolio-title {
+      font-size: clamp(40px, 5vw, 68px);
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      line-height: 0.98;
+    }
+    .vh-portfolio-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .cases-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .case-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: var(--dark2);
+      transition: border-color 0.3s;
+    }
+    .case-card:hover { border-color: rgba(245,195,24,0.28); }
+    .case-card:nth-child(even) { direction: rtl; }
+    .case-card:nth-child(even) > * { direction: ltr; }
+    .case-visual {
+      aspect-ratio: 4/3;
+      position: relative;
+      overflow: hidden;
+      background: var(--dark3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .case-visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s var(--ease);
+    }
+    .case-card:hover .case-visual img { transform: scale(1.05); }
+    .case-visual.vh-no-link {
+      cursor: default;
+    }
+    .case-visual-video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+    .case-tag-bar {
+      position: absolute;
+      top: 20px; left: 20px;
+      display: flex; gap: 8px; flex-wrap: wrap;
+      z-index: 2;
+    }
+    .case-tag {
+      background: var(--yellow);
+      color: var(--dark);
+      font-size: 10px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 50px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+    .case-body {
+      padding: 60px 52px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .case-client {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 16px;
+    }
+    .case-body h2 {
+      font-size: clamp(24px, 2.8vw, 34px);
+      font-weight: 900;
+      letter-spacing: -1.1px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .case-body p { font-size: 14px; line-height: 1.8; color: var(--muted); margin-bottom: 8px; }
+    .vh-no-link-note {
+      margin-top: 20px;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* ============================
+       THE RANGE IS ENDLESS (pill tags)
+    ============================ */
+    .vh-services {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .vh-services-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+    .vh-services .section-tag { justify-content: center; display: flex; }
+    .vh-services-title {
+      font-size: clamp(38px, 4.8vw, 66px);
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      line-height: 1;
+      margin: 20px 0 48px;
+    }
+    .vh-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .vh-tag {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      color: rgba(255,255,255,0.8);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      padding: 11px 22px;
+      transition: border-color 0.25s, color 0.25s, background 0.25s;
+    }
+    .vh-tag:hover {
+      border-color: var(--yellow);
+      color: var(--yellow);
+      background: rgba(245,195,24,0.08);
+    }
+
+    /* ============================
+       PROCESS (4 numbered steps)
+    ============================ */
+    .vh-process {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .vh-process-inner { max-width: 1440px; margin: 0 auto; }
+    .vh-process-head { margin-bottom: 64px; max-width: 760px; }
+    .vh-process-head h2 {
+      font-size: clamp(40px, 5vw, 68px);
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .vh-process-head p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .vh-process-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 3px;
+    }
+    .vh-pstep {
+      background: var(--dark2);
+      padding: 44px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .vh-pstep-num {
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      color: var(--yellow);
+    }
+    .vh-pstep p {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.75;
+    }
+
+    /* ============================
+       CTA
+    ============================ */
+    .vh-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .vh-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .vh-cta h2 {
+      font-size: clamp(52px, 8.5vw, 120px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      margin-bottom: 36px;
+    }
+    .vh-cta h2 span { color: var(--yellow); }
+    .vh-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 540px;
+      line-height: 1.7;
+    }
+    .vh-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .vh-hero-wrap { padding: 0 24px 56px; }
+      .vh-hero-title { letter-spacing: -2px; }
+      .vh-video { padding: 60px 24px; }
+      .vh-video-inset { padding: 48px 0 0; }
+      .vh-intro { padding: 90px 24px 70px; }
+      .vh-who { padding: 80px 24px; }
+      .vh-who-inner { grid-template-columns: 1fr; gap: 40px; }
+      .vh-portfolio { padding: 80px 24px; }
+      .vh-portfolio-header { grid-template-columns: 1fr; gap: 24px; }
+      .case-card { grid-template-columns: 1fr; direction: ltr !important; }
+      .case-card:nth-child(even) > * { direction: ltr; }
+      .case-body { padding: 36px 28px; }
+      .vh-services { padding: 80px 24px; }
+      .vh-process { padding: 80px 24px; }
+      .vh-process-grid { grid-template-columns: 1fr; }
+      .vh-cta { padding: 100px 24px; }
+      .vh-cta h2 { letter-spacing: -2.5px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="vh-hero">
+  <div class="vh-hero-img"></div>
+  <div class="vh-hero-overlay"></div>
+  <div class="vh-hero-wrap">
+    <div class="vh-hero-eyebrow reveal">Video &middot; Web &middot; Social &middot; Studio Hire</div>
+    <h1 class="vh-hero-title reveal reveal-delay-1">Drive customer engagement &amp; business growth with expert video production that turns <em>viewers into leads.</em></h1>
+    <div class="vh-hero-bottom reveal reveal-delay-2">
+      <p class="vh-hero-desc">Video allows customers to visually and vividly see what you as a business can offer, and delivers your message better than any other form of content.</p>
+      <div class="vh-hero-actions">
+        <a href="contact.html" class="btn-primary">Get a Quote</a>
+        <a href="#portfolio" class="btn-outline">See Our Work</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ①.5 SHOWREEL VIDEO -->
+<section class="vh-video">
+  <div class="vh-video-inner">
+    <div class="vh-video-frame reveal">
+      <iframe
+        src="https://player.vimeo.com/video/515659182?title=0&byline=0&portrait=0"
+        title="Fortay Media - 2021 Showreel"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+    <div class="vh-video-caption reveal reveal-delay-1">
+      <span>The Showreel · 2021</span>
+      <a href="https://vimeo.com/515659182" target="_blank" rel="noopener">Watch on Vimeo ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ② WHAT CAN VIDEO DO -->
+<section class="vh-intro">
+  <div class="vh-intro-inner">
+    <div class="section-tag reveal">What Can Video Do For Your Business?</div>
+    <h2 class="vh-intro-title reveal reveal-delay-1">Create engaging video content to drive customer engagement &amp; business growth.</h2>
+    <p class="vh-intro-body reveal reveal-delay-2">Whether you're looking to increase sales, improve website traffic, develop brand awareness, or improve your social media strategy, video has become an essential part of a successful marketing strategy - regardless of industry.</p>
+  </div>
+</section>
+
+<!-- ③ WHO IS FORTAY MEDIA -->
+<section class="vh-who">
+  <div class="vh-who-inner">
+    <div class="reveal">
+      <div class="vh-who-eyebrow">Who Is Fortay Media</div>
+      <h2 class="vh-who-title">Experts in Video &amp; Digital Marketing since 2007.</h2>
+    </div>
+    <div class="vh-who-body reveal reveal-delay-1">
+      <p>Since 2007 our goal has been simple: to help companies grow through video that sets them apart from the competition. Over the last decade, video has completely dominated the online marketing world - giving us the opportunity to help businesses more effectively tell their story, sell their products, and educate their customers.</p>
+      <p>We've worked with companies of all sizes and backgrounds, including <strong>Yorkshire Tea, Cadbury's, and Smartwater.</strong></p>
+      <div class="vh-who-clients">
+        <span class="vh-who-client">Yorkshire Tea</span>
+        <span class="vh-who-client">Cadbury's</span>
+        <span class="vh-who-client">Smartwater</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ③.5 TESTIMONIALS -->
+<section class="vh-intro" style="padding-top: 0;">
+  <div class="vh-intro-inner">
+    <div class="section-tag reveal" style="justify-content:center; display:flex;">Don't Just Take Our Word For It</div>
+    <h2 class="vh-intro-title reveal reveal-delay-1">Hear it straight from our clients.</h2>
+  </div>
+</section>
+
+<section class="vh-video" style="padding-top: 0;">
+  <div class="vh-video-inner">
+    <div class="vh-video-frame reveal">
+      <iframe
+        src="https://player.vimeo.com/video/521041541?title=0&byline=0&portrait=0"
+        title="Don't just take our word for it - Fortay Media"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+    <div class="vh-video-caption reveal reveal-delay-1">
+      <span>Client Testimonials</span>
+      <a href="https://vimeo.com/521041541" target="_blank" rel="noopener">Watch on Vimeo ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ④ PORTFOLIO -->
+<section class="vh-portfolio" id="portfolio">
+  <div class="vh-portfolio-inner">
+    <div class="vh-portfolio-header">
+      <h2 class="vh-portfolio-title reveal">Video<br>portfolio.</h2>
+      <p class="vh-portfolio-body reveal reveal-delay-1">A cross-section of video projects across corporate storytelling, product film, event coverage and social advertising - real clients, real briefs, real results.</p>
+    </div>
+    <div class="cases-grid">
+
+      <div class="case-card reveal">
+        <div class="case-visual case-visual-video">
+          <iframe
+            src="https://player.vimeo.com/video/515688933?title=0&byline=0&portrait=0"
+            title="Proact Case Study - Fortay Media"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen></iframe>
+          <div class="case-tag-bar">
+            <span class="case-tag">Corporate</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-client">Proact</div>
+          <h2><a href="proact.html" style="color:inherit; text-decoration:none;">Sit down with Marketing Manager Ben from Proact</a></h2>
+          <p>Europe's leading independent data centre and cloud services provider - hear directly from Proact's Marketing Manager Ben about how video tells their story.</p>
+          <a href="proact.html" class="btn-ghost" style="margin-top:16px;">View case study &rarr;</a>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-visual case-visual-video">
+          <iframe
+            src="https://player.vimeo.com/video/245914489?title=0&byline=0&portrait=0"
+            title="John Wilson Blades Case Study - Fortay Media"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen></iframe>
+          <div class="case-tag-bar">
+            <span class="case-tag">Brand Story</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-client">John Wilson Blades</div>
+          <h2><a href="john-wilson-blades.html" style="color:inherit; text-decoration:none;">Telling the story of the world's No.1 blade manufacturer</a></h2>
+          <p>Learn how we helped John Wilson, the world's No.1 ice skate blade and figure skate blade manufacturer, tell their story.</p>
+          <a href="john-wilson-blades.html" class="btn-ghost" style="margin-top:16px;">View case study &rarr;</a>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-visual case-visual-video">
+          <iframe
+            src="https://player.vimeo.com/video/519479077?title=0&byline=0&portrait=0"
+            title="Pneu-Therm Case Study - Fortay Media"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen></iframe>
+          <div class="case-tag-bar">
+            <span class="case-tag">Manufacturing</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-client">Pneu-Therm</div>
+          <h2><a href="pneutherm.html" style="color:inherit; text-decoration:none;">Showcasing a versatile industrial manufacturer</a></h2>
+          <p>Pneu-Therm are a versatile manufacturing company specialising in the production and supply of process heating and industrial heating elements.</p>
+          <a href="pneutherm.html" class="btn-ghost" style="margin-top:16px;">View case study &rarr;</a>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-visual case-visual-video">
+          <iframe
+            src="https://player.vimeo.com/video/299014731?title=0&byline=0&portrait=0"
+            title="B & R Chamber - Fortay Media"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen></iframe>
+          <div class="case-tag-bar">
+            <span class="case-tag">Event Filming</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-client">B &amp; R Chamber</div>
+          <h2><a href="barnsley-rotherham-chamber-of-commerce.html" style="color:inherit; text-decoration:none;">Event Filming &amp; Production</a></h2>
+          <p>Event video showcasing a local awards ceremony for the Barnsley &amp; Rotherham Chamber of Commerce.</p>
+          <a href="barnsley-rotherham-chamber-of-commerce.html" class="btn-ghost" style="margin-top:16px;">View case study &rarr;</a>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-visual case-visual-video">
+          <iframe
+            src="https://player.vimeo.com/video/324145072?title=0&byline=0&portrait=0"
+            title="Places Gym - Fortay Media"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen></iframe>
+          <div class="case-tag-bar">
+            <span class="case-tag">Social Advertising</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-client">Places Gym</div>
+          <h2><a href="places-gym.html" style="color:inherit; text-decoration:none;">Social Media Advertising</a></h2>
+          <p>Social videos to sell products online - a suite of campaign-ready cuts built for organic and paid social.</p>
+          <a href="places-gym.html" class="btn-ghost" style="margin-top:16px;">View case study &rarr;</a>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-visual case-visual-video">
+          <iframe
+            src="https://player.vimeo.com/video/447843320?title=0&byline=0&portrait=0"
+            title="SmartTag Product Overview - Fortay Media"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen></iframe>
+          <div class="case-tag-bar">
+            <span class="case-tag">Product Video</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-client">SmartTag</div>
+          <h2><a href="smartwater.html" style="color:inherit; text-decoration:none;">Selling a product no-one is looking for</a></h2>
+          <p>An explainer-led product film for SmartTag, the tech-based security tool from SmartWater - built around the buyer's mindset rather than the spec sheet.</p>
+          <a href="smartwater.html" class="btn-ghost" style="margin-top:16px;">View case study &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ THE RANGE IS ENDLESS -->
+<section class="vh-services">
+  <div class="vh-services-inner">
+    <div class="section-tag reveal">What We Make</div>
+    <h2 class="vh-services-title reveal reveal-delay-1">The range is endless.</h2>
+    <div class="vh-tags reveal reveal-delay-2">
+      <span class="vh-tag">Corporate Video Production</span>
+      <span class="vh-tag">Behind the Scenes</span>
+      <span class="vh-tag">Explainer Videos</span>
+      <span class="vh-tag">How-to Videos</span>
+      <span class="vh-tag">Product Videos</span>
+      <span class="vh-tag">Company Culture Videos</span>
+      <span class="vh-tag">Social Media Video</span>
+      <span class="vh-tag">2D Animation</span>
+      <span class="vh-tag">3D Animation</span>
+      <span class="vh-tag">Event Filming</span>
+      <span class="vh-tag">Live Filming</span>
+      <span class="vh-tag">Drone Filming</span>
+      <span class="vh-tag">Case Study Videos</span>
+      <span class="vh-tag">Motion Graphics</span>
+      <span class="vh-tag">Script Writing</span>
+      <span class="vh-tag">Video Strategy</span>
+      <span class="vh-tag">Presenter-led Video</span>
+      <span class="vh-tag">Promotional Video</span>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ PROCESS -->
+<section class="vh-process">
+  <div class="vh-process-inner">
+    <div class="vh-process-head">
+      <h2 class="reveal">The video production process.</h2>
+      <p class="reveal reveal-delay-1">A straightforward, four-stage process that takes your video from first conversation to finished, downloadable film.</p>
+    </div>
+    <div class="vh-process-grid">
+      <div class="vh-pstep reveal">
+        <span class="vh-pstep-num">01</span>
+        <p>Firstly, we get to know you and your business. We'll discuss video elements including your message and content, and your objectives.</p>
+      </div>
+      <div class="vh-pstep reveal reveal-delay-1">
+        <span class="vh-pstep-num">02</span>
+        <p>Once we have the relevant information, we begin drafting initial ideas on what we think your video should look like - actors, filming location, and filming topics.</p>
+      </div>
+      <div class="vh-pstep reveal reveal-delay-2">
+        <span class="vh-pstep-num">03</span>
+        <p>Action! Filming begins - this may include any and all filming, and we'll guide you through the whole process, including making sure interviews run smoothly.</p>
+      </div>
+      <div class="vh-pstep reveal reveal-delay-3">
+        <span class="vh-pstep-num">04</span>
+        <p>Once filming is complete, it's time to edit and put together your final piece. We send you the video for approval, and once you're happy it's yours to download and share.</p>
+      </div>
+    </div>
+
+    <div class="vh-video vh-video-inset">
+      <div class="vh-video-inner">
+        <div class="vh-video-frame reveal">
+          <iframe
+            src="https://player.vimeo.com/video/518679908?title=0&byline=0&portrait=0"
+            title="Fortay Media - Our Process"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <div class="vh-video-caption reveal reveal-delay-1">
+          <span>How We Work</span>
+          <a href="https://vimeo.com/518679908" target="_blank" rel="noopener">Watch on Vimeo ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ CTA -->
+<section class="vh-cta">
+  <div class="vh-cta-eyebrow reveal">Ready to talk?</div>
+  <h2 class="reveal reveal-delay-1">Let's make your<br><span>next video.</span></h2>
+  <p class="reveal reveal-delay-2">Tell us about your business and what you'd like video to do for it - we'll come back with a clear approach and quote.</p>
+  <div class="vh-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Get a Quote</a>
+    <a href="work.html" class="btn-outline reveal reveal-delay-4">See More Work</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Corporate Video</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Explainer Videos</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Product Videos</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Event Filming</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>2D &amp; 3D Animation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Social Media Video</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Corporate Video</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Explainer Videos</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Product Videos</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Event Filming</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>2D &amp; 3D Animation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Social Media Video</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

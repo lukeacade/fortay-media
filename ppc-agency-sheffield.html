@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PPC Agency Sheffield - Paid Search Management | Fortay Media</title>
+  <meta name="description" content="PPC agency in Sheffield delivering data-led paid search campaigns across Google Ads, Shopping, and Display. Sharper targeting, lower waste, more conversions."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO
+    ============================ */
+    .pp-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+    }
+    .pp-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(circle at 80% 15%, rgba(255,209,0,0.16) 0%, transparent 55%),
+        linear-gradient(155deg, #0d0d0d 0%, #1b1b1b 45%, #050505 100%);
+    }
+    .pp-hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+    .pp-hero-wrap {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 88px;
+    }
+    .pp-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .pp-hero-title {
+      font-size: clamp(58px, 8.5vw, 120px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .pp-hero-title em { font-style: normal; color: var(--yellow); }
+    .pp-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .pp-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+    .pp-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .pp-scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      right: 64px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.35;
+    }
+    .pp-scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .pp-scroll-line {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, white, transparent);
+      animation: ppScrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes ppScrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%     { opacity: 0.1;  transform: scaleY(0.4); }
+    }
+
+    /* ============================
+       STATS
+    ============================ */
+    .pp-stats {
+      background: var(--dark);
+      padding: 72px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .pp-stats-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+    }
+    .pp-stat {
+      padding: 0 48px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .pp-stat:first-child { border-left: none; padding-left: 0; }
+    .pp-stat-num {
+      font-size: clamp(52px, 5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .pp-stat-num sup { font-size: 0.4em; color: var(--yellow); vertical-align: super; }
+    .pp-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============================
+       SERVICES (indexed tiles)
+    ============================ */
+    .pp-services {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .pp-services-inner { max-width: 1440px; margin: 0 auto; }
+    .pp-services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .pp-services-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .pp-services-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .pp-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .pp-svc {
+      background: var(--dark2);
+      padding: 44px 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background 0.3s;
+    }
+    .pp-svc:hover { background: #1a1a1a; }
+    .pp-svc-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .pp-svc h3 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    .pp-svc p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+    .pp-svc ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .pp-svc li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.55);
+    }
+    .pp-svc li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ============================
+       WHY PPC (data cards)
+    ============================ */
+    .pp-why {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .pp-why-inner { max-width: 1440px; margin: 0 auto; }
+    .pp-why-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .pp-why-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .pp-why-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .pp-why-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 3px;
+    }
+    .pp-why-card {
+      background: var(--dark);
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .pp-why-num {
+      font-size: 44px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: var(--yellow);
+      line-height: 1;
+    }
+    .pp-why-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+    }
+
+    /* ============================
+       PROCESS (sticky rail)
+    ============================ */
+    .pp-process {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .pp-process-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    .pp-process-left { position: sticky; top: 96px; }
+    .pp-process-left .section-tag { margin-bottom: 20px; }
+    .pp-process-title {
+      font-size: clamp(38px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .pp-process-intro {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 420px;
+    }
+    .pp-process-steps { display: flex; flex-direction: column; }
+    .pp-step {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: start;
+      transition: padding-left 0.3s;
+    }
+    .pp-step:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .pp-step:hover { padding-left: 8px; }
+    .pp-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      padding-top: 4px;
+    }
+    .pp-step h4 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .pp-step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       WHAT WE OPTIMISE (tag cloud break)
+    ============================ */
+    .pp-break {
+      position: relative;
+      padding: 100px 64px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #141414 0%, #0a0a0a 60%, #1c1705 130%);
+    }
+    .pp-break-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .pp-break blockquote {
+      font-size: clamp(32px, 5vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      line-height: 1;
+      font-style: normal;
+      margin-bottom: 40px;
+    }
+    .pp-break blockquote span { color: var(--yellow); }
+    .pp-break-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .pp-break-tag {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 10px 18px;
+      border-radius: 999px;
+    }
+
+    /* ============================
+       PACKAGES (tiers)
+    ============================ */
+    .pp-packages {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .pp-packages-inner { max-width: 1440px; margin: 0 auto; }
+    .pp-packages-head { margin-bottom: 72px; }
+    .pp-packages-head h2 {
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      max-width: 820px;
+    }
+    .pp-packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .pp-pcard {
+      background: var(--dark2);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .pp-pcard:hover { background: #1a1a1a; }
+    .pp-pcard.featured {
+      background: var(--yellow);
+      color: var(--dark);
+    }
+    .pp-pcard.featured:hover { background: #e6b800; }
+    .pp-pcard-index {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .pp-pcard.featured .pp-pcard-index { color: rgba(0,0,0,0.4); }
+    .pp-pcard h3 {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+    .pp-pcard-price {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+    .pp-pcard-pnote {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .pp-pcard.featured .pp-pcard-pnote { color: rgba(0,0,0,0.5); }
+    .pp-pcard-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .pp-pcard.featured .pp-pcard-desc { color: rgba(0,0,0,0.6); }
+    .pp-pcard-rule {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .pp-pcard.featured .pp-pcard-rule { background: rgba(0,0,0,0.15); }
+    .pp-pcard-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .pp-pcard-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .pp-pcard-list li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .pp-pcard.featured .pp-pcard-list li::before { color: var(--dark); }
+    .pp-pcard-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      text-decoration: none;
+      margin-top: 8px;
+      transition: gap 0.3s;
+    }
+    .pp-pcard.featured .pp-pcard-link { color: var(--dark); }
+    .pp-pcard-link:hover { gap: 18px; }
+    .pp-pcard-link svg {
+      width: 16px; height: 16px;
+      stroke: currentColor; fill: none; stroke-width: 2;
+    }
+
+    /* ============================
+       CTA
+    ============================ */
+    .pp-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .pp-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .pp-cta h2 {
+      font-size: clamp(56px, 9vw, 130px);
+      font-weight: 900;
+      letter-spacing: -6px;
+      line-height: 0.88;
+      margin-bottom: 36px;
+    }
+    .pp-cta h2 span { color: var(--yellow); }
+    .pp-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .pp-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .pp-hero-wrap { padding: 0 24px 64px; }
+      .pp-hero-title { letter-spacing: -2px; }
+      .pp-scroll-indicator { display: none; }
+      .pp-stats { padding: 60px 24px; }
+      .pp-stats-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .pp-stat { border-left: none; padding-left: 0; }
+      .pp-services { padding: 80px 24px; }
+      .pp-services-header { grid-template-columns: 1fr; gap: 24px; }
+      .pp-services-grid { grid-template-columns: 1fr; }
+      .pp-why { padding: 80px 24px; }
+      .pp-why-header { grid-template-columns: 1fr; gap: 24px; }
+      .pp-why-grid { grid-template-columns: 1fr 1fr; }
+      .pp-process { padding: 80px 24px; }
+      .pp-process-inner { grid-template-columns: 1fr; gap: 48px; }
+      .pp-process-left { position: static; }
+      .pp-break { padding: 72px 24px; }
+      .pp-packages { padding: 80px 24px; }
+      .pp-packages-grid { grid-template-columns: 1fr; }
+      .pp-cta { padding: 100px 24px; }
+      .pp-cta h2 { letter-spacing: -3px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="pp-hero">
+  <div class="pp-hero-bg" style="background-image:url('Images/ppc-agency-sheffield-hero.jpg');background-size:cover;background-position:center;"></div>
+  <div class="pp-hero-wrap">
+    <div class="pp-hero-eyebrow reveal">PPC Agency Sheffield - Paid Search Management</div>
+    <h1 class="pp-hero-title reveal reveal-delay-1">
+      Pay for<br>clicks that<br><em>convert.</em>
+    </h1>
+    <div class="pp-hero-bottom reveal reveal-delay-2">
+      <p class="pp-hero-desc">A Sheffield PPC team that treats every pound of ad spend like it's our own. Search, Shopping, and Display campaigns built on data, not guesswork - so you show up in front of buyers, not browsers.</p>
+      <div class="pp-hero-actions">
+        <a href="contact.html" class="btn-primary">Book a Free Audit</a>
+        <a href="#packages" class="btn-outline">View Packages</a>
+      </div>
+    </div>
+  </div>
+  <div class="pp-scroll-indicator">
+    <span>Scroll</span>
+    <div class="pp-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ② STATS -->
+<section class="pp-stats">
+  <div class="pp-stats-inner">
+    <div class="pp-stat reveal">
+      <div class="pp-stat-num">50<sup>%</sup></div>
+      <div class="pp-stat-label">Higher purchase intent from paid clicks</div>
+    </div>
+    <div class="pp-stat reveal reveal-delay-1">
+      <div class="pp-stat-num">41<sup>%</sup></div>
+      <div class="pp-stat-label">Of all clicks go to the top 3 ad positions</div>
+    </div>
+    <div class="pp-stat reveal reveal-delay-2">
+      <div class="pp-stat-num">80<sup>%</sup></div>
+      <div class="pp-stat-label">Potential lift in brand awareness</div>
+    </div>
+    <div class="pp-stat reveal reveal-delay-3">
+      <div class="pp-stat-num">75<sup>%</sup></div>
+      <div class="pp-stat-label">Say search ads help them find what they need</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ SERVICES -->
+<section class="pp-services">
+  <div class="pp-services-inner">
+    <div class="pp-services-header">
+      <h2 class="pp-services-title reveal">Every channel.<br>One accountable<br>PPC team.</h2>
+      <p class="pp-services-body reveal reveal-delay-1">Paid search is the shortcut past the organic queue - straight to page one, straight in front of people actively searching for what you sell. We build, test, and manage every part of the campaign in-house, so nothing gets lost between strategy and execution.</p>
+    </div>
+    <div class="pp-services-grid">
+
+      <div class="pp-svc reveal">
+        <span class="pp-svc-tag">01 - Service</span>
+        <h3>Search Campaigns</h3>
+        <p>Google and Microsoft Search built around real buyer intent - matching your ads to the queries that actually lead to a sale.</p>
+        <ul>
+          <li>Keyword and match-type strategy</li>
+          <li>Ad copy testing and split testing</li>
+          <li>Negative keyword architecture</li>
+        </ul>
+      </div>
+
+      <div class="pp-svc reveal reveal-delay-1">
+        <span class="pp-svc-tag">02 - Service</span>
+        <h3>Shopping Campaigns</h3>
+        <p>Feed-driven Shopping and Performance Max campaigns that put your products directly in front of ready-to-buy searchers.</p>
+        <ul>
+          <li>Feed optimisation and grouping</li>
+          <li>Bid strategy by product margin</li>
+          <li>Competitor price monitoring</li>
+        </ul>
+      </div>
+
+      <div class="pp-svc reveal reveal-delay-2">
+        <span class="pp-svc-tag">03 - Service</span>
+        <h3>Display &amp; Retargeting</h3>
+        <p>Stay in front of the people who've already shown interest - and reach new audiences that look just like your best customers.</p>
+        <ul>
+          <li>Audience-first retargeting</li>
+          <li>Lookalike and in-market targeting</li>
+          <li>Creative built for every placement</li>
+        </ul>
+      </div>
+
+      <div class="pp-svc reveal">
+        <span class="pp-svc-tag">04 - Service</span>
+        <h3>YouTube Ads</h3>
+        <p>Video ad campaigns that put your brand story in front of a highly targeted audience at a fraction of traditional media cost.</p>
+        <ul>
+          <li>In-stream and Discovery formats</li>
+          <li>Audience and placement targeting</li>
+          <li>Full reporting against view-through</li>
+        </ul>
+      </div>
+
+      <div class="pp-svc reveal reveal-delay-1">
+        <span class="pp-svc-tag">05 - Service</span>
+        <h3>Landing Page Optimisation</h3>
+        <p>Traffic is only half the job. We build and test landing pages that turn clicks into leads, without you touching a page builder.</p>
+        <ul>
+          <li>Conversion-focused page design</li>
+          <li>A/B testing and iteration</li>
+          <li>Quality Score improvements</li>
+        </ul>
+      </div>
+
+      <div class="pp-svc reveal reveal-delay-2">
+        <span class="pp-svc-tag">06 - Service</span>
+        <h3>Tracking &amp; Attribution</h3>
+        <p>Know exactly where every lead and sale came from, so budget moves toward what's actually working - not what looks busy.</p>
+        <ul>
+          <li>Conversion and call tracking setup</li>
+          <li>Return on ad spend reporting</li>
+          <li>Revenue attribution modelling</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ④ WHY PPC -->
+<section class="pp-why">
+  <div class="pp-why-inner">
+    <div class="pp-why-header">
+      <h2 class="pp-why-title reveal">Immediate<br>impact. No<br>waiting game.</h2>
+      <p class="pp-why-body reveal reveal-delay-1">SEO plays the long game. PPC doesn't have to. The moment a campaign goes live, you're on page one - in front of people actively searching for a business like yours, with every click measurable from day one.</p>
+    </div>
+    <div class="pp-why-grid">
+
+      <div class="pp-why-card reveal">
+        <div class="pp-why-num">01</div>
+        <p>Almost instant visibility on the search engines that matter, from the day your campaign launches.</p>
+      </div>
+
+      <div class="pp-why-card reveal reveal-delay-1">
+        <div class="pp-why-num">02</div>
+        <p>Every campaign, ad, and audience tested and refined against real performance data, not assumptions.</p>
+      </div>
+
+      <div class="pp-why-card reveal reveal-delay-2">
+        <div class="pp-why-num">03</div>
+        <p>Spend directed only at queries that match your business - no wasted budget on the wrong searches.</p>
+      </div>
+
+      <div class="pp-why-card reveal reveal-delay-3">
+        <div class="pp-why-num">04</div>
+        <p>Full visibility on what's driving leads and revenue, tracked and reported in language you understand.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ PROCESS -->
+<section class="pp-process">
+  <div class="pp-process-inner">
+    <div class="pp-process-left reveal">
+      <div class="section-tag">The Process</div>
+      <h2 class="pp-process-title">No two<br>businesses<br>are the same.</h2>
+      <p class="pp-process-intro">We don't run a template campaign and hope. We get to know your business, your customers, and your goals first - then build a paid search approach designed around them.</p>
+      <a href="contact.html" class="btn-primary">Book a Free Audit</a>
+    </div>
+    <div class="pp-process-steps">
+      <div class="pp-step reveal">
+        <span class="pp-step-num">01</span>
+        <div>
+          <h4>Discovery</h4>
+          <p>We dig into your business, your customers, your competitors, and what a genuinely good lead or sale looks like for you.</p>
+        </div>
+      </div>
+      <div class="pp-step reveal reveal-delay-1">
+        <span class="pp-step-num">02</span>
+        <div>
+          <h4>Campaign Build</h4>
+          <p>Account structure, keyword strategy, ad copy, and landing pages built around your goals - and tracking set up before a single click is paid for.</p>
+        </div>
+      </div>
+      <div class="pp-step reveal reveal-delay-2">
+        <span class="pp-step-num">03</span>
+        <div>
+          <h4>Optimise</h4>
+          <p>Ongoing bid management, split testing, negative keyword mining, and Quality Score improvements to keep cost-per-click moving in the right direction.</p>
+        </div>
+      </div>
+      <div class="pp-step reveal reveal-delay-3">
+        <span class="pp-step-num">04</span>
+        <div>
+          <h4>Report &amp; Scale</h4>
+          <p>Clear reporting on return on ad spend and revenue attribution - then we double down on what's converting and cut what isn't.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ WHAT WE OPTIMISE -->
+<div class="pp-break">
+  <div class="pp-break-inner">
+    <blockquote class="reveal">Turning data into<br>insight, and insight<br>into <span>revenue.</span></blockquote>
+    <div class="pp-break-tags reveal reveal-delay-1">
+      <span class="pp-break-tag">Bid Optimisation</span>
+      <span class="pp-break-tag">Quality Score</span>
+      <span class="pp-break-tag">Negative Keywords</span>
+      <span class="pp-break-tag">Ad Extensions</span>
+      <span class="pp-break-tag">Split Testing</span>
+      <span class="pp-break-tag">Competitor Analysis</span>
+      <span class="pp-break-tag">Call Tracking</span>
+      <span class="pp-break-tag">Bid Modifiers</span>
+      <span class="pp-break-tag">ROAS Tracking</span>
+      <span class="pp-break-tag">Retargeting</span>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦ PACKAGES -->
+<section class="pp-packages" id="packages">
+  <div class="pp-packages-inner">
+    <div class="pp-packages-head">
+      <div class="section-tag reveal">Paid Search Packages</div>
+      <h2 class="reveal reveal-delay-1">Three ways<br>to work with<br>our PPC team.</h2>
+    </div>
+    <div class="pp-packages-grid">
+
+      <div class="pp-pcard reveal">
+        <div class="pp-pcard-index">01</div>
+        <h3>Launch</h3>
+        <div>
+          <div class="pp-pcard-price">POA</div>
+          <div class="pp-pcard-pnote">Single channel · fixed scope</div>
+        </div>
+        <p class="pp-pcard-desc">A focused first campaign on the channel that matters most - built to prove out paid search before you scale spend.</p>
+        <div class="pp-pcard-rule"></div>
+        <ul class="pp-pcard-list">
+          <li>Account audit and keyword research</li>
+          <li>Single Search or Shopping campaign build</li>
+          <li>Conversion tracking setup</li>
+          <li>Landing page review</li>
+          <li>Monthly performance reporting</li>
+        </ul>
+        <a href="contact.html" class="pp-pcard-link">
+          Book a Free Audit
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="pp-pcard featured reveal reveal-delay-1">
+        <div class="pp-pcard-index">02 - Most Popular</div>
+        <h3>Growth</h3>
+        <div>
+          <div class="pp-pcard-price">POA</div>
+          <div class="pp-pcard-pnote">Multi-channel · ongoing management</div>
+        </div>
+        <p class="pp-pcard-desc">Full paid search management across Search, Shopping, and Display - with active testing and optimisation every month.</p>
+        <div class="pp-pcard-rule"></div>
+        <ul class="pp-pcard-list">
+          <li>Search, Shopping, and Display campaigns</li>
+          <li>Ongoing bid and budget optimisation</li>
+          <li>Ad copy and creative split testing</li>
+          <li>Landing page optimisation</li>
+          <li>Retargeting and audience building</li>
+          <li>Monthly strategy call and reporting</li>
+        </ul>
+        <a href="contact.html" class="pp-pcard-link">
+          Book a Free Audit
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="pp-pcard reveal reveal-delay-2">
+        <div class="pp-pcard-index">03</div>
+        <h3>Scale</h3>
+        <div>
+          <div class="pp-pcard-price">POA</div>
+          <div class="pp-pcard-pnote">Full-funnel · dedicated strategist</div>
+        </div>
+        <p class="pp-pcard-desc">A dedicated strategist across every paid channel, including YouTube and advanced attribution, for accounts ready to push spend hard.</p>
+        <div class="pp-pcard-rule"></div>
+        <ul class="pp-pcard-list">
+          <li>Full-funnel Search, Shopping, Display, YouTube</li>
+          <li>Dedicated PPC strategist</li>
+          <li>Revenue attribution and ROAS modelling</li>
+          <li>Advanced audience and retargeting strategy</li>
+          <li>Priority weekly optimisation cycle</li>
+        </ul>
+        <a href="contact.html" class="pp-pcard-link">
+          Talk to Us
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ CTA -->
+<section class="pp-cta">
+  <div class="pp-cta-eyebrow reveal">Free PPC Consultation</div>
+  <h2 class="reveal reveal-delay-1">Stop paying<br>for the wrong<br><span>clicks.</span></h2>
+  <p class="reveal reveal-delay-2">Tell us about your business and your goals. We'll come back with a free audit of what's working, what's wasting spend, and where the opportunity is.</p>
+  <div class="pp-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Book a Free Audit</a>
+    <a href="work.html" class="btn-outline reveal reveal-delay-4">See Our Work</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Search Campaigns</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Shopping Ads</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Display &amp; Retargeting</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>YouTube Ads</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Landing Pages</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Tracking &amp; Attribution</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Search Campaigns</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Shopping Ads</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Display &amp; Retargeting</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>YouTube Ads</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Landing Pages</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Tracking &amp; Attribution</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

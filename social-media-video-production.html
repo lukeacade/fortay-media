@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Social Media Video Production - Fortay Media</title>
+  <meta name="description" content="Platform-native social video production for Instagram, TikTok, YouTube, Facebook, LinkedIn and X - vertical-first content built to be watched, shared, and acted on. From Fortay Media."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO
+    ============================ */
+    .vp-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+    }
+    .vp-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(155deg, #1a1a1a 0%, #0c0c0c 45%, var(--yellow) 230%);
+    }
+    .vp-hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(255,204,0,0.35) 0%, transparent 42%),
+        radial-gradient(circle at 15% 85%, rgba(255,204,0,0.12) 0%, transparent 50%);
+    }
+    .vp-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.28) 55%,
+        rgba(0,0,0,0.65) 100%
+      );
+    }
+    .vp-hero-wrap {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 88px;
+    }
+    .vp-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .vp-hero-title {
+      font-size: clamp(64px, 9vw, 130px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .vp-hero-title em { font-style: normal; color: var(--yellow); }
+    .vp-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .vp-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+    .vp-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .vp-scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      right: 64px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.35;
+    }
+    .vp-scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .vp-scroll-line {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, white, transparent);
+      animation: vpScrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes vpScrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%     { opacity: 0.1;  transform: scaleY(0.4); }
+    }
+
+    /* ============================
+       STATS
+    ============================ */
+    .vp-stats {
+      background: var(--dark);
+      padding: 72px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .vp-stats-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+    }
+    .vp-stat {
+      padding: 0 48px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .vp-stat:first-child { border-left: none; padding-left: 0; }
+    .vp-stat-num {
+      font-size: clamp(52px, 5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .vp-stat-num sup { font-size: 0.4em; color: var(--yellow); vertical-align: super; }
+    .vp-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============================
+       SERVICES (indexed tiles)
+    ============================ */
+    .vp-services {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .vp-services-inner { max-width: 1440px; margin: 0 auto; }
+    .vp-services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .vp-services-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .vp-services-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .vp-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .vp-svc {
+      background: var(--dark2);
+      padding: 44px 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background 0.3s;
+    }
+    .vp-svc:hover { background: #1a1a1a; }
+    .vp-svc-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .vp-svc h3 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    .vp-svc p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+    .vp-svc ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .vp-svc li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.55);
+    }
+    .vp-svc li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ============================
+       PLATFORMS (gradient card grid)
+    ============================ */
+    .vp-formats {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .vp-formats-inner { max-width: 1440px; margin: 0 auto; }
+    .vp-formats-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .vp-formats-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .vp-formats-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .vp-formats-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .vp-fmt {
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      aspect-ratio: 4/3;
+    }
+    .vp-fmt-img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      transition: transform 0.9s cubic-bezier(0.23,1,0.32,1);
+    }
+    .vp-fmt:hover .vp-fmt-img { transform: scale(1.06); }
+    .vp-fmt-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.05) 55%);
+    }
+    .vp-fmt-body {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 40px 36px;
+    }
+    .vp-fmt-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .vp-fmt-name {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      display: block;
+      margin-bottom: 10px;
+      line-height: 1.05;
+    }
+    .vp-fmt-detail {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.45s ease, opacity 0.45s ease;
+    }
+    .vp-fmt:hover .vp-fmt-detail { max-height: 88px; opacity: 1; }
+
+    /* ============================
+       PROCESS (sticky rail)
+    ============================ */
+    .vp-process {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .vp-process-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    .vp-process-left { position: sticky; top: 96px; }
+    .vp-process-left .section-tag { margin-bottom: 20px; }
+    .vp-process-title {
+      font-size: clamp(38px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .vp-process-intro {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 420px;
+    }
+    .vp-process-steps { display: flex; flex-direction: column; }
+    .vp-step {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: start;
+      transition: padding-left 0.3s;
+    }
+    .vp-step:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .vp-step:hover { padding-left: 8px; }
+    .vp-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      padding-top: 4px;
+    }
+    .vp-step h4 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .vp-step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       CINEMATIC BREAK
+    ============================ */
+    .vp-break {
+      position: relative;
+      height: 72vh;
+      overflow: hidden;
+      background: linear-gradient(115deg, #0c0c0c 0%, #1c1c1c 40%, var(--yellow) 210%);
+    }
+    .vp-break-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.1) 65%);
+      display: flex;
+      align-items: center;
+    }
+    .vp-break-text {
+      padding: 0 64px;
+      max-width: 820px;
+    }
+    .vp-break-text blockquote {
+      font-size: clamp(36px, 6vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      font-style: normal;
+    }
+    .vp-break-text blockquote span { color: var(--yellow); }
+    .vp-break-text cite {
+      display: block;
+      font-size: 13px;
+      font-style: normal;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 28px;
+    }
+
+    /* ============================
+       WHY VERTICAL (stat strip)
+    ============================ */
+    .vp-vertical {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .vp-vertical-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .vp-vertical-title {
+      font-size: clamp(40px, 5vw, 70px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.98;
+      margin-bottom: 24px;
+    }
+    .vp-vertical-title span { color: var(--yellow); }
+    .vp-vertical-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      max-width: 460px;
+    }
+    .vp-vertical-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+    .vp-vstat {
+      background: var(--dark2);
+      padding: 40px 32px;
+    }
+    .vp-vstat-num {
+      font-size: clamp(38px, 4vw, 56px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .vp-vstat-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.55;
+    }
+
+    /* ============================
+       PROJECT PACKAGES (tiers)
+    ============================ */
+    .vp-packages {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .vp-packages-inner { max-width: 1440px; margin: 0 auto; }
+    .vp-packages-head { margin-bottom: 72px; }
+    .vp-packages-head h2 {
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      max-width: 820px;
+    }
+    .vp-packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .vp-pcard {
+      background: var(--dark2);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .vp-pcard:hover { background: #1a1a1a; }
+    .vp-pcard.featured {
+      background: var(--yellow);
+      color: var(--dark);
+    }
+    .vp-pcard.featured:hover { background: #e6b800; }
+    .vp-pcard-index {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .vp-pcard.featured .vp-pcard-index { color: rgba(0,0,0,0.4); }
+    .vp-pcard h3 {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+    .vp-pcard-price {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+    .vp-pcard-pnote {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .vp-pcard.featured .vp-pcard-pnote { color: rgba(0,0,0,0.5); }
+    .vp-pcard-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .vp-pcard.featured .vp-pcard-desc { color: rgba(0,0,0,0.6); }
+    .vp-pcard-rule {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .vp-pcard.featured .vp-pcard-rule { background: rgba(0,0,0,0.15); }
+    .vp-pcard-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .vp-pcard-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .vp-pcard-list li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .vp-pcard.featured .vp-pcard-list li::before { color: var(--dark); }
+    .vp-pcard-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      text-decoration: none;
+      margin-top: 8px;
+      transition: gap 0.3s;
+    }
+    .vp-pcard.featured .vp-pcard-link { color: var(--dark); }
+    .vp-pcard-link:hover { gap: 18px; }
+    .vp-pcard-link svg {
+      width: 16px; height: 16px;
+      stroke: currentColor; fill: none; stroke-width: 2;
+    }
+
+    /* ============================
+       CTA
+    ============================ */
+    .vp-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .vp-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .vp-cta h2 {
+      font-size: clamp(64px, 10vw, 140px);
+      font-weight: 900;
+      letter-spacing: -6px;
+      line-height: 0.88;
+      margin-bottom: 36px;
+    }
+    .vp-cta h2 span { color: var(--yellow); }
+    .vp-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .vp-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .vp-hero-wrap { padding: 0 24px 64px; }
+      .vp-hero-title { letter-spacing: -2px; }
+      .vp-scroll-indicator { display: none; }
+      .vp-stats { padding: 60px 24px; }
+      .vp-stats-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .vp-stat { border-left: none; padding-left: 0; }
+      .vp-services { padding: 80px 24px; }
+      .vp-services-header { grid-template-columns: 1fr; gap: 24px; }
+      .vp-services-grid { grid-template-columns: 1fr; }
+      .vp-formats { padding: 80px 24px; }
+      .vp-formats-header { grid-template-columns: 1fr; gap: 24px; }
+      .vp-formats-grid { grid-template-columns: 1fr; }
+      .vp-process { padding: 80px 24px; }
+      .vp-process-inner { grid-template-columns: 1fr; gap: 48px; }
+      .vp-process-left { position: static; }
+      .vp-break { height: 50vh; }
+      .vp-break-text { padding: 0 24px; }
+      .vp-vertical { padding: 80px 24px; }
+      .vp-vertical-inner { grid-template-columns: 1fr; gap: 40px; }
+      .vp-vertical-stats { grid-template-columns: 1fr 1fr; }
+      .vp-packages { padding: 80px 24px; }
+      .vp-packages-grid { grid-template-columns: 1fr; }
+      .vp-cta { padding: 100px 24px; }
+      .vp-cta h2 { letter-spacing: -3px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="vp-hero">
+  <div class="vp-hero-bg" style="background-image:url('Images/social-media-video-production-hero.jpg');background-size:cover;background-position:center;"></div>
+  <div class="vp-hero-overlay"></div>
+  <div class="vp-hero-wrap">
+    <div class="vp-hero-eyebrow reveal">Social Media Video Production</div>
+    <h1 class="vp-hero-title reveal reveal-delay-1">
+      Made for<br>the scroll.<br>Built to <em>stop it.</em>
+    </h1>
+    <div class="vp-hero-bottom reveal reveal-delay-2">
+      <p class="vp-hero-desc">Vertical-first, platform-native video for Instagram, TikTok, YouTube, Facebook, LinkedIn and X. Not a cut-down of a bigger film - content shot and edited to work exactly where your audience is scrolling.</p>
+      <div class="vp-hero-actions">
+        <a href="contact.html" class="btn-primary">Start a Project</a>
+        <a href="#packages" class="btn-outline">View Packages</a>
+      </div>
+    </div>
+  </div>
+  <div class="vp-scroll-indicator">
+    <span>Scroll</span>
+    <div class="vp-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ② STATS -->
+<section class="vp-stats">
+  <div class="vp-stats-inner">
+    <div class="vp-stat reveal">
+      <div class="vp-stat-num">53<sup>%</sup></div>
+      <div class="vp-stat-label">Engage with a brand after watching its video</div>
+    </div>
+    <div class="vp-stat reveal reveal-delay-1">
+      <div class="vp-stat-num">12<sup>x</sup></div>
+      <div class="vp-stat-label">More shares than text or image posts</div>
+    </div>
+    <div class="vp-stat reveal reveal-delay-2">
+      <div class="vp-stat-num">4<sup>x</sup></div>
+      <div class="vp-stat-label">More engagement for vertical vs square video</div>
+    </div>
+    <div class="vp-stat reveal reveal-delay-3">
+      <div class="vp-stat-num">48<sup>%</sup></div>
+      <div class="vp-stat-label">More views for posts that include video</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ SERVICES -->
+<section class="vp-services">
+  <div class="vp-services-inner">
+    <div class="vp-services-header">
+      <h2 class="vp-services-title reveal">Your customers,<br>at the heart<br>of the story.</h2>
+      <p class="vp-services-body reveal reveal-delay-1">Every platform rewards video differently - and penalises content that's obviously repurposed. We build for the feed it's actually going to live in, from Stories and Reels to full-length YouTube uploads, so your brand stands out instead of scrolling past.</p>
+    </div>
+    <div class="vp-services-grid">
+
+      <div class="vp-svc reveal">
+        <span class="vp-svc-tag">01 - Platform</span>
+        <h3>Instagram</h3>
+        <p>Sponsored Instagram videos generate 3x more comments than sponsored photos. We build Reels, Stories, and IGTV-ready content that earns the tap.</p>
+        <ul>
+          <li>Reels and Stories content</li>
+          <li>Feed and carousel video</li>
+          <li>Creative built to be saved and shared</li>
+        </ul>
+      </div>
+
+      <div class="vp-svc reveal reveal-delay-1">
+        <span class="vp-svc-tag">02 - Platform</span>
+        <h3>TikTok</h3>
+        <p>A video-only platform with a monthly engagement rate over 70%. Fast, native, bite-sized clips that fit how people actually watch TikTok.</p>
+        <ul>
+          <li>Native, trend-aware editing</li>
+          <li>Series and recurring formats</li>
+          <li>Rapid-turnaround short form</li>
+        </ul>
+      </div>
+
+      <div class="vp-svc reveal reveal-delay-2">
+        <span class="vp-svc-tag">03 - Platform</span>
+        <h3>Facebook</h3>
+        <p>More than 4 billion video views happen on Facebook every day. We keep pace with the platform's changes so your content stays optimised.</p>
+        <ul>
+          <li>Feed and Stories video</li>
+          <li>Vertical ad creative</li>
+          <li>Community and page content</li>
+        </ul>
+      </div>
+
+      <div class="vp-svc reveal">
+        <span class="vp-svc-tag">04 - Platform</span>
+        <h3>LinkedIn</h3>
+        <p>LinkedIn drives over 50% of social traffic to B2B sites and is trusted as the most credible content source. We make video that earns that trust.</p>
+        <ul>
+          <li>Thought leadership clips</li>
+          <li>Company and culture updates</li>
+          <li>B2B case study video</li>
+        </ul>
+      </div>
+
+      <div class="vp-svc reveal reveal-delay-1">
+        <span class="vp-svc-tag">05 - Platform</span>
+        <h3>YouTube &amp; Shorts</h3>
+        <p>From long-form storytelling to Shorts, we produce for YouTube's dual audience - deep engagement and quick discovery - from the same shoot.</p>
+        <ul>
+          <li>Long-form and episodic content</li>
+          <li>YouTube Shorts cut-downs</li>
+          <li>Channel-consistent branding</li>
+        </ul>
+      </div>
+
+      <div class="vp-svc reveal reveal-delay-2">
+        <span class="vp-svc-tag">06 - Format</span>
+        <h3>Moving Content</h3>
+        <p>Social video isn't just video - it's any moving content that drives engagement: GIFs, live streams, motion graphics, and everything between.</p>
+        <ul>
+          <li>GIFs and micro-loops</li>
+          <li>Live stream production</li>
+          <li>Motion graphics overlays</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ④ PLATFORM SNAPSHOT -->
+<section class="vp-formats">
+  <div class="vp-formats-inner">
+    <div class="vp-formats-header">
+      <h2 class="vp-formats-title reveal">One brief.<br>Every<br>platform.</h2>
+      <p class="vp-formats-body reveal reveal-delay-1">Billions of people are actively engaging with social platforms right now, and video is fast becoming the default way they receive content. Here's what that looks like across the platforms we build for.</p>
+    </div>
+    <div class="vp-formats-grid">
+
+      <div class="vp-fmt reveal">
+        <div class="vp-fmt-img" style="background: linear-gradient(150deg, #3a0d47 0%, #7b2a8a 45%, var(--yellow) 220%);"></div>
+        <div class="vp-fmt-veil"></div>
+        <div class="vp-fmt-body">
+          <span class="vp-fmt-tag">Instagram &amp; Facebook</span>
+          <span class="vp-fmt-name">Stories, Reels &amp; IGTV</span>
+          <div class="vp-fmt-detail">Vertical-native cuts built for a platform where 65% of consumers see brands using vertical video as more innovative.</div>
+        </div>
+      </div>
+
+      <div class="vp-fmt reveal reveal-delay-1">
+        <div class="vp-fmt-img" style="background: linear-gradient(150deg, #050505 0%, #1c1c1c 50%, var(--yellow) 210%);"></div>
+        <div class="vp-fmt-veil"></div>
+        <div class="vp-fmt-body">
+          <span class="vp-fmt-tag">TikTok</span>
+          <span class="vp-fmt-name">Short, Fast, Native</span>
+          <div class="vp-fmt-detail">Downloaded over 1.5 billion times - content built for a platform that rewards speed and authenticity over polish.</div>
+        </div>
+      </div>
+
+      <div class="vp-fmt reveal reveal-delay-2">
+        <div class="vp-fmt-img" style="background: linear-gradient(150deg, #0a1f3d 0%, #144a8f 45%, var(--yellow) 230%);"></div>
+        <div class="vp-fmt-veil"></div>
+        <div class="vp-fmt-body">
+          <span class="vp-fmt-tag">X (Twitter)</span>
+          <span class="vp-fmt-name">2bn Daily Views</span>
+          <div class="vp-fmt-detail">Video that drives views into engagement - building brand awareness or a specific product moment, fast.</div>
+        </div>
+      </div>
+
+      <div class="vp-fmt reveal reveal-delay-3">
+        <div class="vp-fmt-img" style="background: linear-gradient(150deg, #0d2b1a 0%, #14563a 45%, var(--yellow) 220%);"></div>
+        <div class="vp-fmt-veil"></div>
+        <div class="vp-fmt-body">
+          <span class="vp-fmt-tag">LinkedIn</span>
+          <span class="vp-fmt-name">Credible, B2B-Native</span>
+          <div class="vp-fmt-detail">The platform marketers trust most for growing a business - content built to earn attention in a professional feed.</div>
+        </div>
+      </div>
+
+      <div class="vp-fmt reveal">
+        <div class="vp-fmt-img" style="background: linear-gradient(150deg, #3d0a0a 0%, #7a1414 45%, var(--yellow) 220%);"></div>
+        <div class="vp-fmt-veil"></div>
+        <div class="vp-fmt-body">
+          <span class="vp-fmt-tag">YouTube</span>
+          <span class="vp-fmt-name">Shorts &amp; Long-Form</span>
+          <div class="vp-fmt-detail">YouTube's mobile-first player rewards vertical Shorts alongside deep, long-form storytelling - we produce for both.</div>
+        </div>
+      </div>
+
+      <div class="vp-fmt reveal reveal-delay-1">
+        <div class="vp-fmt-img" style="background: linear-gradient(150deg, #1c1c1c 0%, #3a3a3a 45%, var(--yellow) 220%);"></div>
+        <div class="vp-fmt-veil"></div>
+        <div class="vp-fmt-body">
+          <span class="vp-fmt-tag">All Formats</span>
+          <span class="vp-fmt-name">GIFs, Loops &amp; Live</span>
+          <div class="vp-fmt-detail">Every form of moving content - because 40% of users take some kind of action after viewing a video advert.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ PROCESS -->
+<section class="vp-process">
+  <div class="vp-process-inner">
+    <div class="vp-process-left reveal">
+      <div class="section-tag">The Process</div>
+      <h2 class="vp-process-title">From brief<br>to native<br>content.</h2>
+      <p class="vp-process-intro">One accountable team, no hand-offs. We plan for the platform from the very first conversation, not as an afterthought once the hero film is locked.</p>
+      <a href="contact.html" class="btn-primary">Start a Project</a>
+    </div>
+    <div class="vp-process-steps">
+      <div class="vp-step reveal">
+        <span class="vp-step-num">01</span>
+        <div>
+          <h4>Strategy</h4>
+          <p>We map which platforms matter most to your audience and define the formats, tone, and cadence that will actually move the needle there.</p>
+        </div>
+      </div>
+      <div class="vp-step reveal reveal-delay-1">
+        <span class="vp-step-num">02</span>
+        <div>
+          <h4>Shoot</h4>
+          <p>Vertical-first coverage designed from the outset for sound-on viewing, thumb-stopping opens, and fast-paced pacing that suits the feed.</p>
+        </div>
+      </div>
+      <div class="vp-step reveal reveal-delay-2">
+        <span class="vp-step-num">03</span>
+        <div>
+          <h4>Edit</h4>
+          <p>Platform-specific cuts - not one video resized six ways. Captions, pacing, and hooks tailored to how each channel's algorithm actually works.</p>
+        </div>
+      </div>
+      <div class="vp-step reveal reveal-delay-3">
+        <span class="vp-step-num">04</span>
+        <div>
+          <h4>Deliver</h4>
+          <p>A full asset library across every aspect ratio you need - 9:16, 1:1, 16:9 - ready to publish the moment your calendar calls for it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ CINEMATIC BREAK -->
+<div class="vp-break">
+  <div class="vp-break-veil">
+    <div class="vp-break-text">
+      <blockquote class="reveal">"How are you<br>holding your<br>phone? <span>Vertically.</span>"</blockquote>
+      <cite class="reveal reveal-delay-1"> -  The vertical video mandate</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦ WHY VERTICAL -->
+<section class="vp-vertical">
+  <div class="vp-vertical-inner">
+    <div class="reveal">
+      <h2 class="vp-vertical-title">Vertical video<br>isn't a trend.<br>It's <span>the format.</span></h2>
+      <p class="vp-vertical-body">Your audience is browsing vertically, so your video should match that experience. Facebook vertical ads are found to increase user engagement, particularly the likelihood of being watched with sound - and consumers rate brands that use vertical video as more innovative and more engaging. We plan every shoot around this reality from day one, not as a resize job after the fact.</p>
+    </div>
+    <div class="vp-vertical-stats">
+      <div class="vp-vstat reveal">
+        <div class="vp-vstat-num">4x</div>
+        <div class="vp-vstat-label">More engagement than square video on Facebook</div>
+      </div>
+      <div class="vp-vstat reveal reveal-delay-1">
+        <div class="vp-vstat-num">2.5x</div>
+        <div class="vp-vstat-label">More engagement than square video on Twitter</div>
+      </div>
+      <div class="vp-vstat reveal reveal-delay-2">
+        <div class="vp-vstat-num">79%</div>
+        <div class="vp-vstat-label">Of consumers find vertical video more engaging</div>
+      </div>
+      <div class="vp-vstat reveal reveal-delay-3">
+        <div class="vp-vstat-num">65%</div>
+        <div class="vp-vstat-label">See brands using it as more innovative</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ PROJECT PACKAGES -->
+<section class="vp-packages" id="packages">
+  <div class="vp-packages-inner">
+    <div class="vp-packages-head">
+      <div class="section-tag reveal">Social Video Packages</div>
+      <h2 class="reveal reveal-delay-1">Three ways<br>to build your<br>social presence.</h2>
+    </div>
+    <div class="vp-packages-grid">
+
+      <div class="vp-pcard reveal">
+        <div class="vp-pcard-index">01</div>
+        <h3>Single Campaign</h3>
+        <div>
+          <div class="vp-pcard-price">POA</div>
+          <div class="vp-pcard-pnote">One shoot · multi-platform cuts</div>
+        </div>
+        <p class="vp-pcard-desc">One production, tailored for the platforms that matter most to your audience. Ideal for a launch, promotion, or seasonal push.</p>
+        <div class="vp-pcard-rule"></div>
+        <ul class="vp-pcard-list">
+          <li>Platform and audience strategy</li>
+          <li>Single-day vertical-first shoot</li>
+          <li>Cuts for up to three platforms</li>
+          <li>Captioning and platform-native pacing</li>
+          <li>Delivery in every aspect ratio needed</li>
+        </ul>
+        <a href="contact.html" class="vp-pcard-link">
+          Start a Project
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="vp-pcard featured reveal reveal-delay-1">
+        <div class="vp-pcard-index">02 - Most Popular</div>
+        <h3>Content Engine</h3>
+        <div>
+          <div class="vp-pcard-price">POA</div>
+          <div class="vp-pcard-pnote">Monthly · full platform coverage</div>
+        </div>
+        <p class="vp-pcard-desc">A monthly shoot day feeding a full content calendar - Instagram, TikTok, LinkedIn, and YouTube, kept consistently full.</p>
+        <div class="vp-pcard-rule"></div>
+        <ul class="vp-pcard-list">
+          <li>Monthly shoot and content planning</li>
+          <li>Native cuts for every core platform</li>
+          <li>Trend-aware TikTok and Reels editing</li>
+          <li>Live and GIF content on request</li>
+          <li>Priority studio access</li>
+          <li>Single producer across the engine</li>
+        </ul>
+        <a href="contact.html" class="vp-pcard-link">
+          Build the Engine
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="vp-pcard reveal reveal-delay-2">
+        <div class="vp-pcard-index">03</div>
+        <h3>Ad Creative Sprint</h3>
+        <div>
+          <div class="vp-pcard-price">POA</div>
+          <div class="vp-pcard-pnote">Batch · paid social ready</div>
+        </div>
+        <p class="vp-pcard-desc">A focused batch of vertical ad creative for Meta, TikTok and YouTube - built for testing, not just for looking good.</p>
+        <div class="vp-pcard-rule"></div>
+        <ul class="vp-pcard-list">
+          <li>Hook and angle variation testing</li>
+          <li>Multiple vertical ad cuts per concept</li>
+          <li>Captioned and sound-off optimised</li>
+          <li>Fast turnaround for live campaigns</li>
+        </ul>
+        <a href="contact.html" class="vp-pcard-link">
+          Plan a Sprint
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑨ CTA -->
+<section class="vp-cta">
+  <div class="vp-cta-eyebrow reveal">Start a Project</div>
+  <h2 class="reveal reveal-delay-1">Stop the<br><span>scroll.</span></h2>
+  <p class="reveal reveal-delay-2">Tell us which platforms matter most to your audience and what you're trying to achieve. We'll come back with a content plan, a schedule, and a clear quote within 48 hours.</p>
+  <div class="vp-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Start a Project</a>
+    <a href="work.html" class="btn-outline reveal reveal-delay-4">See Our Work</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Instagram</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>TikTok</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Facebook</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>LinkedIn</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>YouTube</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>X</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Instagram</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>TikTok</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Facebook</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>LinkedIn</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>YouTube</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>X</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

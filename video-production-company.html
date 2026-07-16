@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Video Production Company | Corporate, Social &amp; Brand Video - Fortay Media</title>
+  <meta name="description" content="Fortay Media is a full-service video production company producing corporate videos, explainer videos, social content, event filming, animation and more - one team, every format, delivered on time."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO (CSS gradient, no photo)
+    ============================ */
+    .vpc-hero {
+      position: relative;
+      min-height: 92vh;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      background:
+        radial-gradient(ellipse at 15% 15%, rgba(255,209,0,0.16) 0%, transparent 55%),
+        linear-gradient(155deg, rgba(10,10,10,0.72) 0%, rgba(22,22,22,0.8) 42%, rgba(13,13,13,0.92) 100%),
+        url('https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?w=1600&q=80&auto=format&fit=crop') center/cover;
+    }
+    .vpc-hero::before {
+      content: '';
+      position: absolute;
+      top: -20%; right: -10%;
+      width: 60%; height: 140%;
+      background: linear-gradient(200deg, rgba(255,209,0,0.14), rgba(255,209,0,0) 60%);
+      transform: skewX(-12deg);
+    }
+    .vpc-hero-wrap {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px 88px;
+    }
+    .vpc-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .vpc-hero-title {
+      font-size: clamp(48px, 7.5vw, 108px);
+      font-weight: 900;
+      letter-spacing: -4px;
+      line-height: 0.95;
+      color: var(--white);
+      margin-bottom: 32px;
+      max-width: 980px;
+    }
+    .vpc-hero-title em { font-style: normal; color: var(--yellow); }
+    .vpc-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .vpc-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 480px;
+      line-height: 1.7;
+    }
+    .vpc-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* ============================
+       WHY VIDEO (stat bar, grounded in scraped stats)
+    ============================ */
+    .vpc-why {
+      background: var(--dark);
+      padding: 72px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .vpc-why-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+    }
+    .vpc-why-stat {
+      padding: 0 48px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .vpc-why-stat:first-child { border-left: none; padding-left: 0; }
+    .vpc-why-num {
+      font-size: clamp(48px, 4.5vw, 72px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      color: var(--yellow);
+      margin-bottom: 12px;
+    }
+    .vpc-why-stat p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 320px;
+    }
+
+    /* ============================
+       INTRO
+    ============================ */
+    .vpc-intro {
+      background: var(--dark);
+      padding: 140px 64px 100px;
+    }
+    .vpc-intro-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .vpc-intro-title {
+      font-size: clamp(38px, 4.5vw, 62px);
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      line-height: 1.02;
+    }
+    .vpc-intro-body p {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 22px;
+    }
+    .vpc-intro-body strong { color: var(--white); }
+
+    /* ============================
+       VIDEO TYPES (wide menu grid)
+    ============================ */
+    .vpc-types {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .vpc-types-inner { max-width: 1440px; margin: 0 auto; }
+    .vpc-types-head { margin-bottom: 56px; max-width: 720px; }
+    .vpc-types-head h2 {
+      font-size: clamp(40px, 5vw, 68px);
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .vpc-types-head p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .vpc-types-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+    }
+    .vpc-type {
+      background: var(--dark2);
+      padding: 30px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: background 0.25s;
+    }
+    .vpc-type:hover { background: #1a1a1a; }
+    .vpc-type-num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--yellow);
+    }
+    .vpc-type h3 {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+    .vpc-types-note {
+      margin-top: 40px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .vpc-types-note a { color: var(--yellow); text-decoration: none; font-weight: 700; }
+    .vpc-types-note a:hover { text-decoration: underline; }
+
+    /* ============================
+       PROCESS (three block, not sticky rail - distinct from vp-)
+    ============================ */
+    .vpc-process {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .vpc-process-inner { max-width: 1440px; margin: 0 auto; }
+    .vpc-process-head { margin-bottom: 64px; max-width: 760px; }
+    .vpc-process-head h2 {
+      font-size: clamp(40px, 5vw, 68px);
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .vpc-process-head p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .vpc-process-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .vpc-pstep {
+      background: var(--dark2);
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .vpc-pstep-num {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--yellow);
+    }
+    .vpc-pstep h3 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.8px;
+    }
+    .vpc-pstep p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.75;
+    }
+    .vpc-pstep ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .vpc-pstep li {
+      display: flex;
+      gap: 10px;
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+    }
+    .vpc-pstep li::before {
+      content: '✦';
+      font-size: 8px;
+      color: var(--yellow);
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    /* ============================
+       CINEMATIC BREAK (gradient, no photo)
+    ============================ */
+    .vpc-break {
+      position: relative;
+      height: 60vh;
+      min-height: 420px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(120deg, #050505 0%, #171410 45%, #050505 100%);
+    }
+    .vpc-break::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 75% 40%, rgba(255,209,0,0.18), transparent 60%);
+    }
+    .vpc-break-text {
+      position: relative;
+      z-index: 2;
+      padding: 0 64px;
+      max-width: 860px;
+    }
+    .vpc-break-text blockquote {
+      font-size: clamp(32px, 5.5vw, 68px);
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      line-height: 1;
+      font-style: normal;
+    }
+    .vpc-break-text blockquote span { color: var(--yellow); }
+    .vpc-break-text cite {
+      display: block;
+      font-size: 13px;
+      font-style: normal;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 26px;
+    }
+
+    /* ============================
+       EQUIPMENT / CAPABILITY STRIP
+    ============================ */
+    .vpc-kit {
+      background: var(--dark2);
+      padding: 100px 64px;
+    }
+    .vpc-kit-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .vpc-kit-title {
+      font-size: clamp(36px, 4.5vw, 58px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    .vpc-kit-copy {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+    .vpc-kit-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .vpc-kit-tag {
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      padding: 9px 18px;
+    }
+
+    /* ============================
+       FAQ
+    ============================ */
+    .vpc-faq {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .vpc-faq-inner {
+      max-width: 940px;
+      margin: 0 auto;
+    }
+    .vpc-faq-head { margin-bottom: 56px; }
+    .vpc-faq-head h2 {
+      font-size: clamp(36px, 4.5vw, 56px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+    .vpc-faq-item {
+      padding: 30px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .vpc-faq-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .vpc-faq-item h4 {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      margin-bottom: 10px;
+    }
+    .vpc-faq-item p {
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 760px;
+    }
+
+    /* ============================
+       CTA
+    ============================ */
+    .vpc-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .vpc-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .vpc-cta h2 {
+      font-size: clamp(56px, 9vw, 128px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      margin-bottom: 36px;
+    }
+    .vpc-cta h2 span { color: var(--yellow); }
+    .vpc-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+    .vpc-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .vpc-hero-wrap { padding: 0 24px 56px; }
+      .vpc-hero-title { letter-spacing: -2px; }
+      .vpc-why { padding: 56px 24px; }
+      .vpc-why-inner { grid-template-columns: 1fr; gap: 32px; }
+      .vpc-why-stat { border-left: none; padding-left: 0; }
+      .vpc-intro { padding: 90px 24px 70px; }
+      .vpc-intro-inner { grid-template-columns: 1fr; gap: 32px; }
+      .vpc-types { padding: 80px 24px; }
+      .vpc-types-grid { grid-template-columns: repeat(2,1fr); }
+      .vpc-process { padding: 80px 24px; }
+      .vpc-process-grid { grid-template-columns: 1fr; }
+      .vpc-break { padding: 0 24px; height: 50vh; }
+      .vpc-kit { padding: 70px 24px; }
+      .vpc-kit-inner { grid-template-columns: 1fr; gap: 40px; }
+      .vpc-faq { padding: 80px 24px; }
+      .vpc-cta { padding: 100px 24px; }
+      .vpc-cta h2 { letter-spacing: -2.5px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html" class="active">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="vpc-hero">
+  <div class="vpc-hero-wrap">
+    <div class="vpc-hero-eyebrow reveal">Video Production Company</div>
+    <h1 class="vpc-hero-title reveal reveal-delay-1">A video production company built to <em>cover every brief.</em></h1>
+    <div class="vpc-hero-bottom reveal reveal-delay-2">
+      <p class="vpc-hero-desc">Corporate videos, explainers, product films, social content, animation, live events - whatever the brief, Fortay Media is the one production company that handles it, start to finish, under one roof.</p>
+      <div class="vpc-hero-actions">
+        <a href="contact.html" class="btn-primary">Get a Quote</a>
+        <a href="#types" class="btn-outline">See What We Make</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ② WHY VIDEO -->
+<section class="vpc-why">
+  <div class="vpc-why-inner">
+    <div class="vpc-why-stat reveal">
+      <div class="vpc-why-num">54%</div>
+      <p>of consumers say they want to see more video content from the brands and businesses they follow.</p>
+    </div>
+    <div class="vpc-why-stat reveal reveal-delay-1">
+      <div class="vpc-why-num">82%</div>
+      <p>of all content consumed online is now video - text and static images are no longer where attention lives.</p>
+    </div>
+    <div class="vpc-why-stat reveal reveal-delay-2">
+      <div class="vpc-why-num">49%</div>
+      <p>faster year-on-year revenue growth for businesses that invest in video as part of their content strategy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ③ INTRO -->
+<section class="vpc-intro">
+  <div class="vpc-intro-inner">
+    <h2 class="vpc-intro-title reveal">Why businesses hire a dedicated video production company.</h2>
+    <div class="vpc-intro-body reveal reveal-delay-1">
+      <p>Viewers retain far more of a message delivered on screen than the same message written down. That's not a marketing stat - it's why video has become the default way people research a product, evaluate a company, or decide who to trust before they buy.</p>
+      <p>Fortay Media is a <strong>full-service video production company</strong>: the same in-house team plans, films, and edits everything from a boardroom-ready corporate video to a fast-turnaround social clip. No outsourcing to freelancers, no juggling three different suppliers to get one campaign live - one point of contact, one crew, one standard of quality across every deliverable.</p>
+      <p>Whether you've already got a script and a shot list, or nothing more than a problem you need video to solve, we'll shape the brief, build the plan, and deliver a finished film that earns its place in front of your audience.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ④ VIDEO TYPES -->
+<section class="vpc-types" id="types">
+  <div class="vpc-types-inner">
+    <div class="vpc-types-head">
+      <h2 class="reveal">The range is genuinely endless.</h2>
+      <p class="reveal reveal-delay-1">We produce video across every format and industry - built with the same in-house resources, equipment, and creative process every time.</p>
+    </div>
+    <div class="vpc-types-grid">
+      <div class="vpc-type reveal"><span class="vpc-type-num">01</span><h3>Corporate Video</h3></div>
+      <div class="vpc-type reveal"><span class="vpc-type-num">02</span><h3>Behind the Scenes</h3></div>
+      <div class="vpc-type reveal"><span class="vpc-type-num">03</span><h3>Explainer Videos</h3></div>
+      <div class="vpc-type reveal"><span class="vpc-type-num">04</span><h3>How-To Videos</h3></div>
+      <div class="vpc-type reveal reveal-delay-1"><span class="vpc-type-num">05</span><h3>Product Videos</h3></div>
+      <div class="vpc-type reveal reveal-delay-1"><span class="vpc-type-num">06</span><h3>Company Culture Films</h3></div>
+      <div class="vpc-type reveal reveal-delay-1"><span class="vpc-type-num">07</span><h3>Social Media Video</h3></div>
+      <div class="vpc-type reveal reveal-delay-1"><span class="vpc-type-num">08</span><h3>2D Animation</h3></div>
+      <div class="vpc-type reveal reveal-delay-2"><span class="vpc-type-num">09</span><h3>3D Animation</h3></div>
+      <div class="vpc-type reveal reveal-delay-2"><span class="vpc-type-num">10</span><h3>Event Filming</h3></div>
+      <div class="vpc-type reveal reveal-delay-2"><span class="vpc-type-num">11</span><h3>Live Streaming</h3></div>
+      <div class="vpc-type reveal reveal-delay-2"><span class="vpc-type-num">12</span><h3>Drone Filming</h3></div>
+      <div class="vpc-type reveal reveal-delay-3"><span class="vpc-type-num">13</span><h3>Case Studies &amp; Testimonials</h3></div>
+      <div class="vpc-type reveal reveal-delay-3"><span class="vpc-type-num">14</span><h3>TV Adverts</h3></div>
+      <div class="vpc-type reveal reveal-delay-3"><span class="vpc-type-num">15</span><h3>Training Videos</h3></div>
+      <div class="vpc-type reveal reveal-delay-3"><span class="vpc-type-num">16</span><h3>Presenter-Led Video</h3></div>
+    </div>
+    <p class="vpc-types-note reveal reveal-delay-4">Don't see your type of video here? <a href="contact.html">Talk to us about your project</a> - if it can be filmed or animated, we can make it.</p>
+  </div>
+</section>
+
+<!-- ⑤ PROCESS -->
+<section class="vpc-process">
+  <div class="vpc-process-inner">
+    <div class="vpc-process-head">
+      <h2 class="reveal">A straightforward process, from strategy to sign-off.</h2>
+      <p class="reveal reveal-delay-1">Relationships matter to us, so before anything gets filmed we get to know you, your business, and what the finished video actually needs to achieve.</p>
+    </div>
+    <div class="vpc-process-grid">
+      <div class="vpc-pstep reveal">
+        <span class="vpc-pstep-num">STAGE 01</span>
+        <h3>Strategy &amp; Pre-Production</h3>
+        <p>We build a video strategy tied to your objectives, audience, and platform - then write the storyline and script that carries it.</p>
+        <ul>
+          <li>Video strategy</li>
+          <li>Storyboarding</li>
+          <li>Script writing</li>
+          <li>Project management</li>
+        </ul>
+      </div>
+      <div class="vpc-pstep reveal reveal-delay-1">
+        <span class="vpc-pstep-num">STAGE 02</span>
+        <h3>Production</h3>
+        <p>In your workplace, on location, or in our own studio - we bring the crew and kit needed to capture every shot the brief calls for.</p>
+        <ul>
+          <li>Drone filming</li>
+          <li>Multi-camera setups</li>
+          <li>Directional &amp; lapel mics</li>
+          <li>LED panel lighting</li>
+        </ul>
+      </div>
+      <div class="vpc-pstep reveal reveal-delay-2">
+        <span class="vpc-pstep-num">STAGE 03</span>
+        <h3>Post-Production &amp; Delivery</h3>
+        <p>Footage is cut to the agreed brief, polished to broadcast standard, and delivered exactly how - and where - you need it.</p>
+        <ul>
+          <li>Colour grading &amp; motion graphics</li>
+          <li>Sound design &amp; captions</li>
+          <li>Every aspect ratio and platform</li>
+          <li>Hosted or delivered as raw files</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ CINEMATIC BREAK -->
+<div class="vpc-break">
+  <div class="vpc-break-text">
+    <blockquote class="reveal">One production company.<br>Every format your <span>business</span> needs.</blockquote>
+    <cite class="reveal reveal-delay-1"> -  Fortay Media</cite>
+  </div>
+</div>
+
+<!-- ⑦ KIT / CAPABILITY -->
+<section class="vpc-kit">
+  <div class="vpc-kit-inner">
+    <div class="reveal">
+      <h2 class="vpc-kit-title">Broadcast-grade kit, whichever way the brief runs.</h2>
+      <p class="vpc-kit-copy">Studio, on-location, or in the field - the same equipment and crew back every project, so quality never depends on where we're filming.</p>
+    </div>
+    <div class="vpc-kit-tags reveal reveal-delay-1">
+      <span class="vpc-kit-tag">Sony FX6</span>
+      <span class="vpc-kit-tag">Sony FX3</span>
+      <span class="vpc-kit-tag">Sony A7S III</span>
+      <span class="vpc-kit-tag">Drone Filming</span>
+      <span class="vpc-kit-tag">Directional Mics</span>
+      <span class="vpc-kit-tag">Lapel Mics</span>
+      <span class="vpc-kit-tag">LED Panel Lighting</span>
+      <span class="vpc-kit-tag">In-House Studio</span>
+      <span class="vpc-kit-tag">4K Delivery</span>
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ FAQ -->
+<section class="vpc-faq">
+  <div class="vpc-faq-inner">
+    <div class="vpc-faq-head">
+      <div class="section-tag reveal">Common Questions</div>
+      <h2 class="reveal reveal-delay-1">Before you get in touch.</h2>
+    </div>
+
+    <div class="vpc-faq-item reveal">
+      <h4>What does a video production company actually do?</h4>
+      <p>We take a project from idea to finished film: strategy and scripting, filming with the right crew and kit, and every stage of editing - grading, sound, graphics, captions - needed to get it ready for wherever it's going to live.</p>
+    </div>
+    <div class="vpc-faq-item reveal reveal-delay-1">
+      <h4>Do I need to already have a script or storyboard?</h4>
+      <p>No. Some clients arrive with a full storyboard, others just have a business problem they know video can solve. Either way, our team will shape the concept and script with you before anything is filmed.</p>
+    </div>
+    <div class="vpc-faq-item reveal reveal-delay-2">
+      <h4>Can you handle both a big corporate film and ongoing social content?</h4>
+      <p>Yes - that's the point of working with one production company rather than a patchwork of freelancers. The same team can deliver a flagship brand film and then keep a steady stream of social cut-downs coming afterwards.</p>
+    </div>
+    <div class="vpc-faq-item reveal reveal-delay-3">
+      <h4>What formats and platforms do you deliver for?</h4>
+      <p>Whatever you need - 16:9, 9:16, 1:1, 4K masters, or platform-specific exports for YouTube, Vimeo, Meta, LinkedIn, and TikTok. We can also host and manage delivery directly to your chosen platform.</p>
+    </div>
+    <div class="vpc-faq-item reveal reveal-delay-4">
+      <h4>How quickly can a project turn around?</h4>
+      <p>It depends on scope, but same-day highlight turnarounds for events and fast-track social edits are both things we do regularly alongside longer-lead corporate and brand productions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ⑨ CTA -->
+<section class="vpc-cta">
+  <div class="vpc-cta-eyebrow reveal">Get a Quote</div>
+  <h2 class="reveal reveal-delay-1">Let's make your<br><span>next video.</span></h2>
+  <p class="reveal reveal-delay-2">Tell us what you're trying to achieve and we'll come back with ideas, a plan, and a clear quote - usually within 48 hours.</p>
+  <div class="vpc-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Get a Quote</a>
+    <a href="video-production.html" class="btn-outline reveal reveal-delay-4">Explore Our Production Services</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Corporate Video</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Explainer Videos</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Product Videos</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Event Filming</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>2D &amp; 3D Animation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Social Media Video</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Corporate Video</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Explainer Videos</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Product Videos</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Event Filming</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>2D &amp; 3D Animation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Social Media Video</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

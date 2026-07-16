@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SEO Company Sheffield - Website SEO That Ranks & Converts | Fortay Media</title>
+  <meta name="description" content="Sheffield's SEO company for businesses who want more than rankings. Tailored keyword strategy, on-page optimisation and link-quality audits that turn search traffic into enquiries and sales."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO
+    ============================ */
+    .seo-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+      background: linear-gradient(155deg, #101010 0%, #1c1a12 45%, #2b2408 75%, #3a2f00 100%);
+    }
+    .seo-hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&q=80&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+    }
+    .seo-hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(circle at 70% 40%, black 0%, transparent 70%);
+    }
+    .seo-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(0,0,0,0.75) 0%,
+        rgba(0,0,0,0.15) 55%,
+        rgba(0,0,0,0.7) 100%
+      );
+    }
+    .seo-hero-wrap {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 88px;
+    }
+    .seo-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .seo-hero-title {
+      font-size: clamp(56px, 8.5vw, 120px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .seo-hero-title em { font-style: normal; color: var(--yellow); }
+    .seo-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .seo-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+    .seo-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .seo-scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      right: 64px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.35;
+    }
+    .seo-scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .seo-scroll-line {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, white, transparent);
+      animation: seoScrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes seoScrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%     { opacity: 0.1;  transform: scaleY(0.4); }
+    }
+
+    /* ============================
+       STATS
+    ============================ */
+    .seo-stats {
+      background: var(--dark);
+      padding: 72px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .seo-stats-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+    }
+    .seo-stat {
+      padding: 0 48px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .seo-stat:first-child { border-left: none; padding-left: 0; }
+    .seo-stat-num {
+      font-size: clamp(48px, 4.6vw, 74px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .seo-stat-num sup { font-size: 0.35em; color: var(--yellow); vertical-align: super; }
+    .seo-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============================
+       INTRO / WHY SEO
+    ============================ */
+    .seo-intro {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .seo-intro-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .seo-intro-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .seo-intro-body p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .seo-intro-body p:last-child { margin-bottom: 0; }
+
+    /* ============================
+       SERVICES (indexed tiles)
+    ============================ */
+    .seo-services {
+      background: var(--dark);
+      padding: 0 64px 120px;
+    }
+    .seo-services-inner { max-width: 1440px; margin: 0 auto; }
+    .seo-services-header {
+      margin-bottom: 64px;
+    }
+    .seo-services-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      max-width: 720px;
+    }
+    .seo-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .seo-svc {
+      background: var(--dark2);
+      padding: 44px 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background 0.3s;
+    }
+    .seo-svc:hover { background: #1a1a1a; }
+    .seo-svc-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .seo-svc h3 {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    .seo-svc p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       BENEFITS (checklist band)
+    ============================ */
+    .seo-benefits {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .seo-benefits-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    .seo-benefits-left .section-tag { margin-bottom: 20px; }
+    .seo-benefits-title {
+      font-size: clamp(38px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .seo-benefits-intro {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 420px;
+    }
+    .seo-benefits-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .seo-benefits-list li {
+      padding: 22px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      align-items: baseline;
+      gap: 18px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+    .seo-benefits-list li:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .seo-benefits-list li::before {
+      content: '✦';
+      font-size: 11px;
+      color: var(--yellow);
+      flex-shrink: 0;
+    }
+
+    /* ============================
+       CINEMATIC BREAK (gradient panel)
+    ============================ */
+    .seo-break {
+      position: relative;
+      height: 60vh;
+      min-height: 420px;
+      overflow: hidden;
+      background: linear-gradient(120deg, #0d0d0d 0%, #1a1608 40%, var(--yellow) 130%);
+      display: flex;
+      align-items: center;
+    }
+    .seo-break-text {
+      padding: 0 64px;
+      max-width: 820px;
+      position: relative;
+      z-index: 2;
+    }
+    .seo-break-text blockquote {
+      font-size: clamp(32px, 5.5vw, 68px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      font-style: normal;
+      color: var(--white);
+    }
+    .seo-break-text blockquote span { color: var(--yellow); }
+    .seo-break-text cite {
+      display: block;
+      font-size: 13px;
+      font-style: normal;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 28px;
+    }
+
+    /* ============================
+       PROCESS / METHOD
+    ============================ */
+    .seo-process {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .seo-process-inner { max-width: 1440px; margin: 0 auto; }
+    .seo-process-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .seo-process-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .seo-process-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .seo-process-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 3px;
+    }
+    .seo-pstep {
+      background: var(--dark2);
+      padding: 40px 32px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: background 0.3s;
+    }
+    .seo-pstep:hover { background: #1a1a1a; }
+    .seo-pstep-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .seo-pstep h4 {
+      font-size: 21px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    .seo-pstep p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       PACKAGES (tiers)
+    ============================ */
+    .seo-packages {
+      background: var(--dark);
+      padding: 0 64px 120px;
+    }
+    .seo-packages-inner { max-width: 1440px; margin: 0 auto; }
+    .seo-packages-head { margin-bottom: 72px; }
+    .seo-packages-head h2 {
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      max-width: 820px;
+    }
+    .seo-packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .seo-pcard {
+      background: var(--dark2);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .seo-pcard:hover { background: #1a1a1a; }
+    .seo-pcard.featured {
+      background: var(--yellow);
+      color: var(--dark);
+    }
+    .seo-pcard.featured:hover { background: #e6b800; }
+    .seo-pcard-index {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .seo-pcard.featured .seo-pcard-index { color: rgba(0,0,0,0.4); }
+    .seo-pcard h3 {
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+    .seo-pcard-price {
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+    .seo-pcard-pnote {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .seo-pcard.featured .seo-pcard-pnote { color: rgba(0,0,0,0.5); }
+    .seo-pcard-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .seo-pcard.featured .seo-pcard-desc { color: rgba(0,0,0,0.6); }
+    .seo-pcard-rule {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .seo-pcard.featured .seo-pcard-rule { background: rgba(0,0,0,0.15); }
+    .seo-pcard-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .seo-pcard-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .seo-pcard-list li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .seo-pcard.featured .seo-pcard-list li::before { color: var(--dark); }
+    .seo-pcard-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      text-decoration: none;
+      margin-top: 8px;
+      transition: gap 0.3s;
+    }
+    .seo-pcard.featured .seo-pcard-link { color: var(--dark); }
+    .seo-pcard-link:hover { gap: 18px; }
+    .seo-pcard-link svg {
+      width: 16px; height: 16px;
+      stroke: currentColor; fill: none; stroke-width: 2;
+    }
+
+    /* ============================
+       CTA
+    ============================ */
+    .seo-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .seo-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .seo-cta h2 {
+      font-size: clamp(56px, 9vw, 130px);
+      font-weight: 900;
+      letter-spacing: -6px;
+      line-height: 0.88;
+      margin-bottom: 36px;
+    }
+    .seo-cta h2 span { color: var(--yellow); }
+    .seo-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .seo-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .seo-hero-wrap { padding: 0 24px 64px; }
+      .seo-hero-title { letter-spacing: -2px; }
+      .seo-scroll-indicator { display: none; }
+      .seo-stats { padding: 60px 24px; }
+      .seo-stats-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .seo-stat { border-left: none; padding-left: 0; }
+      .seo-intro { padding: 80px 24px; }
+      .seo-intro-inner { grid-template-columns: 1fr; gap: 24px; }
+      .seo-services { padding: 0 24px 80px; }
+      .seo-services-grid { grid-template-columns: 1fr; }
+      .seo-benefits { padding: 80px 24px; }
+      .seo-benefits-inner { grid-template-columns: 1fr; gap: 48px; }
+      .seo-break { height: 50vh; }
+      .seo-break-text { padding: 0 24px; }
+      .seo-process { padding: 80px 24px; }
+      .seo-process-header { grid-template-columns: 1fr; gap: 24px; }
+      .seo-process-grid { grid-template-columns: 1fr 1fr; }
+      .seo-packages { padding: 0 24px 80px; }
+      .seo-packages-grid { grid-template-columns: 1fr; }
+      .seo-cta { padding: 100px 24px; }
+      .seo-cta h2 { letter-spacing: -3px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="seo-hero">
+  <div class="seo-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&q=80&auto=format&fit=crop');background-size:cover;background-position:center;"></div>
+  <div class="seo-hero-grid"></div>
+  <div class="seo-hero-overlay"></div>
+  <div class="seo-hero-wrap">
+    <div class="seo-hero-eyebrow reveal">SEO Company - Sheffield</div>
+    <h1 class="seo-hero-title reveal reveal-delay-1">
+      Get found<br>by people<br>ready to <em>buy.</em>
+    </h1>
+    <div class="seo-hero-bottom reveal reveal-delay-2">
+      <p class="seo-hero-desc">Sheffield SEO built on research, not guesswork. We turn your website into the thing people find first - and the thing that turns that traffic into enquiries.</p>
+      <div class="seo-hero-actions">
+        <a href="contact.html" class="btn-primary">Get an SEO Audit</a>
+        <a href="#packages" class="btn-outline">View Packages</a>
+      </div>
+    </div>
+  </div>
+  <div class="seo-scroll-indicator">
+    <span>Scroll</span>
+    <div class="seo-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ② STATS -->
+<section class="seo-stats">
+  <div class="seo-stats-inner">
+    <div class="seo-stat reveal">
+      <div class="seo-stat-num">67<sup>%</sup></div>
+      <div class="seo-stat-label">Of clicks go to the top 5 results</div>
+    </div>
+    <div class="seo-stat reveal reveal-delay-1">
+      <div class="seo-stat-num">75<sup>%</sup></div>
+      <div class="seo-stat-label">Of searchers never leave page one</div>
+    </div>
+    <div class="seo-stat reveal reveal-delay-2">
+      <div class="seo-stat-num">72<sup>%</sup></div>
+      <div class="seo-stat-label">Of local searches led to a store visit</div>
+    </div>
+    <div class="seo-stat reveal reveal-delay-3">
+      <div class="seo-stat-num">91<sup>%</sup></div>
+      <div class="seo-stat-label">Of pages get zero organic traffic</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ INTRO -->
+<section class="seo-intro">
+  <div class="seo-intro-inner">
+    <h2 class="seo-intro-title reveal">Ranking is<br>Google's way<br>of vouching<br>for you.</h2>
+    <div class="seo-intro-body reveal reveal-delay-1">
+      <p>Google is the most visited website on earth, and how you rank on it isn't decided by luck - it's decided by a set of rules that are always changing. Get them right and you're the credible, trusted answer. Get them wrong and you're invisible on page two, which for 75% of searchers might as well not exist.</p>
+      <p>We're an SEO company working with Sheffield businesses who are done relying on hope to be found online. Our team carries out extensive research into your industry to build a strategy tailored to you - not a template pulled off a shelf - with the goal of driving traffic that's actually relevant, and turning that traffic into enquiries and sales.</p>
+      <p>Because ranking on its own isn't the win. The win is more of the right people landing on a website built to convert them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ④ SERVICES -->
+<section class="seo-services">
+  <div class="seo-services-inner">
+    <div class="seo-services-header">
+      <h2 class="seo-services-title reveal">Everything a tried and<br>trusted SEO strategy needs.</h2>
+    </div>
+    <div class="seo-services-grid">
+
+      <div class="seo-svc reveal">
+        <span class="seo-svc-tag">01 - Included</span>
+        <h3>Keyword Strategy</h3>
+        <p>Research into the exact terms your customers are searching, prioritised by intent and opportunity, not just volume.</p>
+      </div>
+
+      <div class="seo-svc reveal reveal-delay-1">
+        <span class="seo-svc-tag">02 - Included</span>
+        <h3>On-Page Optimisation</h3>
+        <p>Title tags, heading structure, and page content refined so every page earns the ranking it's capable of.</p>
+      </div>
+
+      <div class="seo-svc reveal reveal-delay-2">
+        <span class="seo-svc-tag">03 - Included</span>
+        <h3>Link Quality Check</h3>
+        <p>An audit of your backlink profile - because 91% of pages get no organic traffic largely for lack of good links.</p>
+      </div>
+
+      <div class="seo-svc reveal">
+        <span class="seo-svc-tag">04 - Included</span>
+        <h3>Duplicate Content Review</h3>
+        <p>Identifying and fixing content that's splitting your ranking potential across competing pages.</p>
+      </div>
+
+      <div class="seo-svc reveal reveal-delay-1">
+        <span class="seo-svc-tag">05 - Included</span>
+        <h3>Manual Penalty Checks</h3>
+        <p>Making sure nothing in Google's back office is quietly capping how visible your site can be.</p>
+      </div>
+
+      <div class="seo-svc reveal reveal-delay-2">
+        <span class="seo-svc-tag">06 - Included</span>
+        <h3>Conversion-Focused CTAs</h3>
+        <p>Every page reported on with clear calls to action, because traffic without conversions has no value.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ BENEFITS -->
+<section class="seo-benefits">
+  <div class="seo-benefits-inner">
+    <div class="seo-benefits-left reveal">
+      <div class="section-tag">Why It Matters</div>
+      <h2 class="seo-benefits-title">More traffic.<br>The right<br>traffic.</h2>
+      <p class="seo-benefits-intro">SEO isn't about chasing any traffic you can get - it's about getting the right people to your site and giving them a reason to convert once they arrive. Here's what a structured strategy actually delivers.</p>
+      <a href="contact.html" class="btn-primary">Get an SEO Audit</a>
+    </div>
+    <ul class="seo-benefits-list">
+      <li class="reveal">More relevant website traffic</li>
+      <li class="reveal reveal-delay-1">More enquiries and sales</li>
+      <li class="reveal reveal-delay-2">Higher search engine rankings</li>
+      <li class="reveal reveal-delay-3">Increased brand awareness</li>
+      <li class="reveal">Deeper insight into customer behaviour</li>
+      <li class="reveal reveal-delay-1">A stronger return on your marketing investment</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ⑥ CINEMATIC BREAK -->
+<div class="seo-break">
+  <div class="seo-break-text">
+    <blockquote class="reveal">"SEO is even more<br>powerful with a <span>great website.</span>"</blockquote>
+    <cite class="reveal reveal-delay-1"> -  Fortay Media, Sheffield</cite>
+  </div>
+</div>
+
+<!-- ⑦ PROCESS -->
+<section class="seo-process">
+  <div class="seo-process-inner">
+    <div class="seo-process-header">
+      <h2 class="seo-process-title reveal">Our four-<br>stage SEO<br>method.</h2>
+      <p class="seo-process-body reveal reveal-delay-1">No off-the-shelf packages. We research your market, build the strategy around it, and report on what actually moves the needle - traffic, enquiries, and sales.</p>
+    </div>
+    <div class="seo-process-grid">
+      <div class="seo-pstep reveal">
+        <span class="seo-pstep-num">01</span>
+        <h4>Research</h4>
+        <p>Deep dive into your industry, competitors, and the exact terms your customers are searching for.</p>
+      </div>
+      <div class="seo-pstep reveal reveal-delay-1">
+        <span class="seo-pstep-num">02</span>
+        <h4>Audit</h4>
+        <p>Full technical and on-page review - titles, headings, duplicate content, link quality, and penalties.</p>
+      </div>
+      <div class="seo-pstep reveal reveal-delay-2">
+        <span class="seo-pstep-num">03</span>
+        <h4>Optimise</h4>
+        <p>Tailored fixes and content improvements rolled out page by page, prioritised by opportunity.</p>
+      </div>
+      <div class="seo-pstep reveal reveal-delay-3">
+        <span class="seo-pstep-num">04</span>
+        <h4>Report</h4>
+        <p>Clear, honest reporting on rankings, traffic, and - most importantly - enquiries and conversions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ PACKAGES -->
+<section class="seo-packages" id="packages">
+  <div class="seo-packages-inner">
+    <div class="seo-packages-head">
+      <div class="section-tag reveal">SEO Packages</div>
+      <h2 class="reveal reveal-delay-1">Three ways<br>to work with<br>our SEO team.</h2>
+    </div>
+    <div class="seo-packages-grid">
+
+      <div class="seo-pcard reveal">
+        <div class="seo-pcard-index">01</div>
+        <h3>SEO Audit</h3>
+        <div>
+          <div class="seo-pcard-price">POA</div>
+          <div class="seo-pcard-pnote">One-off · fixed scope</div>
+        </div>
+        <p class="seo-pcard-desc">A full health check of your website's SEO performance, with a prioritised action plan you can implement immediately.</p>
+        <div class="seo-pcard-rule"></div>
+        <ul class="seo-pcard-list">
+          <li>Keyword and competitor research</li>
+          <li>On-page and technical audit</li>
+          <li>Link quality and penalty check</li>
+          <li>Prioritised recommendations report</li>
+        </ul>
+        <a href="contact.html" class="seo-pcard-link">
+          Get an Audit
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="seo-pcard featured reveal reveal-delay-1">
+        <div class="seo-pcard-index">02 - Most Popular</div>
+        <h3>Growth SEO</h3>
+        <div>
+          <div class="seo-pcard-price">POA</div>
+          <div class="seo-pcard-pnote">Monthly · ongoing optimisation</div>
+        </div>
+        <p class="seo-pcard-desc">Rolling monthly SEO - strategy, on-page work, content, and reporting focused on rankings, traffic, and qualified enquiries.</p>
+        <div class="seo-pcard-rule"></div>
+        <ul class="seo-pcard-list">
+          <li>Ongoing keyword strategy</li>
+          <li>Monthly on-page optimisation</li>
+          <li>Content and CTA improvements</li>
+          <li>Backlink monitoring</li>
+          <li>Monthly ranking and traffic reporting</li>
+        </ul>
+        <a href="contact.html" class="seo-pcard-link">
+          Start Growth SEO
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="seo-pcard reveal reveal-delay-2">
+        <div class="seo-pcard-index">03</div>
+        <h3>SEO + Website</h3>
+        <div>
+          <div class="seo-pcard-price">POA</div>
+          <div class="seo-pcard-pnote">Combined · full package</div>
+        </div>
+        <p class="seo-pcard-desc">Because SEO is only half the battle. We pair your SEO strategy with a website built to convert the traffic it earns.</p>
+        <div class="seo-pcard-rule"></div>
+        <ul class="seo-pcard-list">
+          <li>SEO strategy and optimisation</li>
+          <li>Mobile-responsive website build</li>
+          <li>Conversion-focused UX</li>
+          <li>Ongoing support and reporting</li>
+        </ul>
+        <a href="contact.html" class="seo-pcard-link">
+          Explore the Package
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑨ CTA -->
+<section class="seo-cta">
+  <div class="seo-cta-eyebrow reveal">Start Ranking</div>
+  <h2 class="reveal reveal-delay-1">Get found.<br><span>Get chosen.</span></h2>
+  <p class="reveal reveal-delay-2">Tell us about your business, your goals, and your market. We'll come back with a tailored SEO strategy and a clear plan for turning search traffic into real enquiries.</p>
+  <div class="seo-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Get an SEO Audit</a>
+    <a href="work.html" class="btn-outline reveal reveal-delay-4">See Our Work</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Keyword Strategy</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>On-Page SEO</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Link Audits</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Local SEO</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Technical SEO</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Conversion Optimisation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Keyword Strategy</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>On-Page SEO</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Link Audits</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Local SEO</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Technical SEO</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Conversion Optimisation</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

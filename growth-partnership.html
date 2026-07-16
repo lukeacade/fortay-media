@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Growth Partnership - Fortay Media</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO
+    ============================ */
+    .gp-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+    }
+    .gp-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+    }
+    .gp-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.3) 55%,
+        rgba(0,0,0,0.65) 100%
+      );
+    }
+    .gp-hero-wrap {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 88px;
+    }
+    .gp-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .gp-hero-title {
+      font-size: clamp(64px, 9vw, 130px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .gp-hero-title em { font-style: normal; color: var(--yellow); }
+    .gp-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .gp-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+    .gp-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .gp-scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      right: 64px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.35;
+    }
+    .gp-scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .gp-scroll-line {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, white, transparent);
+      animation: gpScrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes gpScrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%     { opacity: 0.1;  transform: scaleY(0.4); }
+    }
+
+    /* ============================
+       STATS STRIP
+    ============================ */
+    .gp-stats {
+      background: var(--dark);
+      padding: 72px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .gp-stats-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+    }
+    .gp-stat {
+      padding: 0 48px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .gp-stat:first-child { border-left: none; padding-left: 0; }
+    .gp-stat-num {
+      font-size: clamp(52px, 5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .gp-stat-num sup { font-size: 0.4em; color: var(--yellow); vertical-align: super; }
+    .gp-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============================
+       THE PROBLEM
+    ============================ */
+    .gp-problem {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .gp-problem-inner { max-width: 1440px; margin: 0 auto; }
+    .gp-problem-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .gp-problem-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .gp-problem-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .gp-problem-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 3px;
+    }
+    .gp-pain {
+      background: var(--dark2);
+      padding: 44px 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: background 0.3s;
+    }
+    .gp-pain:hover { background: #1a1a1a; }
+    .gp-pain-index {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .gp-pain h4 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+    .gp-pain p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       THE SOLUTION / PROCESS
+    ============================ */
+    .gp-solution {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .gp-solution-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    .gp-solution-left {
+      position: sticky;
+      top: 96px;
+    }
+    .gp-solution-left .section-tag { margin-bottom: 20px; }
+    .gp-solution-title {
+      font-size: clamp(38px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1.0;
+      margin-bottom: 18px;
+    }
+    .gp-solution-intro {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 420px;
+    }
+    .gp-solution-steps { display: flex; flex-direction: column; }
+    .gp-step {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: start;
+      transition: padding-left 0.3s;
+    }
+    .gp-step:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .gp-step:hover { padding-left: 8px; }
+    .gp-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      padding-top: 4px;
+    }
+    .gp-step h4 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .gp-step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       CINEMATIC BREAK
+    ============================ */
+    .gp-break {
+      position: relative;
+      height: 72vh;
+      overflow: hidden;
+    }
+    .gp-break img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      object-position: center center;
+    }
+    .gp-break-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.1) 65%);
+      display: flex;
+      align-items: center;
+    }
+    .gp-break-text {
+      padding: 0 64px;
+      max-width: 860px;
+    }
+    .gp-break-text blockquote {
+      font-size: clamp(36px, 6vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      font-style: normal;
+    }
+    .gp-break-text blockquote span { color: var(--yellow); }
+    .gp-break-text cite {
+      display: block;
+      font-size: 13px;
+      font-style: normal;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 28px;
+    }
+
+    /* ============================
+       WHAT YOU GET (deliverables rail)
+    ============================ */
+    .gp-deliver {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .gp-deliver-inner { max-width: 1440px; margin: 0 auto; }
+    .gp-deliver-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .gp-deliver-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .gp-deliver-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .gp-deliver-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .gp-del {
+      background: var(--dark2);
+      padding: 44px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background 0.3s;
+    }
+    .gp-del:hover { background: #1a1a1a; }
+    .gp-del-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      display: block;
+    }
+    .gp-del h3 {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      margin-bottom: 4px;
+    }
+    .gp-del ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .gp-del li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.55);
+    }
+    .gp-del li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ============================
+       PARTNERSHIP TIERS
+    ============================ */
+    .gp-tiers {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .gp-tiers-inner { max-width: 1440px; margin: 0 auto; }
+    .gp-tiers-head { margin-bottom: 72px; }
+    .gp-tiers-head h2 {
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      max-width: 820px;
+    }
+    .gp-tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .gp-tcard {
+      background: var(--dark2);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .gp-tcard:hover { background: #1a1a1a; }
+    .gp-tcard.featured {
+      background: var(--yellow);
+      color: var(--dark);
+    }
+    .gp-tcard.featured:hover { background: #e6b800; }
+    .gp-tcard-index {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .gp-tcard.featured .gp-tcard-index { color: rgba(0,0,0,0.4); }
+    .gp-tcard h3 {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+    .gp-tcard-price {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+    .gp-tcard-pnote {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .gp-tcard.featured .gp-tcard-pnote { color: rgba(0,0,0,0.5); }
+    .gp-tcard-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .gp-tcard.featured .gp-tcard-desc { color: rgba(0,0,0,0.6); }
+    .gp-tcard-rule {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .gp-tcard.featured .gp-tcard-rule { background: rgba(0,0,0,0.15); }
+    .gp-tcard-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .gp-tcard-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .gp-tcard-list li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .gp-tcard.featured .gp-tcard-list li::before { color: var(--dark); }
+    .gp-tcard-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      text-decoration: none;
+      margin-top: 8px;
+      transition: gap 0.3s;
+    }
+    .gp-tcard.featured .gp-tcard-link { color: var(--dark); }
+    .gp-tcard-link:hover { gap: 18px; }
+    .gp-tcard-link svg {
+      width: 16px; height: 16px;
+      stroke: currentColor; fill: none; stroke-width: 2;
+    }
+
+    /* ============================
+       WHO IT'S FOR
+    ============================ */
+    .gp-who {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .gp-who-inner { max-width: 1440px; margin: 0 auto; }
+    .gp-who-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .gp-who-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .gp-who-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .gp-who-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .gp-who-card {
+      background: var(--dark);
+      padding: 44px 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background 0.3s;
+    }
+    .gp-who-card:hover { background: #161616; }
+    .gp-who-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .gp-who-card h3 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+    .gp-who-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.75;
+    }
+
+    /* ============================
+       BOOKING CTA
+    ============================ */
+    .gp-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .gp-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .gp-cta h2 {
+      font-size: clamp(64px, 10vw, 140px);
+      font-weight: 900;
+      letter-spacing: -6px;
+      line-height: 0.88;
+      margin-bottom: 36px;
+    }
+    .gp-cta h2 span { color: var(--yellow); }
+    .gp-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .gp-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .gp-hero-wrap { padding: 0 24px 64px; }
+      .gp-hero-title { letter-spacing: -2px; }
+      .gp-scroll-indicator { display: none; }
+      .gp-stats { padding: 60px 24px; }
+      .gp-stats-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .gp-stat { border-left: none; padding-left: 0; }
+      .gp-problem { padding: 80px 24px; }
+      .gp-problem-header { grid-template-columns: 1fr; gap: 24px; }
+      .gp-problem-grid { grid-template-columns: 1fr; }
+      .gp-solution { padding: 80px 24px; }
+      .gp-solution-inner { grid-template-columns: 1fr; gap: 48px; }
+      .gp-solution-left { position: static; }
+      .gp-break { height: 50vh; }
+      .gp-break-text { padding: 0 24px; }
+      .gp-deliver { padding: 80px 24px; }
+      .gp-deliver-header { grid-template-columns: 1fr; gap: 24px; }
+      .gp-deliver-grid { grid-template-columns: 1fr; }
+      .gp-tiers { padding: 80px 24px; }
+      .gp-tiers-grid { grid-template-columns: 1fr; }
+      .gp-who { padding: 80px 24px; }
+      .gp-who-header { grid-template-columns: 1fr; gap: 24px; }
+      .gp-who-grid { grid-template-columns: 1fr; }
+      .gp-cta { padding: 100px 24px; }
+      .gp-cta h2 { letter-spacing: -3px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html" class="active">Growth Partnership</a></li>
+    <li><a href="video-production.html">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Book a Strategy Call</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="gp-hero">
+  <img class="gp-hero-img"
+    src="studio/Professional%20Photos/Fortay%20Podcast%20Studio-140.jpg"
+    alt="Fortay Media production in progress"/>
+  <div class="gp-hero-overlay"></div>
+  <div class="gp-hero-wrap">
+    <div class="gp-hero-eyebrow reveal">Growth Partnership - Monthly Retainer</div>
+    <h1 class="gp-hero-title reveal reveal-delay-1">
+      Your content<br>team, built<br>to <em>grow.</em>
+    </h1>
+    <div class="gp-hero-bottom reveal reveal-delay-2">
+      <p class="gp-hero-desc">Strategy, production, distribution, and optimisation - handled every month. One team, one plan, one accountable result.</p>
+      <div class="gp-hero-actions">
+        <a href="contact.html" class="btn-primary">Book a Strategy Call</a>
+        <a href="#how-it-works" class="btn-outline">See How It Works</a>
+      </div>
+    </div>
+  </div>
+  <div class="gp-scroll-indicator">
+    <span>Scroll</span>
+    <div class="gp-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ② STATS -->
+<section class="gp-stats">
+  <div class="gp-stats-inner">
+    <div class="gp-stat reveal">
+      <div class="gp-stat-num">1<sup>team</sup></div>
+      <div class="gp-stat-label">Strategy to delivery</div>
+    </div>
+    <div class="gp-stat reveal reveal-delay-1">
+      <div class="gp-stat-num">30<sup>+</sup></div>
+      <div class="gp-stat-label">Assets per month</div>
+    </div>
+    <div class="gp-stat reveal reveal-delay-2">
+      <div class="gp-stat-num">4<sup>pillars</sup></div>
+      <div class="gp-stat-label">Strategy · production · distribution · reporting</div>
+    </div>
+    <div class="gp-stat reveal reveal-delay-3">
+      <div class="gp-stat-num">0<sup>churn</sup></div>
+      <div class="gp-stat-label">Freelancers to juggle</div>
+    </div>
+  </div>
+</section>
+
+<!-- ②b TRUSTED BY -->
+<style>
+  .gp-proof { padding: 80px 56px; background: var(--dark2); border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .gp-proof-label { text-align: center; font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 48px; }
+  .gp-logo-carousel { overflow: hidden; position: relative; }
+  .gp-logo-carousel::before, .gp-logo-carousel::after { content: ''; position: absolute; top: 0; bottom: 0; width: 140px; z-index: 2; pointer-events: none; }
+  .gp-logo-carousel::before { left: 0; background: linear-gradient(to right, var(--dark2), transparent); }
+  .gp-logo-carousel::after { right: 0; background: linear-gradient(to left, var(--dark2), transparent); }
+  .gp-logo-track { display: flex; align-items: center; gap: 64px; animation: gpLogoScroll 40s linear infinite; width: max-content; padding: 0 32px; }
+  .gp-logo-track:hover { animation-play-state: paused; }
+  .gp-logo-item { flex-shrink: 0; height: 36px; display: flex; align-items: center; }
+  .gp-logo-item img { height: 36px; width: auto; max-width: 140px; object-fit: contain; filter: grayscale(1) brightness(2); opacity: 0.45; transition: filter 0.3s, opacity 0.3s; }
+  .gp-logo-item img:hover { filter: grayscale(0) brightness(1.05); opacity: 1; }
+  @keyframes gpLogoScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  @media (max-width: 960px) { .gp-proof { padding: 60px 24px; } .gp-logo-track { gap: 36px; } }
+</style>
+<section class="gp-proof">
+  <p class="gp-proof-label reveal">Trusted by brands you know</p>
+  <div class="gp-logo-carousel reveal reveal-delay-1">
+    <div class="gp-logo-track">
+      <div class="gp-logo-item"><img src="Images/imgi_33_yorkshiretea.jpg" alt="Yorkshire Tea"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_41_siemens-logo-0-4208419415-300x300.png" alt="Siemens"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_35_channel-4-1-logo-png-transparent-2409432490-300x300.png" alt="Channel 4"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_46_logo-cadbury.png" alt="Cadbury"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_47_logo-sega.png" alt="SEGA"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_50_logo-nhs.png" alt="NHS"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_54_logo-holidayinn.png" alt="Holiday Inn"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_55_logo-crowneplaza.png" alt="Crowne Plaza"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_48_logo-malmaisonhotels.png" alt="Malmaison Hotels"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_59_logo-sheffieldunitedfc.png" alt="Sheffield United FC"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_56_logo-cameronsbrewers.png" alt="Camerons Brewers"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_57_logo-esa.png" alt="ESA"/></div>
+      <!-- duplicate for seamless loop -->
+      <div class="gp-logo-item"><img src="Images/imgi_33_yorkshiretea.jpg" alt="Yorkshire Tea"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_41_siemens-logo-0-4208419415-300x300.png" alt="Siemens"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_35_channel-4-1-logo-png-transparent-2409432490-300x300.png" alt="Channel 4"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_46_logo-cadbury.png" alt="Cadbury"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_47_logo-sega.png" alt="SEGA"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_50_logo-nhs.png" alt="NHS"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_54_logo-holidayinn.png" alt="Holiday Inn"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_55_logo-crowneplaza.png" alt="Crowne Plaza"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_48_logo-malmaisonhotels.png" alt="Malmaison Hotels"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_59_logo-sheffieldunitedfc.png" alt="Sheffield United FC"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_56_logo-cameronsbrewers.png" alt="Camerons Brewers"/></div>
+      <div class="gp-logo-item"><img src="Images/imgi_57_logo-esa.png" alt="ESA"/></div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ THE PROBLEM -->
+<section class="gp-problem">
+  <div class="gp-problem-inner">
+    <div class="gp-problem-header">
+      <h2 class="gp-problem-title reveal">Most brands are<br>losing the content<br>game before<br>they even start.</h2>
+      <p class="gp-problem-body reveal reveal-delay-1">It's rarely a budget problem - it's a system problem. Without joined-up strategy, production, and distribution you get inconsistent output, wasted spend, and content that never reaches the people it was made for.</p>
+    </div>
+    <div class="gp-problem-grid">
+
+      <div class="gp-pain reveal">
+        <span class="gp-pain-index">01 - Pain</span>
+        <h4>Inconsistent output</h4>
+        <p>Posting when you remember to, with no clear direction or plan behind it - and results that mirror the effort.</p>
+      </div>
+
+      <div class="gp-pain reveal reveal-delay-1">
+        <span class="gp-pain-index">02 - Pain</span>
+        <h4>Strategy-free creative</h4>
+        <p>Great-looking content that doesn't connect to the business. Pretty, but nothing a board would put money behind.</p>
+      </div>
+
+      <div class="gp-pain reveal reveal-delay-2">
+        <span class="gp-pain-index">03 - Pain</span>
+        <h4>Freelancer sprawl</h4>
+        <p>A video person here, a social person there, a strategist somewhere else. No one owns the outcome - so no one ships it.</p>
+      </div>
+
+      <div class="gp-pain reveal reveal-delay-3">
+        <span class="gp-pain-index">04 - Pain</span>
+        <h4>Content that goes nowhere</h4>
+        <p>You invest in production, then nobody distributes it. It sits on a drive. Nobody sees it. Nothing compounds.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ④ SOLUTION / PROCESS -->
+<section class="gp-solution" id="how-it-works">
+  <div class="gp-solution-inner">
+    <div class="gp-solution-left reveal">
+      <div class="section-tag">The Solution</div>
+      <h2 class="gp-solution-title">We become<br>your content<br>team.</h2>
+      <p class="gp-solution-intro">We plug in as your in-house content and marketing department - handling every stage from strategy through to performance. One roof, one roadmap, one number to call.</p>
+      <a href="contact.html" class="btn-primary">Book a Strategy Call</a>
+    </div>
+    <div class="gp-solution-steps">
+      <div class="gp-step reveal">
+        <span class="gp-step-num">01</span>
+        <div>
+          <h4>Discovery</h4>
+          <p>A structured deep-dive into your business, brand, audience, and goals - so every piece of content we make ladders back to a commercial outcome.</p>
+        </div>
+      </div>
+      <div class="gp-step reveal reveal-delay-1">
+        <span class="gp-step-num">02</span>
+        <div>
+          <h4>Strategy</h4>
+          <p>Monthly content plan, campaign calendar, and messaging framework. Signed off before a single camera rolls.</p>
+        </div>
+      </div>
+      <div class="gp-step reveal reveal-delay-2">
+        <span class="gp-step-num">03</span>
+        <div>
+          <h4>Production</h4>
+          <p>In-house shoots, editing, and creative - executed to a cinematic standard in our Sheffield studio or on location.</p>
+        </div>
+      </div>
+      <div class="gp-step reveal reveal-delay-3">
+        <span class="gp-step-num">04</span>
+        <div>
+          <h4>Distribution</h4>
+          <p>Social, paid, and web - deployed strategically where your audience actually lives, not just where it's convenient.</p>
+        </div>
+      </div>
+      <div class="gp-step reveal reveal-delay-4">
+        <span class="gp-step-num">05</span>
+        <div>
+          <h4>Optimisation</h4>
+          <p>Monthly review and reporting. Every month the content gets sharper, the targeting gets tighter, and the numbers climb.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ CINEMATIC BREAK -->
+<div class="gp-break">
+  <img src="studio/Professional%20Photos/Fortay%20Podcast%20Studio-1.jpg" alt="Fortay Media team in session" style="object-position: center 30%;"/>
+  <div class="gp-break-veil">
+    <div class="gp-break-text">
+      <blockquote class="reveal">"It's like<br>hiring an entire<br>marketing <span>department<br>in one move."</span></blockquote>
+      <cite class="reveal reveal-delay-1"> -  Partnership client</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ⑥ WHAT YOU GET -->
+<section class="gp-deliver">
+  <div class="gp-deliver-inner">
+    <div class="gp-deliver-header">
+      <h2 class="gp-deliver-title reveal">Everything your<br>content engine<br>needs.</h2>
+      <p class="gp-deliver-body reveal reveal-delay-1">Six pillars, one partnership. Each month you get a plan, the production to execute it, the reach to deliver it, and the numbers to prove it worked.</p>
+    </div>
+    <div class="gp-deliver-grid">
+
+      <div class="gp-del reveal">
+        <span class="gp-del-tag">01 - Production</span>
+        <h3>Monthly video production</h3>
+        <ul>
+          <li>Monthly in-studio or on-location shoot</li>
+          <li>Long-form and short-form cut-downs</li>
+          <li>Brand films, case studies, social reels</li>
+          <li>Motion graphics and captions</li>
+        </ul>
+      </div>
+
+      <div class="gp-del reveal reveal-delay-1">
+        <span class="gp-del-tag">02 - Strategy</span>
+        <h3>Content strategy</h3>
+        <ul>
+          <li>Monthly content calendar and planning</li>
+          <li>Audience and competitor analysis</li>
+          <li>Campaign messaging and creative direction</li>
+          <li>Repurposing strategy for every asset</li>
+        </ul>
+      </div>
+
+      <div class="gp-del reveal reveal-delay-2">
+        <span class="gp-del-tag">03 - Social</span>
+        <h3>Social media management</h3>
+        <ul>
+          <li>Platform management across key channels</li>
+          <li>Scheduling, posting, community response</li>
+          <li>Story, reel, and feed production</li>
+          <li>Hashtag and trend strategy</li>
+        </ul>
+      </div>
+
+      <div class="gp-del reveal">
+        <span class="gp-del-tag">04 - Paid</span>
+        <h3>Paid campaign support</h3>
+        <ul>
+          <li>Ad creative for Meta and YouTube</li>
+          <li>Campaign setup and audience targeting</li>
+          <li>A/B testing and creative iteration</li>
+          <li>Budget management and pacing</li>
+        </ul>
+      </div>
+
+      <div class="gp-del reveal reveal-delay-1">
+        <span class="gp-del-tag">05 - Analytics</span>
+        <h3>Analytics &amp; reporting</h3>
+        <ul>
+          <li>Monthly performance report and debrief</li>
+          <li>KPI tracking against agreed targets</li>
+          <li>Insight-led recommendations</li>
+          <li>Strategy adjustment based on data</li>
+        </ul>
+      </div>
+
+      <div class="gp-del reveal reveal-delay-2">
+        <span class="gp-del-tag">06 - Studio</span>
+        <h3>Priority studio access</h3>
+        <ul>
+          <li>Priority studio booking every month</li>
+          <li>Green screen, podcast, and set builds</li>
+          <li>Full crew included in partnership</li>
+          <li>Flexible scheduling around your team</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ PARTNERSHIP TIERS -->
+<section class="gp-tiers" id="tiers">
+  <div class="gp-tiers-inner">
+    <div class="gp-tiers-head">
+      <div class="section-tag reveal">Partnership Tiers</div>
+      <h2 class="reveal reveal-delay-1">Choose the level<br>of partnership<br>that fits.</h2>
+    </div>
+    <div class="gp-tiers-grid">
+
+      <div class="gp-tcard reveal">
+        <div class="gp-tcard-index">01</div>
+        <h3>Starter</h3>
+        <div>
+          <div class="gp-tcard-price">POA</div>
+          <div class="gp-tcard-pnote">Per month · 3-month minimum</div>
+        </div>
+        <p class="gp-tcard-desc">The foundation. A consistent monthly drumbeat of content, strategy, and reporting - built for brands ready to stop posting sporadically.</p>
+        <div class="gp-tcard-rule"></div>
+        <ul class="gp-tcard-list">
+          <li>Monthly strategy and content calendar</li>
+          <li>One production day per month</li>
+          <li>Long-form + short-form cut-downs</li>
+          <li>Social scheduling across two channels</li>
+          <li>Monthly performance report</li>
+        </ul>
+        <a href="contact.html" class="gp-tcard-link">
+          Start a Conversation
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="gp-tcard featured reveal reveal-delay-1">
+        <div class="gp-tcard-index">02 - Most Popular</div>
+        <h3>Growth</h3>
+        <div>
+          <div class="gp-tcard-price">POA</div>
+          <div class="gp-tcard-pnote">Per month · 6-month partnership</div>
+        </div>
+        <p class="gp-tcard-desc">Everything in Starter, scaled up. Multiple shoot days, paid campaign support, and a dedicated account lead driving the whole engine forward.</p>
+        <div class="gp-tcard-rule"></div>
+        <ul class="gp-tcard-list">
+          <li>Everything in Starter</li>
+          <li>Two production days per month</li>
+          <li>Paid ad creative for Meta + YouTube</li>
+          <li>Full social management, four channels</li>
+          <li>Dedicated account lead</li>
+          <li>Quarterly strategy deep-dive</li>
+        </ul>
+        <a href="contact.html" class="gp-tcard-link">
+          Book a Strategy Call
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="gp-tcard reveal reveal-delay-2">
+        <div class="gp-tcard-index">03</div>
+        <h3>Scale</h3>
+        <div>
+          <div class="gp-tcard-price">POA</div>
+          <div class="gp-tcard-pnote">Per month · 12-month partnership</div>
+        </div>
+        <p class="gp-tcard-desc">We become your marketing department. Full team embedded, multi-platform campaigns, and senior strategy driving commercial outcomes.</p>
+        <div class="gp-tcard-rule"></div>
+        <ul class="gp-tcard-list">
+          <li>Everything in Growth</li>
+          <li>Unlimited production days in-studio</li>
+          <li>Multi-platform campaign management</li>
+          <li>Senior strategist on your team</li>
+          <li>Monthly exec reporting and reviews</li>
+          <li>Priority response across the partnership</li>
+        </ul>
+        <a href="contact.html" class="gp-tcard-link">
+          Request a Proposal
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ WHO IT'S FOR -->
+<section class="gp-who">
+  <div class="gp-who-inner">
+    <div class="gp-who-header">
+      <h2 class="gp-who-title reveal">Built for brands<br>serious about<br>growth.</h2>
+      <p class="gp-who-body reveal reveal-delay-1">The Growth Partnership is a commitment, not a trial. It's designed for businesses that know what they're building - and want a team that can actually build it with them.</p>
+    </div>
+    <div class="gp-who-grid">
+
+      <div class="gp-who-card reveal">
+        <span class="gp-who-tag">01 - For</span>
+        <h3>Growing brands ready to scale</h3>
+        <p>You're past startup stage and ready to invest in a consistent content presence that drives real revenue. You know what you're building - you just need the team to build it with.</p>
+      </div>
+
+      <div class="gp-who-card reveal reveal-delay-1">
+        <span class="gp-who-tag">02 - For</span>
+        <h3>Businesses tired of juggling freelancers</h3>
+        <p>You've been managing a video person here, a social person there, and a strategist somewhere else. It's exhausting. You want one team that owns it all and gets results.</p>
+      </div>
+
+      <div class="gp-who-card reveal reveal-delay-2">
+        <span class="gp-who-tag">03 - For</span>
+        <h3>Teams without in-house content capability</h3>
+        <p>Your team is brilliant at what you do - but content isn't your core skill. Hand it to people who eat and breathe this stuff so you can focus on running the business.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑨ BOOKING CTA -->
+<section class="gp-cta">
+  <div class="gp-cta-eyebrow reveal">Book a Strategy Call</div>
+  <h2 class="reveal reveal-delay-1">Ready to<br><span>grow?</span></h2>
+  <p class="reveal reveal-delay-2">Book a free 30-minute strategy call. We'll understand your business, walk you through exactly how the partnership works, and tell you honestly whether we're the right fit.</p>
+  <div class="gp-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Book a Strategy Call</a>
+    <a href="work.html" class="btn-outline reveal reveal-delay-4">See Our Work</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Growth Partnership</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Strategy</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Production</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Distribution</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Optimisation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Results</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Growth Partnership</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Strategy</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Production</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Distribution</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Optimisation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Results</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

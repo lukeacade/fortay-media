@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Event Filming & Live Streaming - Fortay Media</title>
+  <meta name="description" content="Professional event filming and live streaming for conferences, awards ceremonies, product launches and trade shows. Multi-camera coverage, highlight reels, and fast turnaround from Fortay Media's in-house crew."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO
+    ============================ */
+    .ef-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+    }
+    .ef-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      background: url('https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1600&q=80&auto=format&fit=crop') center/cover;
+    }
+    .ef-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.28) 55%,
+        rgba(0,0,0,0.65) 100%
+      );
+    }
+    .ef-hero-wrap {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 88px;
+    }
+    .ef-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .ef-hero-title {
+      font-size: clamp(64px, 9vw, 130px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .ef-hero-title em { font-style: normal; color: var(--yellow); }
+    .ef-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .ef-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+    .ef-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .ef-scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      right: 64px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.35;
+    }
+    .ef-scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .ef-scroll-line {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, white, transparent);
+      animation: efScrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes efScrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%     { opacity: 0.1;  transform: scaleY(0.4); }
+    }
+
+    /* ============================
+       STATS
+    ============================ */
+    .ef-stats {
+      background: var(--dark);
+      padding: 72px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .ef-stats-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+    }
+    .ef-stat {
+      padding: 0 48px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .ef-stat:first-child { border-left: none; padding-left: 0; }
+    .ef-stat-num {
+      font-size: clamp(52px, 5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .ef-stat-num sup { font-size: 0.4em; color: var(--yellow); vertical-align: super; }
+    .ef-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============================
+       SERVICES (indexed tiles)
+    ============================ */
+    .ef-services {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .ef-services-inner { max-width: 1440px; margin: 0 auto; }
+    .ef-services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .ef-services-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .ef-services-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .ef-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .ef-svc {
+      background: var(--dark2);
+      padding: 44px 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background 0.3s;
+    }
+    .ef-svc:hover { background: #1a1a1a; }
+    .ef-svc-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .ef-svc h3 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    .ef-svc p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+    .ef-svc ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .ef-svc li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.55);
+    }
+    .ef-svc li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ============================
+       EVENT TYPES (gradient tile grid)
+    ============================ */
+    .ef-formats {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .ef-formats-inner { max-width: 1440px; margin: 0 auto; }
+    .ef-formats-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .ef-formats-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .ef-formats-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .ef-formats-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 3px;
+    }
+    .ef-fmt {
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+    .ef-fmt-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      display: block;
+      transition: transform 0.9s cubic-bezier(0.23,1,0.32,1);
+    }
+    .ef-fmt:hover .ef-fmt-img { transform: scale(1.06); }
+    .ef-fmt-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.05) 55%);
+    }
+    .ef-fmt-body {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 40px 36px;
+    }
+    .ef-fmt-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .ef-fmt-name {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      display: block;
+      margin-bottom: 10px;
+      line-height: 1.05;
+    }
+    .ef-fmt-detail {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.45s ease, opacity 0.45s ease;
+    }
+    .ef-fmt:hover .ef-fmt-detail { max-height: 72px; opacity: 1; }
+
+    /* ============================
+       EVENTS WE COVER (marquee-style tag grid)
+    ============================ */
+    .ef-coverage {
+      background: var(--dark2);
+      padding: 100px 64px;
+    }
+    .ef-coverage-inner { max-width: 1440px; margin: 0 auto; }
+    .ef-coverage-head { margin-bottom: 48px; max-width: 700px; }
+    .ef-coverage-head h2 {
+      font-size: clamp(38px, 4.5vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .ef-coverage-head p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .ef-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .ef-tag {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 12px 20px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      color: rgba(255,255,255,0.75);
+      transition: border-color 0.25s, color 0.25s;
+    }
+    .ef-tag:hover {
+      border-color: var(--yellow);
+      color: var(--yellow);
+    }
+
+    /* ============================
+       PROCESS (sticky rail)
+    ============================ */
+    .ef-process {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .ef-process-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    .ef-process-left { position: sticky; top: 96px; }
+    .ef-process-left .section-tag { margin-bottom: 20px; }
+    .ef-process-title {
+      font-size: clamp(38px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .ef-process-intro {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 420px;
+    }
+    .ef-process-steps { display: flex; flex-direction: column; }
+    .ef-step {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: start;
+      transition: padding-left 0.3s;
+    }
+    .ef-step:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .ef-step:hover { padding-left: 8px; }
+    .ef-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      padding-top: 4px;
+    }
+    .ef-step h4 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .ef-step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       CINEMATIC BREAK
+    ============================ */
+    .ef-break {
+      position: relative;
+      height: 72vh;
+      overflow: hidden;
+      background: url('https://images.unsplash.com/photo-1522158637959-30385a09e0da?w=1600&q=80&auto=format&fit=crop') center/cover;
+    }
+    .ef-break-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.1) 65%);
+      display: flex;
+      align-items: center;
+    }
+    .ef-break-text {
+      padding: 0 64px;
+      max-width: 820px;
+    }
+    .ef-break-text blockquote {
+      font-size: clamp(36px, 6vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      font-style: normal;
+    }
+    .ef-break-text blockquote span { color: var(--yellow); }
+    .ef-break-text cite {
+      display: block;
+      font-size: 13px;
+      font-style: normal;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 28px;
+    }
+
+    /* ============================
+       PROJECT PACKAGES (tiers)
+    ============================ */
+    .ef-packages {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .ef-packages-inner { max-width: 1440px; margin: 0 auto; }
+    .ef-packages-head { margin-bottom: 72px; }
+    .ef-packages-head h2 {
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      max-width: 820px;
+    }
+    .ef-packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .ef-pcard {
+      background: var(--dark2);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .ef-pcard:hover { background: #1a1a1a; }
+    .ef-pcard.featured {
+      background: var(--yellow);
+      color: var(--dark);
+    }
+    .ef-pcard.featured:hover { background: #e6b800; }
+    .ef-pcard-index {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .ef-pcard.featured .ef-pcard-index { color: rgba(0,0,0,0.4); }
+    .ef-pcard h3 {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+    .ef-pcard-price {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+    .ef-pcard-pnote {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .ef-pcard.featured .ef-pcard-pnote { color: rgba(0,0,0,0.5); }
+    .ef-pcard-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .ef-pcard.featured .ef-pcard-desc { color: rgba(0,0,0,0.6); }
+    .ef-pcard-rule {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .ef-pcard.featured .ef-pcard-rule { background: rgba(0,0,0,0.15); }
+    .ef-pcard-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .ef-pcard-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .ef-pcard-list li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .ef-pcard.featured .ef-pcard-list li::before { color: var(--dark); }
+    .ef-pcard-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      text-decoration: none;
+      margin-top: 8px;
+      transition: gap 0.3s;
+    }
+    .ef-pcard.featured .ef-pcard-link { color: var(--dark); }
+    .ef-pcard-link:hover { gap: 18px; }
+    .ef-pcard-link svg {
+      width: 16px; height: 16px;
+      stroke: currentColor; fill: none; stroke-width: 2;
+    }
+
+    /* ============================
+       CTA
+    ============================ */
+    .ef-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .ef-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .ef-cta h2 {
+      font-size: clamp(64px, 10vw, 140px);
+      font-weight: 900;
+      letter-spacing: -6px;
+      line-height: 0.88;
+      margin-bottom: 36px;
+    }
+    .ef-cta h2 span { color: var(--yellow); }
+    .ef-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .ef-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .ef-hero-wrap { padding: 0 24px 64px; }
+      .ef-hero-title { letter-spacing: -2px; }
+      .ef-scroll-indicator { display: none; }
+      .ef-stats { padding: 60px 24px; }
+      .ef-stats-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .ef-stat { border-left: none; padding-left: 0; }
+      .ef-services { padding: 80px 24px; }
+      .ef-services-header { grid-template-columns: 1fr; gap: 24px; }
+      .ef-services-grid { grid-template-columns: 1fr; }
+      .ef-formats { padding: 80px 24px; }
+      .ef-formats-header { grid-template-columns: 1fr; gap: 24px; }
+      .ef-formats-grid { grid-template-columns: 1fr; }
+      .ef-fmt-img { aspect-ratio: 16/10; }
+      .ef-coverage { padding: 80px 24px; }
+      .ef-process { padding: 80px 24px; }
+      .ef-process-inner { grid-template-columns: 1fr; gap: 48px; }
+      .ef-process-left { position: static; }
+      .ef-break { height: 50vh; }
+      .ef-break-text { padding: 0 24px; }
+      .ef-packages { padding: 80px 24px; }
+      .ef-packages-grid { grid-template-columns: 1fr; }
+      .ef-cta { padding: 100px 24px; }
+      .ef-cta h2 { letter-spacing: -3px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="ef-hero">
+  <div class="ef-hero-img" style="background-image:url('https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1600&q=80&auto=format&fit=crop');background-size:cover;background-position:center;"></div>
+  <div class="ef-hero-overlay"></div>
+  <div class="ef-hero-wrap">
+    <div class="ef-hero-eyebrow reveal">Event Filming - Capture the Moment, Keep the Impact</div>
+    <h1 class="ef-hero-title reveal reveal-delay-1">
+      Once it's over,<br>it isn't <em>gone.</em>
+    </h1>
+    <div class="ef-hero-bottom reveal reveal-delay-2">
+      <p class="ef-hero-desc">All that planning, budget, and energy shouldn't disappear the moment the lights come up. Our crew films unobtrusively, captures every key moment, and turns one day into months of content.</p>
+      <div class="ef-hero-actions">
+        <a href="contact.html" class="btn-primary">Book Your Event</a>
+        <a href="#packages" class="btn-outline">View Packages</a>
+      </div>
+    </div>
+  </div>
+  <div class="ef-scroll-indicator">
+    <span>Scroll</span>
+    <div class="ef-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ② STATS -->
+<section class="ef-stats">
+  <div class="ef-stats-inner">
+    <div class="ef-stat reveal">
+      <div class="ef-stat-num">20<sup>+</sup></div>
+      <div class="ef-stat-label">Event types covered</div>
+    </div>
+    <div class="ef-stat reveal reveal-delay-1">
+      <div class="ef-stat-num">1.1<sup>bn hrs</sup></div>
+      <div class="ef-stat-label">Live video watched in 2019 alone</div>
+    </div>
+    <div class="ef-stat reveal reveal-delay-2">
+      <div class="ef-stat-num">56<sup>%</sup></div>
+      <div class="ef-stat-label">Of live viewers watch conferences &amp; speakers</div>
+    </div>
+    <div class="ef-stat reveal reveal-delay-3">
+      <div class="ef-stat-num">24<sup>hr</sup></div>
+      <div class="ef-stat-label">Fast turnaround available</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ SERVICES -->
+<section class="ef-services">
+  <div class="ef-services-inner">
+    <div class="ef-services-header">
+      <h2 class="ef-services-title reveal">We've got the<br>background<br>covered.</h2>
+      <p class="ef-services-body reveal reveal-delay-1">Planning, staging, camera angles, crowd flow - we handle it all so you can focus on running an unforgettable event. Our team knows how to move through a room full of people, capture the heart of the day, and even get attendees involved, without ever getting in the way.</p>
+    </div>
+    <div class="ef-services-grid">
+
+      <div class="ef-svc reveal">
+        <span class="ef-svc-tag">01 - Service</span>
+        <h3>Multi-Camera Coverage</h3>
+        <p>Presenter, stage, and audience angles covered simultaneously, so Q&A sessions, panels, and keynotes are never missed from any seat in the house.</p>
+        <ul>
+          <li>Multi-camera staging</li>
+          <li>Professional lighting supplied</li>
+          <li>Stage, presenter and audience angles</li>
+        </ul>
+      </div>
+
+      <div class="ef-svc reveal reveal-delay-1">
+        <span class="ef-svc-tag">02 - Service</span>
+        <h3>Live Streaming</h3>
+        <p>Widen your audience beyond the room. We stream to Facebook, YouTube, and your own microsite, so people at home don't miss the moment.</p>
+        <ul>
+          <li>Multi-platform live streaming</li>
+          <li>Facebook, YouTube &amp; microsite delivery</li>
+          <li>Real-time engagement, wider reach</li>
+        </ul>
+      </div>
+
+      <div class="ef-svc reveal reveal-delay-2">
+        <span class="ef-svc-tag">03 - Service</span>
+        <h3>Highlight Reels</h3>
+        <p>The energy of the day, distilled into a highlight video built to promote next year's event and give your socials months of content.</p>
+        <ul>
+          <li>Same-day turnaround available</li>
+          <li>Full-length and cut-down edits</li>
+          <li>Built for socials and next year's promo</li>
+        </ul>
+      </div>
+
+      <div class="ef-svc reveal">
+        <span class="ef-svc-tag">04 - Service</span>
+        <h3>Attendee Interviews</h3>
+        <p>On-the-day interviews that add a personal touch - real reactions, real voices, and genuine proof your event delivered.</p>
+        <ul>
+          <li>Roaming interview setups</li>
+          <li>Attendee and speaker soundbites</li>
+          <li>Adds authenticity to the final cut</li>
+        </ul>
+      </div>
+
+      <div class="ef-svc reveal reveal-delay-1">
+        <span class="ef-svc-tag">05 - Service</span>
+        <h3>Conference Filming</h3>
+        <p>Full-day coverage of talks, breakout sessions, and networking - structured footage that's easy to search, clip, and repurpose.</p>
+        <ul>
+          <li>Session-by-session capture</li>
+          <li>Speaker and slide sync options</li>
+          <li>Clip-ready delivery for follow-up content</li>
+        </ul>
+      </div>
+
+      <div class="ef-svc reveal reveal-delay-2">
+        <span class="ef-svc-tag">06 - Service</span>
+        <h3>Social Media Cut-Downs</h3>
+        <p>Short, platform-native edits pulled straight from the day's footage - so the hype doesn't stop when the doors close.</p>
+        <ul>
+          <li>Vertical and square edits</li>
+          <li>Fast-turnaround social clips</li>
+          <li>Promotional videos for future campaigns</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ④ EVENT TYPES -->
+<section class="ef-formats">
+  <div class="ef-formats-inner">
+    <div class="ef-formats-header">
+      <h2 class="ef-formats-title reveal">Built for<br>every kind<br>of event.</h2>
+      <p class="ef-formats-body reveal reveal-delay-1">From boardroom launches to arena-scale conferences, our crews adapt the setup to the room - not the other way round.</p>
+    </div>
+    <div class="ef-formats-grid">
+
+      <div class="ef-fmt reveal">
+        <div class="ef-fmt-img" style="background: url('https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=1600&q=80&auto=format&fit=crop') center/cover;"></div>
+        <div class="ef-fmt-veil"></div>
+        <div class="ef-fmt-body">
+          <span class="ef-fmt-tag">01 - Corporate</span>
+          <span class="ef-fmt-name">Conferences &amp; B2B Shows</span>
+          <div class="ef-fmt-detail">Full-day multi-camera coverage of keynotes, panels, and breakout sessions - structured for easy clipping and follow-up marketing.</div>
+        </div>
+      </div>
+
+      <div class="ef-fmt reveal reveal-delay-1">
+        <div class="ef-fmt-img" style="background: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&q=80&auto=format&fit=crop') center/cover;"></div>
+        <div class="ef-fmt-veil"></div>
+        <div class="ef-fmt-body">
+          <span class="ef-fmt-tag">02 - Celebration</span>
+          <span class="ef-fmt-name">Awards &amp; Fundraising Events</span>
+          <div class="ef-fmt-detail">Stage lighting, red-carpet moments, and winner reactions captured cleanly - footage built to reuse in next year's campaign.</div>
+        </div>
+      </div>
+
+      <div class="ef-fmt reveal reveal-delay-2">
+        <div class="ef-fmt-img" style="background: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80&auto=format&fit=crop') center/cover;"></div>
+        <div class="ef-fmt-veil"></div>
+        <div class="ef-fmt-body">
+          <span class="ef-fmt-tag">03 - Launch</span>
+          <span class="ef-fmt-name">Product Launches &amp; Trade Shows</span>
+          <div class="ef-fmt-detail">First-impression footage of a new product or brand moment - fast-turned into hero video and social content while the buzz is live.</div>
+        </div>
+      </div>
+
+      <div class="ef-fmt reveal reveal-delay-3">
+        <div class="ef-fmt-img" style="background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600&q=80&auto=format&fit=crop') center/cover;"></div>
+        <div class="ef-fmt-veil"></div>
+        <div class="ef-fmt-body">
+          <span class="ef-fmt-tag">04 - Community</span>
+          <span class="ef-fmt-name">Open Days &amp; Team Building</span>
+          <div class="ef-fmt-detail">Warm, personal coverage that captures culture and connection - the kind of footage that makes people want to be part of what you're building.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ EVENTS WE COVER -->
+<section class="ef-coverage">
+  <div class="ef-coverage-inner">
+    <div class="ef-coverage-head">
+      <div class="section-tag reveal">Events We Cover</div>
+      <h2 class="reveal reveal-delay-1">Don't see<br>yours here?<br>Ask us anyway.</h2>
+      <p class="reveal reveal-delay-2">Our team has filmed everything from press conferences to music events. If it has a stage, a crowd, or a moment worth keeping - we can cover it.</p>
+    </div>
+    <div class="ef-tags reveal reveal-delay-2">
+      <span class="ef-tag">Corporate Events</span>
+      <span class="ef-tag">B2B Shows</span>
+      <span class="ef-tag">Seminars</span>
+      <span class="ef-tag">Awards</span>
+      <span class="ef-tag">Fundraising &amp; Charity</span>
+      <span class="ef-tag">Exhibitions</span>
+      <span class="ef-tag">Launch Events</span>
+      <span class="ef-tag">Trade Shows</span>
+      <span class="ef-tag">Conferences</span>
+      <span class="ef-tag">Sports Events</span>
+      <span class="ef-tag">Lectures</span>
+      <span class="ef-tag">Presentations</span>
+      <span class="ef-tag">Workshops</span>
+      <span class="ef-tag">Team Building</span>
+      <span class="ef-tag">Music Events</span>
+      <span class="ef-tag">PR Events</span>
+      <span class="ef-tag">Press &amp; Media Conferences</span>
+      <span class="ef-tag">Special Events</span>
+      <span class="ef-tag">Open Days</span>
+      <span class="ef-tag">+ Yours?</span>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ PROCESS -->
+<section class="ef-process">
+  <div class="ef-process-inner">
+    <div class="ef-process-left reveal">
+      <div class="section-tag">The Process</div>
+      <h2 class="ef-process-title">From brief<br>to final<br>edit.</h2>
+      <p class="ef-process-intro">One accountable team from the planning call to the finished highlight reel - with fast turnaround so you can capitalise on the hype while it's still hot.</p>
+      <a href="contact.html" class="btn-primary">Book Your Event</a>
+    </div>
+    <div class="ef-process-steps">
+      <div class="ef-step reveal">
+        <span class="ef-step-num">01</span>
+        <div>
+          <h4>Plan</h4>
+          <p>We map the venue, the run of show, and the shots that matter most - deciding camera positions, lighting, and staging before the day so nothing is left to chance.</p>
+        </div>
+      </div>
+      <div class="ef-step reveal reveal-delay-1">
+        <span class="ef-step-num">02</span>
+        <div>
+          <h4>Film</h4>
+          <p>Our crew moves through the event unobtrusively, capturing key moments, presenter shots, and candid reactions - with multi-camera staging for stage and audience.</p>
+        </div>
+      </div>
+      <div class="ef-step reveal reveal-delay-2">
+        <span class="ef-step-num">03</span>
+        <div>
+          <h4>Stream</h4>
+          <p>For events that need to reach beyond the room, we live stream to Facebook, YouTube, or your own microsite - so remote audiences feel just as involved.</p>
+        </div>
+      </div>
+      <div class="ef-step reveal reveal-delay-3">
+        <span class="ef-step-num">04</span>
+        <div>
+          <h4>Deliver</h4>
+          <p>Fast-turned highlight reels, full-length cuts, interviews, and social edits - delivered to your deadline so you can capitalise on the moment while it's fresh.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ CINEMATIC BREAK -->
+<div class="ef-break">
+  <div class="ef-break-veil">
+    <div class="ef-break-text">
+      <blockquote class="reveal">"All the action,<br>as it <span>happens.</span>"</blockquote>
+      <cite class="reveal reveal-delay-1"> -  Event filming client</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ⑧ PROJECT PACKAGES -->
+<section class="ef-packages" id="packages">
+  <div class="ef-packages-inner">
+    <div class="ef-packages-head">
+      <div class="section-tag reveal">Event Packages</div>
+      <h2 class="reveal reveal-delay-1">Three ways<br>to capture<br>your event.</h2>
+    </div>
+    <div class="ef-packages-grid">
+
+      <div class="ef-pcard reveal">
+        <div class="ef-pcard-index">01</div>
+        <h3>Single Day Coverage</h3>
+        <div>
+          <div class="ef-pcard-price">POA</div>
+          <div class="ef-pcard-pnote">One event · fixed scope</div>
+        </div>
+        <p class="ef-pcard-desc">Full-day filming for a single event, from doors open to wrap. Ideal for a conference, awards evening, or launch that needs solid, dependable coverage.</p>
+        <div class="ef-pcard-rule"></div>
+        <ul class="ef-pcard-list">
+          <li>Pre-event planning call</li>
+          <li>Single-camera or multi-camera filming</li>
+          <li>Highlight reel edit</li>
+          <li>Delivery in your chosen formats</li>
+          <li>Fast turnaround available</li>
+        </ul>
+        <a href="contact.html" class="ef-pcard-link">
+          Book Coverage
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="ef-pcard featured reveal reveal-delay-1">
+        <div class="ef-pcard-index">02 - Most Popular</div>
+        <h3>Full Event Package</h3>
+        <div>
+          <div class="ef-pcard-price">POA</div>
+          <div class="ef-pcard-pnote">Multi-camera · full deliverables</div>
+        </div>
+        <p class="ef-pcard-desc">Multi-camera staging, lighting, attendee interviews, and a full suite of edits - everything a bigger event needs from a single coordinated crew.</p>
+        <div class="ef-pcard-rule"></div>
+        <ul class="ef-pcard-list">
+          <li>Multi-camera staging and lighting</li>
+          <li>Stage, presenter and audience coverage</li>
+          <li>Attendee and speaker interviews</li>
+          <li>Highlight reel plus full-length cut</li>
+          <li>Social media cut-downs for every platform</li>
+          <li>Fast-turnaround delivery schedule</li>
+        </ul>
+        <a href="contact.html" class="ef-pcard-link">
+          Book Full Coverage
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="ef-pcard reveal reveal-delay-2">
+        <div class="ef-pcard-index">03</div>
+        <h3>Live Stream Add-On</h3>
+        <div>
+          <div class="ef-pcard-price">POA</div>
+          <div class="ef-pcard-pnote">Any event · added reach</div>
+        </div>
+        <p class="ef-pcard-desc">Add live streaming to any coverage package and open your event up to the whole world - Facebook, YouTube, or your own microsite.</p>
+        <div class="ef-pcard-rule"></div>
+        <ul class="ef-pcard-list">
+          <li>Multi-platform live streaming</li>
+          <li>Facebook, YouTube &amp; microsite setup</li>
+          <li>Dedicated stream technician on the day</li>
+          <li>Post-stream VOD delivery</li>
+        </ul>
+        <a href="contact.html" class="ef-pcard-link">
+          Add Streaming
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑨ CTA -->
+<section class="ef-cta">
+  <div class="ef-cta-eyebrow reveal">Start a Project</div>
+  <h2 class="reveal reveal-delay-1">Don't let it<br><span>fade away.</span></h2>
+  <p class="reveal reveal-delay-2">Tell us about your event, the date, and how you want to use the footage afterwards. We'll come back with a plan, a crew, and a clear quote within 48 hours.</p>
+  <div class="ef-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Book Your Event</a>
+    <a href="work.html" class="btn-outline reveal reveal-delay-4">See Our Work</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Conferences</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Awards Ceremonies</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Live Streaming</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Product Launches</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Trade Shows</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Highlight Reels</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Conferences</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Awards Ceremonies</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Live Streaming</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Product Launches</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Trade Shows</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Highlight Reels</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
+</content>
+</invoke>

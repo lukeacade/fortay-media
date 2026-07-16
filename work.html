@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Work &amp; Case Studies - Fortay Media</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO
+    ============================ */
+    .wk-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+    }
+    .wk-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 28%;
+    }
+    .wk-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.28) 55%,
+        rgba(0,0,0,0.65) 100%
+      );
+    }
+    .wk-hero-wrap {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 88px;
+    }
+    .wk-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .wk-hero-title {
+      font-size: clamp(64px, 9vw, 130px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .wk-hero-title em { font-style: normal; color: var(--yellow); }
+    .wk-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .wk-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+    .wk-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .wk-scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      right: 64px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.35;
+    }
+    .wk-scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .wk-scroll-line {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, white, transparent);
+      animation: wkScrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes wkScrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%     { opacity: 0.1;  transform: scaleY(0.4); }
+    }
+
+    /* ============================
+       STATS
+    ============================ */
+    .wk-stats {
+      background: var(--dark);
+      padding: 72px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .wk-stats-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+    }
+    .wk-stat {
+      padding: 0 48px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .wk-stat:first-child { border-left: none; padding-left: 0; }
+    .wk-stat-num {
+      font-size: clamp(52px, 5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .wk-stat-num sup { font-size: 0.4em; color: var(--yellow); vertical-align: super; }
+    .wk-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============================
+       CASE STUDIES (kept & tightened)
+    ============================ */
+    .wk-cases {
+      background: var(--dark);
+      padding: 120px 64px 80px;
+    }
+    .wk-cases-inner { max-width: 1440px; margin: 0 auto; }
+    .wk-cases-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .wk-cases-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .wk-cases-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .cases-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .case-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: var(--dark2);
+      transition: border-color 0.3s;
+    }
+    .case-card:hover { border-color: rgba(245,195,24,0.28); }
+    .case-card:nth-child(even) { direction: rtl; }
+    .case-card:nth-child(even) > * { direction: ltr; }
+    .case-visual {
+      aspect-ratio: 4/3;
+      position: relative;
+      overflow: hidden;
+      background: var(--dark3);
+    }
+    .case-visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s var(--ease);
+    }
+    .case-card:hover .case-visual img { transform: scale(1.05); }
+    .case-tag-bar {
+      position: absolute;
+      top: 20px; left: 20px;
+      display: flex; gap: 8px; flex-wrap: wrap;
+      z-index: 2;
+    }
+    .case-tag {
+      background: var(--yellow);
+      color: var(--dark);
+      font-size: 10px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 50px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+    .case-body {
+      padding: 60px 52px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .case-client {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 16px;
+    }
+    .case-body h2 {
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 900;
+      letter-spacing: -1.2px;
+      line-height: 1.08;
+      margin-bottom: 22px;
+    }
+    .case-body p { font-size: 14px; line-height: 1.8; color: var(--muted); margin-bottom: 32px; }
+    .case-stats { display: flex; gap: 40px; margin-bottom: 32px; }
+    .cs-num { font-size: 34px; font-weight: 900; color: var(--yellow); letter-spacing: -1px; line-height: 1; }
+    .cs-label { font-size: 11px; color: var(--muted); letter-spacing: 0.5px; margin-top: 8px; }
+    .case-what {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 24px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .case-what strong { color: var(--white); font-weight: 700; }
+
+    /* ============================
+       CINEMATIC BREAK
+    ============================ */
+    .wk-break {
+      position: relative;
+      height: 72vh;
+      overflow: hidden;
+    }
+    .wk-break img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      object-position: center center;
+    }
+    .wk-break-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.1) 65%);
+      display: flex;
+      align-items: center;
+    }
+    .wk-break-text {
+      padding: 0 64px;
+      max-width: 860px;
+    }
+    .wk-break-text blockquote {
+      font-size: clamp(36px, 6vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      font-style: normal;
+    }
+    .wk-break-text blockquote span { color: var(--yellow); }
+    .wk-break-text cite {
+      display: block;
+      font-size: 13px;
+      font-style: normal;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 28px;
+    }
+
+    /* ============================
+       CLIENTS (reskinned dark)
+    ============================ */
+    .wk-clients {
+      background: var(--dark2);
+      padding: 120px 64px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .wk-clients-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .wk-clients-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 20px;
+    }
+    .wk-clients-title {
+      font-size: clamp(36px, 3.6vw, 52px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+    .wk-clients-img img {
+      width: 100%;
+      filter: brightness(0) invert(1) opacity(0.55);
+      mix-blend-mode: screen;
+    }
+
+    /* ============================
+       CTA
+    ============================ */
+    .wk-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .wk-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .wk-cta h2 {
+      font-size: clamp(64px, 10vw, 140px);
+      font-weight: 900;
+      letter-spacing: -6px;
+      line-height: 0.88;
+      margin-bottom: 36px;
+    }
+    .wk-cta h2 span { color: var(--yellow); }
+    .wk-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .wk-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .wk-hero-wrap { padding: 0 24px 64px; }
+      .wk-hero-title { letter-spacing: -2px; }
+      .wk-scroll-indicator { display: none; }
+      .wk-stats { padding: 60px 24px; }
+      .wk-stats-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .wk-stat { border-left: none; padding-left: 0; }
+      .wk-cases { padding: 80px 24px 40px; }
+      .wk-cases-header { grid-template-columns: 1fr; gap: 24px; }
+      .case-card { grid-template-columns: 1fr; direction: ltr !important; }
+      .case-card:nth-child(even) > * { direction: ltr; }
+      .case-body { padding: 36px 28px; }
+      .case-stats { gap: 24px; }
+      .wk-break { height: 50vh; }
+      .wk-break-text { padding: 0 24px; }
+      .wk-clients { padding: 80px 24px; }
+      .wk-clients-inner { grid-template-columns: 1fr; gap: 32px; }
+      .wk-cta { padding: 100px 24px; }
+      .wk-cta h2 { letter-spacing: -3px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html" class="active">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="wk-hero">
+  <img class="wk-hero-img"
+    src="studio/Professional%20Photos/Fortay%20Podcast%20Studio-75.jpg"
+    alt="Fortay Media studio production"/>
+  <div class="wk-hero-overlay"></div>
+  <div class="wk-hero-wrap">
+    <div class="wk-hero-eyebrow reveal">Work &amp; Case Studies</div>
+    <h1 class="wk-hero-title reveal reveal-delay-1">
+      Work that<br>earns its<br>place on <em>screen.</em>
+    </h1>
+    <div class="wk-hero-bottom reveal reveal-delay-2">
+      <p class="wk-hero-desc">We don't just show you what we made - we show you what it did. Every project below: the goal, what we delivered, and the result.</p>
+      <div class="wk-hero-actions">
+        <a href="contact.html" class="btn-primary">Start a Project</a>
+        <a href="#case-studies" class="btn-outline">View Case Studies</a>
+      </div>
+    </div>
+  </div>
+  <div class="wk-scroll-indicator">
+    <span>Scroll</span>
+    <div class="wk-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ② STATS -->
+<section class="wk-stats">
+  <div class="wk-stats-inner">
+    <div class="wk-stat reveal">
+      <div class="wk-stat-num">100<sup>+</sup></div>
+      <div class="wk-stat-label">Productions delivered</div>
+    </div>
+    <div class="wk-stat reveal reveal-delay-1">
+      <div class="wk-stat-num">40<sup>+</sup></div>
+      <div class="wk-stat-label">Brands trusted</div>
+    </div>
+    <div class="wk-stat reveal reveal-delay-2">
+      <div class="wk-stat-num">10<sup>yrs</sup></div>
+      <div class="wk-stat-label">Producing in Sheffield</div>
+    </div>
+    <div class="wk-stat reveal reveal-delay-3">
+      <div class="wk-stat-num">1<sup>team</sup></div>
+      <div class="wk-stat-label">Brief to broadcast</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ CASE STUDIES -->
+<section class="wk-cases" id="case-studies">
+  <div class="wk-cases-inner">
+    <div class="wk-cases-header">
+      <h2 class="wk-cases-title reveal">Selected<br>case studies.</h2>
+      <p class="wk-cases-body reveal reveal-delay-1">A cross-section of recent work - brand films, campaigns, and corporate storytelling for clients who needed more than a nice-looking cut. Hit play, scroll, or get in touch to see the finished films.</p>
+    </div>
+    <div class="cases-grid">
+
+      <div class="case-card reveal">
+        <a href="yorkshire-tea.html" class="case-visual" style="display:block;">
+          <img src="images/imgi_72_yorkshire-tea-1024x895.jpg" alt="Yorkshire Tea brand film"/>
+          <div class="case-tag-bar">
+            <span class="case-tag">Brand Film</span>
+          </div>
+        </a>
+        <div class="case-body">
+          <div class="case-client">Yorkshire Tea</div>
+          <h2><a href="yorkshire-tea.html" style="color:inherit; text-decoration:none;">Bringing a beloved national brand to life on screen</a></h2>
+          <p>Yorkshire Tea needed cinematic content that captured the warmth and heritage of the brand - content that could run across TV, social, and digital. We handled everything from creative development through to final delivery.</p>
+          <div class="case-stats">
+            <div class="cs"><div class="cs-num">TV</div><div class="cs-label">Broadcast Quality</div></div>
+            <div class="cs"><div class="cs-num">Multi</div><div class="cs-label">Platform Distribution</div></div>
+          </div>
+          <div class="case-what">
+            <strong>What we did:</strong> Creative strategy, full production shoot, post-production and grading, format optimisation for broadcast, social, and digital.
+          </div>
+          <a href="yorkshire-tea.html" class="btn-ghost" style="margin-top:24px;">View case study →</a>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-visual">
+          <img src="images/imgi_76_sthree-1024x895.jpg" alt="SThree brand video"/>
+          <div class="case-tag-bar">
+            <span class="case-tag">Brand Video</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-client">SThree</div>
+          <h2>A forward-thinking brand film for a global recruiter</h2>
+          <p>SThree wanted content that positioned them as an innovator in the future of work. We created a visually striking brand film that connected the company's technology-forward thinking with the human stories behind it.</p>
+          <div class="case-stats">
+            <div class="cs"><div class="cs-num">Global</div><div class="cs-label">Multi-Market Deployment</div></div>
+            <div class="cs"><div class="cs-num">B2B</div><div class="cs-label">Employer Brand</div></div>
+          </div>
+          <div class="case-what">
+            <strong>What we did:</strong> Concept development, studio and location shoot, full post-production, multiple cuts tailored for global offices and digital channels.
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-visual">
+          <img src="images/imgi_64_head-of-steam-sheffield-1024x895.jpg" alt="Head of Steam Sheffield brand campaign"/>
+          <div class="case-tag-bar">
+            <span class="case-tag">Brand Campaign</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-client">Head of Steam</div>
+          <h2>A campaign that captured the energy of a brand people love</h2>
+          <p>Head of Steam needed content that reflected the atmosphere and character of their venues - something that felt as alive as walking through the door. We produced a full campaign suite built around the real experience.</p>
+          <div class="case-stats">
+            <div class="cs"><div class="cs-num">Social</div><div class="cs-label">+ In-Venue Display</div></div>
+            <div class="cs"><div class="cs-num">Full</div><div class="cs-label">Campaign Suite</div></div>
+          </div>
+          <div class="case-what">
+            <strong>What we did:</strong> Location shoot across multiple venues, brand film, social content suite, in-venue display assets, post-production and delivery.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ④ CINEMATIC BREAK -->
+<div class="wk-break">
+  <img src="studio/Professional%20Photos/Fortay%20Podcast%20Studio-125.jpg" alt="Fortay Media production suite" style="object-position: center 30%;"/>
+  <div class="wk-break-veil">
+    <div class="wk-break-text">
+      <blockquote class="reveal">"Work that<br>actually<br>moves <span>the needle."</span></blockquote>
+      <cite class="reveal reveal-delay-1"> -  Case study client</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ CASE STUDIES CONTINUED -->
+<section class="wk-cases" style="padding: 80px 64px 120px;">
+  <div class="wk-cases-inner">
+    <div class="cases-grid">
+
+      <div class="case-card reveal">
+        <div class="case-visual">
+          <img src="images/imgi_68_British-glass-thumbnail-1-1024x895.png" alt="British Glass case study video"/>
+          <div class="case-tag-bar">
+            <span class="case-tag">Case Study</span>
+            <span class="case-tag">Corporate</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-client">British Glass</div>
+          <h2>Industry case study content that built authority and trust</h2>
+          <p>British Glass needed compelling case study content to communicate the impact of their work to industry stakeholders and the public. We produced a series of interview-led films that felt authoritative without being dry.</p>
+          <div class="case-stats">
+            <div class="cs"><div class="cs-num">Series</div><div class="cs-label">Multiple Films</div></div>
+            <div class="cs"><div class="cs-num">Industry</div><div class="cs-label">Stakeholder Reach</div></div>
+          </div>
+          <div class="case-what">
+            <strong>What we did:</strong> Location and studio shoots, interview direction, scripting support, post-production, stakeholder review, final delivery in all required formats.
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <a href="proact.html" class="case-visual" style="display:block;">
+          <img src="images/imgi_88_Proact-glass-thumbnail-1024x895.png" alt="Proact brand film"/>
+          <div class="case-tag-bar">
+            <span class="case-tag">Brand Film</span>
+            <span class="case-tag">Corporate</span>
+          </div>
+        </a>
+        <div class="case-body">
+          <div class="case-client">Proact</div>
+          <h2><a href="proact.html" style="color:inherit; text-decoration:none;">A brand film that put the human impact of technology front and centre</a></h2>
+          <p>Proact wanted to move beyond technical messaging and show the real-world difference their technology makes to people's lives. We produced an emotionally driven brand film that led with the human story.</p>
+          <div class="case-stats">
+            <div class="cs"><div class="cs-num">Emotive</div><div class="cs-label">Human-First Storytelling</div></div>
+            <div class="cs"><div class="cs-num">B2B</div><div class="cs-label">+ B2C Reach</div></div>
+          </div>
+          <div class="case-what">
+            <strong>What we did:</strong> Story development, multi-location shoot, documentary-style direction, full edit, colour grade, and delivery across web and social.
+          </div>
+          <a href="proact.html" class="btn-ghost" style="margin-top:24px;">View case study →</a>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-visual">
+          <img src="images/imgi_92_Logiclais-thumbnail-1024x895.png" alt="Logicalis brand film"/>
+          <div class="case-tag-bar">
+            <span class="case-tag">Brand Film</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-client">Logicalis</div>
+          <h2>A cinematic brand film for a global technology leader</h2>
+          <p>Logicalis - Architects of Change - needed content that matched their ambition. We produced a cinematic brand film that positioned them as a visionary technology partner, not just a supplier.</p>
+          <div class="case-stats">
+            <div class="cs"><div class="cs-num">Global</div><div class="cs-label">Brand Positioning</div></div>
+            <div class="cs"><div class="cs-num">C-Suite</div><div class="cs-label">Target Audience</div></div>
+          </div>
+          <div class="case-what">
+            <strong>What we did:</strong> Concept and script development, cinematic location shoot, motion graphics, full post-production, international delivery in multiple languages.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑤b MORE CASE STUDIES -->
+<section class="wk-cases" style="padding: 0 64px 120px;" id="more-case-studies">
+  <div class="wk-cases-inner">
+    <div class="wk-cases-header" style="margin-bottom: 40px;">
+      <h2 class="wk-cases-title reveal">More recent<br>work.</h2>
+      <p class="wk-cases-body reveal reveal-delay-1">Long-running partnerships, niche product films, healthcare instructionals and member-acquisition video - a wider cross-section of what we ship for clients across sectors.</p>
+    </div>
+    <div class="cases-grid">
+
+      <div class="case-card reveal">
+        <a href="djb-recycling.html" class="case-visual" style="display:block;">
+          <img src="https://www.fortaymedia.co.uk/wp-content/uploads/2020/06/djb-1-1024x895.jpg" alt="DJB Recycling case study"/>
+          <div class="case-tag-bar">
+            <span class="case-tag">Web</span>
+            <span class="case-tag">Video</span>
+            <span class="case-tag">Social</span>
+          </div>
+        </a>
+        <div class="case-body">
+          <div class="case-client">DJB Recycling</div>
+          <h2><a href="djb-recycling.html" style="color:inherit; text-decoration:none;">From 50 bins a week to 115 a day</a></h2>
+          <p>A decade-long partnership building DJB's online marketing presence - consolidating three websites into one, layering on SEO and social, and producing the videos that turned a regional waste operator into a category leader.</p>
+          <div class="case-stats">
+            <div class="cs"><div class="cs-num">50 → 115</div><div class="cs-label">Bins / day uplift</div></div>
+            <div class="cs"><div class="cs-num">10+ yrs</div><div class="cs-label">Active partnership</div></div>
+          </div>
+          <div class="case-what">
+            <strong>What we did:</strong> Website consolidation, SEO, social media marketing, product videos, photography, explainer films, and ongoing blogs &amp; newsletters.
+          </div>
+          <a href="djb-recycling.html" class="btn-ghost" style="margin-top:24px;">View case study →</a>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <a href="places-gym.html" class="case-visual" style="display:block;">
+          <img src="https://www.fortaymedia.co.uk/wp-content/uploads/2022/05/places-1024x895.jpg" alt="Places Gym case study"/>
+          <div class="case-tag-bar">
+            <span class="case-tag">Video</span>
+            <span class="case-tag">Social</span>
+          </div>
+        </a>
+        <div class="case-body">
+          <div class="case-client">Places Gym</div>
+          <h2><a href="places-gym.html" style="color:inherit; text-decoration:none;">Onboarding film + social cuts that lifted memberships</a></h2>
+          <p>Places came to us wary after a previous bad video experience. We replaced it with a 1–2 day amends cycle, a welcoming new-member film, and a suite of campaign-ready social snippets that outperformed their previous stock-led creative.</p>
+          <div class="case-stats">
+            <div class="cs"><div class="cs-num">↑ Reach</div><div class="cs-label">Paid &amp; Organic</div></div>
+            <div class="cs"><div class="cs-num">1–2 Day</div><div class="cs-label">Amends turnaround</div></div>
+          </div>
+          <div class="case-what">
+            <strong>What we did:</strong> On-site shoot, new-member onboarding film, social-first cuts for organic and paid, and a fast Vimeo-based amends workflow.
+          </div>
+          <a href="places-gym.html" class="btn-ghost" style="margin-top:24px;">View case study →</a>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <a href="smartwater.html" class="case-visual" style="display:block;">
+          <img src="https://www.fortaymedia.co.uk/wp-content/uploads/2021/03/Screenshot-2021-03-12-at-16.02.05.jpg" alt="SmartWater case study"/>
+          <div class="case-tag-bar">
+            <span class="case-tag">Product</span>
+            <span class="case-tag">E-Learning</span>
+          </div>
+        </a>
+        <div class="case-body">
+          <div class="case-client">SmartWater Group</div>
+          <h2><a href="smartwater.html" style="color:inherit; text-decoration:none;">Selling a product no-one is looking for</a></h2>
+          <p>An explainer-led product film for SmartTag, the tech-based security tool from SmartWater - built around the buyer's mindset rather than the spec sheet. The relationship grew into a full E-learning content programme.</p>
+          <div class="case-stats">
+            <div class="cs"><div class="cs-num">Niche</div><div class="cs-label">B2B Security</div></div>
+            <div class="cs"><div class="cs-num">Ongoing</div><div class="cs-label">E-Learning content</div></div>
+          </div>
+          <div class="case-what">
+            <strong>What we did:</strong> Product explainer film, brand-awareness edit, location + stock production, and a full E-learning content series.
+          </div>
+          <a href="smartwater.html" class="btn-ghost" style="margin-top:24px;">View case study →</a>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <a href="preventx.html" class="case-visual" style="display:block;">
+          <img src="https://www.fortaymedia.co.uk/wp-content/uploads/2020/06/preventx-1024x895.jpg" alt="Preventx case study"/>
+          <div class="case-tag-bar">
+            <span class="case-tag">Tutorial</span>
+            <span class="case-tag">Healthcare</span>
+          </div>
+        </a>
+        <div class="case-body">
+          <div class="case-client">Preventx</div>
+          <h2><a href="preventx.html" style="color:inherit; text-decoration:none;">How-to films for healthcare at NHS scale</a></h2>
+          <p>Presenter-led, green-screen instructional videos for Preventx - providers of remote sexual health services to over 87% of England. Built as a re-brandable master so the films flex across every service in the portfolio.</p>
+          <div class="case-stats">
+            <div class="cs"><div class="cs-num">87%</div><div class="cs-label">of England served</div></div>
+            <div class="cs"><div class="cs-num">Re-brand</div><div class="cs-label">Flexible master</div></div>
+          </div>
+          <div class="case-what">
+            <strong>What we did:</strong> Script polish, green-screen production, presenter direction, how-to tutorial films, and re-brandable master delivery for use across services.
+          </div>
+          <a href="preventx.html" class="btn-ghost" style="margin-top:24px;">View case study →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ CLIENTS -->
+<section class="wk-clients">
+  <div class="wk-clients-inner">
+    <div class="reveal">
+      <div class="wk-clients-eyebrow">Trusted by</div>
+      <h2 class="wk-clients-title">Brands we've<br>worked with.</h2>
+    </div>
+    <div class="wk-clients-img reveal reveal-delay-1">
+      <img src="clients.jpg" alt="Fortay Media clients"/>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ CTA -->
+<section class="wk-cta">
+  <div class="wk-cta-eyebrow reveal">Your Project Next</div>
+  <h2 class="reveal reveal-delay-1">Want results<br><span>like these?</span></h2>
+  <p class="reveal reveal-delay-2">Tell us about your goals and we'll come back with a clear approach, timeline, and quote - usually within 48 hours.</p>
+  <div class="wk-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Start a Conversation</a>
+    <a href="growth-partnership.html" class="btn-outline reveal reveal-delay-4">Partner With Us</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Yorkshire Tea</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Siemens</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Sheffield United</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Cadbury</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>NHS</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Malmaison</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Channel 4</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>SEGA</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Yorkshire Tea</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Siemens</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Sheffield United</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Cadbury</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>NHS</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Malmaison</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Channel 4</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>SEGA</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

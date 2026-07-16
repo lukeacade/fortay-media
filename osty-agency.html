@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fortay Media</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --yellow: #F5C318;
+      --dark: #0d0d0d;
+      --dark2: #141414;
+      --dark3: #1a1a1a;
+      --white: #ffffff;
+      --muted: rgba(255,255,255,0.5);
+      --font: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--dark);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 56px;
+      transition: padding 0.4s, background 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+
+    nav.scrolled {
+      padding: 18px 56px;
+      background: rgba(13,13,13,0.92);
+      backdrop-filter: blur(16px);
+      border-color: rgba(255,255,255,0.07);
+    }
+
+    .nav-logo {
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--yellow); }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: rgba(255,255,255,0.65);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--yellow);
+      color: var(--dark);
+      padding: 11px 26px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* Layered overlays for depth */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(13,13,13,0.35) 0%, rgba(13,13,13,0.2) 40%, rgba(13,13,13,0.75) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 48px;
+      max-width: 1000px;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 28px;
+    }
+
+    .hero-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--yellow);
+    }
+
+    .hero h1 {
+      font-size: clamp(72px, 11vw, 136px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.92;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .hero h1 .accent { color: var(--yellow); }
+
+    .hero-sub {
+      font-size: 17px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.65);
+      max-width: 480px;
+      margin: 0 auto 48px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--dark);
+      padding: 15px 34px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(245,195,24,0.35);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--white); }
+
+    .btn-ghost svg {
+      width: 18px; height: 18px;
+      stroke: currentColor;
+      fill: none;
+    }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.35);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--yellow), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+
+    /* ── ABOUT / INTRO ── */
+    .intro {
+      padding: 140px 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .intro-left .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+
+    .intro-left .section-tag::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--yellow);
+    }
+
+    .intro-left h2 {
+      font-size: clamp(44px, 5vw, 72px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1.0;
+      margin-bottom: 32px;
+    }
+
+    .intro-right p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .intro-right p:last-of-type { margin-bottom: 36px; }
+
+    .intro-stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 48px;
+      padding-top: 48px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .intro-stat-num {
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .intro-stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      padding: 140px 56px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 80px;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 20px;
+    }
+
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 20px; height: 1px;
+      background: var(--yellow);
+    }
+
+    .section-title {
+      font-size: clamp(44px, 5vw, 72px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1.0;
+    }
+
+    .section-sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 320px;
+      text-align: right;
+    }
+
+    .services-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      align-items: center;
+      gap: 48px;
+      padding: 40px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      cursor: default;
+      transition: background 0.3s;
+      border-radius: 4px;
+      margin: 0 -24px;
+      padding: 40px 24px;
+    }
+
+    .service-row:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+
+    .service-row:hover { background: rgba(255,255,255,0.03); }
+
+    .service-row:hover .service-num { color: var(--yellow); }
+    .service-row:hover .service-arrow { opacity: 1; transform: translateX(0); }
+
+    .service-num {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 2px;
+      transition: color 0.3s;
+    }
+
+    .service-main h3 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .service-main p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 520px;
+    }
+
+    .service-arrow {
+      width: 44px; height: 44px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: opacity 0.3s, transform 0.3s;
+      flex-shrink: 0;
+    }
+
+    .service-arrow svg {
+      width: 16px; height: 16px;
+      stroke: var(--white);
+      fill: none;
+    }
+
+    /* ── PROJECTS ── */
+    .projects {
+      padding: 0 56px 140px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .projects-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+      flex-shrink: 0;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--yellow);
+      color: var(--yellow);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto auto;
+      gap: 20px;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      background: var(--dark3);
+      cursor: pointer;
+    }
+
+    .project-card:nth-child(1) { grid-column: span 7; grid-row: span 2; }
+    .project-card:nth-child(2) { grid-column: span 5; }
+    .project-card:nth-child(3) { grid-column: span 5; }
+
+    .project-img {
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .project-card:nth-child(1) .project-img { min-height: 620px; }
+
+    .project-card:hover .project-img { transform: scale(1.06); }
+
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .project-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 32px;
+    }
+
+    .project-tag {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--dark);
+      font-size: 10px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 50px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .project-info h3 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .project-card:nth-child(1) .project-info h3 { font-size: 30px; }
+
+    /* Placeholder colours for projects */
+    .proj-bg-1 {
+      background: linear-gradient(145deg, #1a1008 0%, #3d2a0e 50%, #1a1008 100%);
+    }
+    .proj-bg-2 {
+      background: linear-gradient(145deg, #080d14 0%, #0e1f33 100%);
+    }
+    .proj-bg-3 {
+      background: linear-gradient(145deg, #0d0808 0%, #2a0e0e 100%);
+    }
+
+    .proj-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .proj-placeholder-icon {
+      font-size: 48px;
+      opacity: 0.12;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: white;
+    }
+
+    /* ── FULL-WIDTH QUOTE BREAK ── */
+    .quote-break {
+      padding: 100px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-break::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245,195,24,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .quote-break blockquote {
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.15;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .quote-break blockquote em {
+      color: var(--yellow);
+      font-style: normal;
+    }
+
+    /* ── FAQ ── */
+    .faq {
+      padding: 140px 56px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .faq-header { margin-bottom: 72px; }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 0;
+      background: none;
+      border: none;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: left;
+      color: var(--white);
+      gap: 24px;
+      letter-spacing: -0.3px;
+    }
+
+    .faq-icon {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.25s, border-color 0.25s, transform 0.4s;
+    }
+
+    .faq-icon svg { width: 14px; height: 14px; stroke: var(--white); fill: none; }
+
+    .faq-item.open .faq-icon {
+      background: var(--yellow);
+      border-color: var(--yellow);
+      transform: rotate(45deg);
+    }
+
+    .faq-item.open .faq-icon svg { stroke: var(--dark); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.16,1,0.3,1), padding 0.3s;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 240px;
+      padding-bottom: 28px;
+    }
+
+    .faq-answer p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--muted);
+    }
+
+    /* ── FOOTER CTA ── */
+    .footer-cta {
+      padding: 140px 56px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-cta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 1px; height: 80px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.15));
+    }
+
+    .footer-cta h2 {
+      font-size: clamp(56px, 8vw, 110px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      margin-bottom: 36px;
+    }
+
+    .footer-cta h2 span { color: var(--yellow); }
+
+    .footer-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 48px;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      overflow: hidden;
+      margin-top: 100px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+      padding: 32px 0;
+    }
+
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      padding: 0 32px;
+      white-space: nowrap;
+      font-size: 15px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .marquee-dot {
+      width: 6px; height: 6px;
+      background: var(--yellow);
+      border-radius: 50%;
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 36px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 13px;
+      color: rgba(255,255,255,0.25);
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--yellow); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .intro { grid-template-columns: 1fr; gap: 48px; padding: 80px 24px; }
+      .services { padding: 80px 24px; }
+      .service-row { grid-template-columns: 48px 1fr; gap: 20px; padding: 28px 12px; margin: 0; }
+      .service-arrow { display: none; }
+      .projects { padding: 0 24px 80px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card:nth-child(1),
+      .project-card:nth-child(2),
+      .project-card:nth-child(3) { grid-column: span 1; grid-row: span 1; }
+      .project-card:nth-child(1) .project-img { min-height: 320px; }
+      .faq { padding: 80px 24px; }
+      .footer-cta { padding: 80px 24px 0; }
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 24px; }
+      .quote-break { padding: 60px 24px; }
+      .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .section-sub { text-align: left; }
+      .hero-content { padding: 0 24px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a class="nav-logo" href="#">FORTAY<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Start a Project</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+      <source src="https://www.fortaymedia.co.uk/wp-content/uploads/2025/09/fortay_-_header_version_1-1080p.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-label">Creative Production Studio</div>
+      <h1>Fortay<br><span class="accent">Media</span></h1>
+      <p class="hero-sub">We make the work that makes people stop. Photography, film, and brand - built to perform.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn-primary">See Our Work</a>
+        <a href="#contact" class="btn-ghost">
+          Get in Touch
+          <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- INTRO / ABOUT -->
+  <section id="about" style="background: var(--dark);">
+    <div class="intro">
+      <div class="intro-left">
+        <div class="section-tag reveal">About Us</div>
+        <h2 class="reveal reveal-delay-1">We don't<br>follow<br>briefs.<br>We build<br>them.</h2>
+        <div class="intro-stats">
+          <div class="reveal reveal-delay-2">
+            <div class="intro-stat-num">250+</div>
+            <div class="intro-stat-label">Projects</div>
+          </div>
+          <div class="reveal reveal-delay-3">
+            <div class="intro-stat-num">8</div>
+            <div class="intro-stat-label">Years Active</div>
+          </div>
+          <div class="reveal reveal-delay-4">
+            <div class="intro-stat-num">180+</div>
+            <div class="intro-stat-label">Clients</div>
+          </div>
+        </div>
+      </div>
+      <div class="intro-right">
+        <p class="reveal">Fortay Media is a creative production studio built for brands that want to be seen. We combine cinematic filmmaking, sharp photography, and strategic design to create content that actually moves people.</p>
+        <p class="reveal reveal-delay-1">We work directly with founders, marketing teams, and agencies who know what they want - and with those who don't yet, but trust us to get there.</p>
+        <a href="#services" class="btn-outline reveal reveal-delay-2">What We Do</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" style="background: var(--dark2);">
+    <div class="services">
+      <div class="section-header">
+        <div>
+          <div class="section-tag reveal">What We Do</div>
+          <h2 class="section-title reveal reveal-delay-1">Our Services</h2>
+        </div>
+        <p class="section-sub reveal reveal-delay-2">Every service is built around one goal - making your brand impossible to ignore.</p>
+      </div>
+
+      <div class="services-list">
+
+        <div class="service-row reveal">
+          <div class="service-num">01</div>
+          <div class="service-main">
+            <h3>Video Production</h3>
+            <p>From concept to final cut. Brand films, social content, events, and campaigns - shot and edited with a cinematic eye.</p>
+          </div>
+          <div class="service-arrow">
+            <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+
+        <div class="service-row reveal">
+          <div class="service-num">02</div>
+          <div class="service-main">
+            <h3>Photography</h3>
+            <p>Commercial, editorial, product, and events. Stills that carry the same weight as your moving image.</p>
+          </div>
+          <div class="service-arrow">
+            <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+
+        <div class="service-row reveal">
+          <div class="service-num">03</div>
+          <div class="service-main">
+            <h3>Brand Design</h3>
+            <p>Identity, art direction, and visual systems for brands that want to stand for something. Strategy-led, visually driven.</p>
+          </div>
+          <div class="service-arrow">
+            <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+
+        <div class="service-row reveal">
+          <div class="service-num">04</div>
+          <div class="service-main">
+            <h3>Social Media Content</h3>
+            <p>High-output creative built for platforms. Reels, stories, campaigns - content that performs, not just looks pretty.</p>
+          </div>
+          <div class="service-arrow">
+            <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="work" style="background: var(--dark); padding-top: 140px;">
+    <div class="projects">
+      <div class="projects-header">
+        <div>
+          <div class="section-tag reveal">Selected Work</div>
+          <h2 class="section-title reveal reveal-delay-1">Featured Projects</h2>
+        </div>
+        <a href="#" class="btn-outline reveal reveal-delay-2">View All</a>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card proj-bg-1 reveal">
+          <div class="proj-placeholder" style="min-height:620px;">
+            <div class="proj-placeholder-icon">FM</div>
+          </div>
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <div class="project-tag">Brand Film</div>
+            <h3>Golden Hour Spirits</h3>
+          </div>
+        </div>
+
+        <div class="project-card proj-bg-2 reveal reveal-delay-1">
+          <div class="proj-placeholder" style="min-height:300px;">
+            <div class="proj-placeholder-icon">FM</div>
+          </div>
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <div class="project-tag">Photography</div>
+            <h3>Urban Cycle Campaign</h3>
+          </div>
+        </div>
+
+        <div class="project-card proj-bg-3 reveal reveal-delay-2">
+          <div class="proj-placeholder" style="min-height:300px;">
+            <div class="proj-placeholder-icon">FM</div>
+          </div>
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <div class="project-tag">Social Content</div>
+            <h3>Ember Restaurant Group</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE BREAK -->
+  <div class="quote-break" style="background: var(--dark);">
+    <blockquote class="reveal">
+      "The best creative doesn't feel like an ad.<br>
+      It feels like <em>something worth watching.</em>"
+    </blockquote>
+  </div>
+
+  <!-- FAQ -->
+  <section id="faq" style="background: var(--dark2);">
+    <div class="faq">
+      <div class="faq-header">
+        <div class="section-tag reveal">FAQ</div>
+        <h2 class="section-title reveal reveal-delay-1">Common Questions</h2>
+      </div>
+
+      <div class="faq-item open reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What types of projects do you take on?
+          <span class="faq-icon"><svg viewBox="0 0 24 24" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p>Video production, photography, brand design, and social content - for brands, founders, agencies, and everyone in between. If the project is worth doing, we want to hear about it.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How long does a project typically take?
+          <span class="faq-icon"><svg viewBox="0 0 24 24" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p>Brand identity work runs 4–6 weeks. Video productions vary from 2 to 8 weeks depending on scope. We're always transparent with timelines upfront so there are no surprises.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do you work with clients internationally?
+          <span class="faq-icon"><svg viewBox="0 0 24 24" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. We work with clients across the UK, Europe, and North America. Travel for on-location shoots is discussed and costed as part of the initial scoping process.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do we get started?
+          <span class="faq-icon"><svg viewBox="0 0 24 24" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p>Hit the button below or drop us an email. We'll set up a discovery call, understand what you need, and get you a tailored proposal within 3 working days.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER CTA -->
+  <section id="contact" style="background: var(--dark);">
+    <div class="footer-cta">
+      <h2 class="reveal">Let's make<br><span>it happen.</span></h2>
+      <p class="reveal reveal-delay-1">Ready to create something worth watching?</p>
+      <a href="mailto:hello@fortaymedia.co.uk" class="btn-primary reveal reveal-delay-2" style="font-size:15px; padding:16px 40px;">
+        hello@fortaymedia.co.uk
+      </a>
+    </div>
+
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <div class="marquee-item"><span class="marquee-dot"></span>Video Production</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>Photography</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>Brand Design</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>Social Content</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>Art Direction</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>Video Production</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>Photography</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>Brand Design</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>Social Content</div>
+        <div class="marquee-item"><span class="marquee-dot"></span>Art Direction</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>&copy; 2026 Fortay Media. All rights reserved.</span>
+    <div style="display:flex; gap:28px;">
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Privacy</a>
+    </div>
+  </footer>
+
+  <script>
+    // ── Nav scroll state
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+
+    // ── FAQ accordion
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+
+</body>
+</html>

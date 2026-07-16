@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Video Marketing Services | Strategy, SEO &amp; Distribution - Fortay Media</title>
+  <meta name="description" content="Video marketing services from Fortay Media: strategy, video SEO, content repurposing and distribution that turn great films into leads, awareness and measurable ROI."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO
+    ============================ */
+    .vm-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+    }
+    .vm-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(150deg, #0a0a0a 0%, #1c1a10 42%, #4d3f00 78%, var(--yellow) 130%);
+    }
+    .vm-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.35) 55%,
+        rgba(0,0,0,0.7) 100%
+      );
+    }
+    .vm-hero-wrap {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 88px;
+    }
+    .vm-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .vm-hero-title {
+      font-size: clamp(64px, 9vw, 130px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .vm-hero-title em { font-style: normal; color: var(--yellow); }
+    .vm-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .vm-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+    .vm-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .vm-scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      right: 64px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.35;
+    }
+    .vm-scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .vm-scroll-line {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, white, transparent);
+      animation: vmScrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes vmScrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%     { opacity: 0.1;  transform: scaleY(0.4); }
+    }
+
+    /* ============================
+       STATS
+    ============================ */
+    .vm-stats {
+      background: var(--dark);
+      padding: 72px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .vm-stats-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+    }
+    .vm-stat {
+      padding: 0 48px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .vm-stat:first-child { border-left: none; padding-left: 0; }
+    .vm-stat-num {
+      font-size: clamp(52px, 5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .vm-stat-num sup { font-size: 0.4em; color: var(--yellow); vertical-align: super; }
+    .vm-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============================
+       SERVICES (indexed tiles)
+    ============================ */
+    .vm-services {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .vm-services-inner { max-width: 1440px; margin: 0 auto; }
+    .vm-services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .vm-services-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .vm-services-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .vm-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .vm-svc {
+      background: var(--dark2);
+      padding: 44px 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background 0.3s;
+    }
+    .vm-svc:hover { background: #1a1a1a; }
+    .vm-svc-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .vm-svc h3 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    .vm-svc p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+    .vm-svc ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .vm-svc li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.55);
+    }
+    .vm-svc li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ============================
+       RESULTS (gradient tile grid, replaces image grid)
+    ============================ */
+    .vm-results {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .vm-results-inner { max-width: 1440px; margin: 0 auto; }
+    .vm-results-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .vm-results-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .vm-results-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .vm-results-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 3px;
+    }
+    .vm-res {
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      aspect-ratio: 4/3;
+    }
+    .vm-res-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.9s cubic-bezier(0.23,1,0.32,1);
+    }
+    .vm-res:hover .vm-res-bg { transform: scale(1.06); }
+    .vm-res-1 .vm-res-bg { background: linear-gradient(135deg, #1a1a1a 0%, #3a2f00 55%, var(--yellow) 140%); }
+    .vm-res-2 .vm-res-bg { background: linear-gradient(150deg, #0a0a0a 0%, #2b2b2b 50%, #4d4400 120%); }
+    .vm-res-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.1) 55%);
+    }
+    .vm-res-body {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 40px 36px;
+    }
+    .vm-res-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .vm-res-name {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      display: block;
+      margin-bottom: 10px;
+      line-height: 1.05;
+    }
+    .vm-res-detail {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+    }
+    .vm-res-quote {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.2px;
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    /* ============================
+       PROCESS (sticky rail)
+    ============================ */
+    .vm-process {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .vm-process-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    .vm-process-left { position: sticky; top: 96px; }
+    .vm-process-left .section-tag { margin-bottom: 20px; }
+    .vm-process-title {
+      font-size: clamp(38px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .vm-process-intro {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 420px;
+    }
+    .vm-process-steps { display: flex; flex-direction: column; }
+    .vm-step {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: start;
+      transition: padding-left 0.3s;
+    }
+    .vm-step:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .vm-step:hover { padding-left: 8px; }
+    .vm-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      padding-top: 4px;
+    }
+    .vm-step h4 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .vm-step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       CINEMATIC BREAK (gradient panel)
+    ============================ */
+    .vm-break {
+      position: relative;
+      height: 72vh;
+      overflow: hidden;
+      background: linear-gradient(115deg, #050505 0%, #1e1b08 45%, #2f2600 70%, var(--yellow) 150%);
+    }
+    .vm-break-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 65%);
+      display: flex;
+      align-items: center;
+    }
+    .vm-break-text {
+      padding: 0 64px;
+      max-width: 820px;
+    }
+    .vm-break-text blockquote {
+      font-size: clamp(36px, 6vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      font-style: normal;
+    }
+    .vm-break-text blockquote span { color: var(--yellow); }
+    .vm-break-text cite {
+      display: block;
+      font-size: 13px;
+      font-style: normal;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 28px;
+    }
+
+    /* ============================
+       PACKAGES (tiers)
+    ============================ */
+    .vm-packages {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .vm-packages-inner { max-width: 1440px; margin: 0 auto; }
+    .vm-packages-head { margin-bottom: 72px; }
+    .vm-packages-head h2 {
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      max-width: 820px;
+    }
+    .vm-packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .vm-pcard {
+      background: var(--dark2);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .vm-pcard:hover { background: #1a1a1a; }
+    .vm-pcard.featured {
+      background: var(--yellow);
+      color: var(--dark);
+    }
+    .vm-pcard.featured:hover { background: #e6b800; }
+    .vm-pcard-index {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .vm-pcard.featured .vm-pcard-index { color: rgba(0,0,0,0.4); }
+    .vm-pcard h3 {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+    .vm-pcard-price {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+    .vm-pcard-pnote {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .vm-pcard.featured .vm-pcard-pnote { color: rgba(0,0,0,0.5); }
+    .vm-pcard-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .vm-pcard.featured .vm-pcard-desc { color: rgba(0,0,0,0.6); }
+    .vm-pcard-rule {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .vm-pcard.featured .vm-pcard-rule { background: rgba(0,0,0,0.15); }
+    .vm-pcard-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .vm-pcard-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .vm-pcard-list li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .vm-pcard.featured .vm-pcard-list li::before { color: var(--dark); }
+    .vm-pcard-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      text-decoration: none;
+      margin-top: 8px;
+      transition: gap 0.3s;
+    }
+    .vm-pcard.featured .vm-pcard-link { color: var(--dark); }
+    .vm-pcard-link:hover { gap: 18px; }
+    .vm-pcard-link svg {
+      width: 16px; height: 16px;
+      stroke: currentColor; fill: none; stroke-width: 2;
+    }
+
+    /* ============================
+       CTA
+    ============================ */
+    .vm-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .vm-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .vm-cta h2 {
+      font-size: clamp(64px, 10vw, 140px);
+      font-weight: 900;
+      letter-spacing: -6px;
+      line-height: 0.88;
+      margin-bottom: 36px;
+    }
+    .vm-cta h2 span { color: var(--yellow); }
+    .vm-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .vm-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .vm-hero-wrap { padding: 0 24px 64px; }
+      .vm-hero-title { letter-spacing: -2px; }
+      .vm-scroll-indicator { display: none; }
+      .vm-stats { padding: 60px 24px; }
+      .vm-stats-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .vm-stat { border-left: none; padding-left: 0; }
+      .vm-services { padding: 80px 24px; }
+      .vm-services-header { grid-template-columns: 1fr; gap: 24px; }
+      .vm-services-grid { grid-template-columns: 1fr; }
+      .vm-results { padding: 80px 24px; }
+      .vm-results-header { grid-template-columns: 1fr; gap: 24px; }
+      .vm-results-grid { grid-template-columns: 1fr; }
+      .vm-process { padding: 80px 24px; }
+      .vm-process-inner { grid-template-columns: 1fr; gap: 48px; }
+      .vm-process-left { position: static; }
+      .vm-break { height: 50vh; }
+      .vm-break-text { padding: 0 24px; }
+      .vm-packages { padding: 80px 24px; }
+      .vm-packages-grid { grid-template-columns: 1fr; }
+      .vm-cta { padding: 100px 24px; }
+      .vm-cta h2 { letter-spacing: -3px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="vm-hero">
+  <div class="vm-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?w=1600&q=80&auto=format&fit=crop');background-size:cover;background-position:center;"></div>
+  <div class="vm-hero-overlay"></div>
+  <div class="vm-hero-wrap">
+    <div class="vm-hero-eyebrow reveal">Video Marketing - Strategy to Distribution</div>
+    <h1 class="vm-hero-title reveal reveal-delay-1">
+      A great film<br>means nothing<br>un<em>seen.</em>
+    </h1>
+    <div class="vm-hero-bottom reveal reveal-delay-2">
+      <p class="vm-hero-desc">78% of people watch online video every week - but a beautiful film with no strategy behind it just sits there. We plan, optimise, and distribute your video so it reaches the audience it was built for.</p>
+      <div class="vm-hero-actions">
+        <a href="contact.html" class="btn-primary">Start a Campaign</a>
+        <a href="#packages" class="btn-outline">View Packages</a>
+      </div>
+    </div>
+  </div>
+  <div class="vm-scroll-indicator">
+    <span>Scroll</span>
+    <div class="vm-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ② STATS -->
+<section class="vm-stats">
+  <div class="vm-stats-inner">
+    <div class="vm-stat reveal">
+      <div class="vm-stat-num">100<sup>min</sup></div>
+      <div class="vm-stat-label">Daily online video viewing by 2021</div>
+    </div>
+    <div class="vm-stat reveal reveal-delay-1">
+      <div class="vm-stat-num">95<sup>%</sup></div>
+      <div class="vm-stat-label">Message retention via video vs. text</div>
+    </div>
+    <div class="vm-stat reveal reveal-delay-2">
+      <div class="vm-stat-num">93<sup>%</sup></div>
+      <div class="vm-stat-label">Of brands gained a customer via social video</div>
+    </div>
+    <div class="vm-stat reveal reveal-delay-3">
+      <div class="vm-stat-num">62<sup>%</sup></div>
+      <div class="vm-stat-label">Of B2B marketers say video builds brand awareness</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ SERVICES -->
+<section class="vm-services">
+  <div class="vm-services-inner">
+    <div class="vm-services-header">
+      <h2 class="vm-services-title reveal">Planning.<br>Placement.<br>Proof.</h2>
+      <p class="vm-services-body reveal reveal-delay-1">It isn't enough to have a beautiful video - it has to be launched in the right way, to the right people. From audience research through to distribution and ROI reporting, our video marketing services broadcast your content to your ideal target market and reinforce it with a strategy strong enough to carry it.</p>
+    </div>
+    <div class="vm-services-grid">
+
+      <div class="vm-svc reveal">
+        <span class="vm-svc-tag">01 - Service</span>
+        <h3>Video Strategy &amp; Audit</h3>
+        <p>We start with a thorough audit of your industry, competitors, and key objectives - identifying the most effective way to position your videos online before a single asset goes live.</p>
+        <ul>
+          <li>Audience and competitor research</li>
+          <li>Platform and format recommendations</li>
+          <li>Objective-led campaign planning</li>
+        </ul>
+      </div>
+
+      <div class="vm-svc reveal reveal-delay-1">
+        <span class="vm-svc-tag">02 - Service</span>
+        <h3>Video SEO</h3>
+        <p>Your video needs to be seen by the people it was made for. We optimise titles, metadata, captions, and hosting so your video earns clicks and views, not just uploads.</p>
+        <ul>
+          <li>Keyword-led titles and descriptions</li>
+          <li>On-platform and on-site optimisation</li>
+          <li>Increased click-through and watch time</li>
+        </ul>
+      </div>
+
+      <div class="vm-svc reveal reveal-delay-2">
+        <span class="vm-svc-tag">03 - Service</span>
+        <h3>Content Repurposing</h3>
+        <p>One shoot, many audiences. We cut a single film into shorter snippets and platform-native formats so it reaches viewers wherever they actually watch.</p>
+        <ul>
+          <li>Short-form snippets from long-form assets</li>
+          <li>Reformatted for every platform</li>
+          <li>Extended shelf life from every shoot</li>
+        </ul>
+      </div>
+
+      <div class="vm-svc reveal">
+        <span class="vm-svc-tag">04 - Service</span>
+        <h3>Paid Video Distribution</h3>
+        <p>A customised media plan puts your video directly in front of your target audience - raising awareness, increasing click-through rate, and generating quality leads.</p>
+        <ul>
+          <li>Meta, YouTube, and LinkedIn campaigns</li>
+          <li>Audience targeting and retargeting</li>
+          <li>Budget management and optimisation</li>
+        </ul>
+      </div>
+
+      <div class="vm-svc reveal reveal-delay-1">
+        <span class="vm-svc-tag">05 - Service</span>
+        <h3>B2B Video Marketing</h3>
+        <p>Video isn't just a B2C tool. Used through the buyer's journey, it helps qualify leads, explain complex products, and build the trust B2B sales cycles depend on.</p>
+        <ul>
+          <li>Sales-enablement and explainer video</li>
+          <li>Lead-nurture video sequences</li>
+          <li>Buyer-journey mapped content</li>
+        </ul>
+      </div>
+
+      <div class="vm-svc reveal reveal-delay-2">
+        <span class="vm-svc-tag">06 - Service</span>
+        <h3>Digital PR &amp; ROI Reporting</h3>
+        <p>From launch to measurement - we track views, engagement, and conversions against your objectives, so you know exactly what your video delivered.</p>
+        <ul>
+          <li>Digital PR and outreach support</li>
+          <li>Performance and engagement tracking</li>
+          <li>Clear ROI reporting against goals</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ④ RESULTS -->
+<section class="vm-results">
+  <div class="vm-results-inner">
+    <div class="vm-results-header">
+      <h2 class="vm-results-title reveal">Strategy that<br>shows up in<br>the numbers.</h2>
+      <p class="vm-results-body reveal reveal-delay-1">Video marketing works best when it's built into the plan from day one. Here's what that's looked like for two very different brands we've worked with.</p>
+    </div>
+    <div class="vm-results-grid">
+
+      <div class="vm-res vm-res-1 reveal">
+        <div class="vm-res-bg"></div>
+        <div class="vm-res-veil"></div>
+        <div class="vm-res-body">
+          <span class="vm-res-tag">01 - Social Campaign</span>
+          <span class="vm-res-name">Steel City Marketing - Brand Out, Stand Out</span>
+          <div class="vm-res-detail">A range of social videos starring the team themselves, answering the questions their customers ask most and showcasing their expertise.</div>
+          <div class="vm-res-quote">"We knew we could leave Fortay Media to do what they do, and produce something that just looks amazing." - James Biggin, Managing Director</div>
+        </div>
+      </div>
+
+      <div class="vm-res vm-res-2 reveal reveal-delay-1">
+        <div class="vm-res-bg"></div>
+        <div class="vm-res-veil"></div>
+        <div class="vm-res-body">
+          <span class="vm-res-tag">02 - Brand Identity</span>
+          <span class="vm-res-name">John Wilson Blades - Beyond the Ice</span>
+          <div class="vm-res-detail">A brand identity film following a figure skater's pursuit of her full potential, built on deep research into the brand's history, audience, and followers.</div>
+          <div class="vm-res-quote">"For views across Facebook, Instagram and Twitter we're creeping up on a quarter of a million - with only 25,000 followers. We were pleasantly surprised." - Tom Cantwell, CEO</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ PROCESS -->
+<section class="vm-process">
+  <div class="vm-process-inner">
+    <div class="vm-process-left reveal">
+      <div class="section-tag">The Process</div>
+      <h2 class="vm-process-title">How it's<br>done.</h2>
+      <p class="vm-process-intro">Four stages that turn a finished film into a working marketing asset - audit, optimise, distribute, and measure, so every video earns its place in the plan.</p>
+      <a href="contact.html" class="btn-primary">Start a Campaign</a>
+    </div>
+    <div class="vm-process-steps">
+      <div class="vm-step reveal">
+        <span class="vm-step-num">01</span>
+        <div>
+          <h4>Audit</h4>
+          <p>We start with a thorough audit of your industry and your key objectives, helping to identify the most effective way to position your videos online.</p>
+        </div>
+      </div>
+      <div class="vm-step reveal reveal-delay-1">
+        <span class="vm-step-num">02</span>
+        <div>
+          <h4>Optimise</h4>
+          <p>Video SEO ensures your content is discoverable - titles, metadata, and hosting all built to drive clicks, views, and genuine engagement.</p>
+        </div>
+      </div>
+      <div class="vm-step reveal reveal-delay-2">
+        <span class="vm-step-num">03</span>
+        <div>
+          <h4>Distribute</h4>
+          <p>Content repurposed into the right formats and placed in front of your target audience through paid, organic, and digital PR channels.</p>
+        </div>
+      </div>
+      <div class="vm-step reveal reveal-delay-3">
+        <span class="vm-step-num">04</span>
+        <div>
+          <h4>Measure</h4>
+          <p>We track views, engagement, and conversions against your objectives - and report back on the ROI, not just the view count.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ CINEMATIC BREAK -->
+<div class="vm-break">
+  <div class="vm-break-veil">
+    <div class="vm-break-text">
+      <blockquote class="reveal">"A brilliant film<br>with no plan is a<br>video no one <span>sees.</span>"</blockquote>
+      <cite class="reveal reveal-delay-1"> -  Fortay Media</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦ PACKAGES -->
+<section class="vm-packages" id="packages">
+  <div class="vm-packages-inner">
+    <div class="vm-packages-head">
+      <div class="section-tag reveal">Marketing Packages</div>
+      <h2 class="reveal reveal-delay-1">Three ways<br>to put your<br>video to work.</h2>
+    </div>
+    <div class="vm-packages-grid">
+
+      <div class="vm-pcard reveal">
+        <div class="vm-pcard-index">01</div>
+        <h3>Launch</h3>
+        <div>
+          <div class="vm-pcard-price">POA</div>
+          <div class="vm-pcard-pnote">Single video · one campaign</div>
+        </div>
+        <p class="vm-pcard-desc">Get one finished film in front of the right audience. Ideal for launching a single brand film, product video, or hero campaign asset.</p>
+        <div class="vm-pcard-rule"></div>
+        <ul class="vm-pcard-list">
+          <li>Audience and platform strategy</li>
+          <li>Video SEO and metadata optimisation</li>
+          <li>Repurposed cut-downs for social</li>
+          <li>Launch reporting and analytics</li>
+        </ul>
+        <a href="contact.html" class="vm-pcard-link">
+          Start a Campaign
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="vm-pcard featured reveal reveal-delay-1">
+        <div class="vm-pcard-index">02 - Most Popular</div>
+        <h3>Growth</h3>
+        <div>
+          <div class="vm-pcard-price">POA</div>
+          <div class="vm-pcard-pnote">Multi-channel · ongoing distribution</div>
+        </div>
+        <p class="vm-pcard-desc">A full-funnel video marketing programme - strategy, SEO, paid distribution and reporting working together across every channel your audience uses.</p>
+        <div class="vm-pcard-rule"></div>
+        <ul class="vm-pcard-list">
+          <li>Full strategy and competitor audit</li>
+          <li>Video SEO across all platforms</li>
+          <li>Paid distribution across Meta, YouTube, LinkedIn</li>
+          <li>Ongoing content repurposing</li>
+          <li>Monthly performance and ROI reporting</li>
+        </ul>
+        <a href="contact.html" class="vm-pcard-link">
+          Plan a Growth Programme
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="vm-pcard reveal reveal-delay-2">
+        <div class="vm-pcard-index">03</div>
+        <h3>Partnership</h3>
+        <div>
+          <div class="vm-pcard-price">POA</div>
+          <div class="vm-pcard-pnote">Retained · production + marketing</div>
+        </div>
+        <p class="vm-pcard-desc">Production and marketing under one roof, on a retained basis - a continuous pipeline of video content, strategy, and distribution built around your goals.</p>
+        <div class="vm-pcard-rule"></div>
+        <ul class="vm-pcard-list">
+          <li>Recurring production and marketing cadence</li>
+          <li>Dedicated strategist and reporting</li>
+          <li>Digital PR support</li>
+          <li>Priority turnaround on all assets</li>
+        </ul>
+        <a href="contact.html" class="vm-pcard-link">
+          Discuss a Partnership
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ CTA -->
+<section class="vm-cta">
+  <div class="vm-cta-eyebrow reveal">Start a Campaign</div>
+  <h2 class="reveal reveal-delay-1">Get your video<br><span>seen.</span></h2>
+  <p class="reveal reveal-delay-2">Tell us about your video, your audience, and your goals. We'll come back with a strategy, a distribution plan, and a clear quote within 48 hours.</p>
+  <div class="vm-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Start a Campaign</a>
+    <a href="work.html" class="btn-outline reveal reveal-delay-4">See Our Work</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Video Strategy</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Video SEO</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Content Repurposing</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Paid Distribution</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>B2B Video</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>ROI Reporting</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Video Strategy</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Video SEO</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Content Repurposing</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Paid Distribution</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>B2B Video</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>ROI Reporting</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
+</content>

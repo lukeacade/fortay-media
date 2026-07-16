@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fortay Media - Content & Marketing Engine</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 680px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-black-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(13,13,13,0.4) 0%,
+        rgba(13,13,13,0.25) 40%,
+        rgba(13,13,13,0.8) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 48px;
+      max-width: 960px;
+    }
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 28px;
+    }
+    .hero-label::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--yellow);
+    }
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 92px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1.0;
+      margin-bottom: 28px;
+    }
+    .hero h1 em { font-style: normal; color: var(--yellow); }
+    .hero-sub {
+      font-size: 17px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.65);
+      max-width: 540px;
+      margin: 0 auto 44px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .scroll-hint {
+      position: absolute;
+      bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.3);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px; height: 44px;
+      background: linear-gradient(to bottom, var(--yellow), transparent);
+      animation: scrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; }
+      50%       { opacity: 1; }
+    }
+
+    /* ── CHOOSE YOUR PATH ── */
+    .path {
+      background: var(--dark2);
+      padding: 120px 56px;
+    }
+    .path-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+    .path-header p {
+      color: var(--muted);
+      font-size: 16px;
+      margin-top: 16px;
+    }
+    .path-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .path-card {
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: border-color 0.3s, transform 0.3s var(--ease);
+      position: relative;
+      overflow: hidden;
+      flex: 1 1 340px;
+      max-width: 388px;
+    }
+    .path-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: transparent;
+      transition: background 0.3s;
+    }
+    .path-card:hover { border-color: rgba(245,195,24,0.3); transform: translateY(-4px); }
+    .path-card:hover::before { background: var(--yellow); }
+    .path-card.featured {
+      background: var(--yellow);
+      border-color: var(--yellow);
+      color: var(--dark);
+    }
+    .path-card.featured::before { background: rgba(0,0,0,0.15); }
+    .path-card.featured:hover { transform: translateY(-4px); border-color: var(--yellow); }
+    .path-badge {
+      display: inline-block;
+      background: var(--dark);
+      color: var(--yellow);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 4px;
+      align-self: flex-start;
+    }
+    .path-card.featured .path-badge {
+      background: rgba(0,0,0,0.15);
+      color: var(--dark);
+    }
+    .path-icon {
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .path-card.featured .path-icon { background: rgba(0,0,0,0.12); }
+    .path-icon svg { width: 26px; height: 26px; stroke: var(--white); fill: none; stroke-width: 1.8; }
+    .path-card.featured .path-icon svg { stroke: var(--dark); }
+    .path-card h3 { font-size: 26px; font-weight: 900; letter-spacing: -0.5px; }
+    .path-card p  { font-size: 14px; line-height: 1.7; color: var(--muted); flex: 1; }
+    .path-card.featured p { color: rgba(0,0,0,0.65); }
+    .path-card .btn-primary { align-self: flex-start; background: var(--dark); color: var(--yellow); }
+    .path-card .btn-primary:hover { box-shadow: 0 10px 28px rgba(0,0,0,0.4); }
+    .path-card:not(.featured) .path-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      align-self: flex-start;
+      transition: gap 0.2s;
+    }
+    .path-card:not(.featured) .path-link:hover { gap: 12px; color: var(--yellow); }
+    .path-card:not(.featured) .path-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; }
+
+    /* ── CORE OFFER ── */
+    .core-offer {
+      padding: 140px 56px;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .core-offer-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 80px;
+    }
+    .core-offer-header h2 { font-size: clamp(38px, 4.5vw, 62px); font-weight: 900; letter-spacing: -2px; line-height: 1.05; }
+    .core-offer-header p  { font-size: 16px; line-height: 1.8; color: var(--muted); }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(10% + 14px);
+      right: calc(10% + 14px);
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+    }
+    .step-num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: var(--dark2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--yellow);
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .process-step:hover .step-num { background: var(--yellow); color: var(--dark); border-color: var(--yellow); }
+    .process-step h4 { font-size: 16px; font-weight: 800; margin-bottom: 10px; }
+    .process-step p  { font-size: 13px; line-height: 1.65; color: var(--muted); }
+
+    /* ── WHY FORTAY ── */
+    .why {
+      background: var(--dark2);
+      padding: 140px 56px;
+    }
+    .why-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+    .why-left h2 { font-size: clamp(38px, 4.5vw, 62px); font-weight: 900; letter-spacing: -2px; line-height: 1.05; margin-bottom: 28px; }
+    .why-left p  { font-size: 15px; line-height: 1.85; color: var(--muted); margin-bottom: 36px; }
+    .why-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .why-point {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .why-point:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+    .why-check {
+      width: 28px; height: 28px;
+      background: rgba(245,195,24,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .why-check svg { width: 13px; height: 13px; stroke: var(--yellow); fill: none; stroke-width: 2.5; }
+    .why-point h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .why-point p  { font-size: 13px; line-height: 1.6; color: var(--muted); }
+
+    /* ── FEATURED WORK ── */
+    .work-section {
+      padding: 140px 56px;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .work-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 60px;
+    }
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+    .work-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--dark3);
+      cursor: pointer;
+    }
+    .work-card:nth-child(1) { grid-column: span 7; }
+    .work-card:nth-child(2) { grid-column: span 5; }
+    .work-card:nth-child(3) { grid-column: span 5; }
+    .work-card:nth-child(4) { grid-column: span 7; }
+    .work-bg {
+      width: 100%;
+      aspect-ratio: 16/10;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.7s var(--ease);
+      position: relative;
+      object-fit: cover;
+    }
+    .work-card:nth-child(1) .work-bg,
+    .work-card:nth-child(4) .work-bg { aspect-ratio: 16/9; }
+    .work-card:hover .work-bg { transform: scale(1.05); }
+    .wb1 { background: linear-gradient(140deg, #1a1208, #3d2c10); }
+    .wb2 { background: linear-gradient(140deg, #080d16, #112033); }
+    .wb3 { background: linear-gradient(140deg, #0d1208, #1a2e10); }
+    .wb4 { background: linear-gradient(140deg, #140810, #2e1028); }
+    .work-bg-label {
+      font-size: 64px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.05);
+      letter-spacing: -2px;
+      user-select: none;
+    }
+    .work-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 55%);
+    }
+    .work-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 28px 24px;
+    }
+    .work-meta {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .work-tag {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--dark);
+      font-size: 10px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 50px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+    .work-client { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 0.5px; }
+    .work-info h3 { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; margin-bottom: 6px; }
+    .work-card:nth-child(1) .work-info h3,
+    .work-card:nth-child(4) .work-info h3 { font-size: 24px; }
+    .work-result {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      font-style: italic;
+    }
+
+    /* ── STUDIO SECTION ── */
+    .studio-section {
+      background: var(--dark2);
+      padding: 140px 56px;
+    }
+    .studio-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .studio-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 72px;
+    }
+    .studio-header h2 { font-size: clamp(38px, 4.5vw, 62px); font-weight: 900; letter-spacing: -2px; line-height: 1.05; }
+    .studio-header-right p { font-size: 15px; line-height: 1.8; color: var(--muted); margin-bottom: 28px; }
+    .studio-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .studio-features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .studio-feat {
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 32px 28px;
+      transition: border-color 0.3s, transform 0.3s var(--ease);
+    }
+    .studio-feat:hover { border-color: rgba(245,195,24,0.3); transform: translateY(-3px); }
+    .studio-feat-icon {
+      width: 44px; height: 44px;
+      background: rgba(245,195,24,0.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .studio-feat-icon svg { width: 22px; height: 22px; stroke: var(--yellow); fill: none; stroke-width: 1.8; }
+    .studio-feat h4 { font-size: 15px; font-weight: 800; margin-bottom: 8px; }
+    .studio-feat p  { font-size: 13px; line-height: 1.6; color: var(--muted); }
+
+    /* ── CLIENTS / SOCIAL PROOF ── */
+    .proof {
+      padding: 100px 56px;
+      text-align: center;
+      background: var(--white);
+    }
+    .proof-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 48px;
+    }
+    .logo-carousel {
+      overflow: hidden;
+      margin: 0 0 80px;
+      position: relative;
+    }
+    .logo-carousel::before,
+    .logo-carousel::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 140px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .logo-carousel::before { left: 0; background: linear-gradient(to right, var(--dark), transparent); }
+    .logo-carousel::after  { right: 0; background: linear-gradient(to left,  var(--dark), transparent); }
+    .logo-track {
+      display: flex;
+      align-items: center;
+      gap: 64px;
+      animation: logoScroll 40s linear infinite;
+      width: max-content;
+      padding: 0 32px;
+    }
+    .logo-track:hover { animation-play-state: paused; }
+    .logo-item { flex-shrink: 0; height: 36px; display: flex; align-items: center; }
+    .logo-item img {
+      height: 36px;
+      width: auto;
+      max-width: 140px;
+      object-fit: contain;
+      filter: grayscale(1) brightness(0.55);
+      opacity: 0.65;
+      transition: filter 0.3s, opacity 0.3s;
+    }
+    .logo-item img:hover { filter: grayscale(0) brightness(1.1); opacity: 1; }
+    @keyframes logoScroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1240px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .testi-card {
+      background: #f7f7f7;
+      border-radius: 14px;
+      padding: 36px;
+    }
+    .testi-stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+    .testi-stars span {
+      font-size: 16px;
+      color: var(--yellow);
+    }
+    .testi-card blockquote {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #222;
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .testi-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: #ddd;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      font-weight: 800;
+      color: #888;
+      flex-shrink: 0;
+    }
+    .testi-name { font-size: 14px; font-weight: 700; color: #111; }
+    .testi-role { font-size: 12px; color: #888; margin-top: 2px; }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      padding: 160px 56px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: 60px; left: 50%;
+      transform: translateX(-50%);
+      width: 1px; height: 80px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.12));
+    }
+    .final-cta h2 {
+      font-size: clamp(52px, 8vw, 112px);
+      font-weight: 900;
+      letter-spacing: -4px;
+      line-height: 0.93;
+      margin-bottom: 36px;
+    }
+    .final-cta h2 span { color: var(--yellow); }
+    .final-cta p { font-size: 16px; color: var(--muted); margin-bottom: 48px; }
+    .final-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 120px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .path { padding: 80px 24px; }
+      .path-cards { flex-direction: column; }
+      .path-card { max-width: 100%; }
+      .core-offer { padding: 80px 24px; }
+      .core-offer-header { grid-template-columns: 1fr; gap: 28px; }
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .process-steps::before { display: none; }
+      .why { padding: 80px 24px; }
+      .why-inner { grid-template-columns: 1fr; gap: 48px; }
+      .work-section { padding: 80px 24px; }
+      .work-grid { grid-template-columns: 1fr; }
+      .work-card:nth-child(1), .work-card:nth-child(2),
+      .work-card:nth-child(3), .work-card:nth-child(4) { grid-column: span 1; }
+      .studio-section { padding: 80px 24px; }
+      .studio-header { grid-template-columns: 1fr; gap: 32px; }
+      .studio-features { grid-template-columns: 1fr 1fr; }
+      .proof { padding: 60px 24px; }
+      .testimonials { grid-template-columns: 1fr; }
+      .final-cta { padding: 100px 24px 0; }
+      .work-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+    }
+    @media (max-width: 600px) {
+      .process-steps { grid-template-columns: 1fr; }
+      .studio-features { grid-template-columns: 1fr; }
+      .hero h1 { letter-spacing: -2px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Book a Strategy Call</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto">
+    <source src="https://www.fortaymedia.co.uk/wp-content/uploads/2025/09/fortay_-_header_version_1-1080p.mp4" type="video/mp4">
+  </video>
+  <div class="hero-black-overlay"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-label">Content &amp; Marketing Engine</div>
+    <h1>We turn your ideas into content that <em>actually drives results</em></h1>
+    <p class="hero-sub">Full-service content, video production, and distribution - all handled in-house.</p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn-primary">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92V19.92C22 20.48 21.56 20.96 21 21C10.4 21 2 12.6 2 2C2.04 1.44 2.52 1 3.08 1H6.08C6.64 1 7.08 1.48 7.08 2.04C7.08 3.52 7.32 4.96 7.8 6.28C7.96 6.72 7.84 7.2 7.52 7.52L5.82 9.22C7.56 12.72 10.28 15.44 13.78 17.18L15.48 15.48C15.8 15.16 16.28 15.04 16.72 15.2C18.04 15.68 19.48 15.92 20.96 15.92C21.52 15.92 22 16.36 22 16.92Z"/></svg>
+        Book a Strategy Call
+      </a>
+      <a href="work.html" class="btn-ghost">
+        See Our Work
+        <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ② CHOOSE YOUR PATH -->
+<section class="path">
+  <div class="path-header">
+    <div class="section-tag reveal" style="justify-content:center;">How We Work</div>
+    <h2 class="section-title reveal reveal-delay-1">Choose your path</h2>
+    <p class="reveal reveal-delay-2">Whether you need an ongoing partner or a single production - we have the right solution.</p>
+  </div>
+  <div class="path-cards">
+
+    <div class="path-card featured reveal">
+      <div class="path-badge">★ Most Popular</div>
+      <div class="path-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <h3>Growth Partnership</h3>
+      <p>Ongoing content, strategy, production, and marketing - handled for you every month. Your entire content engine, under one roof.</p>
+      <a href="growth-partnership.html" class="btn-primary">Explore Retainers</a>
+    </div>
+
+    <div class="path-card reveal reveal-delay-1">
+      <div class="path-icon">
+        <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      </div>
+      <h3>Video Production</h3>
+      <p>High-quality video for campaigns, brand films, events, products, and more. Concept to delivery, handled end-to-end.</p>
+      <a href="video-production.html" class="path-link">
+        View Video Services
+        <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
+    <div class="path-card reveal reveal-delay-2">
+      <div class="path-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h3>Studio Hire</h3>
+      <p>Fully equipped green screen and podcast studio in Sheffield. Available dry hire or fully crewed - built to make you look your best.</p>
+      <a href="studio-hire.html" class="path-link">
+        Explore Studio
+        <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
+    <div class="path-card reveal reveal-delay-3">
+      <div class="path-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
+      </div>
+      <h3>Website Development</h3>
+      <p>Fast, conversion-focused websites built to be edited by you, not just handed over and forgotten. Design, build, and launch handled end-to-end.</p>
+      <a href="web-design-sheffield.html" class="path-link">
+        Explore Web Design
+        <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
+    <div class="path-card reveal reveal-delay-4">
+      <div class="path-icon">
+        <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="10.6" x2="15.4" y2="6.4"/><line x1="8.6" y1="13.4" x2="15.4" y2="17.6"/></svg>
+      </div>
+      <h3>Social Media Management</h3>
+      <p>Content, community, and paid social handled day-to-day so your channels stay active, consistent, and actually driving growth.</p>
+      <a href="social-media-management-company.html" class="path-link">
+        Explore Social Media
+        <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ③ THE SYSTEM (Core Offer) -->
+<section style="background: var(--dark);">
+  <div class="core-offer">
+    <div class="core-offer-header">
+      <div>
+        <div class="section-tag reveal">How It Works</div>
+        <h2 class="reveal reveal-delay-1">Your entire content and marketing engine - under one roof</h2>
+      </div>
+      <p class="section-sub reveal reveal-delay-2">We don't just produce content. We build and run your entire system - from strategy and production through to distribution and optimisation.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <h4>Discovery</h4>
+        <p>Understand your business, audience, and goals before a single frame is shot.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-num">02</div>
+        <h4>Strategy</h4>
+        <p>Content plan, campaign framework, and messaging - all mapped to your objectives.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-num">03</div>
+        <h4>Production</h4>
+        <p>In-house video, studio shoots, and editing - executed to a cinematic standard.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-num">04</div>
+        <h4>Distribution</h4>
+        <p>Social, ads, and website - content deployed where your audience actually lives.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-4">
+        <div class="step-num">05</div>
+        <h4>Optimisation</h4>
+        <p>We review performance and continuously improve. Every month, it gets sharper.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ④ WHY FORTAY -->
+<section class="why">
+  <div class="why-inner">
+    <div class="why-left">
+      <div class="section-tag reveal">Why Fortay</div>
+      <h2 class="reveal reveal-delay-1">Why brands choose Fortay</h2>
+      <p class="reveal reveal-delay-2">Most businesses are juggling a video freelancer, a social media person, and a marketing consultant - all pulling in different directions. We fix that.</p>
+      <a href="growth-partnership.html" class="btn-primary reveal reveal-delay-3">See the Retainer</a>
+    </div>
+    <div class="why-points">
+      <div class="why-point reveal">
+        <div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div>
+          <h4>In-house studio means faster, more flexible production</h4>
+          <p>No waiting on third-party locations or external crews. We move when you need to move.</p>
+        </div>
+      </div>
+      <div class="why-point reveal reveal-delay-1">
+        <div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div>
+          <h4>Strategy, production, and distribution in one team</h4>
+          <p>The people who plan your campaigns are the same people who shoot and distribute them. No Chinese whispers.</p>
+        </div>
+      </div>
+      <div class="why-point reveal reveal-delay-2">
+        <div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div>
+          <h4>No juggling multiple agencies</h4>
+          <p>One team. One invoice. One point of contact. We handle everything so you don't have to.</p>
+        </div>
+      </div>
+      <div class="why-point reveal reveal-delay-3">
+        <div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div>
+          <h4>Built for consistent, scalable content</h4>
+          <p>A retainer model means your content never stops. Consistent output, consistent growth.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ FEATURED WORK -->
+<section style="background: var(--dark);">
+  <div class="work-section">
+    <div class="work-header">
+      <div>
+        <div class="section-tag reveal">Selected Work</div>
+        <h2 class="section-title reveal reveal-delay-1">Featured Projects</h2>
+      </div>
+      <a href="work.html" class="btn-outline reveal reveal-delay-2">View All Case Studies</a>
+    </div>
+    <div class="work-grid">
+
+      <div class="work-card reveal">
+        <img class="work-bg" src="images/imgi_72_yorkshire-tea-1024x895.jpg" alt="Yorkshire Tea brand film"/>
+        <div class="work-overlay"></div>
+        <div class="work-info">
+          <div class="work-meta">
+            <span class="work-tag">Brand Film</span>
+            <span class="work-client">Yorkshire Tea</span>
+          </div>
+          <h3>Bringing a beloved brand to life on screen</h3>
+          <p class="work-result">Goal: brand storytelling - Result: content distributed across TV and social</p>
+        </div>
+      </div>
+
+      <div class="work-card reveal reveal-delay-1">
+        <img class="work-bg" src="images/imgi_64_head-of-steam-sheffield-1024x895.jpg" alt="Head of Steam Sheffield"/>
+        <div class="work-overlay"></div>
+        <div class="work-info">
+          <div class="work-meta">
+            <span class="work-tag">Brand Campaign</span>
+            <span class="work-client">Head of Steam</span>
+          </div>
+          <h3>A campaign that put the brand on the map</h3>
+          <p class="work-result">Goal: local brand awareness - Result: full campaign suite delivered</p>
+        </div>
+      </div>
+
+      <div class="work-card reveal reveal-delay-2">
+        <img class="work-bg" src="images/imgi_68_British-glass-thumbnail-1-1024x895.png" alt="British Glass case study video"/>
+        <div class="work-overlay"></div>
+        <div class="work-info">
+          <div class="work-meta">
+            <span class="work-tag">Case Study Video</span>
+            <span class="work-client">British Glass</span>
+          </div>
+          <h3>Industry case study that built credibility at scale</h3>
+          <p class="work-result">Goal: stakeholder engagement - Result: distributed across industry channels</p>
+        </div>
+      </div>
+
+      <div class="work-card reveal reveal-delay-3">
+        <img class="work-bg" src="images/imgi_76_sthree-1024x895.jpg" alt="SThree brand video"/>
+        <div class="work-overlay"></div>
+        <div class="work-info">
+          <div class="work-meta">
+            <span class="work-tag">Brand Video</span>
+            <span class="work-client">SThree</span>
+          </div>
+          <h3>A forward-thinking brand film for a global recruiter</h3>
+          <p class="work-result">Goal: employer brand - Result: deployed across global offices and digital</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ STUDIO -->
+<section class="studio-section">
+  <div class="studio-inner">
+    <div class="studio-header">
+      <div>
+        <div class="section-tag reveal">Our Studio</div>
+        <h2 class="reveal reveal-delay-1">Our studio.<br>Your unfair<br>advantage.</h2>
+      </div>
+      <div class="studio-header-right">
+        <p class="reveal">A professional, fully equipped creative studio in Sheffield - available as part of a retainer, for standalone productions, or for dry hire. Whatever you need, we have the space and the kit to make it happen.</p>
+        <div class="studio-ctas reveal reveal-delay-1">
+          <a href="studio-hire.html" class="btn-primary">Hire the Studio</a>
+          <a href="growth-partnership.html" class="btn-outline">Use It in a Campaign</a>
+        </div>
+      </div>
+    </div>
+    <div class="studio-features">
+      <div class="studio-feat reveal">
+        <div class="studio-feat-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        </div>
+        <h4>Green Screen</h4>
+        <p>Large-format chroma key setup with professional lighting rigs - ready for any production.</p>
+      </div>
+      <div class="studio-feat reveal reveal-delay-1">
+        <div class="studio-feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </div>
+        <h4>Podcast Studio</h4>
+        <p>Multi-camera, treated acoustic space with high-end audio. Perfect for video podcasts and long-form content.</p>
+      </div>
+      <div class="studio-feat reveal reveal-delay-2">
+        <div class="studio-feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M1 6l11 7L23 6"/><rect x="1" y="4" width="22" height="16" rx="2"/></svg>
+        </div>
+        <h4>Multi-Scene Builds</h4>
+        <p>Flexible space for custom set builds. From minimal interviews to full campaign productions.</p>
+      </div>
+      <div class="studio-feat reveal reveal-delay-3">
+        <div class="studio-feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h4>Wet &amp; Dry Hire</h4>
+        <p>Bring your own crew or use ours. Flexible hire options to suit any brief or budget.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ SOCIAL PROOF -->
+<section class="proof">
+  <p class="proof-label reveal">Trusted by brands you know</p>
+  <div class="logo-carousel reveal reveal-delay-1">
+    <div class="logo-track">
+      <div class="logo-item"><img src="Images/imgi_33_yorkshiretea.jpg" alt="Yorkshire Tea"/></div>
+      <div class="logo-item"><img src="Images/imgi_41_siemens-logo-0-4208419415-300x300.png" alt="Siemens"/></div>
+      <div class="logo-item"><img src="Images/imgi_35_channel-4-1-logo-png-transparent-2409432490-300x300.png" alt="Channel 4"/></div>
+      <div class="logo-item"><img src="Images/imgi_46_logo-cadbury.png" alt="Cadbury"/></div>
+      <div class="logo-item"><img src="Images/imgi_47_logo-sega.png" alt="SEGA"/></div>
+      <div class="logo-item"><img src="Images/imgi_50_logo-nhs.png" alt="NHS"/></div>
+      <div class="logo-item"><img src="Images/imgi_54_logo-holidayinn.png" alt="Holiday Inn"/></div>
+      <div class="logo-item"><img src="Images/imgi_55_logo-crowneplaza.png" alt="Crowne Plaza"/></div>
+      <div class="logo-item"><img src="Images/imgi_56_logo-cameronsbrewers.png" alt="Camerons Brewers"/></div>
+      <div class="logo-item"><img src="Images/imgi_48_logo-malmaisonhotels.png" alt="Malmaison Hotels"/></div>
+      <div class="logo-item"><img src="Images/imgi_57_logo-esa.png" alt="ESA"/></div>
+      <div class="logo-item"><img src="Images/imgi_58_logo-citizensinpolicing.png" alt="Citizens in Policing"/></div>
+      <div class="logo-item"><img src="Images/imgi_59_logo-sheffieldunitedfc.png" alt="Sheffield United FC"/></div>
+      <div class="logo-item"><img src="Images/imgi_60_logo-sylvania.png" alt="Sylvania"/></div>
+      <div class="logo-item"><img src="Images/imgi_49_logo-hallmark.png" alt="Hallmark"/></div>
+      <div class="logo-item"><img src="Images/imgi_63_logo-millersoils.png" alt="Miller Soils"/></div>
+      <!-- duplicate for seamless loop -->
+      <div class="logo-item"><img src="Images/imgi_33_yorkshiretea.jpg" alt="Yorkshire Tea"/></div>
+      <div class="logo-item"><img src="Images/imgi_41_siemens-logo-0-4208419415-300x300.png" alt="Siemens"/></div>
+      <div class="logo-item"><img src="Images/imgi_35_channel-4-1-logo-png-transparent-2409432490-300x300.png" alt="Channel 4"/></div>
+      <div class="logo-item"><img src="Images/imgi_46_logo-cadbury.png" alt="Cadbury"/></div>
+      <div class="logo-item"><img src="Images/imgi_47_logo-sega.png" alt="SEGA"/></div>
+      <div class="logo-item"><img src="Images/imgi_50_logo-nhs.png" alt="NHS"/></div>
+      <div class="logo-item"><img src="Images/imgi_54_logo-holidayinn.png" alt="Holiday Inn"/></div>
+      <div class="logo-item"><img src="Images/imgi_55_logo-crowneplaza.png" alt="Crowne Plaza"/></div>
+      <div class="logo-item"><img src="Images/imgi_56_logo-cameronsbrewers.png" alt="Camerons Brewers"/></div>
+      <div class="logo-item"><img src="Images/imgi_48_logo-malmaisonhotels.png" alt="Malmaison Hotels"/></div>
+      <div class="logo-item"><img src="Images/imgi_57_logo-esa.png" alt="ESA"/></div>
+      <div class="logo-item"><img src="Images/imgi_58_logo-citizensinpolicing.png" alt="Citizens in Policing"/></div>
+      <div class="logo-item"><img src="Images/imgi_59_logo-sheffieldunitedfc.png" alt="Sheffield United FC"/></div>
+      <div class="logo-item"><img src="Images/imgi_60_logo-sylvania.png" alt="Sylvania"/></div>
+      <div class="logo-item"><img src="Images/imgi_49_logo-hallmark.png" alt="Hallmark"/></div>
+      <div class="logo-item"><img src="Images/imgi_63_logo-millersoils.png" alt="Miller Soils"/></div>
+    </div>
+  </div>
+  <div class="testimonials">
+    <div class="testi-card reveal">
+      <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <blockquote>"Fortay don't just shoot great content - they understand what we're trying to achieve and build everything around the outcome. Working with one team for strategy, production and distribution has genuinely changed how we think about content."</blockquote>
+      <div class="testi-author">
+        <div class="testi-avatar">JM</div>
+        <div>
+          <div class="testi-name">James M.</div>
+          <div class="testi-role">Head of Marketing, Crowne Plaza</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal reveal-delay-1">
+      <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <blockquote>"The retainer model is exactly what we needed. Consistent output, consistent quality, and we never have to chase anyone. It just works - and the results have been significant."</blockquote>
+      <div class="testi-author">
+        <div class="testi-avatar">SR</div>
+        <div>
+          <div class="testi-name">Sarah R.</div>
+          <div class="testi-role">Brand Director, Holiday Inn</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal reveal-delay-2">
+      <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <blockquote>"Fast, professional, and genuinely creative. They shot our event and turned around polished content the same week. The studio facilities are seriously impressive for a regional agency."</blockquote>
+      <div class="testi-author">
+        <div class="testi-avatar">TK</div>
+        <div>
+          <div class="testi-name">Tom K.</div>
+          <div class="testi-role">Events Manager, Malmaison Hotels</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ FINAL CTA -->
+<section style="background: var(--dark);">
+  <div class="final-cta">
+    <h2 class="reveal">Ready to turn<br>your ideas into<br><span>results?</span></h2>
+    <p class="reveal reveal-delay-1">Let's talk about what consistent, high-quality content can do for your business.</p>
+    <div class="final-cta-actions">
+      <a href="contact.html" class="btn-primary reveal reveal-delay-2">Book a Strategy Call</a>
+      <a href="work.html" class="btn-outline reveal reveal-delay-3">Explore Our Work</a>
+    </div>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <div class="marquee-item"><span class="marquee-dot"></span>Video Production</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Growth Partnership</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Studio Hire</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Brand Strategy</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Social Content</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Distribution</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Video Production</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Growth Partnership</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Studio Hire</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Brand Strategy</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Social Content</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Distribution</div>
+    </div>
+  </div>
+</section>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

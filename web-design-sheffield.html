@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Website Design &amp; Development Sheffield - Fortay Media</title>
+  <meta name="description" content="Website design and development in Sheffield. Fortay Media builds fast, responsive, conversion-focused websites that turn visitors into customers - designed, built, and grown by one in-house team."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO
+    ============================ */
+    .wd-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+    }
+    .wd-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #1a1a1a 0%, #262626 40%, var(--yellow) 145%);
+    }
+    .wd-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.28) 55%,
+        rgba(0,0,0,0.65) 100%
+      );
+    }
+    .wd-hero-wrap {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 88px;
+    }
+    .wd-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .wd-hero-title {
+      font-size: clamp(64px, 9vw, 130px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .wd-hero-title em { font-style: normal; color: var(--yellow); }
+    .wd-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .wd-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+    .wd-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .wd-scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      right: 64px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.35;
+    }
+    .wd-scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .wd-scroll-line {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, white, transparent);
+      animation: wdScrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes wdScrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%     { opacity: 0.1;  transform: scaleY(0.4); }
+    }
+
+    /* ============================
+       STATS
+    ============================ */
+    .wd-stats {
+      background: var(--dark);
+      padding: 72px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .wd-stats-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+    }
+    .wd-stat {
+      padding: 0 48px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .wd-stat:first-child { border-left: none; padding-left: 0; }
+    .wd-stat-num {
+      font-size: clamp(52px, 5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .wd-stat-num sup { font-size: 0.4em; color: var(--yellow); vertical-align: super; }
+    .wd-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============================
+       SERVICES (indexed tiles)
+    ============================ */
+    .wd-services {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .wd-services-inner { max-width: 1440px; margin: 0 auto; }
+    .wd-services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .wd-services-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .wd-services-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .wd-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .wd-svc {
+      background: var(--dark2);
+      padding: 44px 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background 0.3s;
+    }
+    .wd-svc:hover { background: #1a1a1a; }
+    .wd-svc-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .wd-svc h3 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    .wd-svc p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+    .wd-svc ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .wd-svc li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.55);
+    }
+    .wd-svc li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ============================
+       WHY IT MATTERS (stat tiles with gradients)
+    ============================ */
+    .wd-why {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .wd-why-inner { max-width: 1440px; margin: 0 auto; }
+    .wd-why-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .wd-why-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .wd-why-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .wd-why-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 3px;
+    }
+    .wd-wcard {
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      aspect-ratio: 4/3;
+    }
+    .wd-wcard-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.9s cubic-bezier(0.23,1,0.32,1);
+    }
+    .wd-wcard:hover .wd-wcard-bg { transform: scale(1.06); }
+    .wd-wcard1 .wd-wcard-bg { background: linear-gradient(135deg, #101010 0%, #1c1c1c 55%, var(--yellow) 160%); }
+    .wd-wcard2 .wd-wcard-bg { background: linear-gradient(225deg, #101010 0%, #232323 55%, var(--yellow) 170%); }
+    .wd-wcard3 .wd-wcard-bg { background: linear-gradient(45deg, #101010 0%, #1a1a1a 50%, var(--yellow) 150%); }
+    .wd-wcard4 .wd-wcard-bg { background: linear-gradient(315deg, #101010 0%, #202020 60%, var(--yellow) 175%); }
+    .wd-wcard-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.15) 55%);
+    }
+    .wd-wcard-body {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 40px 36px;
+    }
+    .wd-wcard-num {
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: var(--yellow);
+      display: block;
+      margin-bottom: 10px;
+    }
+    .wd-wcard-name {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.3px;
+      display: block;
+      margin-bottom: 8px;
+      line-height: 1.2;
+      color: var(--white);
+    }
+    .wd-wcard-detail {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    /* ============================
+       PROCESS (sticky rail)
+    ============================ */
+    .wd-process {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .wd-process-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    .wd-process-left { position: sticky; top: 96px; }
+    .wd-process-left .section-tag { margin-bottom: 20px; }
+    .wd-process-title {
+      font-size: clamp(38px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .wd-process-intro {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 420px;
+    }
+    .wd-process-steps { display: flex; flex-direction: column; }
+    .wd-step {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: start;
+      transition: padding-left 0.3s;
+    }
+    .wd-step:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .wd-step:hover { padding-left: 8px; }
+    .wd-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      padding-top: 4px;
+    }
+    .wd-step h4 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .wd-step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       CINEMATIC BREAK (gradient panel)
+    ============================ */
+    .wd-break {
+      position: relative;
+      height: 60vh;
+      overflow: hidden;
+      background: linear-gradient(100deg, #0d0d0d 0%, #1c1c1c 45%, var(--yellow) 190%);
+    }
+    .wd-break-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.15) 65%);
+      display: flex;
+      align-items: center;
+    }
+    .wd-break-text {
+      padding: 0 64px;
+      max-width: 820px;
+    }
+    .wd-break-text blockquote {
+      font-size: clamp(36px, 6vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      font-style: normal;
+    }
+    .wd-break-text blockquote span { color: var(--yellow); }
+    .wd-break-text cite {
+      display: block;
+      font-size: 13px;
+      font-style: normal;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 28px;
+    }
+
+    /* ============================
+       PROJECT PACKAGES (tiers)
+    ============================ */
+    .wd-packages {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .wd-packages-inner { max-width: 1440px; margin: 0 auto; }
+    .wd-packages-head { margin-bottom: 72px; }
+    .wd-packages-head h2 {
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      max-width: 820px;
+    }
+    .wd-packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .wd-pcard {
+      background: var(--dark2);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .wd-pcard:hover { background: #1a1a1a; }
+    .wd-pcard.featured {
+      background: var(--yellow);
+      color: var(--dark);
+    }
+    .wd-pcard.featured:hover { background: #e6b800; }
+    .wd-pcard-index {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .wd-pcard.featured .wd-pcard-index { color: rgba(0,0,0,0.4); }
+    .wd-pcard h3 {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+    .wd-pcard-price {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+    .wd-pcard-pnote {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .wd-pcard.featured .wd-pcard-pnote { color: rgba(0,0,0,0.5); }
+    .wd-pcard-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .wd-pcard.featured .wd-pcard-desc { color: rgba(0,0,0,0.6); }
+    .wd-pcard-rule {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .wd-pcard.featured .wd-pcard-rule { background: rgba(0,0,0,0.15); }
+    .wd-pcard-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .wd-pcard-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .wd-pcard-list li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .wd-pcard.featured .wd-pcard-list li::before { color: var(--dark); }
+    .wd-pcard-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      text-decoration: none;
+      margin-top: 8px;
+      transition: gap 0.3s;
+    }
+    .wd-pcard.featured .wd-pcard-link { color: var(--dark); }
+    .wd-pcard-link:hover { gap: 18px; }
+    .wd-pcard-link svg {
+      width: 16px; height: 16px;
+      stroke: currentColor; fill: none; stroke-width: 2;
+    }
+
+    /* ============================
+       CTA
+    ============================ */
+    .wd-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .wd-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .wd-cta h2 {
+      font-size: clamp(64px, 10vw, 140px);
+      font-weight: 900;
+      letter-spacing: -6px;
+      line-height: 0.88;
+      margin-bottom: 36px;
+    }
+    .wd-cta h2 span { color: var(--yellow); }
+    .wd-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .wd-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .wd-hero-wrap { padding: 0 24px 64px; }
+      .wd-hero-title { letter-spacing: -2px; }
+      .wd-scroll-indicator { display: none; }
+      .wd-stats { padding: 60px 24px; }
+      .wd-stats-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .wd-stat { border-left: none; padding-left: 0; }
+      .wd-services { padding: 80px 24px; }
+      .wd-services-header { grid-template-columns: 1fr; gap: 24px; }
+      .wd-services-grid { grid-template-columns: 1fr; }
+      .wd-why { padding: 80px 24px; }
+      .wd-why-header { grid-template-columns: 1fr; gap: 24px; }
+      .wd-why-grid { grid-template-columns: 1fr; }
+      .wd-wcard { aspect-ratio: 16/10; }
+      .wd-process { padding: 80px 24px; }
+      .wd-process-inner { grid-template-columns: 1fr; gap: 48px; }
+      .wd-process-left { position: static; }
+      .wd-break { height: 50vh; }
+      .wd-break-text { padding: 0 24px; }
+      .wd-packages { padding: 80px 24px; }
+      .wd-packages-grid { grid-template-columns: 1fr; }
+      .wd-cta { padding: 100px 24px; }
+      .wd-cta h2 { letter-spacing: -3px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html" class="active">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="wd-hero">
+  <div class="wd-hero-img" style="background-image:url('Images/web-design-sheffield-hero.jpg');background-size:cover;background-position:center;"></div>
+  <div class="wd-hero-overlay"></div>
+  <div class="wd-hero-wrap">
+    <div class="wd-hero-eyebrow reveal">Website Design &amp; Development - Sheffield</div>
+    <h1 class="wd-hero-title reveal reveal-delay-1">
+      Sites that<br>sell while<br>you <em>sleep.</em>
+    </h1>
+    <div class="wd-hero-bottom reveal reveal-delay-2">
+      <p class="wd-hero-desc">Your website is your best salesperson. We design and build fast, responsive, conversion-focused sites for Sheffield businesses - with the SEO and content teams to keep it working long after launch.</p>
+      <div class="wd-hero-actions">
+        <a href="contact.html" class="btn-primary">Start a Project</a>
+        <a href="#packages" class="btn-outline">View Packages</a>
+      </div>
+    </div>
+  </div>
+  <div class="wd-scroll-indicator">
+    <span>Scroll</span>
+    <div class="wd-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ② STATS -->
+<section class="wd-stats">
+  <div class="wd-stats-inner">
+    <div class="wd-stat reveal">
+      <div class="wd-stat-num">94<sup>%</sup></div>
+      <div class="wd-stat-label">Of first impressions are design-led</div>
+    </div>
+    <div class="wd-stat reveal reveal-delay-1">
+      <div class="wd-stat-num">68<sup>%</sup></div>
+      <div class="wd-stat-label">Sales lift from mobile-friendly design</div>
+    </div>
+    <div class="wd-stat reveal reveal-delay-2">
+      <div class="wd-stat-num">66<sup>%</sup></div>
+      <div class="wd-stat-label">Prefer a beautifully designed site</div>
+    </div>
+    <div class="wd-stat reveal reveal-delay-3">
+      <div class="wd-stat-num">1<sup>team</sup></div>
+      <div class="wd-stat-label">Design, build, SEO and PPC - in-house</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ SERVICES -->
+<section class="wd-services">
+  <div class="wd-services-inner">
+    <div class="wd-services-header">
+      <h2 class="wd-services-title reveal">Design is how<br>your site<br>works.</h2>
+      <p class="wd-services-body reveal reveal-delay-1">Design isn't just how your website looks - it's how it performs. We build every site around your brand identity, your customer's experience, and the conversions that actually grow your business.</p>
+    </div>
+    <div class="wd-services-grid">
+
+      <div class="wd-svc reveal">
+        <span class="wd-svc-tag">01 - Service</span>
+        <h3>Website Design</h3>
+        <p>A unique, on-brand design built around your customers, not a template. Every layout decision is made with conversion in mind.</p>
+        <ul>
+          <li>Bespoke brand-led design</li>
+          <li>User-experience-first layouts</li>
+          <li>Conversion-focused page structure</li>
+        </ul>
+      </div>
+
+      <div class="wd-svc reveal reveal-delay-1">
+        <span class="wd-svc-tag">02 - Service</span>
+        <h3>Development</h3>
+        <p>Fast, accessible, responsive builds that work perfectly on every device - and content-manageable so your team can keep it current.</p>
+        <ul>
+          <li>Responsive, mobile-first build</li>
+          <li>Content-manageable CMS setup</li>
+          <li>Fast, accessible, standards-compliant code</li>
+        </ul>
+      </div>
+
+      <div class="wd-svc reveal reveal-delay-2">
+        <span class="wd-svc-tag">03 - Service</span>
+        <h3>E-Commerce</h3>
+        <p>Online stores designed to convert browsers into buyers - clean checkout flows, strong product pages, built to scale with you.</p>
+        <ul>
+          <li>Product and category page design</li>
+          <li>Streamlined checkout experience</li>
+          <li>Scalable store architecture</li>
+        </ul>
+      </div>
+
+      <div class="wd-svc reveal">
+        <span class="wd-svc-tag">04 - Service</span>
+        <h3>SEO-Ready Builds</h3>
+        <p>A well put-together site is a search-engine-friendly one. We build with SEO foundations in from day one, backed by our dedicated SEO team.</p>
+        <ul>
+          <li>Technical SEO foundations</li>
+          <li>Site speed optimisation</li>
+          <li>Structured for organic ranking</li>
+        </ul>
+      </div>
+
+      <div class="wd-svc reveal reveal-delay-1">
+        <span class="wd-svc-tag">05 - Service</span>
+        <h3>UX &amp; Conversion</h3>
+        <p>Customer experience now beats price and product as a brand differentiator. We design navigation and journeys that get visitors to the right page, fast.</p>
+        <ul>
+          <li>User journey mapping</li>
+          <li>Usability and navigation testing</li>
+          <li>Continuous conversion optimisation</li>
+        </ul>
+      </div>
+
+      <div class="wd-svc reveal reveal-delay-2">
+        <span class="wd-svc-tag">06 - Service</span>
+        <h3>Ongoing Support</h3>
+        <p>Your website should never be a static product. We keep it maintained, updated, and evolving as your business grows.</p>
+        <ul>
+          <li>Maintenance and updates</li>
+          <li>Performance monitoring</li>
+          <li>Future-proofed, scalable foundations</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ④ WHY IT MATTERS -->
+<section class="wd-why">
+  <div class="wd-why-inner">
+    <div class="wd-why-header">
+      <h2 class="wd-why-title reveal">First impressions.<br>Made to<br>convert.</h2>
+      <p class="wd-why-body reveal reveal-delay-1">The world of website design never stands still, and an out-of-date site sends customers straight to a competitor. Here's why getting it right matters more than ever.</p>
+    </div>
+    <div class="wd-why-grid">
+
+      <div class="wd-wcard wd-wcard1 reveal">
+        <div class="wd-wcard-bg"></div>
+        <div class="wd-wcard-veil"></div>
+        <div class="wd-wcard-body">
+          <span class="wd-wcard-num">94%</span>
+          <span class="wd-wcard-name">Design Is The First Judgement</span>
+          <div class="wd-wcard-detail">Almost every visitor judges your business on responsive design alone before they read a word of copy.</div>
+        </div>
+      </div>
+
+      <div class="wd-wcard wd-wcard2 reveal reveal-delay-1">
+        <div class="wd-wcard-bg"></div>
+        <div class="wd-wcard-veil"></div>
+        <div class="wd-wcard-body">
+          <span class="wd-wcard-num">66%</span>
+          <span class="wd-wcard-name">Beautiful Design Keeps Attention</span>
+          <div class="wd-wcard-detail">Given a choice, two in three people would rather stay on a beautifully designed website than leave for another.</div>
+        </div>
+      </div>
+
+      <div class="wd-wcard wd-wcard3 reveal reveal-delay-2">
+        <div class="wd-wcard-bg"></div>
+        <div class="wd-wcard-veil"></div>
+        <div class="wd-wcard-body">
+          <span class="wd-wcard-num">68%</span>
+          <span class="wd-wcard-name">Mobile-First Drives Sales</span>
+          <div class="wd-wcard-detail">Businesses that go mobile-friendly consistently report a direct increase in sales - we build mobile-first by default.</div>
+        </div>
+      </div>
+
+      <div class="wd-wcard wd-wcard4 reveal reveal-delay-3">
+        <div class="wd-wcard-bg"></div>
+        <div class="wd-wcard-veil"></div>
+        <div class="wd-wcard-body">
+          <span class="wd-wcard-num">100%</span>
+          <span class="wd-wcard-name">Built To Grow With You</span>
+          <div class="wd-wcard-detail">A site is never a finished product. We design foundations that flex and evolve as your business does.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ PROCESS -->
+<section class="wd-process">
+  <div class="wd-process-inner">
+    <div class="wd-process-left reveal">
+      <div class="section-tag">The Process</div>
+      <h2 class="wd-process-title">Starts with<br>your<br>business.</h2>
+      <p class="wd-process-intro">Our process begins by getting to know your business, your customers, and your goals - then designing and building a site that's guaranteed to impress and built to perform.</p>
+      <a href="contact.html" class="btn-primary">Start a Project</a>
+    </div>
+    <div class="wd-process-steps">
+      <div class="wd-step reveal">
+        <span class="wd-step-num">01</span>
+        <div>
+          <h4>Discover</h4>
+          <p>We sit down with you to understand your business, your vision, and who your current and potential customers actually are.</p>
+        </div>
+      </div>
+      <div class="wd-step reveal reveal-delay-1">
+        <span class="wd-step-num">02</span>
+        <div>
+          <h4>Design</h4>
+          <p>Using that research, we design around your brand identity, your users, and the conversions that matter most to your business.</p>
+        </div>
+      </div>
+      <div class="wd-step reveal reveal-delay-2">
+        <span class="wd-step-num">03</span>
+        <div>
+          <h4>Build</h4>
+          <p>Our development team turns the design into a responsive, accessible, content-manageable site - built to your exact requirements.</p>
+        </div>
+      </div>
+      <div class="wd-step reveal reveal-delay-3">
+        <span class="wd-step-num">04</span>
+        <div>
+          <h4>Grow</h4>
+          <p>Launch is the start, not the finish. Our SEO and PPC teams help your new site rank, get found, and keep converting.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ CINEMATIC BREAK -->
+<div class="wd-break">
+  <div class="wd-break-veil">
+    <div class="wd-break-text">
+      <blockquote class="reveal">"A sports car<br>needs an <span>engine,</span><br>not just looks."</blockquote>
+      <cite class="reveal reveal-delay-1"> -  On what great web design actually means</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦ PROJECT PACKAGES -->
+<section class="wd-packages" id="packages">
+  <div class="wd-packages-inner">
+    <div class="wd-packages-head">
+      <div class="section-tag reveal">Project Packages</div>
+      <h2 class="reveal reveal-delay-1">Three ways<br>to build your<br>new site.</h2>
+    </div>
+    <div class="wd-packages-grid">
+
+      <div class="wd-pcard reveal">
+        <div class="wd-pcard-index">01</div>
+        <h3>Brochure Site</h3>
+        <div>
+          <div class="wd-pcard-price">POA</div>
+          <div class="wd-pcard-pnote">Fixed scope · single build</div>
+        </div>
+        <p class="wd-pcard-desc">A fully designed, responsive website that tells your story and builds trust - ideal for service businesses that need a strong online presence.</p>
+        <div class="wd-pcard-rule"></div>
+        <ul class="wd-pcard-list">
+          <li>Discovery and brand-led design</li>
+          <li>Fully responsive, mobile-first build</li>
+          <li>Content-manageable CMS</li>
+          <li>On-page SEO foundations</li>
+          <li>Launch support and handover</li>
+        </ul>
+        <a href="contact.html" class="wd-pcard-link">
+          Start a Project
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="wd-pcard featured reveal reveal-delay-1">
+        <div class="wd-pcard-index">02 - Most Popular</div>
+        <h3>Growth Site</h3>
+        <div>
+          <div class="wd-pcard-price">POA</div>
+          <div class="wd-pcard-pnote">Design, build and SEO</div>
+        </div>
+        <p class="wd-pcard-desc">A conversion-focused site built alongside our SEO and content teams from day one - designed to rank, load fast, and turn visitors into leads.</p>
+        <div class="wd-pcard-rule"></div>
+        <ul class="wd-pcard-list">
+          <li>Everything in Brochure Site</li>
+          <li>Conversion-focused UX design</li>
+          <li>Technical and on-page SEO build</li>
+          <li>Analytics and tracking setup</li>
+          <li>Copywriting for key pages</li>
+          <li>90-day post-launch optimisation</li>
+        </ul>
+        <a href="contact.html" class="wd-pcard-link">
+          Book a Growth Site
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="wd-pcard reveal reveal-delay-2">
+        <div class="wd-pcard-index">03</div>
+        <h3>E-Commerce Build</h3>
+        <div>
+          <div class="wd-pcard-price">POA</div>
+          <div class="wd-pcard-pnote">Full online store</div>
+        </div>
+        <p class="wd-pcard-desc">A complete online store - product pages, checkout, and catalogue architecture designed to convert browsers into buyers at scale.</p>
+        <div class="wd-pcard-rule"></div>
+        <ul class="wd-pcard-list">
+          <li>Product and category page design</li>
+          <li>Streamlined checkout experience</li>
+          <li>Scalable catalogue architecture</li>
+          <li>Payment and shipping integration</li>
+          <li>Ongoing maintenance available</li>
+        </ul>
+        <a href="contact.html" class="wd-pcard-link">
+          Plan Your Store
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ CTA -->
+<section class="wd-cta">
+  <div class="wd-cta-eyebrow reveal">Start a Project</div>
+  <h2 class="reveal reveal-delay-1">Build something<br><span>that sells.</span></h2>
+  <p class="reveal reveal-delay-2">Tell us about your business, your customers, and what your current site isn't doing for you. We'll come back with ideas, a plan, and a clear quote within 48 hours.</p>
+  <div class="wd-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Start a Project</a>
+    <a href="work.html" class="btn-outline reveal reveal-delay-4">See Our Work</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Website Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Development</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>E-Commerce</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>SEO-Ready Builds</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>UX &amp; Conversion</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Ongoing Support</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Website Design</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Development</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>E-Commerce</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>SEO-Ready Builds</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>UX &amp; Conversion</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Ongoing Support</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

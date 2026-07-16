@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>School Video Production | Fortay Media</title>
+  <meta name="description" content="Be sure your school is making the right first impression with a video that captures its unique feel, personality and ethos."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO
+    ============================ */
+    .sch-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+    }
+    .sch-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+    }
+    .sch-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(0,0,0,0.88) 0%,
+        rgba(0,0,0,0.35) 55%,
+        rgba(0,0,0,0.72) 100%
+      );
+    }
+    .sch-hero-wrap {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 88px;
+    }
+    .sch-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .sch-hero-title {
+      font-size: clamp(52px, 7.5vw, 108px);
+      font-weight: 900;
+      letter-spacing: -4px;
+      line-height: 0.95;
+      color: var(--white);
+      margin-bottom: 40px;
+      max-width: 900px;
+    }
+    .sch-hero-title em { font-style: normal; color: var(--yellow); }
+    .sch-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .sch-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+    .sch-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .sch-scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      right: 64px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.35;
+    }
+    .sch-scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .sch-scroll-line {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, white, transparent);
+      animation: schScrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes schScrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%     { opacity: 0.1;  transform: scaleY(0.4); }
+    }
+
+    /* ============================
+       INTRO - WHAT CAN VIDEO DO
+    ============================ */
+    .sch-intro {
+      background: var(--dark);
+      padding: 120px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .sch-intro-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .sch-intro-title {
+      font-size: clamp(40px, 5vw, 72px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.98;
+    }
+    .sch-intro-body {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+    .sch-intro-body p + p { margin-top: 22px; }
+
+    /* ============================
+       WHO WE ARE
+    ============================ */
+    .sch-who {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .sch-who-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .sch-who h2 {
+      font-size: clamp(40px, 5.5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 32px;
+    }
+    .sch-who h2 span { color: var(--yellow); }
+    .sch-who p {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .sch-who-brands {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 44px;
+    }
+    .sch-who-brand {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 10px 20px;
+      border-radius: 999px;
+    }
+
+    /* ============================
+       EDUCATION WORK (case tiles)
+    ============================ */
+    .sch-cases {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .sch-cases-inner { max-width: 1440px; margin: 0 auto; }
+    .sch-cases-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .sch-cases-title {
+      font-size: clamp(40px, 5vw, 72px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.98;
+    }
+    .sch-cases-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .sch-cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .sch-case {
+      background: var(--dark2);
+      padding: 44px 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: background 0.3s;
+    }
+    .sch-case:hover { background: #1a1a1a; }
+    .sch-case-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .sch-case h3 {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+    .sch-case p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       PROCESS (sticky rail)
+    ============================ */
+    .sch-process {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .sch-process-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    .sch-process-left { position: sticky; top: 96px; }
+    .sch-process-left .section-tag { margin-bottom: 20px; }
+    .sch-process-title {
+      font-size: clamp(38px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .sch-process-intro {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 420px;
+    }
+    .sch-process-steps { display: flex; flex-direction: column; }
+    .sch-step {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: start;
+      transition: padding-left 0.3s;
+    }
+    .sch-step:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .sch-step:hover { padding-left: 8px; }
+    .sch-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      padding-top: 4px;
+    }
+    .sch-step h4 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .sch-step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       PROCESS GALLERY (behind the scenes)
+    ============================ */
+    .sch-gallery {
+      background: var(--dark);
+      padding: 3px 64px 0;
+    }
+    .sch-gallery-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 3px;
+    }
+    .sch-gallery-tile {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/10;
+    }
+    .sch-gallery-tile img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.9s cubic-bezier(0.23,1,0.32,1);
+    }
+    .sch-gallery-tile:hover img { transform: scale(1.06); }
+    .sch-gallery-tile-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 45%);
+    }
+    .sch-gallery-tile-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 32px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ============================
+       PACKAGES (tiers)
+    ============================ */
+    .sch-packages {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .sch-packages-inner { max-width: 1440px; margin: 0 auto; }
+    .sch-packages-head { margin-bottom: 72px; }
+    .sch-packages-head h2 {
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      max-width: 820px;
+    }
+    .sch-packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .sch-pcard {
+      background: var(--dark2);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .sch-pcard:hover { background: #1a1a1a; }
+    .sch-pcard.featured {
+      background: var(--yellow);
+      color: var(--dark);
+    }
+    .sch-pcard.featured:hover { background: #e6b800; }
+    .sch-pcard-index {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .sch-pcard.featured .sch-pcard-index { color: rgba(0,0,0,0.4); }
+    .sch-pcard h3 {
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+    .sch-pcard-pnote {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+    .sch-pcard.featured .sch-pcard-pnote { color: rgba(0,0,0,0.55); }
+    .sch-pcard-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .sch-pcard.featured .sch-pcard-desc { color: rgba(0,0,0,0.6); }
+    .sch-pcard-rule {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .sch-pcard.featured .sch-pcard-rule { background: rgba(0,0,0,0.15); }
+    .sch-pcard-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .sch-pcard-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .sch-pcard-list li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .sch-pcard.featured .sch-pcard-list li::before { color: var(--dark); }
+    .sch-pcard-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      text-decoration: none;
+      margin-top: 8px;
+      transition: gap 0.3s;
+    }
+    .sch-pcard.featured .sch-pcard-link { color: var(--dark); }
+    .sch-pcard-link:hover { gap: 18px; }
+    .sch-pcard-link svg {
+      width: 16px; height: 16px;
+      stroke: currentColor; fill: none; stroke-width: 2;
+    }
+
+    /* ============================
+       CTA
+    ============================ */
+    .sch-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .sch-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .sch-cta h2 {
+      font-size: clamp(52px, 8.5vw, 120px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      margin-bottom: 36px;
+    }
+    .sch-cta h2 span { color: var(--yellow); }
+    .sch-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 540px;
+      line-height: 1.7;
+    }
+    .sch-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       VIDEO PLAYER (showreel / testimonials / process)
+    ============================ */
+    .sch-video {
+      background: var(--dark);
+      padding: 100px 64px;
+    }
+    .sch-video-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .sch-video-inner.sch-video-narrow {
+      max-width: 900px;
+    }
+    .sch-video-frame {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--dark2);
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.6),
+        0 0 0 1px rgba(255,255,255,0.06);
+    }
+    .sch-video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .sch-video-caption {
+      margin-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    .sch-video-caption a { color: var(--yellow); text-decoration: none; }
+
+    /* Small in-card video embeds within the education case grid */
+    .sch-case-frame {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--dark);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.06);
+    }
+    .sch-case-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .sch-video { padding: 60px 24px; }
+      .sch-hero-wrap { padding: 0 24px 64px; }
+      .sch-hero-title { letter-spacing: -2px; }
+      .sch-scroll-indicator { display: none; }
+      .sch-intro { padding: 80px 24px; }
+      .sch-intro-inner { grid-template-columns: 1fr; gap: 32px; }
+      .sch-who { padding: 80px 24px; }
+      .sch-cases { padding: 80px 24px; }
+      .sch-cases-header { grid-template-columns: 1fr; gap: 24px; }
+      .sch-cases-grid { grid-template-columns: 1fr; }
+      .sch-process { padding: 80px 24px; }
+      .sch-process-inner { grid-template-columns: 1fr; gap: 48px; }
+      .sch-process-left { position: static; }
+      .sch-gallery { padding: 3px 24px 0; }
+      .sch-gallery-inner { grid-template-columns: 1fr; }
+      .sch-packages { padding: 80px 24px; }
+      .sch-packages-grid { grid-template-columns: 1fr; }
+      .sch-cta { padding: 100px 24px; }
+      .sch-cta h2 { letter-spacing: -3px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="sch-hero">
+  <div class="sch-hero-img" style="background-image:url('Images/schools-2023-hero.jpg');background-size:cover;background-position:center;"></div>
+  <div class="sch-hero-overlay"></div>
+  <div class="sch-hero-wrap">
+    <div class="sch-hero-eyebrow reveal">Video Production &middot; Education</div>
+    <h1 class="sch-hero-title reveal reveal-delay-1">
+      Let us bring your <em>school</em> to life with video.
+    </h1>
+    <div class="sch-hero-bottom reveal reveal-delay-2">
+      <p class="sch-hero-desc">Be sure your school is making the right first impression with a video that captures its unique feel, personality, and ethos. Ideal for schools, colleges and universities looking to add a personal touch and connect with parents and prospective students in a clear and effective way.</p>
+      <div class="sch-hero-actions">
+        <a href="contact.html" class="btn-primary">Start a Project</a>
+        <a href="#packages" class="btn-outline">View Packages</a>
+      </div>
+    </div>
+  </div>
+  <div class="sch-scroll-indicator">
+    <span>Scroll</span>
+    <div class="sch-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ② VIDEO - SCHOOLS SHOWREEL -->
+<section class="sch-video">
+  <div class="sch-video-inner">
+    <div class="sch-video-frame reveal">
+      <iframe
+        src="https://player.vimeo.com/video/496842637?title=0&byline=0&portrait=0"
+        title="Fortay Media - Schools Showreel"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+    <div class="sch-video-caption reveal reveal-delay-1">
+      <span>The Showreel · Schools &amp; Education</span>
+      <a href="https://vimeo.com/496842637" target="_blank" rel="noopener">Watch on Vimeo ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ③ WHAT CAN VIDEO DO -->
+<section class="sch-intro">
+  <div class="sch-intro-inner">
+    <h2 class="sch-intro-title reveal">What can video do for your school?</h2>
+    <div class="sch-intro-body reveal reveal-delay-1">
+      <p>Video is the perfect way to showcase your school's story through the people who know it best - your staff and your students. Visually showcasing your school through video allows prospective students and their families to immerse themselves in your environment, giving families the chance to see classrooms, libraries, and even meet some of the teachers and hear current student experiences.</p>
+      <p>In an age where audiences expect to find the information they need at the touch of a button - making school open days and personal introductions increasingly difficult - a professionally produced video creates a compelling reason for audiences to find out more.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ③ WHO IS FORTAY MEDIA -->
+<section class="sch-who">
+  <div class="sch-who-inner">
+    <h2 class="reveal">Experts in Video &amp; Digital Marketing <span>since 2007.</span></h2>
+    <p class="reveal reveal-delay-1">Our business has been at the forefront of digital marketing since 2007, starting originally as a B2B video production company. We've grown and developed throughout the years to keep pace with the ever-changing world of digital marketing. Having produced videos for a range of industries and business sizes - including big brands such as Yorkshire Tea, Cadbury's, Sheffield United and the NHS - our team have helped a range of businesses develop a strong, professional image to help them thrive.</p>
+    <div class="sch-who-brands reveal reveal-delay-2">
+      <span class="sch-who-brand">Yorkshire Tea</span>
+      <span class="sch-who-brand">Cadbury's</span>
+      <span class="sch-who-brand">Sheffield United</span>
+      <span class="sch-who-brand">NHS</span>
+    </div>
+  </div>
+</section>
+
+<!-- ③b VIDEO - CLIENT TESTIMONIALS -->
+<section class="sch-video">
+  <div class="sch-video-inner sch-video-narrow">
+    <div class="sch-video-frame reveal">
+      <iframe
+        src="https://player.vimeo.com/video/521041541?title=0&byline=0&portrait=0"
+        title="Don't just take our word for it - Fortay Media"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+    <div class="sch-video-caption reveal reveal-delay-1">
+      <span>Client Testimonials</span>
+      <a href="https://vimeo.com/521041541" target="_blank" rel="noopener">Watch on Vimeo ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ④ HOW WE'VE HELPED THE EDUCATION WORLD -->
+<section class="sch-cases">
+  <div class="sch-cases-inner">
+    <div class="sch-cases-header">
+      <h2 class="sch-cases-title reveal">How we've helped the education world.</h2>
+      <p class="sch-cases-body reveal reveal-delay-1">Over the last 5 years we have worked with a variety of schools, colleges and universities to produce a range of videos that showcase their facilities, increase admissions, and showcase their culture. It's become difficult for schools to convey their ethos and character when the opportunity to invite potential attendees onto site is limited - we've seen the schools we've worked with grow with great success thanks to our partnership with them.</p>
+    </div>
+    <div class="sch-cases-grid">
+
+      <div class="sch-case reveal">
+        <span class="sch-case-tag">Primary School</span>
+        <h3>Rotherfield School</h3>
+        <div class="sch-case-frame">
+          <iframe
+            src="https://player.vimeo.com/video/487627859?title=0&byline=0&portrait=0"
+            title="Rotherfield School - Fortay Media"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+        <p>A London-based primary school using unique teaching methods to help children excel.</p>
+      </div>
+
+      <div class="sch-case reveal reveal-delay-1">
+        <span class="sch-case-tag">Music Education</span>
+        <h3>Sheffield Music Academy</h3>
+        <div class="sch-case-frame">
+          <iframe
+            src="https://player.vimeo.com/video/346380732?title=0&byline=0&portrait=0"
+            title="Sheffield Music Academy - Fortay Media"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+        <p>Educating and encouraging young musicians. SMA were looking for a creative spin on their video.</p>
+      </div>
+
+      <div class="sch-case reveal reveal-delay-2">
+        <span class="sch-case-tag">Independent School</span>
+        <h3>Broadheath School</h3>
+        <div class="sch-case-frame">
+          <iframe
+            src="https://player.vimeo.com/video/472628869?title=0&byline=0&portrait=0"
+            title="Broadheath School - Fortay Media"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+        <p>Broadheath work in partnership with parents to nurture confident children into the challenges of tomorrow.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ PROCESS -->
+<section class="sch-process">
+  <div class="sch-process-inner">
+    <div class="sch-process-left reveal">
+      <div class="section-tag">The Video Production Process</div>
+      <h2 class="sch-process-title">From first chat<br>to final film.</h2>
+      <p class="sch-process-intro">A clear, straightforward process built around your school day - so filming fits around your staff and students, not the other way round.</p>
+      <a href="contact.html" class="btn-primary">Start a Project</a>
+    </div>
+    <div class="sch-process-steps">
+      <div class="sch-step reveal">
+        <span class="sch-step-num">01</span>
+        <div>
+          <h4>Get to Know You</h4>
+          <p>Firstly, we get to know you and your school. We'll discuss video elements including interviews, locations, and unique features.</p>
+        </div>
+      </div>
+      <div class="sch-step reveal reveal-delay-1">
+        <span class="sch-step-num">02</span>
+        <div>
+          <h4>Plan the Day</h4>
+          <p>Next, we plan the day and create an itinerary - arrival time, filming location, and filming topics.</p>
+        </div>
+      </div>
+      <div class="sch-step reveal reveal-delay-2">
+        <span class="sch-step-num">03</span>
+        <div>
+          <h4>Action!</h4>
+          <p>We start with interviews, which usually takes around 20 minutes. Once interviews are complete, we start capturing your school - usually 15–20 minutes per area.</p>
+        </div>
+      </div>
+      <div class="sch-step reveal reveal-delay-3">
+        <span class="sch-step-num">04</span>
+        <div>
+          <h4>Edit &amp; Deliver</h4>
+          <p>Once filming is complete, it's time to edit and put together your final piece. We send you the video for approval, and once you're happy it's yours to download and share.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤b VIDEO - HOW WE WORK -->
+<section class="sch-video">
+  <div class="sch-video-inner">
+    <div class="sch-video-frame reveal">
+      <iframe
+        src="https://player.vimeo.com/video/500496811?title=0&byline=0&portrait=0"
+        title="The Process We Take With You - Schools Edition"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+    <div class="sch-video-caption reveal reveal-delay-1">
+      <span>How We Work</span>
+      <a href="https://vimeo.com/500496811" target="_blank" rel="noopener">Watch on Vimeo ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ BEHIND THE SCENES GALLERY -->
+<div class="sch-gallery">
+  <div class="sch-gallery-inner">
+    <div class="sch-gallery-tile reveal">
+      <img src="Images/schools-2023-step2.jpg" alt="Planning a school video production shoot" loading="lazy">
+      <div class="sch-gallery-tile-veil"></div>
+      <div class="sch-gallery-tile-label">Planning the Shoot</div>
+    </div>
+    <div class="sch-gallery-tile reveal reveal-delay-1">
+      <img src="Images/schools-2023-step4.jpg" alt="Editing a school promotional video" loading="lazy">
+      <div class="sch-gallery-tile-veil"></div>
+      <div class="sch-gallery-tile-label">Editing the Final Piece</div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦ PACKAGES -->
+<section class="sch-packages" id="packages">
+  <div class="sch-packages-inner">
+    <div class="sch-packages-head">
+      <div class="section-tag reveal">School Video Packages</div>
+      <h2 class="reveal reveal-delay-1">Three ways<br>to bring your<br>school to life.</h2>
+    </div>
+    <div class="sch-packages-grid">
+
+      <div class="sch-pcard reveal">
+        <div class="sch-pcard-index">01</div>
+        <h3>Essentials</h3>
+        <div>
+          <div class="sch-pcard-pnote">A single-camera showcase film</div>
+        </div>
+        <p class="sch-pcard-desc">A focused, single-camera showcase film - ideal for a first look at what video can do for your school's admissions and open days.</p>
+        <div class="sch-pcard-rule"></div>
+        <ul class="sch-pcard-list">
+          <li>Single-camera filming day</li>
+          <li>Two to three staff or student interviews</li>
+          <li>Key locations around your school</li>
+          <li>Professionally edited final film</li>
+          <li>One round of revisions</li>
+        </ul>
+        <a href="contact.html" class="sch-pcard-link">
+          Start a Project
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="sch-pcard featured reveal reveal-delay-1">
+        <div class="sch-pcard-index">02 - Most Popular</div>
+        <h3>Signature</h3>
+        <div>
+          <div class="sch-pcard-pnote">Full-day multi-location shoot with interviews</div>
+        </div>
+        <p class="sch-pcard-desc">A full-day, multi-location shoot with interviews from staff, students and parents - built to capture the full character of your school.</p>
+        <div class="sch-pcard-rule"></div>
+        <ul class="sch-pcard-list">
+          <li>Full-day multi-location filming</li>
+          <li>Staff, student and parent interviews</li>
+          <li>Classroom, facility and campus coverage</li>
+          <li>Cinematic edit with graded colour and music</li>
+          <li>Two rounds of revisions</li>
+          <li>Delivered ready for web and social</li>
+        </ul>
+        <a href="contact.html" class="sch-pcard-link">
+          Start a Project
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="sch-pcard reveal reveal-delay-2">
+        <div class="sch-pcard-index">03</div>
+        <h3>Full Story</h3>
+        <div>
+          <div class="sch-pcard-pnote">Complete campaign with cutdowns for social and open days</div>
+        </div>
+        <p class="sch-pcard-desc">A complete video campaign - hero film plus a set of cutdowns tailored for social media, open days, and prospectus pages.</p>
+        <div class="sch-pcard-rule"></div>
+        <ul class="sch-pcard-list">
+          <li>Everything in Signature</li>
+          <li>Extended multi-day filming schedule</li>
+          <li>Hero film plus social media cutdowns</li>
+          <li>Open day and prospectus-ready edits</li>
+          <li>Dedicated project producer</li>
+        </ul>
+        <a href="contact.html" class="sch-pcard-link">
+          Talk to Us
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ CTA -->
+<section class="sch-cta">
+  <div class="sch-cta-eyebrow reveal">Ready to Talk?</div>
+  <h2 class="reveal reveal-delay-1">Bring your<br>school to<br><span>life.</span></h2>
+  <p class="reveal reveal-delay-2">Tell us about your school and what you'd like to achieve - we'll come back with a clear approach and quote.</p>
+  <div class="sch-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Start a Project</a>
+    <a href="work.html" class="btn-outline reveal reveal-delay-4">See Our Work</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>School Films</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Open Day Videos</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Staff &amp; Student Interviews</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Prospectus Content</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Social Cutdowns</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Admissions Marketing</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>School Films</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Open Day Videos</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Staff &amp; Student Interviews</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Prospectus Content</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Social Cutdowns</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Admissions Marketing</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

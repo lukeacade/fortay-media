@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Photography Services - Fortay Media</title>
+  <meta name="description" content="Professional commercial photography from Fortay Media's in-house team - product, headshot, food, and brand photography that stops the scroll and drives sales."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO
+    ============================ */
+    .ph-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+      background: linear-gradient(150deg, #1a1a1a 0%, #0c0c0c 45%, #2b2500 100%);
+    }
+    .ph-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(circle at 78% 22%, rgba(255,204,0,0.35) 0%, rgba(255,204,0,0) 45%),
+        linear-gradient(160deg, #141414 0%, #0a0a0a 55%, #1c1a10 100%);
+    }
+    .ph-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.28) 55%,
+        rgba(0,0,0,0.65) 100%
+      );
+    }
+    .ph-hero-wrap {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 88px;
+    }
+    .ph-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .ph-hero-title {
+      font-size: clamp(64px, 9vw, 130px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .ph-hero-title em { font-style: normal; color: var(--yellow); }
+    .ph-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .ph-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+    .ph-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .ph-scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      right: 64px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.35;
+    }
+    .ph-scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .ph-scroll-line {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, white, transparent);
+      animation: phScrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes phScrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%     { opacity: 0.1;  transform: scaleY(0.4); }
+    }
+
+    /* ============================
+       STATS
+    ============================ */
+    .ph-stats {
+      background: var(--dark);
+      padding: 72px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .ph-stats-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+    }
+    .ph-stat {
+      padding: 0 48px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .ph-stat:first-child { border-left: none; padding-left: 0; }
+    .ph-stat-num {
+      font-size: clamp(52px, 5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .ph-stat-num sup { font-size: 0.4em; color: var(--yellow); vertical-align: super; }
+    .ph-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============================
+       SERVICES (indexed tiles)
+    ============================ */
+    .ph-services {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .ph-services-inner { max-width: 1440px; margin: 0 auto; }
+    .ph-services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .ph-services-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .ph-services-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .ph-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .ph-svc {
+      background: var(--dark2);
+      padding: 44px 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background 0.3s;
+    }
+    .ph-svc:hover { background: #1a1a1a; }
+    .ph-svc-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .ph-svc h3 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    .ph-svc p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+    .ph-svc ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .ph-svc li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.55);
+    }
+    .ph-svc li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ============================
+       WHY PHOTOGRAPHY (stat panels, CSS gradient tiles)
+    ============================ */
+    .ph-why {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .ph-why-inner { max-width: 1440px; margin: 0 auto; }
+    .ph-why-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .ph-why-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .ph-why-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .ph-why-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .ph-why-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 320px;
+      display: flex;
+      align-items: flex-end;
+    }
+    .ph-why-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .ph-why-card.a::before { background: linear-gradient(150deg, #241f04 0%, #0d0d0d 60%, #000 100%); }
+    .ph-why-card.b::before { background: linear-gradient(150deg, #1a1a1a 0%, #2c2402 65%, #0a0a0a 100%); }
+    .ph-why-card.c::before { background: linear-gradient(150deg, #0d0d0d 0%, #1f1a02 55%, #141414 100%); }
+    .ph-why-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.05) 60%);
+      z-index: 1;
+    }
+    .ph-why-body-inner {
+      position: relative;
+      z-index: 2;
+      padding: 40px 36px;
+    }
+    .ph-why-num {
+      font-size: clamp(48px, 4.5vw, 68px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+    .ph-why-card p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.65;
+    }
+
+    /* ============================
+       PROCESS (sticky rail)
+    ============================ */
+    .ph-process {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .ph-process-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    .ph-process-left { position: sticky; top: 96px; }
+    .ph-process-left .section-tag { margin-bottom: 20px; }
+    .ph-process-title {
+      font-size: clamp(38px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .ph-process-intro {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 420px;
+    }
+    .ph-process-steps { display: flex; flex-direction: column; }
+    .ph-step {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: start;
+      transition: padding-left 0.3s;
+    }
+    .ph-step:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .ph-step:hover { padding-left: 8px; }
+    .ph-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      padding-top: 4px;
+    }
+    .ph-step h4 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .ph-step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       CINEMATIC BREAK
+    ============================ */
+    .ph-break {
+      position: relative;
+      height: 72vh;
+      overflow: hidden;
+      background: linear-gradient(120deg, #100e00 0%, #1c1c1c 45%, #060606 100%);
+      background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1600&q=80&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+    }
+    .ph-break-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.1) 65%);
+      display: flex;
+      align-items: center;
+    }
+    .ph-break-text {
+      padding: 0 64px;
+      max-width: 820px;
+    }
+    .ph-break-text blockquote {
+      font-size: clamp(36px, 6vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      font-style: normal;
+    }
+    .ph-break-text blockquote span { color: var(--yellow); }
+    .ph-break-text cite {
+      display: block;
+      font-size: 13px;
+      font-style: normal;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 28px;
+    }
+
+    /* ============================
+       PACKAGES (tiers)
+    ============================ */
+    .ph-packages {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .ph-packages-inner { max-width: 1440px; margin: 0 auto; }
+    .ph-packages-head { margin-bottom: 72px; }
+    .ph-packages-head h2 {
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      max-width: 820px;
+    }
+    .ph-packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .ph-pcard {
+      background: var(--dark2);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .ph-pcard:hover { background: #1a1a1a; }
+    .ph-pcard.featured {
+      background: var(--yellow);
+      color: var(--dark);
+    }
+    .ph-pcard.featured:hover { background: #e6b800; }
+    .ph-pcard-index {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .ph-pcard.featured .ph-pcard-index { color: rgba(0,0,0,0.4); }
+    .ph-pcard h3 {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+    .ph-pcard-price {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+    .ph-pcard-pnote {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .ph-pcard.featured .ph-pcard-pnote { color: rgba(0,0,0,0.5); }
+    .ph-pcard-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .ph-pcard.featured .ph-pcard-desc { color: rgba(0,0,0,0.6); }
+    .ph-pcard-rule {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .ph-pcard.featured .ph-pcard-rule { background: rgba(0,0,0,0.15); }
+    .ph-pcard-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .ph-pcard-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .ph-pcard-list li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .ph-pcard.featured .ph-pcard-list li::before { color: var(--dark); }
+    .ph-pcard-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      text-decoration: none;
+      margin-top: 8px;
+      transition: gap 0.3s;
+    }
+    .ph-pcard.featured .ph-pcard-link { color: var(--dark); }
+    .ph-pcard-link:hover { gap: 18px; }
+    .ph-pcard-link svg {
+      width: 16px; height: 16px;
+      stroke: currentColor; fill: none; stroke-width: 2;
+    }
+
+    /* ============================
+       CTA
+    ============================ */
+    .ph-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .ph-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .ph-cta h2 {
+      font-size: clamp(64px, 10vw, 140px);
+      font-weight: 900;
+      letter-spacing: -6px;
+      line-height: 0.88;
+      margin-bottom: 36px;
+    }
+    .ph-cta h2 span { color: var(--yellow); }
+    .ph-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .ph-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .ph-hero-wrap { padding: 0 24px 64px; }
+      .ph-hero-title { letter-spacing: -2px; }
+      .ph-scroll-indicator { display: none; }
+      .ph-stats { padding: 60px 24px; }
+      .ph-stats-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .ph-stat { border-left: none; padding-left: 0; }
+      .ph-services { padding: 80px 24px; }
+      .ph-services-header { grid-template-columns: 1fr; gap: 24px; }
+      .ph-services-grid { grid-template-columns: 1fr; }
+      .ph-why { padding: 80px 24px; }
+      .ph-why-header { grid-template-columns: 1fr; gap: 24px; }
+      .ph-why-grid { grid-template-columns: 1fr; }
+      .ph-process { padding: 80px 24px; }
+      .ph-process-inner { grid-template-columns: 1fr; gap: 48px; }
+      .ph-process-left { position: static; }
+      .ph-break { height: 50vh; }
+      .ph-break-text { padding: 0 24px; }
+      .ph-packages { padding: 80px 24px; }
+      .ph-packages-grid { grid-template-columns: 1fr; }
+      .ph-cta { padding: 100px 24px; }
+      .ph-cta h2 { letter-spacing: -3px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="ph-hero">
+  <div class="ph-hero-img" style="background-image:url('Images/photography-services-hero.jpg');background-size:cover;background-position:center;"></div>
+  <div class="ph-hero-overlay"></div>
+  <div class="ph-hero-wrap">
+    <div class="ph-hero-eyebrow reveal">Photography - Sheffield &amp; Beyond</div>
+    <h1 class="ph-hero-title reveal reveal-delay-1">
+      A thousand<br>words, one<br><em>frame.</em>
+    </h1>
+    <div class="ph-hero-bottom reveal reveal-delay-2">
+      <p class="ph-hero-desc">The brain processes an image 60,000 times faster than text. Our in-house photographers give your product, team, and brand the vibrant, credible imagery that gets remembered - and gets clicked.</p>
+      <div class="ph-hero-actions">
+        <a href="contact.html" class="btn-primary">Book a Free Consultation</a>
+        <a href="#packages" class="btn-outline">View Packages</a>
+      </div>
+    </div>
+  </div>
+  <div class="ph-scroll-indicator">
+    <span>Scroll</span>
+    <div class="ph-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ② STATS -->
+<section class="ph-stats">
+  <div class="ph-stats-inner">
+    <div class="ph-stat reveal">
+      <div class="ph-stat-num">65<sup>%</sup></div>
+      <div class="ph-stat-label">Info recalled 3 days later with image</div>
+    </div>
+    <div class="ph-stat reveal reveal-delay-1">
+      <div class="ph-stat-num">94<sup>%</sup></div>
+      <div class="ph-stat-label">More views for articles with imagery</div>
+    </div>
+    <div class="ph-stat reveal reveal-delay-2">
+      <div class="ph-stat-num">70<sup>%</sup></div>
+      <div class="ph-stat-label">Shoppers rate product photos "very important"</div>
+    </div>
+    <div class="ph-stat reveal reveal-delay-3">
+      <div class="ph-stat-num">60<sup>k×</sup></div>
+      <div class="ph-stat-label">Faster image processing vs. text</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ SERVICES -->
+<section class="ph-services">
+  <div class="ph-services-inner">
+    <div class="ph-services-header">
+      <h2 class="ph-services-title reveal">Every kind<br>of shoot.<br>One team.</h2>
+      <p class="ph-services-body reveal reveal-delay-1">Food, product, headshots, or full brand campaigns - our versatile in-house photographers adapt their style to your brief, not the other way around. One point of contact, consistent quality, every time.</p>
+    </div>
+    <div class="ph-services-grid">
+
+      <div class="ph-svc reveal">
+        <span class="ph-svc-tag">01 - Service</span>
+        <h3>Product Photography</h3>
+        <p>Sharp, precise imagery that gives customers a fast, clear read on what you sell - built for e-commerce, catalogues, and paid campaigns.</p>
+        <ul>
+          <li>E-commerce and catalogue shots</li>
+          <li>Hero and lifestyle product images</li>
+          <li>Packshots for launches and ads</li>
+        </ul>
+      </div>
+
+      <div class="ph-svc reveal reveal-delay-1">
+        <span class="ph-svc-tag">02 - Service</span>
+        <h3>Brand &amp; Headshots</h3>
+        <p>Professional headshots and personal branding photography that make your team and your leadership look as credible as they are.</p>
+        <ul>
+          <li>Individual and team headshots</li>
+          <li>Founder and executive branding</li>
+          <li>Consistent style across the business</li>
+        </ul>
+      </div>
+
+      <div class="ph-svc reveal reveal-delay-2">
+        <span class="ph-svc-tag">03 - Service</span>
+        <h3>Food Photography</h3>
+        <p>Appetite-driving imagery for menus, packaging, and social - shot to make every dish look exactly as good as it tastes.</p>
+        <ul>
+          <li>Menu and packaging shots</li>
+          <li>Styled social content</li>
+          <li>Location or studio setups</li>
+        </ul>
+      </div>
+
+      <div class="ph-svc reveal">
+        <span class="ph-svc-tag">04 - Service</span>
+        <h3>Location &amp; Premises</h3>
+        <p>Give customers a clear, welcoming look at where you operate - retail units, offices, studios, and event spaces.</p>
+        <ul>
+          <li>Interior and exterior shoots</li>
+          <li>Retail and hospitality spaces</li>
+          <li>Office and workplace imagery</li>
+        </ul>
+      </div>
+
+      <div class="ph-svc reveal reveal-delay-1">
+        <span class="ph-svc-tag">05 - Service</span>
+        <h3>Social &amp; Campaign Content</h3>
+        <p>Vibrant, platform-ready photography built to inspire action - Instagram-first, but flexible enough to work everywhere else too.</p>
+        <ul>
+          <li>Instagram and social-first shoots</li>
+          <li>Campaign and seasonal content</li>
+          <li>Recurring content batches</li>
+        </ul>
+      </div>
+
+      <div class="ph-svc reveal reveal-delay-2">
+        <span class="ph-svc-tag">06 - Service</span>
+        <h3>Events &amp; Coverage</h3>
+        <p>On-the-day photography that captures the energy of your event and turns it into content that lasts long after it ends.</p>
+        <ul>
+          <li>Conferences, launches, live shows</li>
+          <li>Fast turnaround for same-week use</li>
+          <li>Candid and posed coverage</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ④ WHY PHOTOGRAPHY -->
+<section class="ph-why">
+  <div class="ph-why-inner">
+    <div class="ph-why-header">
+      <h2 class="ph-why-title reveal">Why photography<br>still wins<br>the click.</h2>
+      <p class="ph-why-body reveal reveal-delay-1">Digital marketing has been reshaping how customers find and judge you for thirty years - and imagery has stayed the single biggest lever in that decision. Get the photo right, and the call to action does the rest.</p>
+    </div>
+    <div class="ph-why-grid">
+
+      <div class="ph-why-card a reveal">
+        <div class="ph-why-veil"></div>
+        <div class="ph-why-body-inner">
+          <div class="ph-why-num">Recall</div>
+          <p>People forget 90% of what they read within days. A relevant image sticks - and keeps your brand front of mind long after the scroll.</p>
+        </div>
+      </div>
+
+      <div class="ph-why-card b reveal reveal-delay-1">
+        <div class="ph-why-veil"></div>
+        <div class="ph-why-body-inner">
+          <div class="ph-why-num">Trust</div>
+          <p>Vibrant, professional photography builds credibility before a single word is read - establishing trust that plain text simply can't.</p>
+        </div>
+      </div>
+
+      <div class="ph-why-card c reveal reveal-delay-2">
+        <div class="ph-why-veil"></div>
+        <div class="ph-why-body-inner">
+          <div class="ph-why-num">Action</div>
+          <p>Visual content drives follow-through. Pair captivating photography with a clear call to action, and engagement - and sales - follow.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ PROCESS -->
+<section class="ph-process">
+  <div class="ph-process-inner">
+    <div class="ph-process-left reveal">
+      <div class="section-tag">The Process</div>
+      <h2 class="ph-process-title">From brief<br>to finished<br>gallery.</h2>
+      <p class="ph-process-intro">Four stages, one accountable team. We tailor the shoot to your brief, your brand, and where the photos will actually be used - no surprises on the day.</p>
+      <a href="contact.html" class="btn-primary">Book a Free Consultation</a>
+    </div>
+    <div class="ph-process-steps">
+      <div class="ph-step reveal">
+        <span class="ph-step-num">01</span>
+        <div>
+          <h4>Creative Consultation</h4>
+          <p>We start with a free consultation to understand your brand, your mission, and exactly what the images need to achieve - before a single shot is planned.</p>
+        </div>
+      </div>
+      <div class="ph-step reveal reveal-delay-1">
+        <span class="ph-step-num">02</span>
+        <div>
+          <h4>Adaptive Shoot</h4>
+          <p>Studio or on-location, our photographers adapt their style to suit your needs - product, food, headshots, or brand - with a calm, professional set.</p>
+        </div>
+      </div>
+      <div class="ph-step reveal reveal-delay-2">
+        <span class="ph-step-num">03</span>
+        <div>
+          <h4>Fast Turnaround</h4>
+          <p>A fast, professional edit turnaround so your content stays fresh and your marketing calendar never has to wait on us.</p>
+        </div>
+      </div>
+      <div class="ph-step reveal reveal-delay-3">
+        <span class="ph-step-num">04</span>
+        <div>
+          <h4>Delivery &amp; Distribution</h4>
+          <p>Edited photos delivered in every format you need, with distribution handled for you as required - ready to publish, print, or advertise.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ CINEMATIC BREAK -->
+<div class="ph-break">
+  <div class="ph-break-veil">
+    <div class="ph-break-text">
+      <blockquote class="reveal">"If you have captivating photography and a clear call to action, you have a <span>winner.</span>"</blockquote>
+      <cite class="reveal reveal-delay-1"> -  Fortay Media, Photography Services</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦ PACKAGES -->
+<section class="ph-packages" id="packages">
+  <div class="ph-packages-inner">
+    <div class="ph-packages-head">
+      <div class="section-tag reveal">Photography Packages</div>
+      <h2 class="reveal reveal-delay-1">Three ways<br>to work with<br>our photographers.</h2>
+    </div>
+    <div class="ph-packages-grid">
+
+      <div class="ph-pcard reveal">
+        <div class="ph-pcard-index">01</div>
+        <h3>Single Shoot</h3>
+        <div>
+          <div class="ph-pcard-price">POA</div>
+          <div class="ph-pcard-pnote">One session · fixed scope</div>
+        </div>
+        <p class="ph-pcard-desc">A focused shoot for a specific need - product range, headshots, or a single location - edited and delivered fast.</p>
+        <div class="ph-pcard-rule"></div>
+        <ul class="ph-pcard-list">
+          <li>Free creative consultation</li>
+          <li>Half or full-day shoot</li>
+          <li>Professional editing included</li>
+          <li>Delivery in every format you need</li>
+        </ul>
+        <a href="contact.html" class="ph-pcard-link">
+          Book a Shoot
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="ph-pcard featured reveal reveal-delay-1">
+        <div class="ph-pcard-index">02 - Most Popular</div>
+        <h3>Brand Bundle</h3>
+        <div>
+          <div class="ph-pcard-price">POA</div>
+          <div class="ph-pcard-pnote">Multi-format · one shoot day</div>
+        </div>
+        <p class="ph-pcard-desc">Product, team, and location photography from a single shoot day - everything your website and socials need in one go.</p>
+        <div class="ph-pcard-rule"></div>
+        <ul class="ph-pcard-list">
+          <li>Full-day shoot across formats</li>
+          <li>Product, headshot, and location coverage</li>
+          <li>Styled social content included</li>
+          <li>Fast, professional turnaround</li>
+          <li>Distribution support as required</li>
+        </ul>
+        <a href="contact.html" class="ph-pcard-link">
+          Book the Bundle
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="ph-pcard reveal reveal-delay-2">
+        <div class="ph-pcard-index">03</div>
+        <h3>Ongoing Content</h3>
+        <div>
+          <div class="ph-pcard-price">POA</div>
+          <div class="ph-pcard-pnote">Monthly · retained photography</div>
+        </div>
+        <p class="ph-pcard-desc">A recurring shoot schedule that keeps your content fresh - new product drops, seasonal campaigns, or a rolling social library.</p>
+        <div class="ph-pcard-rule"></div>
+        <ul class="ph-pcard-list">
+          <li>Recurring monthly shoot schedule</li>
+          <li>Consistent style and consistent team</li>
+          <li>Priority booking and turnaround</li>
+          <li>Adaptive styles per campaign</li>
+        </ul>
+        <a href="contact.html" class="ph-pcard-link">
+          Plan Ongoing Content
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ CTA -->
+<section class="ph-cta">
+  <div class="ph-cta-eyebrow reveal">Book a Free Consultation</div>
+  <h2 class="reveal reveal-delay-1">Make it<br><span>memorable.</span></h2>
+  <p class="reveal reveal-delay-2">Tell us what you're shooting and where the photos need to live. We'll come back with ideas, a schedule, and a clear quote - no obligation.</p>
+  <div class="ph-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Start a Project</a>
+    <a href="work.html" class="btn-outline reveal reveal-delay-4">See Our Work</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Product Photography</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Brand &amp; Headshots</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Food Photography</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Location &amp; Premises</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Social Content</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Events Coverage</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Product Photography</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Brand &amp; Headshots</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Food Photography</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Location &amp; Premises</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Social Content</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Events Coverage</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

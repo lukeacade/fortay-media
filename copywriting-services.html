@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Copywriting Services Sheffield - SEO & Brand Copy | Fortay Media</title>
+  <meta name="description" content="Professional copywriting services from Fortay Media: web copy, SEO content, blogs, product descriptions and scripts that read well and rank well. Words that convert, from a Sheffield-based team."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO
+    ============================ */
+    .cw-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+    }
+    .cw-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(140deg, #14110a 0%, #2e2610 45%, #0d0d0d 100%);
+    }
+    .cw-hero-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(90deg, rgba(245,195,24,0.045) 0px, rgba(245,195,24,0.045) 1px, transparent 1px, transparent 120px);
+    }
+    .cw-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.28) 55%,
+        rgba(0,0,0,0.65) 100%
+      );
+    }
+    .cw-hero-wrap {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 88px;
+    }
+    .cw-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .cw-hero-title {
+      font-size: clamp(64px, 9vw, 130px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .cw-hero-title em { font-style: normal; color: var(--yellow); }
+    .cw-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .cw-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+    .cw-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .cw-scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      right: 64px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.35;
+    }
+    .cw-scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .cw-scroll-line {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, white, transparent);
+      animation: cwScrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes cwScrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%     { opacity: 0.1;  transform: scaleY(0.4); }
+    }
+
+    /* ============================
+       STATS
+    ============================ */
+    .cw-stats {
+      background: var(--dark);
+      padding: 72px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .cw-stats-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+    }
+    .cw-stat {
+      padding: 0 48px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .cw-stat:first-child { border-left: none; padding-left: 0; }
+    .cw-stat-num {
+      font-size: clamp(52px, 5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .cw-stat-num sup { font-size: 0.4em; color: var(--yellow); vertical-align: super; }
+    .cw-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============================
+       SERVICES (indexed tiles)
+    ============================ */
+    .cw-services {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .cw-services-inner { max-width: 1440px; margin: 0 auto; }
+    .cw-services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .cw-services-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .cw-services-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .cw-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .cw-svc {
+      background: var(--dark2);
+      padding: 44px 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background 0.3s;
+    }
+    .cw-svc:hover { background: #1a1a1a; }
+    .cw-svc-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .cw-svc h3 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    .cw-svc p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+    .cw-svc ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .cw-svc li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.55);
+    }
+    .cw-svc li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ============================
+       SEO BREAKDOWN (split panel)
+    ============================ */
+    .cw-seo {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .cw-seo-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+    .cw-seo-visual {
+      position: relative;
+      aspect-ratio: 4/3;
+      border-radius: 4px;
+      overflow: hidden;
+      background: linear-gradient(150deg, #0a1420 0%, #142a1a 55%, #0d0d0d 100%);
+    }
+    .cw-seo-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(245,195,24,0.18), transparent 55%),
+        radial-gradient(circle at 75% 70%, rgba(245,195,24,0.08), transparent 50%);
+    }
+    .cw-seo-visual-tag {
+      position: absolute;
+      bottom: 32px;
+      left: 32px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .cw-seo-title {
+      font-size: clamp(38px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    .cw-seo-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+    .cw-seo-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cw-seo-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.75);
+    }
+    .cw-seo-list li::before {
+      content: '✦';
+      font-size: 10px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ============================
+       FORMATS (copy types grid)
+    ============================ */
+    .cw-formats {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .cw-formats-inner { max-width: 1440px; margin: 0 auto; }
+    .cw-formats-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .cw-formats-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .cw-formats-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .cw-formats-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 3px;
+    }
+    .cw-fmt {
+      background: var(--dark2);
+      padding: 32px 26px;
+      transition: background 0.3s;
+    }
+    .cw-fmt:hover { background: #1a1a1a; }
+    .cw-fmt-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--yellow);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .cw-fmt-name {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+
+    /* ============================
+       PROCESS (sticky rail)
+    ============================ */
+    .cw-process {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .cw-process-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    .cw-process-left { position: sticky; top: 96px; }
+    .cw-process-left .section-tag { margin-bottom: 20px; }
+    .cw-process-title {
+      font-size: clamp(38px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .cw-process-intro {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 420px;
+    }
+    .cw-process-steps { display: flex; flex-direction: column; }
+    .cw-step {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: start;
+      transition: padding-left 0.3s;
+    }
+    .cw-step:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .cw-step:hover { padding-left: 8px; }
+    .cw-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      padding-top: 4px;
+    }
+    .cw-step h4 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .cw-step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       CINEMATIC BREAK (gradient)
+    ============================ */
+    .cw-break {
+      position: relative;
+      height: 60vh;
+      overflow: hidden;
+      background: linear-gradient(120deg, #0d0d0d 0%, #241b06 45%, #0d0d0d 100%);
+    }
+    .cw-break-veil {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+    }
+    .cw-break-text {
+      padding: 0 64px;
+      max-width: 820px;
+    }
+    .cw-break-text blockquote {
+      font-size: clamp(36px, 6vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      font-style: normal;
+    }
+    .cw-break-text blockquote span { color: var(--yellow); }
+    .cw-break-text cite {
+      display: block;
+      font-size: 13px;
+      font-style: normal;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 28px;
+    }
+
+    /* ============================
+       PACKAGES (tiers)
+    ============================ */
+    .cw-packages {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .cw-packages-inner { max-width: 1440px; margin: 0 auto; }
+    .cw-packages-head { margin-bottom: 72px; }
+    .cw-packages-head h2 {
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      max-width: 820px;
+    }
+    .cw-packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .cw-pcard {
+      background: var(--dark2);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .cw-pcard:hover { background: #1a1a1a; }
+    .cw-pcard.featured {
+      background: var(--yellow);
+      color: var(--dark);
+    }
+    .cw-pcard.featured:hover { background: #e6b800; }
+    .cw-pcard-index {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .cw-pcard.featured .cw-pcard-index { color: rgba(0,0,0,0.4); }
+    .cw-pcard h3 {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+    .cw-pcard-price {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+    .cw-pcard-pnote {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .cw-pcard.featured .cw-pcard-pnote { color: rgba(0,0,0,0.5); }
+    .cw-pcard-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .cw-pcard.featured .cw-pcard-desc { color: rgba(0,0,0,0.6); }
+    .cw-pcard-rule {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .cw-pcard.featured .cw-pcard-rule { background: rgba(0,0,0,0.15); }
+    .cw-pcard-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .cw-pcard-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .cw-pcard-list li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .cw-pcard.featured .cw-pcard-list li::before { color: var(--dark); }
+    .cw-pcard-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      text-decoration: none;
+      margin-top: 8px;
+      transition: gap 0.3s;
+    }
+    .cw-pcard.featured .cw-pcard-link { color: var(--dark); }
+    .cw-pcard-link:hover { gap: 18px; }
+    .cw-pcard-link svg {
+      width: 16px; height: 16px;
+      stroke: currentColor; fill: none; stroke-width: 2;
+    }
+
+    /* ============================
+       CTA
+    ============================ */
+    .cw-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .cw-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .cw-cta h2 {
+      font-size: clamp(64px, 10vw, 140px);
+      font-weight: 900;
+      letter-spacing: -6px;
+      line-height: 0.88;
+      margin-bottom: 36px;
+    }
+    .cw-cta h2 span { color: var(--yellow); }
+    .cw-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .cw-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .cw-hero-wrap { padding: 0 24px 64px; }
+      .cw-hero-title { letter-spacing: -2px; }
+      .cw-scroll-indicator { display: none; }
+      .cw-stats { padding: 60px 24px; }
+      .cw-stats-inner { grid-template-columns: 1fr; gap: 40px; }
+      .cw-stat { border-left: none; padding-left: 0; }
+      .cw-services { padding: 80px 24px; }
+      .cw-services-header { grid-template-columns: 1fr; gap: 24px; }
+      .cw-services-grid { grid-template-columns: 1fr; }
+      .cw-seo { padding: 80px 24px; }
+      .cw-seo-inner { grid-template-columns: 1fr; gap: 48px; }
+      .cw-formats { padding: 80px 24px; }
+      .cw-formats-header { grid-template-columns: 1fr; gap: 24px; }
+      .cw-formats-grid { grid-template-columns: repeat(2,1fr); }
+      .cw-process { padding: 80px 24px; }
+      .cw-process-inner { grid-template-columns: 1fr; gap: 48px; }
+      .cw-process-left { position: static; }
+      .cw-break { height: 50vh; }
+      .cw-break-text { padding: 0 24px; }
+      .cw-packages { padding: 80px 24px; }
+      .cw-packages-grid { grid-template-columns: 1fr; }
+      .cw-cta { padding: 100px 24px; }
+      .cw-cta h2 { letter-spacing: -3px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="cw-hero">
+  <div class="cw-hero-img" style="background-image:url('Images/copywriting-services-hero.jpg');background-size:cover;background-position:center;"></div>
+  <div class="cw-hero-overlay"></div>
+  <div class="cw-hero-wrap">
+    <div class="cw-hero-eyebrow reveal">Copywriting - Words That Work</div>
+    <h1 class="cw-hero-title reveal reveal-delay-1">
+      Copy that<br>gets <em>read.</em><br>Then <em>acted</em> on.
+    </h1>
+    <div class="cw-hero-bottom reveal reveal-delay-2">
+      <p class="cw-hero-desc">A video-first agency that also happens to know words. Web copy, SEO content, blogs, and scripts - researched, on-brand, and written to move people to act.</p>
+      <div class="cw-hero-actions">
+        <a href="contact.html" class="btn-primary">Start a Project</a>
+        <a href="#packages" class="btn-outline">View Packages</a>
+      </div>
+    </div>
+  </div>
+  <div class="cw-scroll-indicator">
+    <span>Scroll</span>
+    <div class="cw-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ② STATS -->
+<section class="cw-stats">
+  <div class="cw-stats-inner">
+    <div class="cw-stat reveal">
+      <div class="cw-stat-num">68<sup>%</sup></div>
+      <div class="cw-stat-label">Of people read about brands that interest them</div>
+    </div>
+    <div class="cw-stat reveal reveal-delay-1">
+      <div class="cw-stat-num">80<sup>%</sup></div>
+      <div class="cw-stat-label">Value learning about a company through custom content</div>
+    </div>
+    <div class="cw-stat reveal reveal-delay-2">
+      <div class="cw-stat-num">60<sup>%</sup></div>
+      <div class="cw-stat-label">Are inspired to seek out a product after reading about it</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ SERVICES -->
+<section class="cw-services">
+  <div class="cw-services-inner">
+    <div class="cw-services-header">
+      <h2 class="cw-services-title reveal">The subtle<br>art of<br>persuasion.</h2>
+      <p class="cw-services-body reveal reveal-delay-1">Through a tried and tested research process, our copywriters produce copy that's accurate, authoritative, and built around your objective - whether that's a longer time on page, a stronger brand story, more email opens, or a better ranking in search.</p>
+    </div>
+    <div class="cw-services-grid">
+
+      <div class="cw-svc reveal">
+        <span class="cw-svc-tag">01 - Service</span>
+        <h3>Web & Landing Page Copy</h3>
+        <p>Homepage, service, and landing page copy that explains what you do clearly and gives visitors a reason to act - instead of bouncing.</p>
+        <ul>
+          <li>Homepage and core page copy</li>
+          <li>Service and product landing pages</li>
+          <li>Conversion-focused messaging</li>
+        </ul>
+      </div>
+
+      <div class="cw-svc reveal reveal-delay-1">
+        <span class="cw-svc-tag">02 - Service</span>
+        <h3>Blog & Article Writing</h3>
+        <p>Regular, research-led content that builds authority, keeps your site fresh, and gives search engines a reason to keep coming back.</p>
+        <ul>
+          <li>SEO-led blog articles</li>
+          <li>Thought-leadership pieces</li>
+          <li>Industry and how-to content</li>
+        </ul>
+      </div>
+
+      <div class="cw-svc reveal reveal-delay-2">
+        <span class="cw-svc-tag">03 - Service</span>
+        <h3>Digital Campaigns</h3>
+        <p>Copy for competitions, landing pages, and microsites - built to hit a single objective and get people through the door.</p>
+        <ul>
+          <li>Campaign and launch copy</li>
+          <li>Competition and promo copy</li>
+          <li>Microsite content</li>
+        </ul>
+      </div>
+
+      <div class="cw-svc reveal">
+        <span class="cw-svc-tag">04 - Service</span>
+        <h3>Product Descriptions</h3>
+        <p>Sharp, benefit-led product copy for e-commerce and catalogues that sells the detail without burying the reader in it.</p>
+        <ul>
+          <li>E-commerce product copy</li>
+          <li>Feature and benefit writing</li>
+          <li>Category and collection pages</li>
+        </ul>
+      </div>
+
+      <div class="cw-svc reveal reveal-delay-1">
+        <span class="cw-svc-tag">05 - Service</span>
+        <h3>Scripts & Presentations</h3>
+        <p>The words behind the pictures. Scripts for video and podcast, plus presentation content that lands in the room and on the page.</p>
+        <ul>
+          <li>Video and ad scripts</li>
+          <li>Pitch deck copywriting</li>
+          <li>Presentation content</li>
+        </ul>
+      </div>
+
+      <div class="cw-svc reveal reveal-delay-2">
+        <span class="cw-svc-tag">06 - Service</span>
+        <h3>Email, Social & PR</h3>
+        <p>Newsletters, social captions, and press releases written in one consistent voice - so every channel sounds like the same brand.</p>
+        <ul>
+          <li>Newsletters and email marketing</li>
+          <li>Social media copy</li>
+          <li>Press release writing</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ④ SEO BREAKDOWN -->
+<section class="cw-seo">
+  <div class="cw-seo-inner">
+    <div class="cw-seo-visual reveal">
+      <div class="cw-seo-visual-tag">SEO Copywriting</div>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <div class="section-tag">Search Performance</div>
+      <h2 class="cw-seo-title">Written for<br>people. Built<br>for algorithms.</h2>
+      <p class="cw-seo-body">You won't thrive online by just "writing content." Your content needs to appeal to the end user while solving a real problem. As SEO specialists, we do the keyword research first, then write copy - including blog content - that's genuinely accessible and search-engine friendly.</p>
+      <ul class="cw-seo-list">
+        <li>Keyword research before a single word is written</li>
+        <li>Copy structured and styled so it never reads like a wall of text</li>
+        <li>On-page content built to target the searches your customers actually make</li>
+        <li>Long-form where it earns its length, short-form where it doesn't</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ FORMATS -->
+<section class="cw-formats">
+  <div class="cw-formats-inner">
+    <div class="cw-formats-header">
+      <h2 class="cw-formats-title reveal">Copy comes<br>in every<br>form.</h2>
+      <p class="cw-formats-body reveal reveal-delay-1">Whatever the format, we keep it in line with your brand guidelines and tone of voice - identifying your customers' pain points and writing pieces that help you convert.</p>
+    </div>
+    <div class="cw-formats-grid">
+      <div class="cw-fmt reveal"><span class="cw-fmt-num">01</span><span class="cw-fmt-name">Web Page Copy</span></div>
+      <div class="cw-fmt reveal reveal-delay-1"><span class="cw-fmt-num">02</span><span class="cw-fmt-name">Long Form Copy</span></div>
+      <div class="cw-fmt reveal reveal-delay-2"><span class="cw-fmt-num">03</span><span class="cw-fmt-name">Taglines & Slogans</span></div>
+      <div class="cw-fmt reveal reveal-delay-3"><span class="cw-fmt-num">04</span><span class="cw-fmt-name">Blog & Article Writing</span></div>
+      <div class="cw-fmt reveal"><span class="cw-fmt-num">05</span><span class="cw-fmt-name">Press Release Copy</span></div>
+      <div class="cw-fmt reveal reveal-delay-1"><span class="cw-fmt-num">06</span><span class="cw-fmt-name">Digital Campaigns</span></div>
+      <div class="cw-fmt reveal reveal-delay-2"><span class="cw-fmt-num">07</span><span class="cw-fmt-name">Product Descriptions</span></div>
+      <div class="cw-fmt reveal reveal-delay-3"><span class="cw-fmt-num">08</span><span class="cw-fmt-name">Script Writing</span></div>
+      <div class="cw-fmt reveal"><span class="cw-fmt-num">09</span><span class="cw-fmt-name">Presentations</span></div>
+      <div class="cw-fmt reveal reveal-delay-1"><span class="cw-fmt-num">10</span><span class="cw-fmt-name">Social Media Copy</span></div>
+      <div class="cw-fmt reveal reveal-delay-2"><span class="cw-fmt-num">11</span><span class="cw-fmt-name">Newsletters & Email</span></div>
+      <div class="cw-fmt reveal reveal-delay-3"><span class="cw-fmt-num">12</span><span class="cw-fmt-name">Brand Tone of Voice</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ PROCESS -->
+<section class="cw-process">
+  <div class="cw-process-inner">
+    <div class="cw-process-left reveal">
+      <div class="section-tag">The Process</div>
+      <h2 class="cw-process-title">From brief<br>to published<br>copy.</h2>
+      <p class="cw-process-intro">Four stages, one accountable team. Copy that's researched properly, written to your voice, and checked against the objective before it ever goes live.</p>
+      <a href="contact.html" class="btn-primary">Start a Project</a>
+    </div>
+    <div class="cw-process-steps">
+      <div class="cw-step reveal">
+        <span class="cw-step-num">01</span>
+        <div>
+          <h4>Research</h4>
+          <p>We get under the skin of your business, audience, and objective - plus the keywords your customers are actually searching for.</p>
+        </div>
+      </div>
+      <div class="cw-step reveal reveal-delay-1">
+        <span class="cw-step-num">02</span>
+        <div>
+          <h4>Brief & Tone</h4>
+          <p>We map your brand guidelines and tone of voice, or help you establish one, so every piece of copy sounds unmistakably like you.</p>
+        </div>
+      </div>
+      <div class="cw-step reveal reveal-delay-2">
+        <span class="cw-step-num">03</span>
+        <div>
+          <h4>Write</h4>
+          <p>Persuasive copy that identifies your customers' pain points and speaks directly to them - structured and styled so it's actually read.</p>
+        </div>
+      </div>
+      <div class="cw-step reveal reveal-delay-3">
+        <span class="cw-step-num">04</span>
+        <div>
+          <h4>Refine & Deliver</h4>
+          <p>Revisions against your feedback, a final SEO check, then delivery in whatever format your site, CMS, or team needs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ CINEMATIC BREAK -->
+<div class="cw-break">
+  <div class="cw-break-veil">
+    <div class="cw-break-text">
+      <blockquote class="reveal">"The best<br>writing opens<br>doors and opens <span>minds.</span>"</blockquote>
+      <cite class="reveal reveal-delay-1"> -  Fortay Media, Copywriting</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ⑧ PACKAGES -->
+<section class="cw-packages" id="packages">
+  <div class="cw-packages-inner">
+    <div class="cw-packages-head">
+      <div class="section-tag reveal">Copywriting Packages</div>
+      <h2 class="reveal reveal-delay-1">Three ways<br>to work with<br>our writers.</h2>
+    </div>
+    <div class="cw-packages-grid">
+
+      <div class="cw-pcard reveal">
+        <div class="cw-pcard-index">01</div>
+        <h3>Single Piece</h3>
+        <div>
+          <div class="cw-pcard-price">POA</div>
+          <div class="cw-pcard-pnote">One asset · fixed scope</div>
+        </div>
+        <p class="cw-pcard-desc">One piece of copy, done properly. Ideal for a single landing page, a key blog post, or a script that needs to land first time.</p>
+        <div class="cw-pcard-rule"></div>
+        <ul class="cw-pcard-list">
+          <li>Research and keyword brief</li>
+          <li>First draft plus one round of revisions</li>
+          <li>Tone of voice alignment</li>
+          <li>SEO-friendly structure and formatting</li>
+          <li>Delivery ready to publish</li>
+        </ul>
+        <a href="contact.html" class="cw-pcard-link">
+          Start a Project
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="cw-pcard featured reveal reveal-delay-1">
+        <div class="cw-pcard-index">02 - Most Popular</div>
+        <h3>Website Copy</h3>
+        <div>
+          <div class="cw-pcard-price">POA</div>
+          <div class="cw-pcard-pnote">Full site · one project</div>
+        </div>
+        <p class="cw-pcard-desc">Every core page written and optimised in one project - homepage, services, about, and product or landing pages, all in one consistent voice.</p>
+        <div class="cw-pcard-rule"></div>
+        <ul class="cw-pcard-list">
+          <li>Full keyword research and content plan</li>
+          <li>Copy for every core site page</li>
+          <li>SEO optimisation throughout</li>
+          <li>Brand tone of voice guide</li>
+          <li>Two rounds of revisions</li>
+          <li>Delivery aligned to your build or launch</li>
+        </ul>
+        <a href="contact.html" class="cw-pcard-link">
+          Book Website Copy
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="cw-pcard reveal reveal-delay-2">
+        <div class="cw-pcard-index">03</div>
+        <h3>Content Retainer</h3>
+        <div>
+          <div class="cw-pcard-price">POA</div>
+          <div class="cw-pcard-pnote">Monthly · ongoing content</div>
+        </div>
+        <p class="cw-pcard-desc">A steady drip of blogs, newsletters, and social copy every month - built to keep your site active and your rankings climbing.</p>
+        <div class="cw-pcard-rule"></div>
+        <ul class="cw-pcard-list">
+          <li>Monthly content calendar</li>
+          <li>Recurring blog and article writing</li>
+          <li>Newsletter and social copy</li>
+          <li>Ongoing keyword tracking</li>
+          <li>Single writer across the retainer</li>
+        </ul>
+        <a href="contact.html" class="cw-pcard-link">
+          Set Up a Retainer
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑨ CTA -->
+<section class="cw-cta">
+  <div class="cw-cta-eyebrow reveal">Start a Project</div>
+  <h2 class="reveal reveal-delay-1">Find the<br><span>right words.</span></h2>
+  <p class="reveal reveal-delay-2">Tell us who you're writing for and what you need it to do. We'll come back with ideas, a plan, and a clear quote within 48 hours - no obligation, just a conversation.</p>
+  <div class="cw-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Start a Project</a>
+    <a href="work.html" class="btn-outline reveal reveal-delay-4">See Our Work</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Web Copy</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>SEO Content</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Blog Writing</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Product Copy</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Scripts</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Email & Social</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Web Copy</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>SEO Content</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Blog Writing</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Product Copy</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Scripts</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Email & Social</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
+</content>

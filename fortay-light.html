@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fortay Media - Content &amp; Marketing Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+
+    /* ─────────────────────────────────────────────
+       TOKENS
+    ───────────────────────────────────────────── */
+    :root {
+      --bg:         #FFFFFF;
+      --bg-2:       #F0F0F0;
+      --dark:       #111111;
+      --dark-2:     #1A1A1A;
+      --text:       #111111;
+      --dim:        rgba(0,0,0,0.5);
+      --muted:      rgba(0,0,0,0.3);
+      --gold:       #F5C400;
+      --gold-line:  rgba(245,196,0,0.3);
+      --line:       rgba(0,0,0,0.1);
+      --white:      #FFFFFF;
+
+      --ff: 'Inter', system-ui, sans-serif;
+
+      --ease:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --ease2: cubic-bezier(0.16, 1, 0.3, 1);
+      --t:     0.45s;
+
+      --max-w: 1300px;
+      --pad:   clamp(1.5rem, 6vw, 4rem);
+      --section: clamp(6rem, 11vw, 10rem);
+    }
+
+    /* ─────────────────────────────────────────────
+       RESET
+    ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff);
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { display: block; max-width: 100%; }
+
+    .wrap {
+      width: min(var(--max-w), 100%);
+      margin-inline: auto;
+      padding-inline: var(--pad);
+    }
+
+    /* ─────────────────────────────────────────────
+       SHARED TYPOGRAPHY
+    ───────────────────────────────────────────── */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.625rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px; height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ─────────────────────────────────────────────
+       BUTTONS
+    ───────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--ff);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--t) var(--ease);
+      border: none;
+      white-space: nowrap;
+    }
+    .btn-dark  { background: var(--dark); color: var(--white); padding: 1.0625rem 2.25rem; }
+    .btn-dark:hover  { background: var(--gold); }
+    .btn-gold  { background: var(--gold); color: var(--white); padding: 1.0625rem 2.25rem; }
+    .btn-gold:hover  { background: var(--dark); }
+    .btn-ghost { border: 1px solid var(--line); color: var(--text); padding: 1.0625rem 2.25rem; background: transparent; }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-ghost-w { border: 1px solid rgba(255,255,255,0.2); color: var(--white); padding: 1.0625rem 2.25rem; background: transparent; }
+    .btn-ghost-w:hover { border-color: rgba(255,255,255,0.5); }
+    .btn-link {
+      font-size: 0.6875rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); padding: 0; background: none; border: none;
+    }
+    .btn-link::after { content: ' →'; transition: transform var(--t) var(--ease); display: inline-block; }
+    .btn-link:hover::after { transform: translateX(5px); }
+    .btn-link:hover { color: var(--dark); }
+
+    /* ─────────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 200;
+      transition: background var(--t) var(--ease), border-color var(--t);
+    }
+    .nav.scrolled {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+    }
+    /* Keep nav readable over dark hero */
+    .nav:not(.scrolled) .nav__links a,
+    .nav:not(.scrolled) .nav__links a.nav-hl { color: rgba(255,255,255,0.7); }
+    .nav:not(.scrolled) .nav__links a:hover { color: var(--white); }
+    .nav:not(.scrolled) .nav__logo-wordmark { color: var(--white); }
+    .nav:not(.scrolled) .nav__logo img { filter: brightness(0) invert(1); }
+    .nav:not(.scrolled) .nav__burger span { background: var(--white); }
+
+    .nav__full {
+      width: 100%;
+      padding-inline: var(--pad);
+    }
+    .nav__inner {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      height: 76px; gap: 2rem;
+    }
+    .nav__logo { display: flex; align-items: center; }
+    .nav__logo img { height: 36px; width: auto; }
+    .nav__logo-wordmark {
+      font-size: 1.0625rem; font-weight: 800;
+      letter-spacing: -0.02em; color: var(--dark);
+      transition: color var(--t);
+    }
+    .nav__links { display: flex; align-items: center; gap: 2.25rem; }
+    .nav__links a {
+      font-size: 0.625rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--dim); transition: color var(--t);
+    }
+    .nav__links a:hover { color: var(--dark); }
+    .nav__links a.nav-hl { color: var(--gold); }
+    .nav__burger {
+      display: none; flex-direction: column; gap: 6px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav__burger span { display: block; width: 22px; height: 1px; background: var(--dark); transition: background var(--t); }
+
+    .nav__overlay {
+      display: none; position: fixed; inset: 0;
+      background: var(--dark); z-index: 199;
+      flex-direction: column; align-items: center;
+      justify-content: center; gap: 1.75rem;
+    }
+    .nav__overlay.open { display: flex; }
+    .nav__overlay a {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 800; letter-spacing: -0.03em;
+      color: var(--white); transition: color var(--t);
+    }
+    .nav__overlay a:hover { color: var(--gold); }
+    .nav__overlay-close {
+      position: absolute; top: 1.5rem; right: var(--pad);
+      background: none; border: none; color: rgba(255,255,255,0.4);
+      font-size: 1.5rem; cursor: pointer; line-height: 1;
+    }
+
+    /* ─────────────────────────────────────────────
+       HERO  - full-viewport, dark, cinematic
+    ───────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      background: var(--dark-2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Subtle vignette glow */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 30%, rgba(245,196,0,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at 5%  90%, rgba(245,196,0,0.04) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    /* Large ghost watermark */
+    .hero__watermark {
+      position: absolute;
+      bottom: -0.1em; left: -0.05em;
+      font-size: clamp(16rem, 32vw, 34rem);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 0.85;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.04);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    /* Hero background video */
+    .hero__video {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      pointer-events: none;
+    }
+
+    /* Dark overlay so text stays readable over video */
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      pointer-events: none;
+    }
+
+    /* Thin horizontal line separator */
+    .hero__line {
+      position: absolute;
+      left: var(--pad); right: var(--pad);
+      bottom: calc(clamp(3rem, 6vw, 5rem) + 4.5rem);
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      z-index: 1;
+    }
+
+    .hero__content {
+      position: relative; z-index: 2;
+      padding-bottom: clamp(3rem, 6vw, 5rem);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero__eyebrow { margin-bottom: 2.75rem; }
+    .hero__eyebrow .eyebrow { color: var(--gold); }
+    .hero__eyebrow .eyebrow::before { background: var(--gold); }
+
+    .hero__headline {
+      font-size: clamp(2.75rem, 5.5vw, 8.5rem);
+      font-weight: 800;
+      line-height: 0.93;
+      letter-spacing: -0.04em;
+      color: var(--white);
+      margin-bottom: 0;
+    }
+    .hero__headline em { font-style: normal; color: var(--gold); }
+
+    /* Row below headline - sub + CTAs */
+    .hero__bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      padding-top: 2.75rem;
+    }
+    .hero__sub {
+      font-size: clamp(0.9rem, 1.15vw, 1rem);
+      line-height: 1.7;
+      color: rgba(255,255,255,0.45);
+      font-weight: 300;
+      max-width: 44ch;
+      text-align: center;
+    }
+    .hero__ctas { display: flex; gap: 0.875rem; flex-shrink: 0; }
+
+    /* Scroll indicator */
+    .hero__scroll {
+      position: absolute;
+      bottom: 2.25rem; right: var(--pad);
+      writing-mode: vertical-rl;
+      font-size: 0.5625rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      display: flex; align-items: center; gap: 0.625rem;
+      z-index: 2;
+    }
+    .hero__scroll::after {
+      content: '';
+      width: 1px; height: 44px;
+      background: linear-gradient(to bottom, rgba(245,196,0,0.6), transparent);
+      margin-top: 0.5rem;
+    }
+
+    /* ─── Ticker ─── */
+    .ticker {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-block: 1.125rem;
+      overflow: hidden;
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      z-index: 2;
+    }
+    .ticker__track {
+      display: flex; gap: 2.5rem;
+      animation: marquee 40s linear infinite;
+      width: max-content;
+    }
+    .ticker__item {
+      display: flex; align-items: center; gap: 0.875rem;
+      font-size: 0.625rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.2); white-space: nowrap;
+    }
+    .ticker__dot {
+      width: 3px; height: 3px; border-radius: 50%;
+      background: var(--gold); opacity: 0.6;
+    }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* ─────────────────────────────────────────────
+       INTRO STATEMENT
+    ───────────────────────────────────────────── */
+    .intro {
+      padding-block: var(--section);
+      border-bottom: 1px solid var(--line);
+    }
+    .intro__inner {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: clamp(3rem, 6vw, 7rem);
+      align-items: start;
+    }
+    .intro__left {
+      padding-top: 0.5rem;
+    }
+    .intro__num {
+      font-size: clamp(5rem, 10vw, 9rem);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: var(--bg-2);
+      margin-bottom: 1rem;
+    }
+    .intro__num span { color: var(--gold); }
+    .intro__label {
+      font-size: 0.625rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted); line-height: 1.6;
+    }
+    .intro__right {}
+    .intro__statement {
+      font-size: clamp(1.625rem, 3vw, 2.625rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--dark);
+      margin-bottom: 2rem;
+    }
+    .intro__statement em { font-style: normal; color: var(--gold); }
+    .intro__body {
+      font-size: 1rem; line-height: 1.75;
+      color: var(--dim); font-weight: 300;
+      max-width: 48ch; margin-bottom: 2.5rem;
+    }
+
+    /* ─────────────────────────────────────────────
+       STATS BAND
+    ───────────────────────────────────────────── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      border-bottom: 1px solid var(--line);
+    }
+    .stat {
+      padding: clamp(2.5rem,4vw,3.5rem) clamp(1.5rem,2.5vw,2.5rem);
+      border-right: 1px solid var(--line);
+    }
+    .stat:last-child { border-right: none; }
+    .stat__num {
+      font-size: clamp(3rem,6vw,5.5rem);
+      font-weight: 800; letter-spacing: -0.05em;
+      line-height: 1; color: var(--dark); margin-bottom: 0.5rem;
+    }
+    .stat__num span { color: var(--gold); }
+    .stat__label {
+      font-size: 0.625rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--muted); line-height: 1.55;
+    }
+
+    /* ─────────────────────────────────────────────
+       PATHS
+    ───────────────────────────────────────────── */
+    .paths { padding-block: var(--section); border-bottom: 1px solid var(--line); }
+
+    .paths__head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem,5vw,5rem);
+      align-items: end;
+      margin-bottom: clamp(4rem,6vw,6rem);
+    }
+    .paths__head .eyebrow { margin-bottom: 1.5rem; }
+    .paths__title {
+      font-size: clamp(2.25rem,5vw,4.5rem);
+      font-weight: 800; letter-spacing: -0.04em;
+      line-height: 1.04; color: var(--dark);
+    }
+    .paths__title em { font-style: normal; color: var(--gold); }
+    .paths__sub {
+      font-size: 0.9375rem; line-height: 1.7;
+      color: var(--dim); font-weight: 300;
+      max-width: 38ch; align-self: end;
+    }
+
+    .paths__grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      border-top: 1px solid var(--line);
+    }
+    .path-card {
+      border-right: 1px solid var(--line);
+      padding: clamp(2.5rem,3.5vw,3.5rem) clamp(1.75rem,2.5vw,2.5rem);
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+      transition: background var(--t) var(--ease);
+      cursor: pointer;
+    }
+    .path-card:last-child { border-right: none; }
+    .path-card:hover { background: var(--bg-2); }
+    .path-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; width: 0; height: 2px;
+      background: var(--gold);
+      transition: width 0.55s var(--ease2);
+    }
+    .path-card:hover::before,
+    .path-card--on::before { width: 100%; }
+    .path-card--on { background: var(--bg-2); }
+
+    .path-card__top {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; margin-bottom: 3rem;
+    }
+    .path-card__num {
+      font-size: 0.625rem; font-weight: 600;
+      letter-spacing: 0.18em; color: var(--gold);
+    }
+    .path-badge {
+      font-size: 0.5rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      background: var(--gold); color: var(--white);
+      padding: 0.2rem 0.5rem;
+    }
+    .path-card__icon {
+      font-size: 1.75rem; line-height: 1;
+      margin-bottom: 1.75rem; color: var(--muted);
+    }
+    .path-card__title {
+      font-size: clamp(1.5rem,2.25vw,2.125rem);
+      font-weight: 800; letter-spacing: -0.03em;
+      line-height: 1.1; color: var(--dark);
+      margin-bottom: 1rem; flex: 1;
+    }
+    .path-card__desc {
+      font-size: 0.875rem; line-height: 1.65;
+      color: var(--dim); font-weight: 300;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ─────────────────────────────────────────────
+       PROCESS
+    ───────────────────────────────────────────── */
+    .process { padding-block: var(--section); border-bottom: 1px solid var(--line); }
+    .process__head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem,5vw,6rem);
+      align-items: end;
+      margin-bottom: clamp(4rem,6vw,6rem);
+    }
+    .process__head .eyebrow { margin-bottom: 1.5rem; }
+    .process__title {
+      font-size: clamp(2.25rem,4.5vw,4rem);
+      font-weight: 800; letter-spacing: -0.04em;
+      line-height: 1.04; color: var(--dark);
+    }
+    .process__title em { font-style: normal; color: var(--gold); }
+    .process__sub {
+      font-size: 0.9375rem; line-height: 1.75;
+      color: var(--dim); font-weight: 300;
+      max-width: 40ch; align-self: end;
+    }
+
+    /* Steps list */
+    .steps { }
+    .step {
+      display: grid;
+      grid-template-columns: 68px 1fr;
+      gap: 2rem;
+      padding-block: 2.25rem;
+      border-top: 1px solid var(--line);
+      transition: background var(--t);
+      cursor: default;
+    }
+    .step:last-child { border-bottom: 1px solid var(--line); }
+    .step:hover { background: var(--bg-2); }
+    .step:hover .step__num { color: var(--gold); }
+    .step__num {
+      font-size: 0.625rem; font-weight: 600;
+      letter-spacing: 0.18em; color: var(--muted);
+      padding-top: 0.3rem;
+      transition: color var(--t);
+    }
+    .step__title {
+      font-size: clamp(1.125rem,1.8vw,1.5rem);
+      font-weight: 700; letter-spacing: -0.025em;
+      line-height: 1.2; color: var(--dark); margin-bottom: 0.5rem;
+    }
+    .step__desc {
+      font-size: 0.875rem; line-height: 1.7;
+      color: var(--dim); font-weight: 300; max-width: 50ch;
+    }
+
+    /* Dark retainer panel */
+    .retainer {
+      margin-top: clamp(3rem,5vw,4rem);
+      background: var(--dark);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .retainer__left {
+      padding: clamp(2.5rem,4vw,3.5rem);
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+    .retainer__eyebrow {
+      font-size: 0.625rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+    }
+    .retainer__title {
+      font-size: clamp(1.5rem,2.25vw,2rem);
+      font-weight: 800; letter-spacing: -0.03em;
+      line-height: 1.15; color: var(--white); margin-bottom: 1rem;
+    }
+    .retainer__desc {
+      font-size: 0.9rem; line-height: 1.75;
+      color: rgba(255,255,255,0.4); font-weight: 300;
+      max-width: 38ch; margin-bottom: 2.5rem;
+    }
+    .retainer__right {
+      padding: clamp(2.5rem,4vw,3.5rem);
+    }
+    .retainer__list { }
+    .retainer__item {
+      display: flex; align-items: center; gap: 1rem;
+      font-size: 0.875rem; font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      padding-block: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .retainer__item:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+    .retainer__dot {
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--gold); opacity: 0.7; flex-shrink: 0;
+    }
+
+    /* ─────────────────────────────────────────────
+       WHY
+    ───────────────────────────────────────────── */
+    .why { padding-block: var(--section); border-bottom: 1px solid var(--line); }
+    .why__head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem,5vw,6rem);
+      align-items: end;
+      margin-bottom: clamp(4rem,6vw,6rem);
+    }
+    .why__head .eyebrow { margin-bottom: 1.5rem; }
+    .why__title {
+      font-size: clamp(2.25rem,4.5vw,4rem);
+      font-weight: 800; letter-spacing: -0.04em;
+      line-height: 1.04; color: var(--dark);
+    }
+    .why__title em { font-style: normal; color: var(--gold); }
+    .why__sub {
+      font-size: 0.9375rem; line-height: 1.75;
+      color: var(--dim); font-weight: 300;
+      max-width: 38ch; align-self: end;
+    }
+    .why__rows { }
+    .why-row {
+      display: grid;
+      grid-template-columns: 68px 1fr 1fr;
+      gap: 2rem; align-items: start;
+      padding-block: 2.5rem;
+      border-top: 1px solid var(--line);
+      transition: background var(--t);
+    }
+    .why-row:last-child { border-bottom: 1px solid var(--line); }
+    .why-row:hover { background: var(--bg-2); }
+    .why-row__num {
+      font-size: 0.625rem; font-weight: 600;
+      letter-spacing: 0.18em; color: var(--muted); padding-top: 0.2rem;
+    }
+    .why-row__title {
+      font-size: clamp(1.125rem,1.75vw,1.5rem);
+      font-weight: 700; letter-spacing: -0.025em;
+      line-height: 1.2; color: var(--dark);
+    }
+    .why-row__desc {
+      font-size: 0.875rem; line-height: 1.7;
+      color: var(--dim); font-weight: 300;
+    }
+
+    /* ─────────────────────────────────────────────
+       WORK
+    ───────────────────────────────────────────── */
+    .work { padding-block: var(--section); border-bottom: 1px solid var(--line); }
+    .work__head {
+      display: flex; justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: clamp(3.5rem,5vw,5rem);
+    }
+    .work__head .eyebrow { margin-bottom: 1.5rem; }
+    .work__title {
+      font-size: clamp(2.25rem,4.5vw,4rem);
+      font-weight: 800; letter-spacing: -0.04em;
+      line-height: 1.04; color: var(--dark);
+    }
+    .work__title em { font-style: normal; color: var(--gold); }
+
+    /* Asymmetric grid: tall card left, two stacked right */
+    .work__grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 1px;
+      background: var(--line);
+    }
+    .work-card {
+      background: var(--bg);
+      overflow: hidden; position: relative; cursor: pointer;
+    }
+    .work-card:first-child { grid-row: 1 / 3; }
+    .work-card__thumb {
+      position: relative; overflow: hidden;
+    }
+    .work-card:first-child .work-card__thumb { aspect-ratio: 3/4; }
+    .work-card:not(:first-child) .work-card__thumb { aspect-ratio: 16/9; }
+
+    .work-card__bg {
+      position: absolute; inset: 0;
+      transition: transform 1s var(--ease2);
+    }
+    .work-card:hover .work-card__bg { transform: scale(1.05); }
+
+    /* Cinematic gradient overlay */
+    .work-card__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.2)  45%,
+        transparent         100%
+      );
+    }
+    .work-card__info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 2rem;
+      transform: translateY(6px);
+      opacity: 0;
+      transition: all 0.5s var(--ease2);
+    }
+    .work-card:hover .work-card__info { transform: none; opacity: 1; }
+    .work-card__tag {
+      display: inline-block; font-size: 0.55rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid var(--gold-line);
+      padding: 0.2rem 0.625rem; margin-bottom: 0.75rem;
+    }
+    .work-card__label {
+      font-size: 1.125rem; font-weight: 700;
+      letter-spacing: -0.02em; color: var(--white); line-height: 1.25;
+    }
+
+    /* Body below first card's thumb */
+    .work-card__body {
+      padding: 2rem; border-top: 1px solid var(--line); display: none;
+    }
+    .work-card:first-child .work-card__body { display: block; }
+    .work-card__client {
+      font-size: 0.55rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.5rem;
+    }
+    .work-card__name {
+      font-size: 1.25rem; font-weight: 700;
+      letter-spacing: -0.025em; line-height: 1.25;
+      color: var(--dark); margin-bottom: 1rem;
+    }
+    .work-card__facts {
+      display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 1.75rem;
+    }
+    .work-card__fact {
+      font-size: 0.8rem; color: var(--muted); line-height: 1.55;
+    }
+    .work-card__fact strong { color: var(--dim); font-weight: 500; }
+
+    /* ─────────────────────────────────────────────
+       STUDIO - dark panel
+    ───────────────────────────────────────────── */
+    .studio { }
+    .studio__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .studio__left {
+      background: var(--dark);
+      padding: clamp(3.5rem,6vw,6rem) clamp(2rem,4vw,4rem);
+      display: flex; flex-direction: column; justify-content: space-between;
+      border-right: 1px solid rgba(255,255,255,0.05);
+    }
+    .studio__left .eyebrow { color: var(--gold); }
+    .studio__left .eyebrow::before { background: var(--gold); }
+    .studio__eyebrow { margin-bottom: 2.5rem; }
+    .studio__headline {
+      font-size: clamp(2.5rem,5vw,5rem);
+      font-weight: 800; letter-spacing: -0.04em;
+      line-height: 1.02; color: var(--white); margin-bottom: 1.75rem;
+    }
+    .studio__headline em { font-style: normal; color: var(--gold); }
+    .studio__desc {
+      font-size: 1rem; line-height: 1.75;
+      color: rgba(255,255,255,0.4); font-weight: 300;
+      max-width: 38ch; margin-bottom: 3rem;
+    }
+    .studio__feats { display: flex; flex-direction: column; margin-bottom: 3rem; }
+    .studio__feat {
+      display: flex; align-items: center; gap: 0.875rem;
+      font-size: 0.875rem; font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      padding-block: 0.875rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .studio__feat:last-child { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .studio__feat::before {
+      content: ''; width: 4px; height: 4px; border-radius: 50%;
+      background: var(--gold); opacity: 0.6; flex-shrink: 0;
+    }
+    .studio__ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* Right: cinematic still placeholders */
+    .studio__right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.05);
+    }
+    .studio__cell {
+      background: #1A1A1A;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.625rem; padding: 1.5rem;
+      transition: background var(--t);
+    }
+    .studio__cell:first-child { grid-column: 1/-1; }
+    .studio__cell:hover { background: #1C1C1C; }
+    .studio__cell-icon { font-size: 2rem; opacity: 0.4; }
+    .studio__cell-label {
+      font-size: 0.5625rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ─────────────────────────────────────────────
+       SOCIAL PROOF
+    ───────────────────────────────────────────── */
+    .proof { padding-block: var(--section); border-bottom: 1px solid var(--line); }
+    .proof__head {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: clamp(3.5rem,5vw,5rem);
+    }
+    .proof__head .eyebrow { margin-bottom: 1.5rem; }
+    .proof__title {
+      font-size: clamp(2.25rem,4.5vw,4rem);
+      font-weight: 800; letter-spacing: -0.04em;
+      line-height: 1.04; color: var(--dark);
+    }
+    .proof__title em { font-style: normal; color: var(--gold); }
+
+    .proof__logos {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 1.5rem 3rem;
+      padding-block: 2.5rem;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-bottom: clamp(3rem,5vw,4.5rem);
+    }
+    .proof__logo {
+      font-size: 0.875rem; font-weight: 600;
+      letter-spacing: 0.05em; color: var(--bg-2);
+      transition: color var(--t);
+    }
+    .proof__logo:hover { color: var(--muted); }
+
+    .proof__grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1px; background: var(--line);
+    }
+    .testi {
+      background: var(--bg);
+      padding: clamp(2rem,3vw,2.75rem);
+      transition: background var(--t);
+    }
+    .testi:hover { background: var(--bg-2); }
+    .testi__mark {
+      font-size: 3.5rem; font-weight: 800; line-height: 1;
+      color: var(--gold); opacity: 0.2; margin-bottom: 1.25rem;
+    }
+    .testi__quote {
+      font-size: 0.9375rem; line-height: 1.75;
+      color: var(--dim); font-weight: 300; margin-bottom: 2rem;
+    }
+    .testi__rule { border: none; border-top: 1px solid var(--line); margin-bottom: 1.5rem; }
+    .testi__author { display: flex; align-items: center; gap: 0.75rem; }
+    .testi__avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--bg-2); border: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700; color: var(--gold);
+      flex-shrink: 0;
+    }
+    .testi__name { font-size: 0.8125rem; font-weight: 700; color: var(--dark); }
+    .testi__role { font-size: 0.75rem; color: var(--muted); }
+
+    /* ─────────────────────────────────────────────
+       FINAL CTA - dark, cinematic
+    ───────────────────────────────────────────── */
+    .cta-final {
+      background: var(--dark);
+      padding-block: clamp(7rem,13vw,12rem);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-final::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 65% at 50% 50%, rgba(245,196,0,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    /* Giant bg text */
+    .cta-final__bg {
+      position: absolute; bottom: -0.1em; left: 50%;
+      transform: translateX(-50%);
+      font-size: clamp(12rem,28vw,30rem);
+      font-weight: 800; letter-spacing: -0.06em;
+      line-height: 0.85; color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.03);
+      pointer-events: none; user-select: none; white-space: nowrap;
+    }
+    .cta-final .eyebrow {
+      justify-content: center; color: var(--gold); margin-bottom: 2.5rem;
+    }
+    .cta-final .eyebrow::before { background: var(--gold); }
+    .cta-final__headline {
+      font-size: clamp(3rem,8vw,8rem);
+      font-weight: 800; letter-spacing: -0.04em;
+      line-height: 0.95; color: var(--white); margin-bottom: 2rem;
+      position: relative; z-index: 1;
+    }
+    .cta-final__headline em { font-style: normal; color: var(--gold); }
+    .cta-final__sub {
+      font-size: 1rem; line-height: 1.75;
+      color: rgba(255,255,255,0.35); font-weight: 300;
+      max-width: 42ch; margin-inline: auto;
+      margin-bottom: 3.5rem; position: relative; z-index: 1;
+    }
+    .cta-final__btns {
+      display: flex; justify-content: center;
+      gap: 1rem; flex-wrap: wrap; position: relative; z-index: 1;
+    }
+
+    /* ─────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────── */
+    .footer { background: var(--bg-2); border-top: 1px solid var(--line); }
+    .footer__top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem; padding-block: 4.5rem;
+    }
+    .footer__name {
+      font-size: 1.0625rem; font-weight: 800;
+      letter-spacing: -0.02em; color: var(--dark); margin-bottom: 0.875rem;
+    }
+    .footer__tag {
+      font-size: 0.875rem; line-height: 1.65;
+      color: var(--muted); font-weight: 300;
+      max-width: 28ch; margin-bottom: 2rem;
+    }
+    .footer__social { display: flex; gap: 0.5rem; }
+    .footer__social a {
+      width: 34px; height: 34px; border: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.55rem; font-weight: 700; letter-spacing: 0.1em;
+      color: var(--muted); transition: all var(--t);
+    }
+    .footer__social a:hover { border-color: var(--gold); color: var(--gold); }
+    .footer__col-title {
+      font-size: 0.5625rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1.5rem;
+    }
+    .footer__col-links { display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer__col-links a {
+      font-size: 0.875rem; font-weight: 300;
+      color: var(--dim); transition: color var(--t);
+    }
+    .footer__col-links a:hover { color: var(--dark); }
+    .footer__bottom {
+      border-top: 1px solid var(--line); padding-block: 1.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+      font-size: 0.625rem; font-weight: 400;
+      letter-spacing: 0.1em; color: var(--muted);
+    }
+
+    /* ─────────────────────────────────────────────
+       SCROLL REVEAL - clip-path + fade
+    ───────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition:
+        opacity  0.9s var(--ease2),
+        transform 0.9s var(--ease2);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.22s; }
+    .reveal-d3 { transition-delay: 0.34s; }
+    .reveal-d4 { transition-delay: 0.46s; }
+
+    /* Clip-path curtain reveal for headlines */
+    .reveal-clip {
+      clip-path: inset(0 0 100% 0);
+      transition: clip-path 1s var(--ease2);
+    }
+    .reveal-clip.in { clip-path: inset(0 0 0% 0); }
+    .reveal-clip-d1 { transition-delay: 0.12s; }
+    .reveal-clip-d2 { transition-delay: 0.24s; }
+
+    /* ─────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .intro__inner { grid-template-columns: 1fr; }
+      .paths__head  { grid-template-columns: 1fr; }
+      .paths__grid  { grid-template-columns: 1fr; }
+      .path-card    { border-right: none; border-top: 1px solid var(--line); }
+      .path-card:first-child { border-top: none; }
+      .process__head { grid-template-columns: 1fr; }
+      .retainer { grid-template-columns: 1fr; }
+      .retainer__left { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+      .why__head  { grid-template-columns: 1fr; }
+      .why-row    { grid-template-columns: 60px 1fr; }
+      .why-row__desc { display: none; }
+      .work__grid { grid-template-columns: 1fr; }
+      .work-card:first-child { grid-row: auto; }
+      .work-card:not(:first-child) .work-card__thumb { aspect-ratio: 16/9; }
+      .studio__inner { grid-template-columns: 1fr; }
+      .studio__right { display: none; }
+      .proof__grid { grid-template-columns: 1fr; }
+      .footer__top { grid-template-columns: 1fr 1fr; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .stat:nth-child(2) { border-right: none; }
+    }
+
+    @media (max-width: 768px) {
+      .nav__links, .nav__cta-btn { display: none; }
+      .nav__burger { display: flex; }
+      .hero__bottom { flex-direction: column; align-items: flex-start; gap: 2rem; }
+      .work__head { flex-direction: column; align-items: flex-start; }
+      .proof__head { flex-direction: column; align-items: flex-start; }
+      .footer__top { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .hero__ctas { flex-direction: column; width: 100%; }
+      .hero__ctas .btn { justify-content: center; }
+      .stats { grid-template-columns: 1fr; }
+      .stat { border-right: none; border-bottom: 1px solid var(--line); }
+      .cta-final__btns { flex-direction: column; align-items: center; }
+    }
+
+    /* ─────────────────────────────────────────────
+       DARK MODE OVERRIDES
+    ───────────────────────────────────────────── */
+    [data-theme="dark"] {
+      --bg:      #111111;
+      --bg-2:    #1A1A1A;
+      --dark:    #FFFFFF;
+      --dark-2:  #F0F0F0;
+      --text:    #F0F0F0;
+      --dim:     rgba(255,255,255,0.5);
+      --muted:   rgba(255,255,255,0.3);
+      --line:    rgba(255,255,255,0.1);
+      --white:   #111111;
+    }
+    [data-theme="dark"] .nav.scrolled {
+      background: rgba(17,17,17,0.95);
+    }
+    [data-theme="dark"] .nav__logo img {
+      filter: brightness(0) invert(1);
+    }
+
+    /* Hero + ticker: always stay dark regardless of theme */
+    [data-theme="dark"] .hero { background: #1A1A1A; }
+    [data-theme="dark"] .hero__headline { color: #FFFFFF; }
+    [data-theme="dark"] .ticker { background: #111111; border-top-color: rgba(255,255,255,0.06); }
+    [data-theme="dark"] .btn-dark {
+      background: #FFFFFF;
+      color: #111111;
+    }
+    [data-theme="dark"] .btn-dark:hover {
+      background: var(--gold);
+      color: #111111;
+    }
+
+    /* ─────────────────────────────────────────────
+       THEME TOGGLE BUTTON
+    ───────────────────────────────────────────── */
+    .nav__right {
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .theme-toggle {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: transparent;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color var(--t), background var(--t);
+      flex-shrink: 0;
+      position: relative;
+    }
+    .theme-toggle:hover { border-color: var(--gold); background: rgba(245,196,0,0.08); }
+    .theme-toggle__icon {
+      position: absolute;
+      font-size: 0.875rem;
+      line-height: 1;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    /* Light mode: show sun, hide moon */
+    .theme-toggle__sun  { opacity: 1; transform: scale(1) rotate(0deg); }
+    .theme-toggle__moon { opacity: 0; transform: scale(0.5) rotate(-30deg); }
+    /* Dark mode: hide sun, show moon */
+    [data-theme="dark"] .theme-toggle__sun  { opacity: 0; transform: scale(0.5) rotate(30deg); }
+    [data-theme="dark"] .theme-toggle__moon { opacity: 1; transform: scale(1) rotate(0deg); }
+    /* Keep toggle visible over dark hero */
+    .nav:not(.scrolled) .theme-toggle { border-color: rgba(255,255,255,0.25); }
+    .nav:not(.scrolled) .theme-toggle:hover { border-color: var(--gold); }
+    .nav:not(.scrolled) .theme-toggle__icon { color: #FFFFFF; }
+
+  </style>
+</head>
+<body>
+
+<!-- ════ NAV ════════════════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="nav__full">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <img src="https://www.fortaymedia.co.uk/wp-content/uploads/2019/10/Fortay-media-logo.png" alt="Fortay Media" />
+      </a>
+      <ul class="nav__links">
+        <li><a href="#paths" class="nav-hl">Growth Partnership</a></li>
+        <li><a href="#work">Video Production</a></li>
+        <li><a href="#studio">Studio Hire</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#why">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav__right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <span class="theme-toggle__icon theme-toggle__sun">☀</span>
+          <span class="theme-toggle__icon theme-toggle__moon">☽</span>
+        </button>
+        <a href="#contact" class="btn btn-dark nav__cta-btn">Book a Call</a>
+        <button class="nav__burger" id="burger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="nav__overlay" id="overlay">
+  <button class="nav__overlay-close" id="oClose">✕</button>
+  <a href="#paths"  onclick="closeNav()">Growth Partnership</a>
+  <a href="#work"   onclick="closeNav()">Video Production</a>
+  <a href="#studio" onclick="closeNav()">Studio Hire</a>
+  <a href="#work"   onclick="closeNav()">Work</a>
+  <a href="#contact" onclick="closeNav()">Contact</a>
+  <a href="#contact" class="btn btn-gold" onclick="closeNav()" style="margin-top:1rem;">Book a Strategy Call</a>
+</div>
+
+
+<!-- ════ HERO ═══════════════════════════════════════════════════ -->
+<section class="hero">
+
+  <!-- Hero background video -->
+  <video class="hero__video" autoplay muted loop playsinline aria-hidden="true">
+    <source src="https://www.fortaymedia.co.uk/wp-content/uploads/2025/09/fortay_-_header_version_1-1080p.mp4" type="video/mp4" />
+  </video>
+  <div class="hero__overlay" aria-hidden="true"></div>
+
+  <div class="hero__watermark" aria-hidden="true">FORTAY</div>
+  <div class="hero__line"      aria-hidden="true"></div>
+
+  <div class="wrap">
+    <div class="hero__content">
+
+      <div class="hero__eyebrow reveal">
+        <span class="eyebrow">Sheffield's content &amp; marketing engine</span>
+      </div>
+
+      <h1 class="hero__headline reveal reveal-d1">
+        We run your entire<br/>
+        <em>content engine</em>  - <br/>
+        production to back it up
+      </h1>
+
+      <div class="hero__bottom reveal reveal-d2">
+        <p class="hero__sub">
+          Strategy, production &amp; distribution - all handled in-house.
+          One team, one brief, consistent results.
+        </p>
+        <div class="hero__ctas">
+          <a href="#contact" class="btn btn-gold">Book a Strategy Call</a>
+          <a href="#work"    class="btn btn-ghost-w">See Our Work</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">Scroll</div>
+
+  <!-- Ticker -->
+  <div class="ticker">
+    <div class="ticker__track" aria-hidden="true">
+      <span class="ticker__item"><span class="ticker__dot"></span>Video Production</span>
+      <span class="ticker__item"><span class="ticker__dot"></span>Content Strategy</span>
+      <span class="ticker__item"><span class="ticker__dot"></span>Social Media</span>
+      <span class="ticker__item"><span class="ticker__dot"></span>Studio Hire Sheffield</span>
+      <span class="ticker__item"><span class="ticker__dot"></span>Brand Campaigns</span>
+      <span class="ticker__item"><span class="ticker__dot"></span>Growth Retainers</span>
+      <span class="ticker__item"><span class="ticker__dot"></span>Paid Distribution</span>
+      <span class="ticker__item"><span class="ticker__dot"></span>Green Screen Studio</span>
+      <span class="ticker__item"><span class="ticker__dot"></span>Podcast Production</span>
+      <span class="ticker__item"><span class="ticker__dot"></span>Video Production</span>
+      <span class="ticker__item"><span class="ticker__dot"></span>Content Strategy</span>
+      <span class="ticker__item"><span class="ticker__dot"></span>Social Media</span>
+      <span class="ticker__item"><span class="ticker__dot"></span>Studio Hire Sheffield</span>
+      <span class="ticker__item"><span class="ticker__dot"></span>Brand Campaigns</span>
+      <span class="ticker__item"><span class="ticker__dot"></span>Growth Retainers</span>
+      <span class="ticker__item"><span class="ticker__dot"></span>Paid Distribution</span>
+      <span class="ticker__item"><span class="ticker__dot"></span>Green Screen Studio</span>
+      <span class="ticker__item"><span class="ticker__dot"></span>Podcast Production</span>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ════ INTRO ══════════════════════════════════════════════════ -->
+<section class="intro">
+  <div class="wrap">
+    <div class="intro__inner">
+      <div class="reveal">
+        <div class="intro__num">10<span>+</span></div>
+        <div class="intro__label">Years of production<br/>experience</div>
+      </div>
+      <div>
+        <h2 class="intro__statement reveal reveal-d1">
+          Not just a video company.<br/>
+          Not just a marketing agency.<br/>
+          <em>Your content engine.</em>
+        </h2>
+        <p class="intro__body reveal reveal-d2">
+          Most businesses lose time briefing multiple agencies and get content that doesn't connect. We fix that - strategy, production, and distribution under one roof.
+        </p>
+        <a href="#process" class="btn btn-link reveal reveal-d3">See how it works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ STATS ══════════════════════════════════════════════════ -->
+<div class="stats reveal">
+  <div class="stat">
+    <div class="stat__num">100<span>%</span></div>
+    <div class="stat__label">In-house<br/>production</div>
+  </div>
+  <div class="stat">
+    <div class="stat__num">1<span> team</span></div>
+    <div class="stat__label">Strategy to<br/>delivery</div>
+  </div>
+  <div class="stat">
+    <div class="stat__num">3<span>×</span></div>
+    <div class="stat__label">Avg. content output<br/>on retainer</div>
+  </div>
+  <div class="stat">
+    <div class="stat__num">0</div>
+    <div class="stat__label">Agencies to<br/>juggle</div>
+  </div>
+</div>
+
+
+<!-- ════ PATHS ══════════════════════════════════════════════════ -->
+<section class="section paths" id="paths">
+  <div class="wrap">
+    <div class="paths__head">
+      <div>
+        <div class="eyebrow reveal">How we work</div>
+        <h2 class="paths__title reveal reveal-d1">Choose your <em>path</em></h2>
+      </div>
+      <p class="paths__sub reveal reveal-d2">
+        Whether you need a full content partner, a one-off production, or studio access - we have the right fit.
+      </p>
+    </div>
+
+    <div class="paths__grid">
+
+      <div class="path-card path-card--on reveal">
+        <div class="path-card__top">
+          <span class="path-card__num">01</span>
+          <span class="path-badge">Main Offer</span>
+        </div>
+        <div class="path-card__icon">↗</div>
+        <h3 class="path-card__title">Growth<br/>Partnership</h3>
+        <p class="path-card__desc">Ongoing strategy, production, and distribution - handled every month. We become your dedicated content team.</p>
+        <a href="#process" class="btn btn-link">Explore retainers</a>
+      </div>
+
+      <div class="path-card reveal reveal-d1">
+        <div class="path-card__top">
+          <span class="path-card__num">02</span>
+        </div>
+        <div class="path-card__icon">▶</div>
+        <h3 class="path-card__title">Video<br/>Production</h3>
+        <p class="path-card__desc">High-quality video for campaigns, events, and social - concept to delivery, entirely in-house.</p>
+        <a href="#work" class="btn btn-link">View services</a>
+      </div>
+
+      <div class="path-card reveal reveal-d2">
+        <div class="path-card__top">
+          <span class="path-card__num">03</span>
+        </div>
+        <div class="path-card__icon">◉</div>
+        <h3 class="path-card__title">Studio<br/>Hire</h3>
+        <p class="path-card__desc">Green screen and podcast studio in Sheffield. Dry hire or fully crewed - your unfair advantage.</p>
+        <a href="#studio" class="btn btn-link">Explore studio</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ PROCESS ════════════════════════════════════════════════ -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="process__head">
+      <div>
+        <div class="eyebrow reveal">Our system</div>
+        <h2 class="process__title reveal reveal-d1">Your content engine  - <br/><em>under one roof</em></h2>
+      </div>
+      <p class="process__sub reveal reveal-d2">
+        We build and run your full content operation - not just produce assets.
+      </p>
+    </div>
+
+    <div class="steps reveal reveal-d1">
+      <div class="step">
+        <div class="step__num">01</div>
+        <div>
+          <div class="step__title">Discovery</div>
+          <div class="step__desc">We understand your business, audience, and goals before touching a camera.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__num">02</div>
+        <div>
+          <div class="step__title">Strategy</div>
+          <div class="step__desc">A content plan built around your campaigns and audience - every piece has a purpose.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__num">03</div>
+        <div>
+          <div class="step__title">Production</div>
+          <div class="step__desc">Video, shoots, editing - all in-house. Faster turnarounds, better quality, no markup.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__num">04</div>
+        <div>
+          <div class="step__title">Distribution</div>
+          <div class="step__desc">Social, paid ads, email - your content reaching the right people at the right time.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__num">05</div>
+        <div>
+          <div class="step__title">Optimisation</div>
+          <div class="step__desc">Monthly data review. What works gets scaled. What doesn't gets fixed.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="retainer reveal">
+      <div class="retainer__left">
+        <div class="retainer__eyebrow">Growth Partnership</div>
+        <h3 class="retainer__title">Done-for-you content that drives consistent growth</h3>
+        <p class="retainer__desc">One team. One brief. Strategy through to delivery, every month.</p>
+        <a href="#contact" class="btn btn-gold">Book a Strategy Call</a>
+      </div>
+      <div class="retainer__right">
+        <div class="retainer__list">
+          <div class="retainer__item"><span class="retainer__dot"></span>Monthly content calendar &amp; video production</div>
+          <div class="retainer__item"><span class="retainer__dot"></span>Social media management &amp; scheduling</div>
+          <div class="retainer__item"><span class="retainer__dot"></span>Paid social &amp; ad campaigns</div>
+          <div class="retainer__item"><span class="retainer__dot"></span>Brand storytelling &amp; campaign strategy</div>
+          <div class="retainer__item"><span class="retainer__dot"></span>Monthly analytics &amp; performance review</div>
+          <div class="retainer__item"><span class="retainer__dot"></span>Priority studio access &amp; fast turnarounds</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ WHY ═════════════════════════════════════════════════════ -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="why__head">
+      <div>
+        <div class="eyebrow reveal">Why Fortay</div>
+        <h2 class="why__title reveal reveal-d1">Why brands <em>choose us</em></h2>
+      </div>
+      <p class="why__sub reveal reveal-d2">
+        Fully integrated production and marketing - with the studio to back it up.
+      </p>
+    </div>
+    <div class="why__rows reveal">
+      <div class="why-row">
+        <div class="why-row__num">01</div>
+        <div class="why-row__title">In-house studio - faster, more flexible</div>
+        <div class="why-row__desc">No third-party studios, no scheduling conflicts. Speed and flexibility at scale, passed directly to you.</div>
+      </div>
+      <div class="why-row">
+        <div class="why-row__num">02</div>
+        <div class="why-row__title">Strategy + Production + Distribution in one team</div>
+        <div class="why-row__desc">Most agencies do one. We do all three - and make them work together for content that actually performs.</div>
+      </div>
+      <div class="why-row">
+        <div class="why-row__num">03</div>
+        <div class="why-row__title">No juggling agencies or freelancers</div>
+        <div class="why-row__desc">One team, one brief, one point of contact. No dropped balls, no repeating yourself.</div>
+      </div>
+      <div class="why-row">
+        <div class="why-row__num">04</div>
+        <div class="why-row__title">Built for consistent, scalable output</div>
+        <div class="why-row__desc">Our retainer model builds momentum month on month. Compounding results, compounding brand.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ WORK ════════════════════════════════════════════════════ -->
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="work__head">
+      <div>
+        <div class="eyebrow reveal">Our work</div>
+        <h2 class="work__title reveal reveal-d1">Results we're <em>proud of</em></h2>
+      </div>
+      <a href="#contact" class="btn btn-ghost reveal reveal-d2">View all case studies</a>
+    </div>
+
+    <div class="work__grid reveal reveal-d1">
+
+      <div class="work-card">
+        <div class="work-card__thumb">
+          <div class="work-card__bg" style="background:linear-gradient(145deg,#0D0D0D 0%,#1A1A1A 45%,#0A0A0A 100%);"></div>
+          <div class="work-card__overlay"></div>
+          <div class="work-card__info">
+            <span class="work-card__tag">Growth Partnership</span>
+            <div class="work-card__label">Add showreel or featured project here</div>
+          </div>
+        </div>
+        <div class="work-card__body">
+          <div class="work-card__client">Client Name</div>
+          <h3 class="work-card__name">Full-scale content engine for a fast-growing brand</h3>
+          <div class="work-card__facts">
+            <div class="work-card__fact"><strong>Goal:</strong> Brand presence &amp; lead generation</div>
+            <div class="work-card__fact"><strong>Output:</strong> Monthly video, social, paid campaigns</div>
+            <div class="work-card__fact"><strong>Result:</strong> 3× organic reach in 6 months</div>
+          </div>
+          <a href="#contact" class="btn btn-link">View case study</a>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-card__thumb">
+          <div class="work-card__bg" style="background:linear-gradient(145deg,#0D0D0D 0%,#1A1A1A 100%);"></div>
+          <div class="work-card__overlay"></div>
+          <div class="work-card__info">
+            <span class="work-card__tag">Video Production</span>
+            <div class="work-card__label">Award campaign - 200k+ views</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-card__thumb">
+          <div class="work-card__bg" style="background:linear-gradient(145deg,#0D0D0D 0%,#1A1A1A 100%);"></div>
+          <div class="work-card__overlay"></div>
+          <div class="work-card__info">
+            <span class="work-card__tag">Studio Production</span>
+            <div class="work-card__label">Podcast series - Top 10 in 3 months</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ STUDIO ══════════════════════════════════════════════════ -->
+<section id="studio">
+  <div class="studio__inner">
+    <div class="studio__left">
+      <div>
+        <span class="eyebrow studio__eyebrow reveal">Sheffield Studio</span>
+        <h2 class="studio__headline reveal reveal-d1">Our studio.<br/><em>Your unfair<br/>advantage.</em></h2>
+        <p class="studio__desc reveal reveal-d2">
+          Fully equipped, available to hire dry or fully crewed. No overhead, no scheduling hassle.
+        </p>
+        <div class="studio__feats reveal reveal-d3">
+          <div class="studio__feat">Large green screen</div>
+          <div class="studio__feat">Full professional lighting rig</div>
+          <div class="studio__feat">Podcast &amp; multi-camera setup</div>
+          <div class="studio__feat">Custom set &amp; multi-scene builds</div>
+          <div class="studio__feat">Wet &amp; dry hire options</div>
+          <div class="studio__feat">Professional audio recording</div>
+          <div class="studio__feat">Green room &amp; changing facilities</div>
+        </div>
+      </div>
+      <div class="studio__ctas reveal">
+        <a href="#contact" class="btn btn-gold">Hire the Studio</a>
+        <a href="#contact" class="btn btn-ghost-w">Use It in a Campaign</a>
+      </div>
+    </div>
+    <div class="studio__right">
+      <div class="studio__cell">
+        <div class="studio__cell-icon">🎬</div>
+        <div class="studio__cell-label">Main Studio</div>
+      </div>
+      <div class="studio__cell">
+        <div class="studio__cell-icon">🎙️</div>
+        <div class="studio__cell-label">Podcast Studio</div>
+      </div>
+      <div class="studio__cell">
+        <div class="studio__cell-icon">💡</div>
+        <div class="studio__cell-label">Green Screen</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ PROOF ═══════════════════════════════════════════════════ -->
+<section class="proof">
+  <div class="wrap">
+    <div class="proof__head">
+      <div>
+        <div class="eyebrow reveal">Social proof</div>
+        <h2 class="proof__title reveal reveal-d1">Trusted by <em>growing brands</em></h2>
+      </div>
+    </div>
+    <div class="proof__logos reveal">
+      <span class="proof__logo">Brand One</span>
+      <span class="proof__logo">Client Two</span>
+      <span class="proof__logo">Partner Co.</span>
+      <span class="proof__logo">Agency Name</span>
+      <span class="proof__logo">Studio X</span>
+      <span class="proof__logo">Brand Six</span>
+    </div>
+    <div class="proof__grid reveal reveal-d1">
+      <div class="testi">
+        <div class="testi__mark">"</div>
+        <p class="testi__quote">Fortay didn't just make videos - they built us a content engine that drives leads every single month.</p>
+        <hr class="testi__rule" />
+        <div class="testi__author">
+          <div class="testi__avatar">JD</div>
+          <div>
+            <div class="testi__name">James D.</div>
+            <div class="testi__role">Marketing Director, Client Co.</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi">
+        <div class="testi__mark">"</div>
+        <p class="testi__quote">Strategy, production, and distribution in one team is a game changer. No more briefing four agencies and hoping it lines up.</p>
+        <hr class="testi__rule" />
+        <div class="testi__author">
+          <div class="testi__avatar">SR</div>
+          <div>
+            <div class="testi__name">Sarah R.</div>
+            <div class="testi__role">Founder, Brand Name</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi">
+        <div class="testi__mark">"</div>
+        <p class="testi__quote">Incredible studio, great team, and the results speak for themselves. We'll be back every quarter.</p>
+        <hr class="testi__rule" />
+        <div class="testi__author">
+          <div class="testi__avatar">MT</div>
+          <div>
+            <div class="testi__name">Mike T.</div>
+            <div class="testi__role">Creative Director, Agency</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ FINAL CTA ═══════════════════════════════════════════════ -->
+<section class="cta-final" id="contact">
+  <div class="cta-final__bg" aria-hidden="true">NOW</div>
+  <div class="wrap" style="position:relative;z-index:1;">
+    <span class="eyebrow reveal">Let's work together</span>
+    <h2 class="cta-final__headline reveal reveal-d1">
+      Ready to turn<br/>ideas into <em>results?</em>
+    </h2>
+    <p class="cta-final__sub reveal reveal-d2">
+      Full growth partnership or a single project - we'd love to hear from you.
+    </p>
+    <div class="cta-final__btns reveal reveal-d3">
+      <a href="mailto:hello@fortaymedia.co.uk" class="btn btn-gold">Book a Strategy Call</a>
+      <a href="#paths" class="btn btn-ghost-w">Explore Services</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ FOOTER ══════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div>
+        <div class="footer__name">Fortay Media</div>
+        <p class="footer__tag">Your content engine - strategy, production, and distribution, all in-house from Sheffield.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="LinkedIn">LI</a>
+          <a href="#" aria-label="YouTube">YT</a>
+          <a href="#" aria-label="TikTok">TK</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__col-title">Services</div>
+        <ul class="footer__col-links">
+          <li><a href="#paths">Growth Partnership</a></li>
+          <li><a href="#work">Video Production</a></li>
+          <li><a href="#studio">Studio Hire</a></li>
+          <li><a href="#work">Case Studies</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">Company</div>
+        <ul class="footer__col-links">
+          <li><a href="#why">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">Contact</div>
+        <ul class="footer__col-links">
+          <li><a href="mailto:hello@fortaymedia.co.uk">hello@fortaymedia.co.uk</a></li>
+          <li><a href="#">Sheffield, UK</a></li>
+          <li><a href="#contact">Book a Call</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Fortay Media. All rights reserved.</span>
+      <span>Privacy Policy &nbsp;·&nbsp; Terms of Service</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ════ JS ══════════════════════════════════════════════════════ -->
+<script>
+  /* Dark / light mode toggle */
+  const html = document.documentElement;
+  const themeToggle = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('fortay-theme');
+  if (saved) html.setAttribute('data-theme', saved);
+  themeToggle.addEventListener('click', () => {
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    const next = isDark ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('fortay-theme', next);
+  });
+
+  /* Nav */
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* Mobile overlay */
+  document.getElementById('burger').addEventListener('click', () =>
+    document.getElementById('overlay').classList.add('open'));
+  document.getElementById('oClose').addEventListener('click', closeNav);
+  function closeNav() { document.getElementById('overlay').classList.remove('open'); }
+
+  /* Scroll reveal */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -48px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-clip').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+      el.classList.add('in');
+    } else {
+      io.observe(el);
+    }
+  });
+
+  /* Subtle parallax on hero watermark */
+  const watermark = document.querySelector('.hero__watermark');
+  if (watermark) {
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY * 0.25;
+      watermark.style.transform = `translateY(${y}px)`;
+    }, { passive: true });
+  }
+</script>
+
+</body>
+</html>

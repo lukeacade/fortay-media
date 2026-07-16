@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Video Production - Fortay Media</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO
+    ============================ */
+    .vp-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+    }
+    .vp-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+    .vp-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.28) 55%,
+        rgba(0,0,0,0.65) 100%
+      );
+    }
+    .vp-hero-wrap {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 88px;
+    }
+    .vp-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .vp-hero-title {
+      font-size: clamp(64px, 9vw, 130px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .vp-hero-title em { font-style: normal; color: var(--yellow); }
+    .vp-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .vp-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+    .vp-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .vp-scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      right: 64px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.35;
+    }
+    .vp-scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .vp-scroll-line {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, white, transparent);
+      animation: vpScrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes vpScrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%     { opacity: 0.1;  transform: scaleY(0.4); }
+    }
+
+    /* ============================
+       STATS
+    ============================ */
+    .vp-stats {
+      background: var(--dark);
+      padding: 72px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .vp-stats-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+    }
+    .vp-stat {
+      padding: 0 48px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .vp-stat:first-child { border-left: none; padding-left: 0; }
+    .vp-stat-num {
+      font-size: clamp(52px, 5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .vp-stat-num sup { font-size: 0.4em; color: var(--yellow); vertical-align: super; }
+    .vp-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============================
+       SERVICES (indexed tiles)
+    ============================ */
+    .vp-services {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .vp-services-inner { max-width: 1440px; margin: 0 auto; }
+    .vp-services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .vp-services-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .vp-services-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .vp-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .vp-svc {
+      background: var(--dark2);
+      padding: 44px 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background 0.3s;
+    }
+    .vp-svc:hover { background: #1a1a1a; }
+    .vp-svc-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .vp-svc h3 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    .vp-svc p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+    .vp-svc ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .vp-svc li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.55);
+    }
+    .vp-svc li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ============================
+       FORMATS / RECENT WORK (image grid)
+    ============================ */
+    .vp-formats {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .vp-formats-inner { max-width: 1440px; margin: 0 auto; }
+    .vp-formats-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .vp-formats-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .vp-formats-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .vp-formats-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 3px;
+    }
+    .vp-fmt {
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+    .vp-fmt-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.9s cubic-bezier(0.23,1,0.32,1);
+    }
+    .vp-fmt:hover .vp-fmt-img { transform: scale(1.06); }
+    .vp-fmt-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.05) 55%);
+    }
+    .vp-fmt-body {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 40px 36px;
+    }
+    .vp-fmt-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .vp-fmt-name {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      display: block;
+      margin-bottom: 10px;
+      line-height: 1.05;
+    }
+    .vp-fmt-detail {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.45s ease, opacity 0.45s ease;
+    }
+    .vp-fmt:hover .vp-fmt-detail { max-height: 72px; opacity: 1; }
+
+    /* ============================
+       PROCESS (sticky rail)
+    ============================ */
+    .vp-process {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .vp-process-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    .vp-process-left { position: sticky; top: 96px; }
+    .vp-process-left .section-tag { margin-bottom: 20px; }
+    .vp-process-title {
+      font-size: clamp(38px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .vp-process-intro {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 420px;
+    }
+    .vp-process-steps { display: flex; flex-direction: column; }
+    .vp-step {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: start;
+      transition: padding-left 0.3s;
+    }
+    .vp-step:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .vp-step:hover { padding-left: 8px; }
+    .vp-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      padding-top: 4px;
+    }
+    .vp-step h4 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .vp-step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       CINEMATIC BREAK
+    ============================ */
+    .vp-break {
+      position: relative;
+      height: 72vh;
+      overflow: hidden;
+    }
+    .vp-break img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      object-position: center center;
+    }
+    .vp-break-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.1) 65%);
+      display: flex;
+      align-items: center;
+    }
+    .vp-break-text {
+      padding: 0 64px;
+      max-width: 820px;
+    }
+    .vp-break-text blockquote {
+      font-size: clamp(36px, 6vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      font-style: normal;
+    }
+    .vp-break-text blockquote span { color: var(--yellow); }
+    .vp-break-text cite {
+      display: block;
+      font-size: 13px;
+      font-style: normal;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 28px;
+    }
+
+    /* ============================
+       PROJECT PACKAGES (tiers)
+    ============================ */
+    .vp-packages {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .vp-packages-inner { max-width: 1440px; margin: 0 auto; }
+    .vp-packages-head { margin-bottom: 72px; }
+    .vp-packages-head h2 {
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      max-width: 820px;
+    }
+    .vp-packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .vp-pcard {
+      background: var(--dark2);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .vp-pcard:hover { background: #1a1a1a; }
+    .vp-pcard.featured {
+      background: var(--yellow);
+      color: var(--dark);
+    }
+    .vp-pcard.featured:hover { background: #e6b800; }
+    .vp-pcard-index {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .vp-pcard.featured .vp-pcard-index { color: rgba(0,0,0,0.4); }
+    .vp-pcard h3 {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+    .vp-pcard-price {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+    .vp-pcard-pnote {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .vp-pcard.featured .vp-pcard-pnote { color: rgba(0,0,0,0.5); }
+    .vp-pcard-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .vp-pcard.featured .vp-pcard-desc { color: rgba(0,0,0,0.6); }
+    .vp-pcard-rule {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .vp-pcard.featured .vp-pcard-rule { background: rgba(0,0,0,0.15); }
+    .vp-pcard-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .vp-pcard-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .vp-pcard-list li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .vp-pcard.featured .vp-pcard-list li::before { color: var(--dark); }
+    .vp-pcard-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      text-decoration: none;
+      margin-top: 8px;
+      transition: gap 0.3s;
+    }
+    .vp-pcard.featured .vp-pcard-link { color: var(--dark); }
+    .vp-pcard-link:hover { gap: 18px; }
+    .vp-pcard-link svg {
+      width: 16px; height: 16px;
+      stroke: currentColor; fill: none; stroke-width: 2;
+    }
+
+    /* ============================
+       CTA
+    ============================ */
+    .vp-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .vp-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .vp-cta h2 {
+      font-size: clamp(64px, 10vw, 140px);
+      font-weight: 900;
+      letter-spacing: -6px;
+      line-height: 0.88;
+      margin-bottom: 36px;
+    }
+    .vp-cta h2 span { color: var(--yellow); }
+    .vp-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .vp-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .vp-hero-wrap { padding: 0 24px 64px; }
+      .vp-hero-title { letter-spacing: -2px; }
+      .vp-scroll-indicator { display: none; }
+      .vp-stats { padding: 60px 24px; }
+      .vp-stats-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .vp-stat { border-left: none; padding-left: 0; }
+      .vp-services { padding: 80px 24px; }
+      .vp-services-header { grid-template-columns: 1fr; gap: 24px; }
+      .vp-services-grid { grid-template-columns: 1fr; }
+      .vp-formats { padding: 80px 24px; }
+      .vp-formats-header { grid-template-columns: 1fr; gap: 24px; }
+      .vp-formats-grid { grid-template-columns: 1fr; }
+      .vp-fmt-img { aspect-ratio: 16/10; }
+      .vp-process { padding: 80px 24px; }
+      .vp-process-inner { grid-template-columns: 1fr; gap: 48px; }
+      .vp-process-left { position: static; }
+      .vp-break { height: 50vh; }
+      .vp-break-text { padding: 0 24px; }
+      .vp-packages { padding: 80px 24px; }
+      .vp-packages-grid { grid-template-columns: 1fr; }
+      .vp-cta { padding: 100px 24px; }
+      .vp-cta h2 { letter-spacing: -3px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html" class="active">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="vp-hero">
+  <img class="vp-hero-img"
+    src="studio/Professional%20Photos/Fortay%20Podcast%20Studio-90.jpg"
+    alt="Fortay Media multi-camera production"/>
+  <div class="vp-hero-overlay"></div>
+  <div class="vp-hero-wrap">
+    <div class="vp-hero-eyebrow reveal">Video Production - Concept to Delivery</div>
+    <h1 class="vp-hero-title reveal reveal-delay-1">
+      Film that<br>actually<br>gets <em>watched.</em>
+    </h1>
+    <div class="vp-hero-bottom reveal reveal-delay-2">
+      <p class="vp-hero-desc">Concept, script, shoot, edit, deliver. A full in-house production team that understands how the finished film is used - and builds it to work there.</p>
+      <div class="vp-hero-actions">
+        <a href="contact.html" class="btn-primary">Start a Project</a>
+        <a href="#packages" class="btn-outline">View Packages</a>
+      </div>
+    </div>
+  </div>
+  <div class="vp-scroll-indicator">
+    <span>Scroll</span>
+    <div class="vp-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ② STATS -->
+<section class="vp-stats">
+  <div class="vp-stats-inner">
+    <div class="vp-stat reveal">
+      <div class="vp-stat-num">100<sup>+</sup></div>
+      <div class="vp-stat-label">Productions delivered</div>
+    </div>
+    <div class="vp-stat reveal reveal-delay-1">
+      <div class="vp-stat-num">6<sup>formats</sup></div>
+      <div class="vp-stat-label">From brand film to Reels</div>
+    </div>
+    <div class="vp-stat reveal reveal-delay-2">
+      <div class="vp-stat-num">4K<sup>HDR</sup></div>
+      <div class="vp-stat-label">Broadcast-grade standard</div>
+    </div>
+    <div class="vp-stat reveal reveal-delay-3">
+      <div class="vp-stat-num">24<sup>hr</sup></div>
+      <div class="vp-stat-label">Turnaround available</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ SERVICES -->
+<section class="vp-services">
+  <div class="vp-services-inner">
+    <div class="vp-services-header">
+      <h2 class="vp-services-title reveal">Every kind<br>of video.<br>One team.</h2>
+      <p class="vp-services-body reveal reveal-delay-1">We don't hand you off to a different crew depending on the brief. The same producers, directors, and editors who make brand films also cut your Reels - and it shows in the consistency.</p>
+    </div>
+    <div class="vp-services-grid">
+
+      <div class="vp-svc reveal">
+        <span class="vp-svc-tag">01 - Service</span>
+        <h3>Brand Films</h3>
+        <p>Cinematic storytelling that captures who you are and why people should care. Built to last, designed to move.</p>
+        <ul>
+          <li>Company story films</li>
+          <li>Culture and values videos</li>
+          <li>Founder and team profiles</li>
+        </ul>
+      </div>
+
+      <div class="vp-svc reveal reveal-delay-1">
+        <span class="vp-svc-tag">02 - Service</span>
+        <h3>Case Studies</h3>
+        <p>Turn your best client results into compelling proof. Video case studies that do the selling for you.</p>
+        <ul>
+          <li>Client testimonial films</li>
+          <li>Before / after narratives</li>
+          <li>Results-driven storytelling</li>
+        </ul>
+      </div>
+
+      <div class="vp-svc reveal reveal-delay-2">
+        <span class="vp-svc-tag">03 - Service</span>
+        <h3>Events Coverage</h3>
+        <p>Conferences, launches, live shows - we capture the energy and turn it into content that extends far beyond the day itself.</p>
+        <ul>
+          <li>Same-day turnaround available</li>
+          <li>Multi-camera setups</li>
+          <li>Highlight reels and full cuts</li>
+        </ul>
+      </div>
+
+      <div class="vp-svc reveal">
+        <span class="vp-svc-tag">04 - Service</span>
+        <h3>Product Videos</h3>
+        <p>Sharp, detailed product films that showcase what you sell at its very best - for e-commerce, retail, and campaigns.</p>
+        <ul>
+          <li>Hero product films</li>
+          <li>Explainer and how-to videos</li>
+          <li>Lifestyle and in-context shoots</li>
+        </ul>
+      </div>
+
+      <div class="vp-svc reveal reveal-delay-1">
+        <span class="vp-svc-tag">05 - Service</span>
+        <h3>Social Content</h3>
+        <p>High-output, platform-native content built for Reels, TikTok, YouTube Shorts - designed to perform, not just look nice.</p>
+        <ul>
+          <li>Short-form vertical content</li>
+          <li>Ad creative and campaigns</li>
+          <li>Series and recurring formats</li>
+        </ul>
+      </div>
+
+      <div class="vp-svc reveal reveal-delay-2">
+        <span class="vp-svc-tag">06 - Service</span>
+        <h3>Video Podcasts</h3>
+        <p>Multi-camera podcast production in our dedicated studio - with professional audio, lighting, and custom set design.</p>
+        <ul>
+          <li>Full studio setup included</li>
+          <li>Episode editing and graphics</li>
+          <li>Clip extraction for social</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ④ RECENT WORK -->
+<section class="vp-formats">
+  <div class="vp-formats-inner">
+    <div class="vp-formats-header">
+      <h2 class="vp-formats-title reveal">Built for<br>every format.<br>Every screen.</h2>
+      <p class="vp-formats-body reveal reveal-delay-1">A quick look at the kind of work we deliver for brands like Yorkshire Tea, SThree, and Proact - brand films, campaigns, and live coverage that earn their place in a feed.</p>
+    </div>
+    <div class="vp-formats-grid">
+
+      <div class="vp-fmt reveal">
+        <img class="vp-fmt-img" src="images/imgi_72_yorkshire-tea-1024x895.jpg" alt="Yorkshire Tea brand film"/>
+        <div class="vp-fmt-veil"></div>
+        <div class="vp-fmt-body">
+          <span class="vp-fmt-tag">01 - Brand Film</span>
+          <span class="vp-fmt-name">Yorkshire Tea - Heritage Campaign</span>
+          <div class="vp-fmt-detail">A hero brand film celebrating the people and craft behind a British icon - shot across Yorkshire and cut for broadcast and social.</div>
+        </div>
+      </div>
+
+      <div class="vp-fmt reveal reveal-delay-1">
+        <img class="vp-fmt-img" src="images/imgi_76_sthree-1024x895.jpg" alt="SThree global brand video"/>
+        <div class="vp-fmt-veil"></div>
+        <div class="vp-fmt-body">
+          <span class="vp-fmt-tag">02 - Brand Video</span>
+          <span class="vp-fmt-name">SThree - Global Brand Film</span>
+          <div class="vp-fmt-detail">A positioning film for a FTSE-listed recruiter, rolled out across every market. One narrative, multiple localised cuts.</div>
+        </div>
+      </div>
+
+      <div class="vp-fmt reveal reveal-delay-2">
+        <img class="vp-fmt-img" src="images/imgi_80_Thomas-Wright-thumbnail-1024x895.png" alt="Thomas Wright event coverage"/>
+        <div class="vp-fmt-veil"></div>
+        <div class="vp-fmt-body">
+          <span class="vp-fmt-tag">03 - Event Coverage</span>
+          <span class="vp-fmt-name">Thomas Wright - Evening of Magic</span>
+          <div class="vp-fmt-detail">Multi-camera live capture with next-day highlights - turning one evening into three months of social and ad content.</div>
+        </div>
+      </div>
+
+      <div class="vp-fmt reveal reveal-delay-3">
+        <img class="vp-fmt-img" src="images/imgi_88_Proact-glass-thumbnail-1024x895.png" alt="Proact corporate film"/>
+        <div class="vp-fmt-veil"></div>
+        <div class="vp-fmt-body">
+          <span class="vp-fmt-tag">04 - Corporate Film</span>
+          <span class="vp-fmt-name">Proact - Human Impact Story</span>
+          <div class="vp-fmt-detail">A character-led corporate film that puts the real people behind the business on screen - used at pitch stage and in all-hands moments.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ PROCESS -->
+<section class="vp-process">
+  <div class="vp-process-inner">
+    <div class="vp-process-left reveal">
+      <div class="section-tag">The Process</div>
+      <h2 class="vp-process-title">From brief<br>to final<br>deliverable.</h2>
+      <p class="vp-process-intro">Four stages, one accountable team. No hand-offs, no lost details, no surprises on shoot day - just a straight line from brief to broadcast-ready film.</p>
+      <a href="contact.html" class="btn-primary">Start a Project</a>
+    </div>
+    <div class="vp-process-steps">
+      <div class="vp-step reveal">
+        <span class="vp-step-num">01</span>
+        <div>
+          <h4>Concept</h4>
+          <p>We work with you to develop the creative direction, script, and shot list - and agree exactly how the finished piece will be used before anyone picks up a camera.</p>
+        </div>
+      </div>
+      <div class="vp-step reveal reveal-delay-1">
+        <span class="vp-step-num">02</span>
+        <div>
+          <h4>Shoot</h4>
+          <p>Studio or on-location, we bring the crew, the kit, and the creative eye. Tight schedules, calm sets, and producers who actually run the day.</p>
+        </div>
+      </div>
+      <div class="vp-step reveal reveal-delay-2">
+        <span class="vp-step-num">03</span>
+        <div>
+          <h4>Edit</h4>
+          <p>Post-production handled in-house - grade, sound design, motion graphics, and titles all finished to a broadcast standard by the same team that shot it.</p>
+        </div>
+      </div>
+      <div class="vp-step reveal reveal-delay-3">
+        <span class="vp-step-num">04</span>
+        <div>
+          <h4>Deliver</h4>
+          <p>Final files in every format you need - 16:9, 9:16, 1:1, 4K masters, social cut-downs - optimised for every platform you're publishing on.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ CINEMATIC BREAK -->
+<div class="vp-break">
+  <img src="studio/Professional%20Photos/Fortay%20Podcast%20Studio-50.jpg" alt="Fortay Media studio from above" style="object-position: center 35%;"/>
+  <div class="vp-break-veil">
+    <div class="vp-break-text">
+      <blockquote class="reveal">"Cinematic<br>quality without<br>the cinematic <span>drama.</span>"</blockquote>
+      <cite class="reveal reveal-delay-1"> -  Production client</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦ PROJECT PACKAGES -->
+<section class="vp-packages" id="packages">
+  <div class="vp-packages-inner">
+    <div class="vp-packages-head">
+      <div class="section-tag reveal">Project Packages</div>
+      <h2 class="reveal reveal-delay-1">Three ways<br>to work with<br>production.</h2>
+    </div>
+    <div class="vp-packages-grid">
+
+      <div class="vp-pcard reveal">
+        <div class="vp-pcard-index">01</div>
+        <h3>Single Project</h3>
+        <div>
+          <div class="vp-pcard-price">POA</div>
+          <div class="vp-pcard-pnote">One film · fixed scope</div>
+        </div>
+        <p class="vp-pcard-desc">One fully produced film, end to end. Ideal for a brand film, case study, or hero campaign piece - delivered to spec and ready to roll out.</p>
+        <div class="vp-pcard-rule"></div>
+        <ul class="vp-pcard-list">
+          <li>Concept and scripting</li>
+          <li>Single-day studio or on-location shoot</li>
+          <li>Full post-production and grade</li>
+          <li>Hero cut plus two social aspects</li>
+          <li>Delivery in every format you need</li>
+        </ul>
+        <a href="contact.html" class="vp-pcard-link">
+          Start a Project
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="vp-pcard featured reveal reveal-delay-1">
+        <div class="vp-pcard-index">02 - Most Popular</div>
+        <h3>Campaign</h3>
+        <div>
+          <div class="vp-pcard-price">POA</div>
+          <div class="vp-pcard-pnote">Multi-asset · one shoot window</div>
+        </div>
+        <p class="vp-pcard-desc">One shoot window, a full suite of deliverables. Hero film, cut-downs, stills, and paid ad creative - everything the campaign needs from a single production.</p>
+        <div class="vp-pcard-rule"></div>
+        <ul class="vp-pcard-list">
+          <li>Pre-production and creative strategy</li>
+          <li>Multi-day shoot across studio and location</li>
+          <li>Hero film plus full suite of cut-downs</li>
+          <li>Ad creative for Meta and YouTube</li>
+          <li>Stills capture alongside the shoot</li>
+          <li>Delivery schedule aligned to launch</li>
+        </ul>
+        <a href="contact.html" class="vp-pcard-link">
+          Book a Campaign
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="vp-pcard reveal reveal-delay-2">
+        <div class="vp-pcard-index">03</div>
+        <h3>Content Series</h3>
+        <div>
+          <div class="vp-pcard-price">POA</div>
+          <div class="vp-pcard-pnote">Monthly · retained production</div>
+        </div>
+        <p class="vp-pcard-desc">A regular production cadence. Monthly or quarterly shoots feeding a rolling content series - brand film, podcast, or recurring social format.</p>
+        <div class="vp-pcard-rule"></div>
+        <ul class="vp-pcard-list">
+          <li>Recurring production schedule</li>
+          <li>Rolling episode / series editing</li>
+          <li>Clip extraction for every shoot day</li>
+          <li>Priority studio access</li>
+          <li>Single producer across the series</li>
+        </ul>
+        <a href="contact.html" class="vp-pcard-link">
+          Plan a Series
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ CTA -->
+<section class="vp-cta">
+  <div class="vp-cta-eyebrow reveal">Start a Project</div>
+  <h2 class="reveal reveal-delay-1">Make something<br><span>great.</span></h2>
+  <p class="reveal reveal-delay-2">Tell us about your project, your timeline, and where the film needs to live. We'll come back with ideas, a schedule, and a clear quote within 48 hours.</p>
+  <div class="vp-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Start a Project</a>
+    <a href="work.html" class="btn-outline reveal reveal-delay-4">See Our Work</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Brand Films</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Case Studies</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Event Coverage</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Product Video</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Social Content</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Video Podcasts</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Brand Films</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Case Studies</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Event Coverage</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Product Video</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Social Content</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Video Podcasts</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

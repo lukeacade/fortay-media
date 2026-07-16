@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - Fortay Media</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO
+    ============================ */
+    .ab-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+    }
+    .ab-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+    }
+    .ab-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.28) 55%,
+        rgba(0,0,0,0.65) 100%
+      );
+    }
+    .ab-hero-wrap {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 88px;
+    }
+    .ab-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .ab-hero-title {
+      font-size: clamp(64px, 9vw, 130px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .ab-hero-title em { font-style: normal; color: var(--yellow); }
+    .ab-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .ab-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+    .ab-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .ab-scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      right: 64px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.35;
+    }
+    .ab-scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .ab-scroll-line {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, white, transparent);
+      animation: abScrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes abScrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%     { opacity: 0.1;  transform: scaleY(0.4); }
+    }
+
+    /* ============================
+       STATS
+    ============================ */
+    .ab-stats {
+      background: var(--dark);
+      padding: 72px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .ab-stats-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+    }
+    .ab-stat {
+      padding: 0 48px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .ab-stat:first-child { border-left: none; padding-left: 0; }
+    .ab-stat-num {
+      font-size: clamp(52px, 5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .ab-stat-num sup { font-size: 0.4em; color: var(--yellow); vertical-align: super; }
+    .ab-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============================
+       STORY
+    ============================ */
+    .ab-story {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .ab-story-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    .ab-story-left { position: sticky; top: 96px; }
+    .ab-story-left .section-tag { margin-bottom: 20px; }
+    .ab-story-title {
+      font-size: clamp(38px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .ab-story-title em { font-style: normal; color: var(--yellow); }
+    .ab-story-intro {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 440px;
+    }
+    .ab-story-body p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .ab-story-quote {
+      font-size: clamp(22px, 2.4vw, 32px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      color: var(--white);
+      border-left: 3px solid var(--yellow);
+      padding: 6px 0 6px 28px;
+      margin: 36px 0;
+    }
+
+    /* ============================
+       CREDENTIALS STRIP
+    ============================ */
+    .ab-creds {
+      background: var(--dark2);
+      padding: 48px 64px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .ab-creds-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .ab-creds-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .ab-creds-img {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .ab-creds-img img {
+      max-width: 540px;
+      width: 100%;
+      filter: invert(1) brightness(0.8);
+      opacity: 0.55;
+    }
+
+    /* ============================
+       VALUES
+    ============================ */
+    .ab-values {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .ab-values-inner { max-width: 1440px; margin: 0 auto; }
+    .ab-values-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .ab-values-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .ab-values-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .ab-values-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .ab-val {
+      background: var(--dark2);
+      padding: 44px 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background 0.3s;
+    }
+    .ab-val:hover { background: #1a1a1a; }
+    .ab-val-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .ab-val h3 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+    .ab-val p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.75;
+    }
+
+    /* ============================
+       CINEMATIC BREAK
+    ============================ */
+    .ab-break {
+      position: relative;
+      height: 72vh;
+      overflow: hidden;
+    }
+    .ab-break img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      object-position: center center;
+    }
+    .ab-break-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.1) 65%);
+      display: flex;
+      align-items: center;
+    }
+    .ab-break-text {
+      padding: 0 64px;
+      max-width: 860px;
+    }
+    .ab-break-text blockquote {
+      font-size: clamp(36px, 6vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      font-style: normal;
+    }
+    .ab-break-text blockquote span { color: var(--yellow); }
+    .ab-break-text cite {
+      display: block;
+      font-size: 13px;
+      font-style: normal;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 28px;
+    }
+
+    /* ============================
+       CLIENT LOGO CAROUSEL
+    ============================ */
+    .ab-clients {
+      background: var(--dark2);
+      padding: 100px 0;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .ab-clients-head {
+      max-width: 1440px;
+      margin: 0 auto 60px;
+      padding: 0 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+    }
+    .ab-clients-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 14px;
+    }
+    .ab-clients-title {
+      font-size: clamp(36px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+    .ab-clients-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .ab-logo-carousel {
+      overflow: hidden;
+      position: relative;
+    }
+    .ab-logo-carousel::before,
+    .ab-logo-carousel::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 140px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .ab-logo-carousel::before { left: 0;  background: linear-gradient(to right, var(--dark2), transparent); }
+    .ab-logo-carousel::after  { right: 0; background: linear-gradient(to left,  var(--dark2), transparent); }
+    .ab-logo-track {
+      display: flex;
+      align-items: center;
+      gap: 64px;
+      animation: abLogoScroll 44s linear infinite;
+      width: max-content;
+      padding: 0 32px;
+    }
+    .ab-logo-track:hover { animation-play-state: paused; }
+    .ab-logo-track .logo-item { flex-shrink: 0; height: 40px; display: flex; align-items: center; }
+    .ab-logo-track .logo-item img {
+      height: 40px;
+      width: auto;
+      max-width: 150px;
+      object-fit: contain;
+      filter: grayscale(1) brightness(1.8) contrast(0.9);
+      opacity: 0.5;
+      transition: filter 0.3s, opacity 0.3s;
+    }
+    .ab-logo-track .logo-item img:hover { filter: none; opacity: 1; }
+    @keyframes abLogoScroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ============================
+       CTA
+    ============================ */
+    .ab-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .ab-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .ab-cta h2 {
+      font-size: clamp(64px, 10vw, 140px);
+      font-weight: 900;
+      letter-spacing: -6px;
+      line-height: 0.88;
+      margin-bottom: 36px;
+    }
+    .ab-cta h2 span { color: var(--yellow); }
+    .ab-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .ab-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .ab-hero-wrap { padding: 0 24px 64px; }
+      .ab-hero-title { letter-spacing: -2px; }
+      .ab-scroll-indicator { display: none; }
+      .ab-stats { padding: 60px 24px; }
+      .ab-stats-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .ab-stat { border-left: none; padding-left: 0; }
+      .ab-story { padding: 80px 24px; }
+      .ab-story-inner { grid-template-columns: 1fr; gap: 48px; }
+      .ab-story-left { position: static; }
+      .ab-creds { padding: 32px 24px; }
+      .ab-creds-inner { grid-template-columns: 1fr; gap: 20px; text-align: center; }
+      .ab-creds-img { justify-content: center; }
+      .ab-values { padding: 80px 24px; }
+      .ab-values-header { grid-template-columns: 1fr; gap: 24px; }
+      .ab-values-grid { grid-template-columns: 1fr; }
+      .ab-break { height: 50vh; }
+      .ab-break-text { padding: 0 24px; }
+      .ab-clients-head { padding: 0 24px; grid-template-columns: 1fr; gap: 24px; }
+      .ab-cta { padding: 100px 24px; }
+      .ab-cta h2 { letter-spacing: -3px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="ab-hero">
+  <img class="ab-hero-img"
+    src="images/imgi_32_FORTAY-studio-2023-52-scaled.jpg"
+    alt="The Fortay Media team at work in the Sheffield studio"/>
+  <div class="ab-hero-overlay"></div>
+  <div class="ab-hero-wrap">
+    <div class="ab-hero-eyebrow reveal">About Fortay Media</div>
+    <h1 class="ab-hero-title reveal reveal-delay-1">
+      We run your<br>content. You<br>run the <em>business.</em>
+    </h1>
+    <div class="ab-hero-bottom reveal reveal-delay-2">
+      <p class="ab-hero-desc">A Sheffield-based content and marketing engine powered by in-house production. Not just a video company. Not just a marketing agency. The team that does both - and connects them.</p>
+      <div class="ab-hero-actions">
+        <a href="contact.html" class="btn-primary">Start a Project</a>
+        <a href="work.html" class="btn-outline">See Our Work</a>
+      </div>
+    </div>
+  </div>
+  <div class="ab-scroll-indicator">
+    <span>Scroll</span>
+    <div class="ab-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ② STATS -->
+<section class="ab-stats">
+  <div class="ab-stats-inner">
+    <div class="ab-stat reveal">
+      <div class="ab-stat-num">250<sup>+</sup></div>
+      <div class="ab-stat-label">Projects completed</div>
+    </div>
+    <div class="ab-stat reveal reveal-delay-1">
+      <div class="ab-stat-num">180<sup>+</sup></div>
+      <div class="ab-stat-label">Clients worked with</div>
+    </div>
+    <div class="ab-stat reveal reveal-delay-2">
+      <div class="ab-stat-num">8<sup>yrs</sup></div>
+      <div class="ab-stat-label">In business</div>
+    </div>
+    <div class="ab-stat reveal reveal-delay-3">
+      <div class="ab-stat-num">3,000<sup>sqft</sup></div>
+      <div class="ab-stat-label">Studio in Sheffield</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ STORY -->
+<section class="ab-story">
+  <div class="ab-story-inner">
+    <div class="ab-story-left reveal">
+      <div class="section-tag">Our Story</div>
+      <h2 class="ab-story-title">Built around<br>a single<br><em>frustration.</em></h2>
+      <p class="ab-story-intro">Businesses were spending real money on content and marketing - and getting nowhere. Not because the ideas were bad. Because the execution was fragmented.</p>
+      <a href="work.html" class="btn-outline">See Our Work</a>
+    </div>
+    <div class="ab-story-body">
+      <p class="reveal">A video here. A social post there. A strategy that never made it to production, and production that never made it to a distribution plan. Brands ended up paying three agencies to trip over each other - and wondering why the numbers weren't moving.</p>
+      <p class="reveal reveal-delay-1">We fixed that by bringing everything in-house. Strategy, production, distribution, and optimisation - all under one roof, with one team accountable for all of it.</p>
+
+      <blockquote class="ab-story-quote reveal reveal-delay-1">"We don't follow briefs. We help build them."</blockquote>
+
+      <p class="reveal reveal-delay-2">Today we work with brands of every size, from growing startups to household names like Yorkshire Tea, Channel 4, Cadbury, and the NHS. The brief is always the same: make content that actually works.</p>
+      <p class="reveal reveal-delay-3">Our studio in Sheffield gives us the infrastructure to move fast, stay flexible, and produce at the highest level - without the overhead of multiple agencies or the inconsistency of freelancers. Whether you need an ongoing content partner or a one-off production, we operate the same way: strategy first, quality always, results above everything.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ④ CREDENTIALS -->
+<section class="ab-creds">
+  <div class="ab-creds-inner">
+    <span class="ab-creds-eyebrow reveal">Certified &amp; Accredited</span>
+    <div class="ab-creds-img reveal reveal-delay-1">
+      <img src="images/imgi_123_cred-1024x136.png" alt="Google AdWords Certified and Bing Ads Accredited"/>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ VALUES -->
+<section class="ab-values">
+  <div class="ab-values-inner">
+    <div class="ab-values-header">
+      <h2 class="ab-values-title reveal">How we think.<br>What we stand<br>for.</h2>
+      <p class="ab-values-body reveal reveal-delay-1">Six principles that shape every project we take on - from a one-off brand film to a three-year partnership. These aren't wall posters. They're the filters we use to decide what to take on, what to ship, and when to push back.</p>
+    </div>
+    <div class="ab-values-grid">
+
+      <div class="ab-val reveal">
+        <span class="ab-val-tag">01 - Principle</span>
+        <h3>Outcomes over output</h3>
+        <p>We don't measure success in deliverables. We measure it in results. Every piece of content we create is built with a specific outcome in mind - and we track whether we hit it.</p>
+      </div>
+
+      <div class="ab-val reveal reveal-delay-1">
+        <span class="ab-val-tag">02 - Principle</span>
+        <h3>Clarity over complexity</h3>
+        <p>The best marketing is the simplest marketing. We strip away the noise and focus on what actually moves people. Simple ideas, executed brilliantly, beat complicated campaigns every time.</p>
+      </div>
+
+      <div class="ab-val reveal reveal-delay-2">
+        <span class="ab-val-tag">03 - Principle</span>
+        <h3>Production is the strategy</h3>
+        <p>Great production isn't a nice-to-have. It's what makes the strategy work. When your content looks exceptional, people pay attention. That's the starting point for everything else.</p>
+      </div>
+
+      <div class="ab-val reveal">
+        <span class="ab-val-tag">04 - Principle</span>
+        <h3>Honest partnership</h3>
+        <p>We tell you what we think, not what you want to hear. If something won't work, we say so. If we're not the right fit for a project, we'll tell you that too. Trust is built on honesty.</p>
+      </div>
+
+      <div class="ab-val reveal reveal-delay-1">
+        <span class="ab-val-tag">05 - Principle</span>
+        <h3>Speed without compromise</h3>
+        <p>In-house production means we move fast. We don't sacrifice quality for speed - we've built our studio and workflows to deliver both. Fast turnarounds are a feature, not a lucky accident.</p>
+      </div>
+
+      <div class="ab-val reveal reveal-delay-2">
+        <span class="ab-val-tag">06 - Principle</span>
+        <h3>Long-term thinking</h3>
+        <p>We're not interested in quick wins that fizzle out. Our retainer model is built around sustainable, compounding content that gets better and more effective over time - not one-off spikes.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ CINEMATIC BREAK -->
+<div class="ab-break">
+  <img src="studio/Professional%20Photos/Fortay%20Podcast%20Studio-100.jpg" alt="Fortay Media studio at work" style="object-position: center 30%;"/>
+  <div class="ab-break-veil">
+    <div class="ab-break-text">
+      <blockquote class="reveal">"One roof.<br>One team.<br>One <span>accountable number."</span></blockquote>
+      <cite class="reveal reveal-delay-1"> -  How we work</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦ CLIENT LOGOS -->
+<section class="ab-clients">
+  <div class="ab-clients-head">
+    <div class="reveal">
+      <div class="ab-clients-eyebrow">Trusted by</div>
+      <h2 class="ab-clients-title">Brands we've<br>worked with.</h2>
+    </div>
+    <p class="ab-clients-body reveal reveal-delay-1">From household names to the challenger brands taking them on - a cross-section of the work. Hover a logo to see it properly.</p>
+  </div>
+  <div class="ab-logo-carousel reveal">
+    <div class="ab-logo-track">
+      <div class="logo-item"><img src="images/imgi_33_yorkshiretea.jpg" alt="Yorkshire Tea"/></div>
+      <div class="logo-item"><img src="images/imgi_41_siemens-logo-0-4208419415-300x300.png" alt="Siemens"/></div>
+      <div class="logo-item"><img src="images/imgi_35_channel-4-1-logo-png-transparent-2409432490-300x300.png" alt="Channel 4"/></div>
+      <div class="logo-item"><img src="images/imgi_46_logo-cadbury.png" alt="Cadbury"/></div>
+      <div class="logo-item"><img src="images/imgi_47_logo-sega.png" alt="SEGA"/></div>
+      <div class="logo-item"><img src="images/imgi_50_logo-nhs.png" alt="NHS"/></div>
+      <div class="logo-item"><img src="images/imgi_54_logo-holidayinn.png" alt="Holiday Inn"/></div>
+      <div class="logo-item"><img src="images/imgi_55_logo-crowneplaza.png" alt="Crowne Plaza"/></div>
+      <div class="logo-item"><img src="images/imgi_56_logo-cameronsbrewers.png" alt="Camerons Brewers"/></div>
+      <div class="logo-item"><img src="images/imgi_48_logo-malmaisonhotels.png" alt="Malmaison Hotels"/></div>
+      <div class="logo-item"><img src="images/imgi_57_logo-esa.png" alt="ESA"/></div>
+      <div class="logo-item"><img src="images/imgi_58_logo-citizensinpolicing.png" alt="Citizens in Policing"/></div>
+      <div class="logo-item"><img src="images/imgi_59_logo-sheffieldunitedfc.png" alt="Sheffield United FC"/></div>
+      <div class="logo-item"><img src="images/imgi_60_logo-sylvania.png" alt="Sylvania"/></div>
+      <div class="logo-item"><img src="images/imgi_49_logo-hallmark.png" alt="Hallmark"/></div>
+      <div class="logo-item"><img src="images/imgi_63_logo-millersoils.png" alt="Miller Soils"/></div>
+      <!-- duplicate for seamless loop -->
+      <div class="logo-item"><img src="images/imgi_33_yorkshiretea.jpg" alt="Yorkshire Tea"/></div>
+      <div class="logo-item"><img src="images/imgi_41_siemens-logo-0-4208419415-300x300.png" alt="Siemens"/></div>
+      <div class="logo-item"><img src="images/imgi_35_channel-4-1-logo-png-transparent-2409432490-300x300.png" alt="Channel 4"/></div>
+      <div class="logo-item"><img src="images/imgi_46_logo-cadbury.png" alt="Cadbury"/></div>
+      <div class="logo-item"><img src="images/imgi_47_logo-sega.png" alt="SEGA"/></div>
+      <div class="logo-item"><img src="images/imgi_50_logo-nhs.png" alt="NHS"/></div>
+      <div class="logo-item"><img src="images/imgi_54_logo-holidayinn.png" alt="Holiday Inn"/></div>
+      <div class="logo-item"><img src="images/imgi_55_logo-crowneplaza.png" alt="Crowne Plaza"/></div>
+      <div class="logo-item"><img src="images/imgi_56_logo-cameronsbrewers.png" alt="Camerons Brewers"/></div>
+      <div class="logo-item"><img src="images/imgi_48_logo-malmaisonhotels.png" alt="Malmaison Hotels"/></div>
+      <div class="logo-item"><img src="images/imgi_57_logo-esa.png" alt="ESA"/></div>
+      <div class="logo-item"><img src="images/imgi_58_logo-citizensinpolicing.png" alt="Citizens in Policing"/></div>
+      <div class="logo-item"><img src="images/imgi_59_logo-sheffieldunitedfc.png" alt="Sheffield United FC"/></div>
+      <div class="logo-item"><img src="images/imgi_60_logo-sylvania.png" alt="Sylvania"/></div>
+      <div class="logo-item"><img src="images/imgi_49_logo-hallmark.png" alt="Hallmark"/></div>
+      <div class="logo-item"><img src="images/imgi_63_logo-millersoils.png" alt="Miller Soils"/></div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ CTA -->
+<section class="ab-cta">
+  <div class="ab-cta-eyebrow reveal">Work With Us</div>
+  <h2 class="reveal reveal-delay-1">Let's build<br><span>something.</span></h2>
+  <p class="reveal reveal-delay-2">Whether you have a brief ready or just an idea, we'd love to hear from you. We'll come back within 48 hours - usually sooner.</p>
+  <div class="ab-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Get in Touch</a>
+    <a href="growth-partnership.html" class="btn-outline reveal reveal-delay-4">See the Partnership</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Sheffield</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Content Engine</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>In-House Production</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Strategy</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Distribution</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Results</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Sheffield</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Content Engine</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>In-House Production</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Strategy</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Distribution</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Results</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

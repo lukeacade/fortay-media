@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Content Management Websites - Bespoke CMS Builds | Fortay Media</title>
+  <meta name="description" content="Custom content management system websites from Fortay Media. Edit text, swap images, and publish new pages yourself - no code, no waiting, no developer invoice."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO
+    ============================ */
+    .cms-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+    }
+    .cms-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2b2b2b 45%, var(--yellow) 150%);
+    }
+    .cms-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.35) 55%,
+        rgba(0,0,0,0.7) 100%
+      );
+    }
+    .cms-hero-wrap {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 88px;
+    }
+    .cms-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .cms-hero-title {
+      font-size: clamp(56px, 8vw, 118px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .cms-hero-title em { font-style: normal; color: var(--yellow); }
+    .cms-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .cms-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+    .cms-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .cms-scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      right: 64px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.35;
+    }
+    .cms-scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .cms-scroll-line {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, white, transparent);
+      animation: cmsScrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes cmsScrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%     { opacity: 0.1;  transform: scaleY(0.4); }
+    }
+
+    /* ============================
+       STATS
+    ============================ */
+    .cms-stats {
+      background: var(--dark);
+      padding: 72px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .cms-stats-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+    }
+    .cms-stat {
+      padding: 0 48px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .cms-stat:first-child { border-left: none; padding-left: 0; }
+    .cms-stat-num {
+      font-size: clamp(52px, 5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .cms-stat-num sup { font-size: 0.4em; color: var(--yellow); vertical-align: super; }
+    .cms-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============================
+       SERVICES (indexed tiles)
+    ============================ */
+    .cms-services {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .cms-services-inner { max-width: 1440px; margin: 0 auto; }
+    .cms-services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .cms-services-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .cms-services-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .cms-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .cms-svc {
+      background: var(--dark2);
+      padding: 44px 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background 0.3s;
+    }
+    .cms-svc:hover { background: #1a1a1a; }
+    .cms-svc-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .cms-svc h3 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    .cms-svc p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+    .cms-svc ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .cms-svc li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.55);
+    }
+    .cms-svc li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ============================
+       VISUAL PANELS (gradient blocks)
+    ============================ */
+    .cms-panels {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .cms-panels-inner { max-width: 1440px; margin: 0 auto; }
+    .cms-panels-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .cms-panels-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .cms-panels-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .cms-panels-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 3px;
+    }
+    .cms-panel {
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      aspect-ratio: 4/3;
+    }
+    .cms-panel-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.9s cubic-bezier(0.23,1,0.32,1);
+    }
+    .cms-panel:hover .cms-panel-bg { transform: scale(1.06); }
+    .cms-panel-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.05) 55%);
+    }
+    .cms-panel-body {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 40px 36px;
+    }
+    .cms-panel-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .cms-panel-name {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      display: block;
+      margin-bottom: 10px;
+      line-height: 1.05;
+      color: var(--white);
+    }
+    .cms-panel-detail {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+    }
+
+    /* ============================
+       PROCESS (sticky rail)
+    ============================ */
+    .cms-process {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .cms-process-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    .cms-process-left { position: sticky; top: 96px; }
+    .cms-process-left .section-tag { margin-bottom: 20px; }
+    .cms-process-title {
+      font-size: clamp(38px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .cms-process-intro {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 420px;
+    }
+    .cms-process-steps { display: flex; flex-direction: column; }
+    .cms-step {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: start;
+      transition: padding-left 0.3s;
+    }
+    .cms-step:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .cms-step:hover { padding-left: 8px; }
+    .cms-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      padding-top: 4px;
+    }
+    .cms-step h4 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .cms-step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       CINEMATIC BREAK
+    ============================ */
+    .cms-break {
+      position: relative;
+      height: 64vh;
+      overflow: hidden;
+      background: linear-gradient(115deg, #101010 0%, #1c1c1c 40%, var(--yellow) 180%);
+    }
+    .cms-break-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.15) 68%);
+      display: flex;
+      align-items: center;
+    }
+    .cms-break-text {
+      padding: 0 64px;
+      max-width: 820px;
+    }
+    .cms-break-text blockquote {
+      font-size: clamp(32px, 5.5vw, 68px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      font-style: normal;
+    }
+    .cms-break-text blockquote span { color: var(--yellow); }
+    .cms-break-text cite {
+      display: block;
+      font-size: 13px;
+      font-style: normal;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 28px;
+    }
+
+    /* ============================
+       PACKAGES (tiers)
+    ============================ */
+    .cms-packages {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .cms-packages-inner { max-width: 1440px; margin: 0 auto; }
+    .cms-packages-head { margin-bottom: 72px; }
+    .cms-packages-head h2 {
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      max-width: 820px;
+    }
+    .cms-packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .cms-pcard {
+      background: var(--dark2);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .cms-pcard:hover { background: #1a1a1a; }
+    .cms-pcard.featured {
+      background: var(--yellow);
+      color: var(--dark);
+    }
+    .cms-pcard.featured:hover { background: #e6b800; }
+    .cms-pcard-index {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .cms-pcard.featured .cms-pcard-index { color: rgba(0,0,0,0.4); }
+    .cms-pcard h3 {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+    .cms-pcard-price {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+    .cms-pcard-pnote {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .cms-pcard.featured .cms-pcard-pnote { color: rgba(0,0,0,0.5); }
+    .cms-pcard-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .cms-pcard.featured .cms-pcard-desc { color: rgba(0,0,0,0.6); }
+    .cms-pcard-rule {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .cms-pcard.featured .cms-pcard-rule { background: rgba(0,0,0,0.15); }
+    .cms-pcard-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .cms-pcard-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .cms-pcard-list li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .cms-pcard.featured .cms-pcard-list li::before { color: var(--dark); }
+    .cms-pcard-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      text-decoration: none;
+      margin-top: 8px;
+      transition: gap 0.3s;
+    }
+    .cms-pcard.featured .cms-pcard-link { color: var(--dark); }
+    .cms-pcard-link:hover { gap: 18px; }
+    .cms-pcard-link svg {
+      width: 16px; height: 16px;
+      stroke: currentColor; fill: none; stroke-width: 2;
+    }
+
+    /* ============================
+       CTA
+    ============================ */
+    .cms-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .cms-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .cms-cta h2 {
+      font-size: clamp(56px, 9vw, 130px);
+      font-weight: 900;
+      letter-spacing: -6px;
+      line-height: 0.88;
+      margin-bottom: 36px;
+    }
+    .cms-cta h2 span { color: var(--yellow); }
+    .cms-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .cms-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .cms-hero-wrap { padding: 0 24px 64px; }
+      .cms-hero-title { letter-spacing: -2px; }
+      .cms-scroll-indicator { display: none; }
+      .cms-stats { padding: 60px 24px; }
+      .cms-stats-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .cms-stat { border-left: none; padding-left: 0; }
+      .cms-services { padding: 80px 24px; }
+      .cms-services-header { grid-template-columns: 1fr; gap: 24px; }
+      .cms-services-grid { grid-template-columns: 1fr; }
+      .cms-panels { padding: 80px 24px; }
+      .cms-panels-header { grid-template-columns: 1fr; gap: 24px; }
+      .cms-panels-grid { grid-template-columns: 1fr; }
+      .cms-process { padding: 80px 24px; }
+      .cms-process-inner { grid-template-columns: 1fr; gap: 48px; }
+      .cms-process-left { position: static; }
+      .cms-break { height: 46vh; }
+      .cms-break-text { padding: 0 24px; }
+      .cms-packages { padding: 80px 24px; }
+      .cms-packages-grid { grid-template-columns: 1fr; }
+      .cms-cta { padding: 100px 24px; }
+      .cms-cta h2 { letter-spacing: -3px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="cms-hero">
+  <div class="cms-hero-bg" style="background-image:url('Images/website-content-management-system-hero.jpg');background-size:cover;background-position:center;"></div>
+  <div class="cms-hero-overlay"></div>
+  <div class="cms-hero-wrap">
+    <div class="cms-hero-eyebrow reveal">Content Management Websites</div>
+    <h1 class="cms-hero-title reveal reveal-delay-1">
+      Your website.<br>Your words.<br>No <em>developer.</em>
+    </h1>
+    <div class="cms-hero-bottom reveal reveal-delay-2">
+      <p class="cms-hero-desc">A website should never be a finished object you walk away from. We build every site on a bespoke content management system, so you can edit, publish, and grow it yourself - whenever you like, without touching a line of code.</p>
+      <div class="cms-hero-actions">
+        <a href="contact.html" class="btn-primary">Book a Free Consultation</a>
+        <a href="#packages" class="btn-outline">View Options</a>
+      </div>
+    </div>
+  </div>
+  <div class="cms-scroll-indicator">
+    <span>Scroll</span>
+    <div class="cms-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ② STATS -->
+<section class="cms-stats">
+  <div class="cms-stats-inner">
+    <div class="cms-stat reveal">
+      <div class="cms-stat-num">0<sup>code</sup></div>
+      <div class="cms-stat-label">Skills required to publish</div>
+    </div>
+    <div class="cms-stat reveal reveal-delay-1">
+      <div class="cms-stat-num">1<sup>system</sup></div>
+      <div class="cms-stat-label">Manages every page you own</div>
+    </div>
+    <div class="cms-stat reveal reveal-delay-2">
+      <div class="cms-stat-num">24<sup>/7</sup></div>
+      <div class="cms-stat-label">Publish whenever you like</div>
+    </div>
+    <div class="cms-stat reveal reveal-delay-3">
+      <div class="cms-stat-num">∞<sup>pages</sup></div>
+      <div class="cms-stat-label">Add new ones as you grow</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ SERVICES -->
+<section class="cms-services">
+  <div class="cms-services-inner">
+    <div class="cms-services-header">
+      <h2 class="cms-services-title reveal">You control<br>the content.<br>We handle<br>the code.</h2>
+      <p class="cms-services-body reveal reveal-delay-1">Keeping your site current is what keeps customers engaged and search engines interested - it also tells anyone landing on your homepage that you're an active, trustworthy business. Our bespoke CMS is built around that single job.</p>
+    </div>
+    <div class="cms-services-grid">
+
+      <div class="cms-svc reveal">
+        <span class="cms-svc-tag">01 - Capability</span>
+        <h3>Edit Text Freely</h3>
+        <p>Update headlines, pricing, service descriptions, and copy across any page the moment something changes in your business - no ticket, no waiting on a developer.</p>
+        <ul>
+          <li>Inline text editing on every page</li>
+          <li>No code or markup exposed to you</li>
+          <li>Changes go live the instant you publish</li>
+        </ul>
+      </div>
+
+      <div class="cms-svc reveal reveal-delay-1">
+        <span class="cms-svc-tag">02 - Capability</span>
+        <h3>Swap Images & Media</h3>
+        <p>Refresh hero banners, product shots, and galleries yourself as your offering evolves, your season changes, or your stock photography simply gets old.</p>
+        <ul>
+          <li>Drag-and-drop image replacement</li>
+          <li>Automatic resizing and optimisation</li>
+          <li>Full control over galleries and banners</li>
+        </ul>
+      </div>
+
+      <div class="cms-svc reveal reveal-delay-2">
+        <span class="cms-svc-tag">03 - Capability</span>
+        <h3>Add New Pages</h3>
+        <p>Launch a landing page for a campaign, a new service, or a seasonal offer without commissioning a new build every time you have a new idea.</p>
+        <ul>
+          <li>Build new pages from existing templates</li>
+          <li>Structured, on-brand layouts by default</li>
+          <li>No coding or design skills required</li>
+        </ul>
+      </div>
+
+      <div class="cms-svc reveal">
+        <span class="cms-svc-tag">04 - Capability</span>
+        <h3>Sales & Offers</h3>
+        <p>Run promotions, update pricing tables, and manage time-limited offers directly - built specifically for the pace of B2B, B2C, and e-commerce businesses.</p>
+        <ul>
+          <li>Dedicated offers and promotions management</li>
+          <li>Scheduled publishing for campaign dates</li>
+          <li>Works across B2B, B2C and e-commerce sites</li>
+        </ul>
+      </div>
+
+      <div class="cms-svc reveal reveal-delay-1">
+        <span class="cms-svc-tag">05 - Capability</span>
+        <h3>Approval Workflows</h3>
+        <p>Give your team the ability to draft and submit pages, while an administrator reviews and approves before anything goes public. Full control, zero surprises.</p>
+        <ul>
+          <li>Draft, submit, and approve stages</li>
+          <li>Administrator sign-off before publishing</li>
+          <li>Full visibility over who changed what</li>
+        </ul>
+      </div>
+
+      <div class="cms-svc reveal reveal-delay-2">
+        <span class="cms-svc-tag">06 - Capability</span>
+        <h3>User Permissions</h3>
+        <p>Decide exactly who on your team can access which parts of the system - from a single content editor to a full marketing department with defined roles.</p>
+        <ul>
+          <li>Granular, role-based access control</li>
+          <li>Safe for teams of any size</li>
+          <li>Only basic training required to get started</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ④ VISUAL PANELS -->
+<section class="cms-panels">
+  <div class="cms-panels-inner">
+    <div class="cms-panels-header">
+      <h2 class="cms-panels-title reveal">Built to grow<br>with your<br>business.</h2>
+      <p class="cms-panels-body reveal reveal-delay-1">A website is never really "finished" - it's a live extension of your business that should evolve as you do. Our CMS is designed to scale from a lean single-page brochure site to a sprawling multi-page platform, without ever needing a rebuild.</p>
+    </div>
+    <div class="cms-panels-grid">
+
+      <div class="cms-panel reveal">
+        <div class="cms-panel-bg" style="background: linear-gradient(135deg, #101010 0%, #2a2a2a 55%, var(--yellow) 160%);"></div>
+        <div class="cms-panel-veil"></div>
+        <div class="cms-panel-body">
+          <span class="cms-panel-tag">01 - Flexibility</span>
+          <span class="cms-panel-name">Enhanced Flexibility & Control</span>
+          <div class="cms-panel-detail">Every page, image, and piece of copy sits under your control - change direction as your business, offering, or audience shifts.</div>
+        </div>
+      </div>
+
+      <div class="cms-panel reveal reveal-delay-1">
+        <div class="cms-panel-bg" style="background: linear-gradient(150deg, var(--yellow) -20%, #1c1c1c 50%, #0d0d0d 100%);"></div>
+        <div class="cms-panel-veil"></div>
+        <div class="cms-panel-body">
+          <span class="cms-panel-tag">02 - Efficiency</span>
+          <span class="cms-panel-name">Saves Time, Increases Organisation</span>
+          <div class="cms-panel-detail">No more waiting on external developers for small updates - your team publishes changes the moment they're ready.</div>
+        </div>
+      </div>
+
+      <div class="cms-panel reveal reveal-delay-2">
+        <div class="cms-panel-bg" style="background: linear-gradient(200deg, #151515 0%, #2f2f2f 40%, var(--yellow) 175%);"></div>
+        <div class="cms-panel-veil"></div>
+        <div class="cms-panel-body">
+          <span class="cms-panel-tag">03 - Freshness</span>
+          <span class="cms-panel-name">Always Fresh, Always Current</span>
+          <div class="cms-panel-detail">A regularly updated site tells search engines - and customers - that your business is active, credible, and worth engaging with.</div>
+        </div>
+      </div>
+
+      <div class="cms-panel reveal reveal-delay-3">
+        <div class="cms-panel-bg" style="background: linear-gradient(160deg, var(--yellow) -30%, #202020 45%, #0a0a0a 100%);"></div>
+        <div class="cms-panel-veil"></div>
+        <div class="cms-panel-body">
+          <span class="cms-panel-tag">04 - Simplicity</span>
+          <span class="cms-panel-name">No Development Experience Needed</span>
+          <div class="cms-panel-detail">Elegant, adaptive, and easy to use - we walk you through the whole system on launch day, then stay on hand for questions.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ PROCESS -->
+<section class="cms-process">
+  <div class="cms-process-inner">
+    <div class="cms-process-left reveal">
+      <div class="section-tag">The Process</div>
+      <h2 class="cms-process-title">From launch<br>day to<br>lasting.</h2>
+      <p class="cms-process-intro">We don't put your site live and disappear. Once your CMS is built, we make sure you actually know how to use it - and we stay reachable for whenever a question comes up.</p>
+      <a href="contact.html" class="btn-primary">Book a Free Consultation</a>
+    </div>
+    <div class="cms-process-steps">
+      <div class="cms-step reveal">
+        <span class="cms-step-num">01</span>
+        <div>
+          <h4>Design</h4>
+          <p>We design and build your site around your business and your customers - with a content structure that's ready to be managed, not just published once.</p>
+        </div>
+      </div>
+      <div class="cms-step reveal reveal-delay-1">
+        <span class="cms-step-num">02</span>
+        <div>
+          <h4>Build the CMS</h4>
+          <p>Every page, image, and content block is wired into a bespoke system tailored to how your team actually works - with permissions set to match your structure.</p>
+        </div>
+      </div>
+      <div class="cms-step reveal reveal-delay-2">
+        <span class="cms-step-num">03</span>
+        <div>
+          <h4>Launch & Train</h4>
+          <p>We set a date, put your site live, and talk you through exactly how to use your new system - no jargon, no assumed technical knowledge.</p>
+        </div>
+      </div>
+      <div class="cms-step reveal reveal-delay-3">
+        <span class="cms-step-num">04</span>
+        <div>
+          <h4>Ongoing Support</h4>
+          <p>We're on hand to answer any questions that come up down the line - as your business grows and your website needs to keep pace with it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ CINEMATIC BREAK -->
+<div class="cms-break">
+  <div class="cms-break-veil">
+    <div class="cms-break-text">
+      <blockquote class="reveal">"You control the website.<br>We provide the <span>design.</span>"</blockquote>
+      <cite class="reveal reveal-delay-1"> -  The Fortay CMS philosophy</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦ PACKAGES -->
+<section class="cms-packages" id="packages">
+  <div class="cms-packages-inner">
+    <div class="cms-packages-head">
+      <div class="section-tag reveal">CMS Options</div>
+      <h2 class="reveal reveal-delay-1">Three ways to<br>own your<br>website.</h2>
+    </div>
+    <div class="cms-packages-grid">
+
+      <div class="cms-pcard reveal">
+        <div class="cms-pcard-index">01</div>
+        <h3>Essentials CMS</h3>
+        <div>
+          <div class="cms-pcard-price">POA</div>
+          <div class="cms-pcard-pnote">Single site · core editing</div>
+        </div>
+        <p class="cms-pcard-desc">A lean, custom-built CMS for a brochure-style site - everything you need to keep text, images, and contact details current yourself.</p>
+        <div class="cms-pcard-rule"></div>
+        <ul class="cms-pcard-list">
+          <li>Edit and publish text and images</li>
+          <li>Add, remove, and rearrange pages</li>
+          <li>Launch-day training session</li>
+          <li>Single admin user</li>
+          <li>Email support</li>
+        </ul>
+        <a href="contact.html" class="cms-pcard-link">
+          Book a Consultation
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="cms-pcard featured reveal reveal-delay-1">
+        <div class="cms-pcard-index">02 - Most Popular</div>
+        <h3>Business CMS</h3>
+        <div>
+          <div class="cms-pcard-price">POA</div>
+          <div class="cms-pcard-pnote">Multi-page · team access</div>
+        </div>
+        <p class="cms-pcard-desc">Built for growing businesses managing multiple pages, offers, and content contributors - with the workflow tools to keep everyone in sync.</p>
+        <div class="cms-pcard-rule"></div>
+        <ul class="cms-pcard-list">
+          <li>Everything in Essentials CMS</li>
+          <li>Sales and offers management</li>
+          <li>Approval workflow for submitted pages</li>
+          <li>Multiple users with role permissions</li>
+          <li>Priority support and ongoing guidance</li>
+        </ul>
+        <a href="contact.html" class="cms-pcard-link">
+          Book a Consultation
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="cms-pcard reveal reveal-delay-2">
+        <div class="cms-pcard-index">03</div>
+        <h3>Enterprise CMS</h3>
+        <div>
+          <div class="cms-pcard-price">POA</div>
+          <div class="cms-pcard-pnote">Complex sites · full control</div>
+        </div>
+        <p class="cms-pcard-desc">A fully bespoke content system for large or e-commerce sites with complex structures, multiple departments, and heavy content demand.</p>
+        <div class="cms-pcard-rule"></div>
+        <ul class="cms-pcard-list">
+          <li>Everything in Business CMS</li>
+          <li>Custom modules built around your workflow</li>
+          <li>Unlimited users and permission tiers</li>
+          <li>Scales with product and content volume</li>
+          <li>Dedicated ongoing support relationship</li>
+        </ul>
+        <a href="contact.html" class="cms-pcard-link">
+          Book a Consultation
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ CTA -->
+<section class="cms-cta">
+  <div class="cms-cta-eyebrow reveal">Interested? Let's talk</div>
+  <h2 class="reveal reveal-delay-1">Own your<br><span>website.</span></h2>
+  <p class="reveal reveal-delay-2">Tell us about your business and how you want your website to work for you. We'll come back with a plan for a CMS that fits - no coding skills required, ever.</p>
+  <div class="cms-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Book a Free Consultation</a>
+    <a href="work.html" class="btn-outline reveal reveal-delay-4">See Our Work</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Custom CMS</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Edit Anytime</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Add New Pages</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Sales & Offers</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>User Permissions</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>No Code Required</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Custom CMS</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Edit Anytime</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Add New Pages</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Sales & Offers</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>User Permissions</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>No Code Required</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

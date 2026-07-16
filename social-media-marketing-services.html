@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Social Media Marketing Services - Fortay Media</title>
+  <meta name="description" content="Full-service social media marketing from a Sheffield-based in-house team - strategy, content, paid social, and community management built around your goals, not a one-size-fits-all package."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+
+    /* ============================
+       HERO
+    ============================ */
+    .smm-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+    }
+    .smm-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 45%, #241d00 100%);
+    }
+    .smm-hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 78% 22%, rgba(245,195,24,0.35) 0%, rgba(245,195,24,0) 55%);
+    }
+    .smm-hero-wrap {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 88px;
+    }
+    .smm-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .smm-hero-title {
+      font-size: clamp(56px, 8vw, 116px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 40px;
+    }
+    .smm-hero-title em { font-style: normal; color: var(--yellow); }
+    .smm-hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .smm-hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+    .smm-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .smm-scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      right: 64px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.35;
+    }
+    .smm-scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .smm-scroll-line {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, white, transparent);
+      animation: smmScrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes smmScrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%     { opacity: 0.1;  transform: scaleY(0.4); }
+    }
+
+    /* ============================
+       STATS
+    ============================ */
+    .smm-stats {
+      background: var(--dark);
+      padding: 72px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .smm-stats-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+    }
+    .smm-stat {
+      padding: 0 48px;
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .smm-stat:first-child { border-left: none; padding-left: 0; }
+    .smm-stat-num {
+      font-size: clamp(52px, 5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .smm-stat-num sup { font-size: 0.4em; color: var(--yellow); vertical-align: super; }
+    .smm-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ============================
+       QUESTIONS STRIP
+    ============================ */
+    .smm-questions {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .smm-questions-inner { max-width: 1440px; margin: 0 auto; }
+    .smm-questions-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .smm-questions-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .smm-questions-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .smm-questions-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 3px;
+    }
+    .smm-q {
+      background: var(--dark);
+      padding: 44px 32px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background 0.3s;
+    }
+    .smm-q:hover { background: #1a1a1a; }
+    .smm-q-num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .smm-q h3 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+    .smm-q p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       SERVICES (indexed tiles)
+    ============================ */
+    .smm-services {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .smm-services-inner { max-width: 1440px; margin: 0 auto; }
+    .smm-services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+    .smm-services-title {
+      font-size: clamp(44px, 5vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+    }
+    .smm-services-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      padding-bottom: 8px;
+    }
+    .smm-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .smm-svc {
+      background: var(--dark2);
+      padding: 44px 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background 0.3s;
+    }
+    .smm-svc:hover { background: #1a1a1a; }
+    .smm-svc-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .smm-svc h3 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    .smm-svc p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+    .smm-svc ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .smm-svc li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.55);
+    }
+    .smm-svc li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ============================
+       PROCESS (sticky rail)
+    ============================ */
+    .smm-process {
+      background: var(--dark2);
+      padding: 120px 64px;
+    }
+    .smm-process-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    .smm-process-left { position: sticky; top: 96px; }
+    .smm-process-left .section-tag { margin-bottom: 20px; }
+    .smm-process-title {
+      font-size: clamp(38px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .smm-process-intro {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 420px;
+    }
+    .smm-process-steps { display: flex; flex-direction: column; }
+    .smm-step {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      align-items: start;
+      transition: padding-left 0.3s;
+    }
+    .smm-step:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .smm-step:hover { padding-left: 8px; }
+    .smm-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      padding-top: 4px;
+    }
+    .smm-step h4 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .smm-step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       CINEMATIC BREAK (gradient panel)
+    ============================ */
+    .smm-break {
+      position: relative;
+      height: 62vh;
+      overflow: hidden;
+      background: linear-gradient(115deg, #171400 0%, #0d0d0d 45%, #1c1c1c 100%);
+    }
+    .smm-break::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 15% 70%, rgba(245,195,24,0.28) 0%, rgba(245,195,24,0) 50%);
+    }
+    .smm-break-veil {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+    .smm-break-text {
+      padding: 0 64px;
+      max-width: 820px;
+    }
+    .smm-break-text blockquote {
+      font-size: clamp(32px, 5.5vw, 68px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      font-style: normal;
+    }
+    .smm-break-text blockquote span { color: var(--yellow); }
+    .smm-break-text cite {
+      display: block;
+      font-size: 13px;
+      font-style: normal;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 28px;
+    }
+
+    /* ============================
+       APPROACH (no packages)
+    ============================ */
+    .smm-approach {
+      background: var(--dark);
+      padding: 120px 64px;
+    }
+    .smm-approach-inner { max-width: 1440px; margin: 0 auto; }
+    .smm-approach-head { margin-bottom: 72px; max-width: 820px; }
+    .smm-approach-head h2 {
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      margin-bottom: 20px;
+    }
+    .smm-approach-head p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 640px;
+    }
+    .smm-approach-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 3px;
+    }
+    .smm-acard {
+      background: var(--dark2);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: background 0.3s;
+    }
+    .smm-acard:hover { background: #1a1a1a; }
+    .smm-acard.featured { background: var(--yellow); color: var(--dark); }
+    .smm-acard.featured:hover { background: #e6b800; }
+    .smm-acard-index {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .smm-acard.featured .smm-acard-index { color: rgba(0,0,0,0.4); }
+    .smm-acard h3 {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.05;
+    }
+    .smm-acard-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .smm-acard.featured .smm-acard-desc { color: rgba(0,0,0,0.6); }
+    .smm-acard-rule { height: 1px; background: rgba(255,255,255,0.08); }
+    .smm-acard.featured .smm-acard-rule { background: rgba(0,0,0,0.15); }
+    .smm-acard-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .smm-acard-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .smm-acard-list li::before {
+      content: '✦';
+      font-size: 9px;
+      color: var(--yellow);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .smm-acard.featured .smm-acard-list li::before { color: var(--dark); }
+
+    /* ============================
+       CTA
+    ============================ */
+    .smm-cta {
+      background: var(--dark2);
+      padding: 160px 64px;
+      text-align: center;
+    }
+    .smm-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+    .smm-cta h2 {
+      font-size: clamp(64px, 10vw, 140px);
+      font-weight: 900;
+      letter-spacing: -6px;
+      line-height: 0.88;
+      margin-bottom: 36px;
+    }
+    .smm-cta h2 span { color: var(--yellow); }
+    .smm-cta p {
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 auto 48px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .smm-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 960px) {
+      .smm-hero-wrap { padding: 0 24px 64px; }
+      .smm-hero-title { letter-spacing: -2px; }
+      .smm-scroll-indicator { display: none; }
+      .smm-stats { padding: 60px 24px; }
+      .smm-stats-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .smm-stat { border-left: none; padding-left: 0; }
+      .smm-questions { padding: 80px 24px; }
+      .smm-questions-header { grid-template-columns: 1fr; gap: 24px; }
+      .smm-questions-grid { grid-template-columns: 1fr 1fr; }
+      .smm-services { padding: 80px 24px; }
+      .smm-services-header { grid-template-columns: 1fr; gap: 24px; }
+      .smm-services-grid { grid-template-columns: 1fr; }
+      .smm-process { padding: 80px 24px; }
+      .smm-process-inner { grid-template-columns: 1fr; gap: 48px; }
+      .smm-process-left { position: static; }
+      .smm-break { height: 50vh; }
+      .smm-break-text { padding: 0 24px; }
+      .smm-approach { padding: 80px 24px; }
+      .smm-approach-grid { grid-template-columns: 1fr; }
+      .smm-cta { padding: 100px 24px; }
+      .smm-cta h2 { letter-spacing: -3px; }
+    }
+  </style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="growth-partnership.html">Growth Partnership</a></li>
+    <li><a href="video-production.html">Video Production</a></li>
+    <li><a href="studio-hire.html">Studio Hire</a></li>
+    <li><a href="web-design-sheffield.html">Website Development</a></li>
+    <li><a href="social-media-management-company.html">Social Media Management</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Start a Project</a>
+</nav>
+
+<!-- ① HERO -->
+<section class="smm-hero">
+  <div class="smm-hero-bg" style="background-image:url('Images/social-media-marketing-services-hero.jpg');background-size:cover;background-position:center;"></div>
+  <div class="smm-hero-wrap">
+    <div class="smm-hero-eyebrow reveal">Social Media Marketing - Sheffield</div>
+    <h1 class="smm-hero-title reveal reveal-delay-1">
+      Get seen.<br>Get talked<br>about. <em>Get results.</em>
+    </h1>
+    <div class="smm-hero-bottom reveal reveal-delay-2">
+      <p class="smm-hero-desc">A dedicated in-house social team building campaigns that answer the questions that matter - what to say, who to say it to, and where to reach them. No off-the-shelf packages, just strategy built around your business.</p>
+      <div class="smm-hero-actions">
+        <a href="contact.html" class="btn-primary">Start a Campaign</a>
+        <a href="#services" class="btn-outline">What We Do</a>
+      </div>
+    </div>
+  </div>
+  <div class="smm-scroll-indicator">
+    <span>Scroll</span>
+    <div class="smm-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ② STATS -->
+<section class="smm-stats">
+  <div class="smm-stats-inner">
+    <div class="smm-stat reveal">
+      <div class="smm-stat-num">97<sup>%</sup></div>
+      <div class="smm-stat-label">Consumers search online for local business</div>
+    </div>
+    <div class="smm-stat reveal reveal-delay-1">
+      <div class="smm-stat-num">0<sup>packages</sup></div>
+      <div class="smm-stat-label">Every campaign is tailor made</div>
+    </div>
+    <div class="smm-stat reveal reveal-delay-2">
+      <div class="smm-stat-num">6<sup>disciplines</sup></div>
+      <div class="smm-stat-label">All delivered by one in-house team</div>
+    </div>
+    <div class="smm-stat reveal reveal-delay-3">
+      <div class="smm-stat-num">1<sup>team</sup></div>
+      <div class="smm-stat-label">Strategy through to execution</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ LET'S TALK STRATEGY -->
+<section class="smm-questions">
+  <div class="smm-questions-inner">
+    <div class="smm-questions-header">
+      <h2 class="smm-questions-title reveal">Let's talk<br>strategy first.</h2>
+      <p class="smm-questions-body reveal reveal-delay-1">A successful campaign starts with four questions, not a template. Before we touch a single platform, we sit down with you to evaluate your brand, your strategy, and your competition - then build a plan to move forward.</p>
+    </div>
+    <div class="smm-questions-grid">
+
+      <div class="smm-q reveal">
+        <span class="smm-q-num">01</span>
+        <h3>What do you need to communicate?</h3>
+        <p>The message at the core of the campaign - distilled until it's sharp enough to cut through a feed.</p>
+      </div>
+
+      <div class="smm-q reveal reveal-delay-1">
+        <span class="smm-q-num">02</span>
+        <h3>Who will it go to?</h3>
+        <p>The real audience behind the demographic - who they are, what they need, and why they'd care.</p>
+      </div>
+
+      <div class="smm-q reveal reveal-delay-2">
+        <span class="smm-q-num">03</span>
+        <h3>What do they like to hear?</h3>
+        <p>Tone, format, and story shaped around what actually earns attention and engagement.</p>
+      </div>
+
+      <div class="smm-q reveal reveal-delay-3">
+        <span class="smm-q-num">04</span>
+        <h3>Where can we reach them?</h3>
+        <p>The right platforms and placements - organic and paid - for the audience you're chasing.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ④ SERVICES -->
+<section class="smm-services" id="services">
+  <div class="smm-services-inner">
+    <div class="smm-services-header">
+      <h2 class="smm-services-title reveal">If it's<br>digital,<br>we do it.</h2>
+      <p class="smm-services-body reveal reveal-delay-1">Content plays a central role in digital marketing, so we keep every discipline in-house - copywriting, scripting, directing, designing, styling, coding, building, producing, casting, filming, animating, editing. One team, every avenue for success.</p>
+    </div>
+    <div class="smm-services-grid">
+
+      <div class="smm-svc reveal">
+        <span class="smm-svc-tag">01 - Service</span>
+        <h3>Social Media</h3>
+        <p>Engaging the right target market for your campaign. Our social team combines paid and organic content to get the most from every platform you're on.</p>
+        <ul>
+          <li>Organic content strategy and scheduling</li>
+          <li>Community management and engagement</li>
+          <li>Platform-native content for every channel</li>
+        </ul>
+      </div>
+
+      <div class="smm-svc reveal reveal-delay-1">
+        <span class="smm-svc-tag">02 - Service</span>
+        <h3>Paid Advertising</h3>
+        <p>A focused ad campaign can be totally transformative for engagement and reach. We use Paid Social and PPC to put your brand directly in front of your target market.</p>
+        <ul>
+          <li>Meta, TikTok, and LinkedIn ad campaigns</li>
+          <li>PPC and search advertising</li>
+          <li>Audience targeting and retargeting</li>
+        </ul>
+      </div>
+
+      <div class="smm-svc reveal reveal-delay-2">
+        <span class="smm-svc-tag">03 - Service</span>
+        <h3>Video &amp; Photography</h3>
+        <p>A library of every visual you need. Our in-house team creates content to populate your channels, whatever your industry or target market.</p>
+        <ul>
+          <li>Short-form and long-form video content</li>
+          <li>Product and brand photography</li>
+          <li>Content built for every aspect ratio</li>
+        </ul>
+      </div>
+
+      <div class="smm-svc reveal">
+        <span class="smm-svc-tag">04 - Service</span>
+        <h3>Websites</h3>
+        <p>From landing pages to full site builds and load-time improvements - our web team makes sure everything is in place for your campaign to convert.</p>
+        <ul>
+          <li>Landing pages built to convert</li>
+          <li>Full website design and build</li>
+          <li>Site speed and performance improvements</li>
+        </ul>
+      </div>
+
+      <div class="smm-svc reveal reveal-delay-1">
+        <span class="smm-svc-tag">05 - Service</span>
+        <h3>Email Marketing</h3>
+        <p>An incredibly effective tool for successful campaigns. The right email at the right moment can have a huge impact on engaging your customers.</p>
+        <ul>
+          <li>Campaign sequences and automations</li>
+          <li>Newsletter design and copywriting</li>
+          <li>List segmentation and targeting</li>
+        </ul>
+      </div>
+
+      <div class="smm-svc reveal reveal-delay-2">
+        <span class="smm-svc-tag">06 - Service</span>
+        <h3>SEO</h3>
+        <p>Helping your business get seen online, reach its goals faster, and stay efficient - with SEO solutions tailored to your specific campaign.</p>
+        <ul>
+          <li>On-page and technical SEO</li>
+          <li>Local search optimisation</li>
+          <li>Content built to rank and convert</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ PROCESS -->
+<section class="smm-process">
+  <div class="smm-process-inner">
+    <div class="smm-process-left reveal">
+      <div class="section-tag">The Process</div>
+      <h2 class="smm-process-title">Your online<br>presence,<br>built properly.</h2>
+      <p class="smm-process-intro">97% of consumers search online for local businesses - so even if you don't trade online, your customers still expect to find you there. Here's how we build a presence that actually converts.</p>
+      <a href="contact.html" class="btn-primary">Start a Campaign</a>
+    </div>
+    <div class="smm-process-steps">
+      <div class="smm-step reveal">
+        <span class="smm-step-num">01</span>
+        <div>
+          <h4>Discovery</h4>
+          <p>We sit down with you to talk through your needs, your goals, and how we can help - no assumptions, no generic questionnaires.</p>
+        </div>
+      </div>
+      <div class="smm-step reveal reveal-delay-1">
+        <span class="smm-step-num">02</span>
+        <div>
+          <h4>Evaluation</h4>
+          <p>Our team evaluates your current brand, existing strategy, and competitor landscape to see exactly where the opportunity is.</p>
+        </div>
+      </div>
+      <div class="smm-step reveal reveal-delay-2">
+        <span class="smm-step-num">03</span>
+        <div>
+          <h4>Strategy &amp; Build</h4>
+          <p>We build the campaign plan - leading with creativity to make sure you're seen in the right places, telling the right story.</p>
+        </div>
+      </div>
+      <div class="smm-step reveal reveal-delay-3">
+        <span class="smm-step-num">04</span>
+        <div>
+          <h4>Launch &amp; Optimise</h4>
+          <p>Campaigns go live across the right channels, with ongoing management to keep engagement and results moving in the right direction.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ BREAK -->
+<div class="smm-break">
+  <div class="smm-break-veil">
+    <div class="smm-break-text">
+      <blockquote class="reveal">"An influential<br>campaign can launch<br>your business into <span>huge success.</span>"</blockquote>
+      <cite class="reveal reveal-delay-1"> -  Fortay Media, Social Media Marketing</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦ APPROACH (no packages) -->
+<section class="smm-approach">
+  <div class="smm-approach-inner">
+    <div class="smm-approach-head">
+      <div class="section-tag reveal">Our Approach</div>
+      <h2 class="reveal reveal-delay-1">We don't<br>do packages.</h2>
+      <p class="reveal reveal-delay-2">There are no two businesses the same, so how could we offer a one-size-fits-all package? Everything we produce is tailor made - built around your goals, your audience, and your budget, not a fixed tier.</p>
+    </div>
+    <div class="smm-approach-grid">
+
+      <div class="smm-acard reveal">
+        <div class="smm-acard-index">01</div>
+        <h3>Single Campaign</h3>
+        <p class="smm-acard-desc">One focused campaign, scoped to a specific launch, product, or moment - strategy, content, and paid support built around a single objective.</p>
+        <div class="smm-acard-rule"></div>
+        <ul class="smm-acard-list">
+          <li>Strategy session and audience research</li>
+          <li>Content creation across chosen channels</li>
+          <li>Paid support where it earns its place</li>
+        </ul>
+      </div>
+
+      <div class="smm-acard featured reveal reveal-delay-1">
+        <div class="smm-acard-index">02 - Most Popular</div>
+        <h3>Ongoing Management</h3>
+        <p class="smm-acard-desc">A retained partnership covering organic, paid, and content - the whole online presence managed by one accountable team, month after month.</p>
+        <div class="smm-acard-rule"></div>
+        <ul class="smm-acard-list">
+          <li>Full content calendar and community management</li>
+          <li>Always-on paid social and PPC</li>
+          <li>Monthly reporting and strategy reviews</li>
+        </ul>
+      </div>
+
+      <div class="smm-acard reveal reveal-delay-2">
+        <div class="smm-acard-index">03</div>
+        <h3>Full-Funnel Build</h3>
+        <p class="smm-acard-desc">Everything under one roof - website, video, email, SEO, and social working together as a single system built to convert leads into customers.</p>
+        <div class="smm-acard-rule"></div>
+        <ul class="smm-acard-list">
+          <li>Website and landing page delivery</li>
+          <li>Video and photography content library</li>
+          <li>Email marketing and SEO woven in</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ CTA -->
+<section class="smm-cta">
+  <div class="smm-cta-eyebrow reveal">Start a Campaign</div>
+  <h2 class="reveal reveal-delay-1">Let's build your<br><span>presence.</span></h2>
+  <p class="reveal reveal-delay-2">Tell us about your business, your goals, and where your customers are already looking. We'll come back with a tailored strategy - no packages, no guesswork.</p>
+  <div class="smm-cta-actions">
+    <a href="contact.html" class="btn-primary reveal reveal-delay-3">Start a Campaign</a>
+    <a href="work.html" class="btn-outline reveal reveal-delay-4">See Our Work</a>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: var(--dark);">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot"></span>Social Media</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Paid Advertising</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Video & Photography</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Websites</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Email Marketing</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>SEO</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Social Media</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Paid Advertising</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Video & Photography</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Websites</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Email Marketing</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>SEO</div>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="main-footer-inner">
+    <div class="main-footer-brand">
+      <a class="nav-logo" href="index.html"><img src="Images/fortay-logo.png" alt="Fortay Media"/></a>
+      <p>A full-service content, video production and marketing engine based in Sheffield - helping brands turn ideas into content that actually drives results.</p>
+      <div class="main-footer-socials">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 01-1.15 1.77 4.9 4.9 0 01-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77a4.9 4.9 0 011.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.2-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.59 23 10.94 23 14.03V21h-4v-6.28c0-1.5-.03-3.42-2.08-3.42-2.09 0-2.41 1.63-2.41 3.32V21h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="main-footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="growth-partnership.html">Growth Partnership</a></li>
+        <li><a href="video-production.html">Video Production</a></li>
+        <li><a href="studio-hire.html">Studio Hire</a></li>
+        <li><a href="web-design-sheffield.html">Website Development</a></li>
+        <li><a href="social-media-management-company.html">Social Media Management</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="main-footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-footer-bottom">
+    <span>&copy; 2026 Fortay Media Ltd. All rights reserved.</span>
+    <div class="main-footer-bottom-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
